@@ -1,0 +1,194 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5F155CD319518E4600D8931F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F155CD219518E4600D8931F /* main.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5F155CC119518A0900D8931F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		5F155CC319518A0900D8931F /* TramsScraper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TramsScraper; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F155CCE19518E4600D8931F /* TramsScraper-Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "TramsScraper-Debug.xcconfig"; sourceTree = "<group>"; };
+		5F155CCF19518E4600D8931F /* TramsScraper-Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "TramsScraper-Release.xcconfig"; sourceTree = "<group>"; };
+		5F155CD019518E4600D8931F /* TramsScraper.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = TramsScraper.xcconfig; sourceTree = "<group>"; };
+		5F155CD219518E4600D8931F /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5F155CC019518A0900D8931F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5F155CBA19518A0900D8931F = {
+			isa = PBXGroup;
+			children = (
+				5F155CCD19518E4600D8931F /* Configurations */,
+				5F155CD119518E4600D8931F /* Source */,
+				5F155CC419518A0900D8931F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5F155CC419518A0900D8931F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5F155CC319518A0900D8931F /* TramsScraper */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5F155CCD19518E4600D8931F /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				5F155CCE19518E4600D8931F /* TramsScraper-Debug.xcconfig */,
+				5F155CCF19518E4600D8931F /* TramsScraper-Release.xcconfig */,
+				5F155CD019518E4600D8931F /* TramsScraper.xcconfig */,
+			);
+			name = Configurations;
+			path = TramsScraper/Configurations;
+			sourceTree = "<group>";
+		};
+		5F155CD119518E4600D8931F /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				5F155CD219518E4600D8931F /* main.swift */,
+			);
+			name = Source;
+			path = TramsScraper/Source;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5F155CC219518A0900D8931F /* TramsScraper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F155CCA19518A0900D8931F /* Build configuration list for PBXNativeTarget "TramsScraper" */;
+			buildPhases = (
+				5F155CBF19518A0900D8931F /* Sources */,
+				5F155CC019518A0900D8931F /* Frameworks */,
+				5F155CC119518A0900D8931F /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TramsScraper;
+			productName = TramsScraper;
+			productReference = 5F155CC319518A0900D8931F /* TramsScraper */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5F155CBB19518A0900D8931F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = Dblechoc;
+				TargetAttributes = {
+					5F155CC219518A0900D8931F = {
+						CreatedOnToolsVersion = 6.0;
+					};
+				};
+			};
+			buildConfigurationList = 5F155CBE19518A0900D8931F /* Build configuration list for PBXProject "TramsScraper" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5F155CBA19518A0900D8931F;
+			productRefGroup = 5F155CC419518A0900D8931F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5F155CC219518A0900D8931F /* TramsScraper */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5F155CBF19518A0900D8931F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F155CD319518E4600D8931F /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		5F155CC819518A0900D8931F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F155CCE19518E4600D8931F /* TramsScraper-Debug.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		5F155CC919518A0900D8931F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F155CCF19518E4600D8931F /* TramsScraper-Release.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		5F155CCB19518A0900D8931F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		5F155CCC19518A0900D8931F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5F155CBE19518A0900D8931F /* Build configuration list for PBXProject "TramsScraper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F155CC819518A0900D8931F /* Debug */,
+				5F155CC919518A0900D8931F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5F155CCA19518A0900D8931F /* Build configuration list for PBXNativeTarget "TramsScraper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F155CCB19518A0900D8931F /* Debug */,
+				5F155CCC19518A0900D8931F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5F155CBB19518A0900D8931F /* Project object */;
+}
