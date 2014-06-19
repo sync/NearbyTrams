@@ -14,6 +14,9 @@
          location = "group:WarningsAndDiagnostics.xcconfig">
       </FileRef>
       <FileRef
+         location = "group:HeadersAndFrameworks.xcconfig">
+      </FileRef>
+      <FileRef
          location = "group:Debug.xcconfig">
       </FileRef>
       <FileRef
@@ -31,6 +34,13 @@
          <FileRef
             location = "group:Release.xcconfig">
          </FileRef>
+         <Group
+            location = "group:Framework"
+            name = "Framework">
+            <FileRef
+               location = "group:Framework.xcconfig">
+            </FileRef>
+         </Group>
       </Group>
    </Group>
    <Group
@@ -40,6 +50,9 @@
          location = "group:NearbyTrams.playground">
       </FileRef>
    </Group>
+   <FileRef
+      location = "group:NearbyTramsStorageKit.xcodeproj">
+   </FileRef>
    <FileRef
       location = "group:TramsScraper.xcodeproj">
    </FileRef>

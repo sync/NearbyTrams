@@ -5,13 +5,3 @@
 #include "WarningsAndDiagnostics.xcconfig"
 #include "CompilerAndLanguage.xcconfig"
 #include "HeadersAndFrameworks.xcconfig"
-
-ONLY_ACTIVE_ARCH = YES
-COPY_PHASE_STRIP = NO
-
-GCC_OPTIMIZATION_LEVEL = 0
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) DEBUG=1
-
-SWIFT_OPTIMIZATION_LEVEL = -Onone
-
-METAL_ENABLE_DEBUG_INFO = YES

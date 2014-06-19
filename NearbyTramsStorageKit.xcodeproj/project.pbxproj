@@ -1,0 +1,214 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5F8695E819539442000E2256 /* NearbyTramsStorageKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F8695E019539442000E2256 /* NearbyTramsStorageKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5F6BA8A41952B395005D0DDB /* NearbyTramsStorageKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NearbyTramsStorageKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F8695D719539442000E2256 /* NearbyTramsStorageKit-Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "NearbyTramsStorageKit-Debug.xcconfig"; sourceTree = "<group>"; };
+		5F8695D819539442000E2256 /* NearbyTramsStorageKit-Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "NearbyTramsStorageKit-Release.xcconfig"; sourceTree = "<group>"; };
+		5F8695D919539442000E2256 /* NearbyTramsStorageKit.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = NearbyTramsStorageKit.xcconfig; sourceTree = "<group>"; };
+		5F8695DE19539442000E2256 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F8695E019539442000E2256 /* NearbyTramsStorageKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyTramsStorageKit.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5F6BA8A01952B395005D0DDB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5F6BA89A1952B395005D0DDB = {
+			isa = PBXGroup;
+			children = (
+				5F8695D619539442000E2256 /* Configurations */,
+				5F8695DF19539442000E2256 /* Source */,
+				5F8695DD19539442000E2256 /* Resources */,
+				5F6BA8A51952B395005D0DDB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5F6BA8A51952B395005D0DDB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5F6BA8A41952B395005D0DDB /* NearbyTramsStorageKit.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5F8695D619539442000E2256 /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				5F8695D719539442000E2256 /* NearbyTramsStorageKit-Debug.xcconfig */,
+				5F8695D819539442000E2256 /* NearbyTramsStorageKit-Release.xcconfig */,
+				5F8695D919539442000E2256 /* NearbyTramsStorageKit.xcconfig */,
+			);
+			name = Configurations;
+			path = NearbyTramsStorageKit/Configurations;
+			sourceTree = "<group>";
+		};
+		5F8695DD19539442000E2256 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5F8695DE19539442000E2256 /* Info.plist */,
+			);
+			name = Resources;
+			path = NearbyTramsStorageKit/Resources;
+			sourceTree = "<group>";
+		};
+		5F8695DF19539442000E2256 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				5F8695E019539442000E2256 /* NearbyTramsStorageKit.h */,
+			);
+			name = Source;
+			path = NearbyTramsStorageKit/Source;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		5F6BA8A11952B395005D0DDB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F8695E819539442000E2256 /* NearbyTramsStorageKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		5F6BA8A31952B395005D0DDB /* NearbyTramsStorageKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F6BA8BA1952B395005D0DDB /* Build configuration list for PBXNativeTarget "NearbyTramsStorageKit" */;
+			buildPhases = (
+				5F6BA89F1952B395005D0DDB /* Sources */,
+				5F6BA8A01952B395005D0DDB /* Frameworks */,
+				5F6BA8A11952B395005D0DDB /* Headers */,
+				5F6BA8A21952B395005D0DDB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NearbyTramsStorageKit;
+			productName = NearbyTramsStorageKit;
+			productReference = 5F6BA8A41952B395005D0DDB /* NearbyTramsStorageKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5F6BA89B1952B395005D0DDB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = Dblechoc;
+				TargetAttributes = {
+					5F6BA8A31952B395005D0DDB = {
+						CreatedOnToolsVersion = 6.0;
+					};
+				};
+			};
+			buildConfigurationList = 5F6BA89E1952B395005D0DDB /* Build configuration list for PBXProject "NearbyTramsStorageKit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5F6BA89A1952B395005D0DDB;
+			productRefGroup = 5F6BA8A51952B395005D0DDB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5F6BA8A31952B395005D0DDB /* NearbyTramsStorageKit */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5F6BA8A21952B395005D0DDB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5F6BA89F1952B395005D0DDB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		5F6BA8B81952B395005D0DDB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F8695D719539442000E2256 /* NearbyTramsStorageKit-Debug.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		5F6BA8B91952B395005D0DDB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F8695D819539442000E2256 /* NearbyTramsStorageKit-Release.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		5F6BA8BB1952B395005D0DDB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		5F6BA8BC1952B395005D0DDB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5F6BA89E1952B395005D0DDB /* Build configuration list for PBXProject "NearbyTramsStorageKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F6BA8B81952B395005D0DDB /* Debug */,
+				5F6BA8B91952B395005D0DDB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5F6BA8BA1952B395005D0DDB /* Build configuration list for PBXNativeTarget "NearbyTramsStorageKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F6BA8BB1952B395005D0DDB /* Debug */,
+				5F6BA8BC1952B395005D0DDB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5F6BA89B1952B395005D0DDB /* Project object */;
+}

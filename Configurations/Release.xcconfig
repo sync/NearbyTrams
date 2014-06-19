@@ -5,10 +5,3 @@
 #include "WarningsAndDiagnostics.xcconfig"
 #include "CompilerAndLanguage.xcconfig"
 #include "HeadersAndFrameworks.xcconfig"
-
-DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-COPY_PHASE_STRIP = YES
-
-ENABLE_NS_ASSERTIONS = NO
-
-METAL_ENABLE_DEBUG_INFO = NO
