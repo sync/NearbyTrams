@@ -8,7 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		5F155CD319518E4600D8931F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F155CD219518E4600D8931F /* main.swift */; };
+		5F200D911952934A003A37D0 /* NearbyTrams.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5F200D8F1952934A003A37D0 /* NearbyTrams.xcdatamodeld */; };
+		5F7B05FD1953F4ED003423B6 /* NearbyTramsStorageKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F7B05FA1953F4D3003423B6 /* NearbyTramsStorageKit.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5F7B05F91953F4D3003423B6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F7B05F51953F4D3003423B6 /* NearbyTramsStorageKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5F6BA8A41952B395005D0DDB;
+			remoteInfo = NearbyTramsStorageKit;
+		};
+		5F7B05FB1953F4E5003423B6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F7B05F51953F4D3003423B6 /* NearbyTramsStorageKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5F6BA8A31952B395005D0DDB;
+			remoteInfo = NearbyTramsStorageKit;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		5F155CC119518A0900D8931F /* CopyFiles */ = {
@@ -28,6 +47,8 @@
 		5F155CCF19518E4600D8931F /* TramsScraper-Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "TramsScraper-Release.xcconfig"; sourceTree = "<group>"; };
 		5F155CD019518E4600D8931F /* TramsScraper.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = TramsScraper.xcconfig; sourceTree = "<group>"; };
 		5F155CD219518E4600D8931F /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		5F200D901952934A003A37D0 /* NearbyTrams.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NearbyTrams.xcdatamodel; sourceTree = "<group>"; };
+		5F7B05F51953F4D3003423B6 /* NearbyTramsStorageKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = NearbyTramsStorageKit.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F7B05FD1953F4ED003423B6 /* NearbyTramsStorageKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,8 +66,10 @@
 		5F155CBA19518A0900D8931F = {
 			isa = PBXGroup;
 			children = (
+				5F7B05F41953F4C1003423B6 /* External */,
 				5F155CCD19518E4600D8931F /* Configurations */,
 				5F155CD119518E4600D8931F /* Source */,
+				5FF40FB319528D27000E94C4 /* Resources */,
 				5F155CC419518A0900D8931F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -78,6 +102,31 @@
 			path = TramsScraper/Source;
 			sourceTree = "<group>";
 		};
+		5F7B05F41953F4C1003423B6 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				5F7B05F51953F4D3003423B6 /* NearbyTramsStorageKit.xcodeproj */,
+			);
+			name = External;
+			sourceTree = "<group>";
+		};
+		5F7B05F61953F4D3003423B6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5F7B05FA1953F4D3003423B6 /* NearbyTramsStorageKit.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5FF40FB319528D27000E94C4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5F200D8F1952934A003A37D0 /* NearbyTrams.xcdatamodeld */,
+			);
+			name = Resources;
+			path = TramsScraper/Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -92,6 +141,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				5F7B05FC1953F4E5003423B6 /* PBXTargetDependency */,
 			);
 			name = TramsScraper;
 			productName = TramsScraper;
@@ -122,6 +172,12 @@
 			mainGroup = 5F155CBA19518A0900D8931F;
 			productRefGroup = 5F155CC419518A0900D8931F /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 5F7B05F61953F4D3003423B6 /* Products */;
+					ProjectRef = 5F7B05F51953F4D3003423B6 /* NearbyTramsStorageKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				5F155CC219518A0900D8931F /* TramsScraper */,
@@ -129,16 +185,35 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		5F7B05FA1953F4D3003423B6 /* NearbyTramsStorageKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = NearbyTramsStorageKit.framework;
+			remoteRef = 5F7B05F91953F4D3003423B6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5F155CBF19518A0900D8931F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				5F155CD319518E4600D8931F /* main.swift in Sources */,
+				5F200D911952934A003A37D0 /* NearbyTrams.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5F7B05FC1953F4E5003423B6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = NearbyTramsStorageKit;
+			targetProxy = 5F7B05FB1953F4E5003423B6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		5F155CC819518A0900D8931F /* Debug */ = {
@@ -189,6 +264,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5F200D8F1952934A003A37D0 /* NearbyTrams.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5F200D901952934A003A37D0 /* NearbyTrams.xcdatamodel */,
+			);
+			currentVersion = 5F200D901952934A003A37D0 /* NearbyTrams.xcdatamodel */;
+			name = NearbyTrams.xcdatamodeld;
+			path = ../../Fixtures/NearbyTrams.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5F155CBB19518A0900D8931F /* Project object */;
 }

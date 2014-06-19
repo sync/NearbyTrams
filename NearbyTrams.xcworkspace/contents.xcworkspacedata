@@ -44,6 +44,10 @@
       </Group>
    </Group>
    <Group
+      location = "group:Fixtures"
+      name = "Fixtures">
+   </Group>
+   <Group
       location = "group:Playground"
       name = "Playground">
       <FileRef

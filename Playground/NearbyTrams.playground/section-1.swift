@@ -2,38 +2,42 @@
 
 import XCPlayground
 import Cocoa
+import CoreData
 
-struct StopInformation
+class CoreDataStore
 {
-    let cityDirection: String?
-    let stopDescription: String?
-    let destination: String?
-    let distanceToLocation: Double?
-    let flagStopNo: String?
-    let latitude: Double?
-    let longitude: Double?
-    let routeNo: Int?
-    let stopID : String?
-    let stopName : String?
-    let stopNo: Int?
-    let suburb: String?
-    
-    
-    init(json: NSDictionary)
-    {
-        cityDirection = json["CityDirection"] as? String
-        stopDescription = json["Description"] as? String
-        destination = json["Destination"] as? String
-        distanceToLocation = json["DistanceToLocation"] as? Double
-        flagStopNo = json["FlagStopNo"] as? String
-        latitude = json["Latitude"] as? Double
-        longitude = json["Longitude"] as? Double
-        routeNo = json["RouteNo"]  as? Int
-        stopID = json["StopID"] as? String
-        stopName = json["StopName"] as? String
-        stopNo = json["StopNo"]  as? Int
-        suburb = json["Suburb"] as? String
-    }
+    let managedObjectContext: NSManagedObjectContext = {
+        var _managedObjectContext: NSManagedObjectContext? = nil
+        let databaseName = "NearbyTrams"
+        var databaseURL = NSURL(fileURLWithPath: databaseName + ".sqlite")
+        if let url = NSBundle.mainBundle().URLForResource(databaseName, withExtension: "sqlite")
+        {
+            println("found it")
+            
+            databaseURL = url
+        }
+        
+        let modelURL = NSBundle.mainBundle().URLForResource(databaseName, withExtension: "momd")
+        let managedObjectModel = NSManagedObjectModel(contentsOfURL: modelURL)
+        
+        var error: NSError? = nil
+        let persistentStoreCoordinator:NSPersistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
+        if persistentStoreCoordinator.addPersistentStoreWithType(NSSQLiteStoreType,
+            configuration: nil,
+            URL: databaseURL,
+            options: nil,
+            error: &error) == nil
+        {
+            println("there was an error: \(error!.localizedDescription)")
+            abort()
+        }
+        
+        _managedObjectContext = NSManagedObjectContext()
+        _managedObjectContext!.persistentStoreCoordinator = persistentStoreCoordinator
+        
+        
+        return _managedObjectContext!
+    }()
 }
 
 func parseJSON(inputData: NSData) -> NSDictionary
@@ -43,7 +47,7 @@ func parseJSON(inputData: NSData) -> NSDictionary
     return dictionary
 }
 
-func getStopInformationWithStopId(stopId: NSString, completionHandler: ((StopInformation?, NSError?) -> Void)!) -> NSURLSessionDataTask!
+func getStopInformationWithStopId(stopId: NSString, completionHandler: ((NSManagedObject?, NSError?) -> Void)!) -> NSURLSessionDataTask!
 {
     // thanks to: http://wongm.com/2014/03/tramtracker-api-dumphone-access/
     let url = NSURL(string: "http://tramtracker.com/Controllers/GetStopInformation.ashx?s=\(stopId)")
@@ -57,7 +61,11 @@ func getStopInformationWithStopId(stopId: NSString, completionHandler: ((StopInf
         }
         else if let dict = parseJSON(data)["ResponseObject"] as? NSDictionary
         {
-            let stop = StopInformation(json: dict)
+            let stop = NSEntityDescription.insertNewObjectForEntityForName("StopInformation", inManagedObjectContext: CoreDataStore().managedObjectContext) as NSManagedObject
+            
+            stop.setValue(10, forKey: "stopNo")
+            
+            //let stop = StopInformation(json: dict)
             completionHandler(stop, nil)
         }
     })
@@ -76,6 +84,7 @@ let stopInfoTask = getStopInformationWithStopId(stopId, {
     }
     else if (stop)
     {
+        println(stop)
         println("got stop information for id: \(stopId)")
     }
 })

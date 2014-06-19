@@ -3,26 +3,7 @@
 //
 
 import Foundation
-
-struct Route
-{
-    let routeNo: Int?
-    let internalRouteNo: Int?
-    let alphaNumericRouteNo: String?
-    let destination: String?
-    let isUpDestination: Bool?
-    let hasLowFloor: Bool?
-    
-    init(json: NSDictionary)
-    {
-        routeNo = json["RouteNo"] as? Int
-        internalRouteNo = json["InternalRouteNo"] as? Int
-        alphaNumericRouteNo = json["AlphaNumericRouteNo"] as? String
-        destination = json["Destination"] as? String
-        isUpDestination = json["IsUpDestination"] as? Bool
-        hasLowFloor = json["HasLowFloor"] as? Bool
-    }
-}
+import NearbyTramsStorageKit
 
 func parseJSON(inputData: NSData) -> NSDictionary
 {
@@ -31,7 +12,7 @@ func parseJSON(inputData: NSData) -> NSDictionary
     return dictionary
 }
 
-func getAllRoutesWithCompletion(completionHandler: ((Route[]?, NSError?) -> Void)!) -> NSURLSessionDataTask!
+func getAllRoutesWithParentManagedObjectContext(parentManagedObjectContext managedObjectContext:NSManagedObjectContext, completionHandler: ((Route[]?, NSError?) -> Void)!) -> NSURLSessionDataTask!
 {
     // thanks to: http://wongm.com/2014/03/tramtracker-api-dumphone-access/
     let url = NSURL(string: "http://www.tramtracker.com/Controllers/GetAllRoutes.ashx")
@@ -45,11 +26,18 @@ func getAllRoutesWithCompletion(completionHandler: ((Route[]?, NSError?) -> Void
         }
         else if let routesArray = parseJSON(data)["ResponseObject"] as? NSDictionary[]
         {
-            var routes = routesArray.map({
-                (routeDictionary: NSDictionary) -> Route in
-                return Route(json: routeDictionary)
-                })
+            let localContext = NSManagedObjectContext(concurrencyType: .ConfinementConcurrencyType)
+            localContext.parentContext = managedObjectContext
             
+            let routes = routesArray.map({
+                (routeDictionary: NSDictionary) -> Route in
+                
+                let route = Route.insertInManagedObjectContext(localContext)
+                route.configureWithDictionaryFromRest(routeDictionary)
+                
+                return route
+                })
+            localContext.save(nil)
             completionHandler(routes, nil)
         }
         })
@@ -58,8 +46,14 @@ func getAllRoutesWithCompletion(completionHandler: ((Route[]?, NSError?) -> Void
     return task;
 }
 
-var completed: Bool = false
-let allRoutesTask = getAllRoutesWithCompletion{
+var managedObjectContext: NSManagedObjectContext = {
+    let moc = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+    moc.persistentStoreCoordinator = CoreDataStackManager.sharedInstance.persistentStoreCoordinator
+    return moc
+    }()
+
+var shouldKeepRunning = true
+let allRoutesTask = getAllRoutesWithParentManagedObjectContext(parentManagedObjectContext: managedObjectContext){
     routes, error -> Void in
     
     if (error)
@@ -71,10 +65,11 @@ let allRoutesTask = getAllRoutesWithCompletion{
         println("got all routes")
     }
     
-    completed = true
+    shouldKeepRunning = false
 }
 
-while (!completed)
+do
 {
-    // do nothing
+    NSRunLoop.currentRunLoop().runUntilDate(NSDate(timeIntervalSinceNow: 1))
 }
+while (shouldKeepRunning);
