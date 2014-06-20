@@ -48,6 +48,13 @@
       name = "Fixtures">
    </Group>
    <Group
+      location = "group:External"
+      name = "External">
+      <FileRef
+         location = "group:Quick/Quick/Quick.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
       location = "group:Playground"
       name = "Playground">
       <FileRef
