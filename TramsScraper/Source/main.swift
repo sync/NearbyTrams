@@ -5,6 +5,8 @@
 import Foundation
 import NearbyTramsStorageKit
 
+let baseURL = NSURL(string: "http://www.tramtracker.com")
+
 func parseJSON(inputData: NSData) -> NSDictionary
 {
     var dictionary: NSDictionary = NSJSONSerialization.JSONObjectWithData(inputData, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
@@ -15,7 +17,7 @@ func parseJSON(inputData: NSData) -> NSDictionary
 func getAllRoutesWithParentManagedObjectContext(parentManagedObjectContext managedObjectContext:NSManagedObjectContext, completionHandler: ((Route[]?, NSError?) -> Void)!) -> NSURLSessionDataTask!
 {
     // thanks to: http://wongm.com/2014/03/tramtracker-api-dumphone-access/
-    let url = NSURL(string: "http://www.tramtracker.com/Controllers/GetAllRoutes.ashx")
+    let url = NSURL(string: "Controllers/GetAllRoutes.ashx", relativeToURL:baseURL)
     let session = NSURLSession(configuration: NSURLSessionConfiguration.ephemeralSessionConfiguration())
     let task = session.dataTaskWithURL(url, completionHandler:{
         data, response, error -> Void in
