@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5F3AA7871954FED400133BCF /* QuickSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3AA7851954FED400133BCF /* QuickSpec.swift */; };
+		5F3AA7871954FED400133BCF /* CoreDataTestsHelperStoreSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3AA7851954FED400133BCF /* CoreDataTestsHelperStoreSpec.swift */; };
 		5F47BD8B195505A60054CFD1 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F3AA79E1955044700133BCF /* Quick.framework */; };
 		5F47BD90195505AD0054CFD1 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F3AA7AF195504F600133BCF /* Nimble.framework */; };
 		5F7B05EF1953CB0A003423B6 /* NearbyTrams.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5F7B05ED1953CB0A003423B6 /* NearbyTrams.xcdatamodeld */; };
@@ -16,6 +16,7 @@
 		5F8695E819539442000E2256 /* NearbyTramsStorageKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F8695E019539442000E2256 /* NearbyTramsStorageKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5F86E95D195403530020CD54 /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F86E95C195403530020CD54 /* CoreDataStackManager.swift */; };
 		5FBE5478195460FA009FF8D2 /* NearbyTramsStorageKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F6BA8A41952B395005D0DDB /* NearbyTramsStorageKit.framework */; };
+		5FD5CDFE19559D3D000243A0 /* CoreDataTestsHelperStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD5CDFD19559D3D000243A0 /* CoreDataTestsHelperStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,7 +115,7 @@
 
 /* Begin PBXFileReference section */
 		5F3AA7831954FED400133BCF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5F3AA7851954FED400133BCF /* QuickSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickSpec.swift; sourceTree = "<group>"; };
+		5F3AA7851954FED400133BCF /* CoreDataTestsHelperStoreSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTestsHelperStoreSpec.swift; sourceTree = "<group>"; };
 		5F3AA7961955044700133BCF /* Quick.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Quick.xcodeproj; path = External/Quick/Quick/Quick.xcodeproj; sourceTree = "<group>"; };
 		5F3AA7A7195504F600133BCF /* Nimble.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Nimble.xcodeproj; path = External/Quick/Nimble/Nimble.xcodeproj; sourceTree = "<group>"; };
 		5F6BA8A41952B395005D0DDB /* NearbyTramsStorageKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NearbyTramsStorageKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,6 +129,7 @@
 		5F8695E019539442000E2256 /* NearbyTramsStorageKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyTramsStorageKit.h; sourceTree = "<group>"; };
 		5F86E95C195403530020CD54 /* CoreDataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManager.swift; sourceTree = "<group>"; };
 		5FBE5472195460FA009FF8D2 /* NearbyTramsStorageKit-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NearbyTramsStorageKit-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FD5CDFD19559D3D000243A0 /* CoreDataTestsHelperStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTestsHelperStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,7 +164,7 @@
 		5F3AA7841954FED400133BCF /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				5F3AA7851954FED400133BCF /* QuickSpec.swift */,
+				5F3AA7851954FED400133BCF /* CoreDataTestsHelperStoreSpec.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -235,8 +237,8 @@
 			isa = PBXGroup;
 			children = (
 				5F8695E019539442000E2256 /* NearbyTramsStorageKit.h */,
-				5F7B05F01953CB9C003423B6 /* StopInformation.swift */,
-				5F7B05F21953F226003423B6 /* Route.swift */,
+				5FD5CDFB19559D19000243A0 /* Domain */,
+				5FD5CDFC19559D2E000243A0 /* Helper */,
 			);
 			name = Source;
 			path = NearbyTramsStorageKit/Source;
@@ -268,6 +270,23 @@
 				5F3AA7821954FED400133BCF /* Resources */,
 			);
 			path = "NearbyTramsStorageKit-Tests";
+			sourceTree = "<group>";
+		};
+		5FD5CDFB19559D19000243A0 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				5F7B05F01953CB9C003423B6 /* StopInformation.swift */,
+				5F7B05F21953F226003423B6 /* Route.swift */,
+			);
+			name = Domain;
+			sourceTree = "<group>";
+		};
+		5FD5CDFC19559D2E000243A0 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				5FD5CDFD19559D3D000243A0 /* CoreDataTestsHelperStore.swift */,
+			);
+			name = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -455,6 +474,7 @@
 				5F86E95D195403530020CD54 /* CoreDataStackManager.swift in Sources */,
 				5F7B05F11953CB9C003423B6 /* StopInformation.swift in Sources */,
 				5F7B05EF1953CB0A003423B6 /* NearbyTrams.xcdatamodeld in Sources */,
+				5FD5CDFE19559D3D000243A0 /* CoreDataTestsHelperStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,7 +482,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F3AA7871954FED400133BCF /* QuickSpec.swift in Sources */,
+				5F3AA7871954FED400133BCF /* CoreDataTestsHelperStoreSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
