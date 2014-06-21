@@ -8,7 +8,7 @@
 PRODUCT_NAME = $(TARGET_NAME)
 DEFINES_MODULE = YES;
 FRAMEWORK_VERSION = A;
-INFOPLIST_FILE = NearbyTramsStorageKit/Resources/Info.plist;
+INFOPLIST_FILE = $(TARGET_NAME)/Resources/Info.plist
 
 // Versioning
 CURRENT_PROJECT_VERSION = 1

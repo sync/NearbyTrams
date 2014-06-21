@@ -5,10 +5,9 @@
 #include "../Release.xcconfig"
 #include "SDKAndDeviceSupport.xcconfig"
 
-DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+DEBUG_INFORMATION_FORMAT = dwarf-with-dsym
 COPY_PHASE_STRIP = YES
 
 ENABLE_NS_ASSERTIONS = NO
 
 METAL_ENABLE_DEBUG_INFO = NO
-
