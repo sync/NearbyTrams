@@ -27,6 +27,13 @@
 			remoteGlobalIDString = 5F6BA8A31952B395005D0DDB;
 			remoteInfo = NearbyTramsStorageKit;
 		};
+		5FA829A219546345004A5A28 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F7B05F51953F4D3003423B6 /* NearbyTramsStorageKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5FBE5472195460FA009FF8D2;
+			remoteInfo = "NearbyTramsStorageKit-Tests";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -114,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				5F7B05FA1953F4D3003423B6 /* NearbyTramsStorageKit.framework */,
+				5FA829A319546345004A5A28 /* NearbyTramsStorageKit-Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -191,6 +199,13 @@
 			fileType = wrapper.framework;
 			path = NearbyTramsStorageKit.framework;
 			remoteRef = 5F7B05F91953F4D3003423B6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5FA829A319546345004A5A28 /* NearbyTramsStorageKit-Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "NearbyTramsStorageKit-Tests.xctest";
+			remoteRef = 5FA829A219546345004A5A28 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

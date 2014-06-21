@@ -51,6 +51,9 @@
       location = "group:External"
       name = "External">
       <FileRef
+         location = "group:Quick/Nimble/Nimble.xcodeproj">
+      </FileRef>
+      <FileRef
          location = "group:Quick/Quick/Quick.xcodeproj">
       </FileRef>
    </Group>
