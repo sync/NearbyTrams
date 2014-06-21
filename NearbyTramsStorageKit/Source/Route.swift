@@ -6,10 +6,10 @@ import Foundation
 
 class Route: NSManagedObject
 {
-    @NSManaged var routeNo: NSNumber // Why when Int it crashes
-    @NSManaged var internalRouteNo: NSNumber // Why when Int it crashes
-    @NSManaged var alphaNumericRouteNo: String
-    @NSManaged var destination: String
+    @NSManaged var routeNo:  NSNumber? // Why when Int it crashes
+    @NSManaged var internalRouteNo: NSNumber? // Why when Int it crashes
+    @NSManaged var alphaNumericRouteNo: String?
+    @NSManaged var destination: String?
     @NSManaged var isUpDestination: Bool
     @NSManaged var hasLowFloor: Bool
     
@@ -20,25 +20,10 @@ class Route: NSManagedObject
     
     func configureWithDictionaryFromRest(json: NSDictionary) -> Void
     {
-        if let tmp =  json["RouteNo"] as? Int
-        {
-            routeNo = tmp
-        }
-        
-        if let tmp =  json["InternalRouteNo"] as? Int
-        {
-            internalRouteNo = tmp
-        }
-        
-        if let tmp =  json["AlphaNumericRouteNo"] as? String
-        {
-            alphaNumericRouteNo = tmp
-        }
-        
-        if let tmp =  json["Destination"] as? String
-        {
-            destination = tmp
-        }
+        routeNo = json["RouteNo"] as? Int
+        internalRouteNo = json["InternalRouteNo"] as? Int
+        alphaNumericRouteNo = json["AlphaNumericRouteNo"] as? String
+        destination = json["Destination"] as? String
         
         if let tmp =  json["IsUpDestination"] as? Bool
         {
@@ -50,5 +35,4 @@ class Route: NSManagedObject
             hasLowFloor = tmp
         }
     }
-
 }
