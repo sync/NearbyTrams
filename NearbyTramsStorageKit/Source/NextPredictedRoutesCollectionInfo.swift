@@ -1,0 +1,84 @@
+//
+//  Copyright (c) 2014 Dblechoc. All rights reserved.
+//
+
+import CoreData
+
+class NextPredictedRoutesCollectionInfo: NSManagedObject
+{
+    @NSManaged var airConditioned: Bool
+    @NSManaged var destination: String?
+    @NSManaged var displayAC: Bool
+    @NSManaged var disruptionMessage: Dictionary<String, AnyObject>?
+    @NSManaged var hasDisruption: Bool
+    @NSManaged var hasSpecialEvent: Bool
+    @NSManaged var headBoardRouteNo: String?
+    @NSManaged var internalRouteNo: NSNumber? // Why when Int it crashes
+    @NSManaged var isLowFloorTram: Bool
+    @NSManaged var isTTAvailable: Bool
+    @NSManaged var predictedArrivalDateTime: NSDate?
+    @NSManaged var routeNo: String?
+    @NSManaged var specialEventMessage: String?
+    @NSManaged var tripID: NSNumber? // Why when Int it crashes
+    @NSManaged var vehicleNo: NSNumber? // Why when Int it crashes
+    
+    class func insertInManagedObjectContext(managedObjectContext: NSManagedObjectContext) -> NextPredictedRoutesCollectionInfo
+    {
+        return NSEntityDescription.insertNewObjectForEntityForName("NextPredictedRoutesCollectionInfo", inManagedObjectContext: managedObjectContext) as NextPredictedRoutesCollectionInfo
+    }
+    
+    func configureWithDictionaryFromRest(json: NSDictionary) -> Void
+    {
+        destination = json["Destination"] as? String
+        disruptionMessage = json["DisruptionMessage"] as? Dictionary<String, AnyObject>
+        headBoardRouteNo = json["HeadBoardRouteNo"] as? String
+        internalRouteNo = json["InternalRouteNo"] as? Int
+        routeNo = json["RouteNo"] as? String
+        specialEventMessage = json["SpecialEventMessage"] as? String
+        tripID = json["TripID"] as? Int
+        vehicleNo = json["VehicleNo"] as? Int
+        
+        if let tmp =  json["PredictedArrivalDateTime"] as? NSString
+        {
+            if !(tmp as String).isEmpty
+            {
+                let startPosition = tmp.rangeOfString("(").location + 1
+                let endPosition = tmp.rangeOfString("+").location
+                let dateAsString = tmp.substringWithRange(NSRange(location: startPosition, length: endPosition - startPosition))
+                
+                let unixTimeInterval = (dateAsString as NSString).doubleValue / 1000
+                predictedArrivalDateTime = NSDate(timeIntervalSince1970: unixTimeInterval)
+            }
+        }
+        
+        if let tmp =  json["AirConditioned"] as? Bool
+        {
+            airConditioned = tmp
+        }
+        
+        if let tmp =  json["DisplayAC"] as? Bool
+        {
+            displayAC = tmp
+        }
+        
+        if let tmp =  json["HasDisruption"] as? Bool
+        {
+            hasDisruption = tmp
+        }
+        
+        if let tmp =  json["HasSpecialEvent"] as? Bool
+        {
+            hasSpecialEvent = tmp
+        }
+        
+        if let tmp =  json["IsLowFloorTram"] as? Bool
+        {
+            isLowFloorTram = tmp
+        }
+        
+        if let tmp =  json["IsTTAvailable"] as? Bool
+        {
+            isTTAvailable = tmp
+        }
+    }
+}

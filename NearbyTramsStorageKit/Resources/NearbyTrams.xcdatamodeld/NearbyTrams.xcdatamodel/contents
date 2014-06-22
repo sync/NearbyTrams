@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6172.15" systemVersion="14A261i" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="NextPredictedRoutesCollectionInfo" representedClassName="NearbyTramsStorageKit.NextPredictedRoutesCollectionInfo" syncable="YES">
+        <attribute name="airConditioned" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="destination" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="displayAC" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="disruptionMessage" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="hasDisruption" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="hasSpecialEvent" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="headBoardRouteNo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="internalRouteNo" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="isLowFloorTram" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isTTAvailable" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="predictedArrivalDateTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="routeNo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="specialEventMessage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tripID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="vehicleNo" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+    </entity>
     <entity name="Route" representedClassName="NearbyTramsStorageKit.Route" syncable="YES">
         <attribute name="alphaNumericRouteNo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="destination" optional="YES" attributeType="String" syncable="YES"/>
@@ -25,5 +42,6 @@
     <elements>
         <element name="Route" positionX="-63" positionY="72" width="128" height="135"/>
         <element name="StopInformation" positionX="-63" positionY="-18" width="128" height="225"/>
+        <element name="NextPredictedRoutesCollectionInfo" positionX="-63" positionY="72" width="128" height="268"/>
     </elements>
 </model>

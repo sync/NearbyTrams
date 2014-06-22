@@ -12,6 +12,8 @@
 		5F47BD8B195505A60054CFD1 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F3AA79E1955044700133BCF /* Quick.framework */; };
 		5F47BD90195505AD0054CFD1 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F3AA7AF195504F600133BCF /* Nimble.framework */; };
 		5F5A71AF195698CA00A5BD40 /* CoreDataStackManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5A71AE195698CA00A5BD40 /* CoreDataStackManagerSpec.swift */; };
+		5F5A71B119569CDF00A5BD40 /* NextPredictedRoutesCollectionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5A71B019569CDF00A5BD40 /* NextPredictedRoutesCollectionInfo.swift */; };
+		5F5A71B319569D0E00A5BD40 /* NextPredictedRoutesCollectionInfoSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5A71B219569D0E00A5BD40 /* NextPredictedRoutesCollectionInfoSpec.swift */; };
 		5F6CA07D19559F4F001A1EBA /* RouteSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6CA07C19559F4F001A1EBA /* RouteSpec.swift */; };
 		5F7B05EF1953CB0A003423B6 /* NearbyTrams.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5F7B05ED1953CB0A003423B6 /* NearbyTrams.xcdatamodeld */; };
 		5F7B05F11953CB9C003423B6 /* StopInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7B05F01953CB9C003423B6 /* StopInformation.swift */; };
@@ -123,6 +125,8 @@
 		5F3AA7961955044700133BCF /* Quick.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Quick.xcodeproj; path = External/Quick/Quick/Quick.xcodeproj; sourceTree = "<group>"; };
 		5F3AA7A7195504F600133BCF /* Nimble.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Nimble.xcodeproj; path = External/Quick/Nimble/Nimble.xcodeproj; sourceTree = "<group>"; };
 		5F5A71AE195698CA00A5BD40 /* CoreDataStackManagerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManagerSpec.swift; sourceTree = "<group>"; };
+		5F5A71B019569CDF00A5BD40 /* NextPredictedRoutesCollectionInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextPredictedRoutesCollectionInfo.swift; sourceTree = "<group>"; };
+		5F5A71B219569D0E00A5BD40 /* NextPredictedRoutesCollectionInfoSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextPredictedRoutesCollectionInfoSpec.swift; sourceTree = "<group>"; };
 		5F6BA8A41952B395005D0DDB /* NearbyTramsStorageKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NearbyTramsStorageKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F6CA07C19559F4F001A1EBA /* RouteSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSpec.swift; sourceTree = "<group>"; };
 		5F7B05EE1953CB0A003423B6 /* NearbyTrams.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NearbyTrams.xcdatamodel; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 				5F3AA7851954FED400133BCF /* CoreDataTestsHelperStoreSpec.swift */,
 				5F6CA07C19559F4F001A1EBA /* RouteSpec.swift */,
 				5F1827001955AD6C00626BBB /* StopInformationSpec.swift */,
+				5F5A71B219569D0E00A5BD40 /* NextPredictedRoutesCollectionInfoSpec.swift */,
 				5F5A71A7195698BF00A5BD40 /* External */,
 			);
 			path = Source;
@@ -294,6 +299,7 @@
 			children = (
 				5F7B05F21953F226003423B6 /* Route.swift */,
 				5F7B05F01953CB9C003423B6 /* StopInformation.swift */,
+				5F5A71B019569CDF00A5BD40 /* NextPredictedRoutesCollectionInfo.swift */,
 			);
 			name = Domain;
 			sourceTree = "<group>";
@@ -490,6 +496,7 @@
 				5F7B05F31953F226003423B6 /* Route.swift in Sources */,
 				5F86E95D195403530020CD54 /* CoreDataStackManager.swift in Sources */,
 				5F7B05F11953CB9C003423B6 /* StopInformation.swift in Sources */,
+				5F5A71B119569CDF00A5BD40 /* NextPredictedRoutesCollectionInfo.swift in Sources */,
 				5F7B05EF1953CB0A003423B6 /* NearbyTrams.xcdatamodeld in Sources */,
 				5FD5CDFE19559D3D000243A0 /* CoreDataTestsHelperStore.swift in Sources */,
 			);
@@ -502,6 +509,7 @@
 				5F5A71AF195698CA00A5BD40 /* CoreDataStackManagerSpec.swift in Sources */,
 				5F6CA07D19559F4F001A1EBA /* RouteSpec.swift in Sources */,
 				5F1827011955AD6C00626BBB /* StopInformationSpec.swift in Sources */,
+				5F5A71B319569D0E00A5BD40 /* NextPredictedRoutesCollectionInfoSpec.swift in Sources */,
 				5F3AA7871954FED400133BCF /* CoreDataTestsHelperStoreSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
