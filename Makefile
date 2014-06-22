@@ -12,7 +12,10 @@ update:
 	xcrun git submodule sync
 	xcrun git submodule update --init --recursive
 	
-test: test-storage-kit
+test: test-storage-kit test-network-kit
 
 test-storage-kit: 
 	xcodebuild -scheme NearbyTramsStorageKit -project NearbyTramsStorageKit.xcodeproj test | xcpretty
+
+test-network-kit: 
+	xcodebuild -scheme NearbyTramsNetworkKit -project NearbyTramsNetworkKit.xcodeproj test | xcpretty

@@ -1,0 +1,563 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5F5A720D1956E72B00A5BD40 /* NearbyTramsNetworkKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F5A720B1956E72B00A5BD40 /* NearbyTramsNetworkKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5F5A72761956EE9B00A5BD40 /* NearbyTramsNetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5A71D41956E51B00A5BD40 /* NearbyTramsNetworkKit.framework */; };
+		5F5A72821956EF1600A5BD40 /* QuickSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5A72801956EF1600A5BD40 /* QuickSpec.swift */; };
+		5F5A728B1956EFE900A5BD40 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5A722C1956EA2C00A5BD40 /* Nimble.framework */; };
+		5F5A728C1956EFE900A5BD40 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5A72381956EA2C00A5BD40 /* Quick.framework */; };
+		5F5A729B1956F08700A5BD40 /* FakeFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5A729A1956F08700A5BD40 /* FakeFile.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5F5A722B1956EA2C00A5BD40 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F5A72211956EA2C00A5BD40 /* Nimble.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2E37EFEC1950663300DF5316;
+			remoteInfo = Nimble;
+		};
+		5F5A722D1956EA2C00A5BD40 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F5A72211956EA2C00A5BD40 /* Nimble.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2E37EFF71950663300DF5316;
+			remoteInfo = NimbleTests;
+		};
+		5F5A722F1956EA2C00A5BD40 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F5A72211956EA2C00A5BD40 /* Nimble.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2E37F0161950665000DF5316;
+			remoteInfo = "Nimble-iOS";
+		};
+		5F5A72311956EA2C00A5BD40 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F5A72211956EA2C00A5BD40 /* Nimble.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2E37F0201950665000DF5316;
+			remoteInfo = "Nimble-iOSTests";
+		};
+		5F5A72371956EA2C00A5BD40 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F5A72241956EA2C00A5BD40 /* Quick.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DAEB6B8E1943873100289F44;
+			remoteInfo = Quick;
+		};
+		5F5A72391956EA2C00A5BD40 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F5A72241956EA2C00A5BD40 /* Quick.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DAEB6B991943873100289F44;
+			remoteInfo = QuickTests;
+		};
+		5F5A723B1956EA2C00A5BD40 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F5A72241956EA2C00A5BD40 /* Quick.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5A5D117C19473F2100F6D13D;
+			remoteInfo = "Quick-iOS";
+		};
+		5F5A723D1956EA2C00A5BD40 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F5A72241956EA2C00A5BD40 /* Quick.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5A5D118619473F2100F6D13D;
+			remoteInfo = "Quick-iOSTests";
+		};
+		5F5A72771956EE9B00A5BD40 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F5A71CB1956E51B00A5BD40 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5F5A71D31956E51B00A5BD40;
+			remoteInfo = NearbyTramsNetworkKit;
+		};
+		5F5A72831956EF3C00A5BD40 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F5A71CB1956E51B00A5BD40 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5F5A71D31956E51B00A5BD40;
+			remoteInfo = NearbyTramsNetworkKit;
+		};
+		5F5A72851956EF3C00A5BD40 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F5A71CB1956E51B00A5BD40 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5F5A71D31956E51B00A5BD40;
+			remoteInfo = NearbyTramsNetworkKit;
+		};
+		5F5A72871956EFD700A5BD40 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F5A72211956EA2C00A5BD40 /* Nimble.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 2E37EFEB1950663300DF5316;
+			remoteInfo = Nimble;
+		};
+		5F5A72891956EFD700A5BD40 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F5A72241956EA2C00A5BD40 /* Quick.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = DAEB6B8D1943873100289F44;
+			remoteInfo = Quick;
+		};
+		5F5A729C1956F0B000A5BD40 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F5A71CB1956E51B00A5BD40 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5F5A71D31956E51B00A5BD40;
+			remoteInfo = NearbyTramsNetworkKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5F5A71D41956E51B00A5BD40 /* NearbyTramsNetworkKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NearbyTramsNetworkKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F5A72091956E72B00A5BD40 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F5A720B1956E72B00A5BD40 /* NearbyTramsNetworkKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyTramsNetworkKit.h; sourceTree = "<group>"; };
+		5F5A720F1956E7CC00A5BD40 /* NearbyTramsNetworkKit-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "NearbyTramsNetworkKit-Debug.xcconfig"; sourceTree = "<group>"; };
+		5F5A72101956E7CC00A5BD40 /* NearbyTramsNetworkKit-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "NearbyTramsNetworkKit-Release.xcconfig"; sourceTree = "<group>"; };
+		5F5A72111956E7CC00A5BD40 /* NearbyTramsNetworkKit.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = NearbyTramsNetworkKit.xcconfig; sourceTree = "<group>"; };
+		5F5A72211956EA2C00A5BD40 /* Nimble.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Nimble.xcodeproj; path = External/Quick/Nimble/Nimble.xcodeproj; sourceTree = "<group>"; };
+		5F5A72241956EA2C00A5BD40 /* Quick.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Quick.xcodeproj; path = External/Quick/Quick/Quick.xcodeproj; sourceTree = "<group>"; };
+		5F5A72701956EE9B00A5BD40 /* NearbyTramsNetworkKit-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NearbyTramsNetworkKit-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F5A727E1956EF1600A5BD40 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F5A72801956EF1600A5BD40 /* QuickSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickSpec.swift; sourceTree = "<group>"; };
+		5F5A729A1956F08700A5BD40 /* FakeFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeFile.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5F5A71D01956E51B00A5BD40 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F5A726D1956EE9B00A5BD40 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F5A72761956EE9B00A5BD40 /* NearbyTramsNetworkKit.framework in Frameworks */,
+				5F5A728B1956EFE900A5BD40 /* Nimble.framework in Frameworks */,
+				5F5A728C1956EFE900A5BD40 /* Quick.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5F5A71CA1956E51B00A5BD40 = {
+			isa = PBXGroup;
+			children = (
+				5F5A720E1956E7CC00A5BD40 /* Configurations */,
+				5F5A720A1956E72B00A5BD40 /* Source */,
+				5F5A72081956E72B00A5BD40 /* Resources */,
+				5F5A72191956E8C100A5BD40 /* External */,
+				5F5A727C1956EF1600A5BD40 /* NearbyTramsNetworkKit-Tests */,
+				5F5A71D51956E51B00A5BD40 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5F5A71D51956E51B00A5BD40 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5F5A71D41956E51B00A5BD40 /* NearbyTramsNetworkKit.framework */,
+				5F5A72701956EE9B00A5BD40 /* NearbyTramsNetworkKit-Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5F5A72081956E72B00A5BD40 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5F5A72091956E72B00A5BD40 /* Info.plist */,
+			);
+			name = Resources;
+			path = NearbyTramsNetworkKit/Resources;
+			sourceTree = "<group>";
+		};
+		5F5A720A1956E72B00A5BD40 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				5F5A720B1956E72B00A5BD40 /* NearbyTramsNetworkKit.h */,
+				5F5A729A1956F08700A5BD40 /* FakeFile.swift */,
+			);
+			name = Source;
+			path = NearbyTramsNetworkKit/Source;
+			sourceTree = "<group>";
+		};
+		5F5A720E1956E7CC00A5BD40 /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				5F5A720F1956E7CC00A5BD40 /* NearbyTramsNetworkKit-Debug.xcconfig */,
+				5F5A72101956E7CC00A5BD40 /* NearbyTramsNetworkKit-Release.xcconfig */,
+				5F5A72111956E7CC00A5BD40 /* NearbyTramsNetworkKit.xcconfig */,
+			);
+			name = Configurations;
+			path = NearbyTramsNetworkKit/Configurations;
+			sourceTree = "<group>";
+		};
+		5F5A72191956E8C100A5BD40 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				5F5A72211956EA2C00A5BD40 /* Nimble.xcodeproj */,
+				5F5A72241956EA2C00A5BD40 /* Quick.xcodeproj */,
+			);
+			name = External;
+			sourceTree = "<group>";
+		};
+		5F5A72221956EA2C00A5BD40 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5F5A722C1956EA2C00A5BD40 /* Nimble.framework */,
+				5F5A722E1956EA2C00A5BD40 /* NimbleTests.xctest */,
+				5F5A72301956EA2C00A5BD40 /* Nimble.framework */,
+				5F5A72321956EA2C00A5BD40 /* Nimble-iOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5F5A72251956EA2C00A5BD40 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5F5A72381956EA2C00A5BD40 /* Quick.framework */,
+				5F5A723A1956EA2C00A5BD40 /* QuickTests.xctest */,
+				5F5A723C1956EA2C00A5BD40 /* Quick.framework */,
+				5F5A723E1956EA2C00A5BD40 /* Quick-iOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5F5A727C1956EF1600A5BD40 /* NearbyTramsNetworkKit-Tests */ = {
+			isa = PBXGroup;
+			children = (
+				5F5A727F1956EF1600A5BD40 /* Source */,
+				5F5A727D1956EF1600A5BD40 /* Resources */,
+			);
+			path = "NearbyTramsNetworkKit-Tests";
+			sourceTree = "<group>";
+		};
+		5F5A727D1956EF1600A5BD40 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5F5A727E1956EF1600A5BD40 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		5F5A727F1956EF1600A5BD40 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				5F5A72801956EF1600A5BD40 /* QuickSpec.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		5F5A71D11956E51B00A5BD40 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F5A720D1956E72B00A5BD40 /* NearbyTramsNetworkKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		5F5A71D31956E51B00A5BD40 /* NearbyTramsNetworkKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F5A71EA1956E51B00A5BD40 /* Build configuration list for PBXNativeTarget "NearbyTramsNetworkKit" */;
+			buildPhases = (
+				5F5A71CF1956E51B00A5BD40 /* Sources */,
+				5F5A71D01956E51B00A5BD40 /* Frameworks */,
+				5F5A71D11956E51B00A5BD40 /* Headers */,
+				5F5A71D21956E51B00A5BD40 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NearbyTramsNetworkKit;
+			productName = NearbyTramsNetworkKit;
+			productReference = 5F5A71D41956E51B00A5BD40 /* NearbyTramsNetworkKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		5F5A726F1956EE9B00A5BD40 /* NearbyTramsNetworkKit-Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F5A72791956EE9B00A5BD40 /* Build configuration list for PBXNativeTarget "NearbyTramsNetworkKit-Tests" */;
+			buildPhases = (
+				5F5A726C1956EE9B00A5BD40 /* Sources */,
+				5F5A726D1956EE9B00A5BD40 /* Frameworks */,
+				5F5A726E1956EE9B00A5BD40 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5F5A72881956EFD700A5BD40 /* PBXTargetDependency */,
+				5F5A728A1956EFD700A5BD40 /* PBXTargetDependency */,
+				5F5A72781956EE9B00A5BD40 /* PBXTargetDependency */,
+				5F5A72841956EF3C00A5BD40 /* PBXTargetDependency */,
+				5F5A72861956EF3C00A5BD40 /* PBXTargetDependency */,
+				5F5A729D1956F0B000A5BD40 /* PBXTargetDependency */,
+			);
+			name = "NearbyTramsNetworkKit-Tests";
+			productName = "NearbyTramsNetworkKit-Tests";
+			productReference = 5F5A72701956EE9B00A5BD40 /* NearbyTramsNetworkKit-Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5F5A71CB1956E51B00A5BD40 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = Dblechoc;
+				TargetAttributes = {
+					5F5A71D31956E51B00A5BD40 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					5F5A726F1956EE9B00A5BD40 = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = 5F5A71D31956E51B00A5BD40;
+					};
+				};
+			};
+			buildConfigurationList = 5F5A71CE1956E51B00A5BD40 /* Build configuration list for PBXProject "NearbyTramsNetworkKit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5F5A71CA1956E51B00A5BD40;
+			productRefGroup = 5F5A71D51956E51B00A5BD40 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 5F5A72221956EA2C00A5BD40 /* Products */;
+					ProjectRef = 5F5A72211956EA2C00A5BD40 /* Nimble.xcodeproj */;
+				},
+				{
+					ProductGroup = 5F5A72251956EA2C00A5BD40 /* Products */;
+					ProjectRef = 5F5A72241956EA2C00A5BD40 /* Quick.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				5F5A71D31956E51B00A5BD40 /* NearbyTramsNetworkKit */,
+				5F5A726F1956EE9B00A5BD40 /* NearbyTramsNetworkKit-Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		5F5A722C1956EA2C00A5BD40 /* Nimble.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Nimble.framework;
+			remoteRef = 5F5A722B1956EA2C00A5BD40 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5F5A722E1956EA2C00A5BD40 /* NimbleTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = NimbleTests.xctest;
+			remoteRef = 5F5A722D1956EA2C00A5BD40 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5F5A72301956EA2C00A5BD40 /* Nimble.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Nimble.framework;
+			remoteRef = 5F5A722F1956EA2C00A5BD40 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5F5A72321956EA2C00A5BD40 /* Nimble-iOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Nimble-iOSTests.xctest";
+			remoteRef = 5F5A72311956EA2C00A5BD40 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5F5A72381956EA2C00A5BD40 /* Quick.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Quick.framework;
+			remoteRef = 5F5A72371956EA2C00A5BD40 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5F5A723A1956EA2C00A5BD40 /* QuickTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = QuickTests.xctest;
+			remoteRef = 5F5A72391956EA2C00A5BD40 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5F5A723C1956EA2C00A5BD40 /* Quick.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Quick.framework;
+			remoteRef = 5F5A723B1956EA2C00A5BD40 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5F5A723E1956EA2C00A5BD40 /* Quick-iOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Quick-iOSTests.xctest";
+			remoteRef = 5F5A723D1956EA2C00A5BD40 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5F5A71D21956E51B00A5BD40 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F5A726E1956EE9B00A5BD40 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5F5A71CF1956E51B00A5BD40 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F5A729B1956F08700A5BD40 /* FakeFile.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F5A726C1956EE9B00A5BD40 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F5A72821956EF1600A5BD40 /* QuickSpec.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5F5A72781956EE9B00A5BD40 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5F5A71D31956E51B00A5BD40 /* NearbyTramsNetworkKit */;
+			targetProxy = 5F5A72771956EE9B00A5BD40 /* PBXContainerItemProxy */;
+		};
+		5F5A72841956EF3C00A5BD40 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5F5A71D31956E51B00A5BD40 /* NearbyTramsNetworkKit */;
+			targetProxy = 5F5A72831956EF3C00A5BD40 /* PBXContainerItemProxy */;
+		};
+		5F5A72861956EF3C00A5BD40 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5F5A71D31956E51B00A5BD40 /* NearbyTramsNetworkKit */;
+			targetProxy = 5F5A72851956EF3C00A5BD40 /* PBXContainerItemProxy */;
+		};
+		5F5A72881956EFD700A5BD40 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Nimble;
+			targetProxy = 5F5A72871956EFD700A5BD40 /* PBXContainerItemProxy */;
+		};
+		5F5A728A1956EFD700A5BD40 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Quick;
+			targetProxy = 5F5A72891956EFD700A5BD40 /* PBXContainerItemProxy */;
+		};
+		5F5A729D1956F0B000A5BD40 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5F5A71D31956E51B00A5BD40 /* NearbyTramsNetworkKit */;
+			targetProxy = 5F5A729C1956F0B000A5BD40 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		5F5A71E81956E51B00A5BD40 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F5A720F1956E7CC00A5BD40 /* NearbyTramsNetworkKit-Debug.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		5F5A71E91956E51B00A5BD40 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F5A72101956E7CC00A5BD40 /* NearbyTramsNetworkKit-Release.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		5F5A71EB1956E51B00A5BD40 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		5F5A71EC1956E51B00A5BD40 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		5F5A727A1956EE9B00A5BD40 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		5F5A727B1956EE9B00A5BD40 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5F5A71CE1956E51B00A5BD40 /* Build configuration list for PBXProject "NearbyTramsNetworkKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F5A71E81956E51B00A5BD40 /* Debug */,
+				5F5A71E91956E51B00A5BD40 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5F5A71EA1956E51B00A5BD40 /* Build configuration list for PBXNativeTarget "NearbyTramsNetworkKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F5A71EB1956E51B00A5BD40 /* Debug */,
+				5F5A71EC1956E51B00A5BD40 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5F5A72791956EE9B00A5BD40 /* Build configuration list for PBXNativeTarget "NearbyTramsNetworkKit-Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F5A727A1956EE9B00A5BD40 /* Debug */,
+				5F5A727B1956EE9B00A5BD40 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5F5A71CB1956E51B00A5BD40 /* Project object */;
+}

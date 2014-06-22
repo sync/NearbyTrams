@@ -68,6 +68,9 @@
       location = "group:NearbyTramsStorageKit.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:NearbyTramsNetworkKit.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:TramsScraper.xcodeproj">
    </FileRef>
 </Workspace>
