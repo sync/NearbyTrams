@@ -14,6 +14,8 @@
 		5F5A71AF195698CA00A5BD40 /* CoreDataStackManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5A71AE195698CA00A5BD40 /* CoreDataStackManagerSpec.swift */; };
 		5F5A71B119569CDF00A5BD40 /* NextPredictedRoutesCollectionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5A71B019569CDF00A5BD40 /* NextPredictedRoutesCollectionInfo.swift */; };
 		5F5A71B319569D0E00A5BD40 /* NextPredictedRoutesCollectionInfoSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5A71B219569D0E00A5BD40 /* NextPredictedRoutesCollectionInfoSpec.swift */; };
+		5F5A72B21956F5B600A5BD40 /* NSDate+DoNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5A72B11956F5B600A5BD40 /* NSDate+DoNet.swift */; };
+		5F5A72B61956F81B00A5BD40 /* NSDateDotNetSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5A72B51956F81B00A5BD40 /* NSDateDotNetSpec.swift */; };
 		5F6CA07D19559F4F001A1EBA /* RouteSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6CA07C19559F4F001A1EBA /* RouteSpec.swift */; };
 		5F7B05EF1953CB0A003423B6 /* NearbyTrams.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5F7B05ED1953CB0A003423B6 /* NearbyTrams.xcdatamodeld */; };
 		5F7B05F11953CB9C003423B6 /* StopInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7B05F01953CB9C003423B6 /* StopInformation.swift */; };
@@ -127,6 +129,8 @@
 		5F5A71AE195698CA00A5BD40 /* CoreDataStackManagerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManagerSpec.swift; sourceTree = "<group>"; };
 		5F5A71B019569CDF00A5BD40 /* NextPredictedRoutesCollectionInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextPredictedRoutesCollectionInfo.swift; sourceTree = "<group>"; };
 		5F5A71B219569D0E00A5BD40 /* NextPredictedRoutesCollectionInfoSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextPredictedRoutesCollectionInfoSpec.swift; sourceTree = "<group>"; };
+		5F5A72B11956F5B600A5BD40 /* NSDate+DoNet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+DoNet.swift"; sourceTree = "<group>"; };
+		5F5A72B51956F81B00A5BD40 /* NSDateDotNetSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateDotNetSpec.swift; sourceTree = "<group>"; };
 		5F6BA8A41952B395005D0DDB /* NearbyTramsStorageKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NearbyTramsStorageKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F6CA07C19559F4F001A1EBA /* RouteSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSpec.swift; sourceTree = "<group>"; };
 		5F7B05EE1953CB0A003423B6 /* NearbyTrams.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NearbyTrams.xcdatamodel; sourceTree = "<group>"; };
@@ -174,10 +178,11 @@
 		5F3AA7841954FED400133BCF /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				5F3AA7851954FED400133BCF /* CoreDataTestsHelperStoreSpec.swift */,
 				5F6CA07C19559F4F001A1EBA /* RouteSpec.swift */,
 				5F1827001955AD6C00626BBB /* StopInformationSpec.swift */,
 				5F5A71B219569D0E00A5BD40 /* NextPredictedRoutesCollectionInfoSpec.swift */,
+				5F5A72B31956F7E800A5BD40 /* Extensions */,
+				5F5A72B41956F7F400A5BD40 /* Helper */,
 				5F5A71A7195698BF00A5BD40 /* External */,
 			);
 			path = Source;
@@ -211,6 +216,30 @@
 				5F5A71AE195698CA00A5BD40 /* CoreDataStackManagerSpec.swift */,
 			);
 			name = External;
+			sourceTree = "<group>";
+		};
+		5F5A72AA1956F55200A5BD40 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5F5A72B11956F5B600A5BD40 /* NSDate+DoNet.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		5F5A72B31956F7E800A5BD40 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5F5A72B51956F81B00A5BD40 /* NSDateDotNetSpec.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		5F5A72B41956F7F400A5BD40 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				5F3AA7851954FED400133BCF /* CoreDataTestsHelperStoreSpec.swift */,
+			);
+			name = Helper;
 			sourceTree = "<group>";
 		};
 		5F6BA89A1952B395005D0DDB = {
@@ -260,6 +289,7 @@
 			children = (
 				5F8695E019539442000E2256 /* NearbyTramsStorageKit.h */,
 				5FD5CDFB19559D19000243A0 /* Domain */,
+				5F5A72AA1956F55200A5BD40 /* Extensions */,
 				5FD5CDFC19559D2E000243A0 /* Helper */,
 			);
 			name = Source;
@@ -494,6 +524,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F7B05F31953F226003423B6 /* Route.swift in Sources */,
+				5F5A72B21956F5B600A5BD40 /* NSDate+DoNet.swift in Sources */,
 				5F86E95D195403530020CD54 /* CoreDataStackManager.swift in Sources */,
 				5F7B05F11953CB9C003423B6 /* StopInformation.swift in Sources */,
 				5F5A71B119569CDF00A5BD40 /* NextPredictedRoutesCollectionInfo.swift in Sources */,
@@ -509,6 +540,7 @@
 				5F5A71AF195698CA00A5BD40 /* CoreDataStackManagerSpec.swift in Sources */,
 				5F6CA07D19559F4F001A1EBA /* RouteSpec.swift in Sources */,
 				5F1827011955AD6C00626BBB /* StopInformationSpec.swift in Sources */,
+				5F5A72B61956F81B00A5BD40 /* NSDateDotNetSpec.swift in Sources */,
 				5F5A71B319569D0E00A5BD40 /* NextPredictedRoutesCollectionInfoSpec.swift in Sources */,
 				5F3AA7871954FED400133BCF /* CoreDataTestsHelperStoreSpec.swift in Sources */,
 			);

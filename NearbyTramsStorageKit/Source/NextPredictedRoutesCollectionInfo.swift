@@ -40,15 +40,7 @@ class NextPredictedRoutesCollectionInfo: NSManagedObject
         
         if let tmp =  json["PredictedArrivalDateTime"] as? NSString
         {
-            if !(tmp as String).isEmpty
-            {
-                let startPosition = tmp.rangeOfString("(").location + 1
-                let endPosition = tmp.rangeOfString("+").location
-                let dateAsString = tmp.substringWithRange(NSRange(location: startPosition, length: endPosition - startPosition))
-                
-                let unixTimeInterval = (dateAsString as NSString).doubleValue / 1000
-                predictedArrivalDateTime = NSDate(timeIntervalSince1970: unixTimeInterval)
-            }
+            predictedArrivalDateTime = NSDate.fromDonet(tmp)
         }
         
         if let tmp =  json["AirConditioned"] as? Bool

@@ -55,12 +55,7 @@ class NextPredictedRoutesCollectionInfoSpec: QuickSpec {
                         components.second = 0
                         components.timeZone = NSTimeZone.defaultTimeZone()
                         date = gregorian.dateFromComponents(components)
-                        
-                        let timeSince1970 = date.timeIntervalSince1970
-                        let offset = Int(NSTimeInterval(NSTimeZone.defaultTimeZone().secondsFromGMT) / 3600)
-                        let nowMillis = 1000.0 * timeSince1970
-                        let dotNetDate = NSString(format: "/Date(%.0f%+03d00)/", nowMillis, offset)
-                        
+                        let dotNetDate: NSString = date.dotNetFormattedString()
                         
                         let json: Dictionary<String, AnyObject> = [
                             "AirConditioned": true,
