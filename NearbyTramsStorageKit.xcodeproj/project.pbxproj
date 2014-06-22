@@ -11,6 +11,7 @@
 		5F3AA7871954FED400133BCF /* CoreDataTestsHelperStoreSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3AA7851954FED400133BCF /* CoreDataTestsHelperStoreSpec.swift */; };
 		5F47BD8B195505A60054CFD1 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F3AA79E1955044700133BCF /* Quick.framework */; };
 		5F47BD90195505AD0054CFD1 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F3AA7AF195504F600133BCF /* Nimble.framework */; };
+		5F5A71AF195698CA00A5BD40 /* CoreDataStackManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5A71AE195698CA00A5BD40 /* CoreDataStackManagerSpec.swift */; };
 		5F6CA07D19559F4F001A1EBA /* RouteSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6CA07C19559F4F001A1EBA /* RouteSpec.swift */; };
 		5F7B05EF1953CB0A003423B6 /* NearbyTrams.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5F7B05ED1953CB0A003423B6 /* NearbyTrams.xcdatamodeld */; };
 		5F7B05F11953CB9C003423B6 /* StopInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7B05F01953CB9C003423B6 /* StopInformation.swift */; };
@@ -121,6 +122,7 @@
 		5F3AA7851954FED400133BCF /* CoreDataTestsHelperStoreSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTestsHelperStoreSpec.swift; sourceTree = "<group>"; };
 		5F3AA7961955044700133BCF /* Quick.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Quick.xcodeproj; path = External/Quick/Quick/Quick.xcodeproj; sourceTree = "<group>"; };
 		5F3AA7A7195504F600133BCF /* Nimble.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Nimble.xcodeproj; path = External/Quick/Nimble/Nimble.xcodeproj; sourceTree = "<group>"; };
+		5F5A71AE195698CA00A5BD40 /* CoreDataStackManagerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManagerSpec.swift; sourceTree = "<group>"; };
 		5F6BA8A41952B395005D0DDB /* NearbyTramsStorageKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NearbyTramsStorageKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F6CA07C19559F4F001A1EBA /* RouteSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSpec.swift; sourceTree = "<group>"; };
 		5F7B05EE1953CB0A003423B6 /* NearbyTrams.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NearbyTrams.xcdatamodel; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				5F3AA7851954FED400133BCF /* CoreDataTestsHelperStoreSpec.swift */,
 				5F6CA07C19559F4F001A1EBA /* RouteSpec.swift */,
 				5F1827001955AD6C00626BBB /* StopInformationSpec.swift */,
+				5F5A71A7195698BF00A5BD40 /* External */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -195,6 +198,14 @@
 				5F3AA7B5195504F600133BCF /* Nimble-iOSTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		5F5A71A7195698BF00A5BD40 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				5F5A71AE195698CA00A5BD40 /* CoreDataStackManagerSpec.swift */,
+			);
+			name = External;
 			sourceTree = "<group>";
 		};
 		5F6BA89A1952B395005D0DDB = {
@@ -488,6 +499,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F5A71AF195698CA00A5BD40 /* CoreDataStackManagerSpec.swift in Sources */,
 				5F6CA07D19559F4F001A1EBA /* RouteSpec.swift in Sources */,
 				5F1827011955AD6C00626BBB /* StopInformationSpec.swift in Sources */,
 				5F3AA7871954FED400133BCF /* CoreDataTestsHelperStoreSpec.swift in Sources */,
