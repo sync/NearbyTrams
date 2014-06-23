@@ -13,6 +13,8 @@
 		5F5A728B1956EFE900A5BD40 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5A722C1956EA2C00A5BD40 /* Nimble.framework */; };
 		5F5A728C1956EFE900A5BD40 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5A72381956EA2C00A5BD40 /* Quick.framework */; };
 		5F5A729B1956F08700A5BD40 /* FakeFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5A729A1956F08700A5BD40 /* FakeFile.swift */; };
+		5FA68AA51958F3AC009A0720 /* MockWebServiceURLProtocolSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA68AA41958F3AC009A0720 /* MockWebServiceURLProtocolSpec.swift */; };
+		5FD148EA19581FDE00B2EAEF /* MockWebServiceURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD148E919581FDE00B2EAEF /* MockWebServiceURLProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +134,8 @@
 		5F5A729A1956F08700A5BD40 /* FakeFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeFile.swift; sourceTree = "<group>"; };
 		5FA68A9B1958F041009A0720 /* NearbyTramsNetworkKit-Tests-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "NearbyTramsNetworkKit-Tests-Debug.xcconfig"; sourceTree = "<group>"; };
 		5FA68A9C1958F041009A0720 /* NearbyTramsNetworkKit-Tests-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "NearbyTramsNetworkKit-Tests-Release.xcconfig"; sourceTree = "<group>"; };
+		5FA68AA41958F3AC009A0720 /* MockWebServiceURLProtocolSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockWebServiceURLProtocolSpec.swift; sourceTree = "<group>"; };
+		5FD148E919581FDE00B2EAEF /* MockWebServiceURLProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockWebServiceURLProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +195,7 @@
 				5F5A720B1956E72B00A5BD40 /* NearbyTramsNetworkKit.h */,
 				5F5A729A1956F08700A5BD40 /* FakeFile.swift */,
 				5F3F327319583A320090891F /* NearbyTramsNetworkKit-Bridging-Header.h */,
+				5FD148E819581FBF00B2EAEF /* Helper */,
 			);
 			name = Source;
 			path = NearbyTramsNetworkKit/Source;
@@ -261,8 +266,25 @@
 			isa = PBXGroup;
 			children = (
 				5F5A72801956EF1600A5BD40 /* QuickSpec.swift */,
+				5FA68AA31958F397009A0720 /* Helper */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		5FA68AA31958F397009A0720 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				5FA68AA41958F3AC009A0720 /* MockWebServiceURLProtocolSpec.swift */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		5FD148E819581FBF00B2EAEF /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				5FD148E919581FDE00B2EAEF /* MockWebServiceURLProtocol.swift */,
+			);
+			name = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -448,6 +470,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F5A729B1956F08700A5BD40 /* FakeFile.swift in Sources */,
+				5FD148EA19581FDE00B2EAEF /* MockWebServiceURLProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,6 +479,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F5A72821956EF1600A5BD40 /* QuickSpec.swift in Sources */,
+				5FA68AA51958F3AC009A0720 /* MockWebServiceURLProtocolSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
