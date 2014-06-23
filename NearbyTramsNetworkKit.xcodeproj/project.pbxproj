@@ -117,6 +117,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5F3F327319583A320090891F /* NearbyTramsNetworkKit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NearbyTramsNetworkKit-Bridging-Header.h"; sourceTree = "<group>"; };
 		5F5A71D41956E51B00A5BD40 /* NearbyTramsNetworkKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NearbyTramsNetworkKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F5A72091956E72B00A5BD40 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F5A720B1956E72B00A5BD40 /* NearbyTramsNetworkKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyTramsNetworkKit.h; sourceTree = "<group>"; };
@@ -129,6 +130,8 @@
 		5F5A727E1956EF1600A5BD40 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F5A72801956EF1600A5BD40 /* QuickSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickSpec.swift; sourceTree = "<group>"; };
 		5F5A729A1956F08700A5BD40 /* FakeFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeFile.swift; sourceTree = "<group>"; };
+		5FA68A9B1958F041009A0720 /* NearbyTramsNetworkKit-Tests-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "NearbyTramsNetworkKit-Tests-Debug.xcconfig"; sourceTree = "<group>"; };
+		5FA68A9C1958F041009A0720 /* NearbyTramsNetworkKit-Tests-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "NearbyTramsNetworkKit-Tests-Release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +190,7 @@
 			children = (
 				5F5A720B1956E72B00A5BD40 /* NearbyTramsNetworkKit.h */,
 				5F5A729A1956F08700A5BD40 /* FakeFile.swift */,
+				5F3F327319583A320090891F /* NearbyTramsNetworkKit-Bridging-Header.h */,
 			);
 			name = Source;
 			path = NearbyTramsNetworkKit/Source;
@@ -197,6 +201,8 @@
 			children = (
 				5F5A720F1956E7CC00A5BD40 /* NearbyTramsNetworkKit-Debug.xcconfig */,
 				5F5A72101956E7CC00A5BD40 /* NearbyTramsNetworkKit-Release.xcconfig */,
+				5FA68A9B1958F041009A0720 /* NearbyTramsNetworkKit-Tests-Debug.xcconfig */,
+				5FA68A9C1958F041009A0720 /* NearbyTramsNetworkKit-Tests-Release.xcconfig */,
 				5F5A72111956E7CC00A5BD40 /* NearbyTramsNetworkKit.xcconfig */,
 			);
 			name = Configurations;
@@ -491,38 +497,40 @@
 /* Begin XCBuildConfiguration section */
 		5F5A71E81956E51B00A5BD40 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5F5A720F1956E7CC00A5BD40 /* NearbyTramsNetworkKit-Debug.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		5F5A71E91956E51B00A5BD40 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5F5A72101956E7CC00A5BD40 /* NearbyTramsNetworkKit-Release.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
 		};
 		5F5A71EB1956E51B00A5BD40 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F5A720F1956E7CC00A5BD40 /* NearbyTramsNetworkKit-Debug.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		5F5A71EC1956E51B00A5BD40 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F5A72101956E7CC00A5BD40 /* NearbyTramsNetworkKit-Release.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
 		};
 		5F5A727A1956EE9B00A5BD40 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5FA68A9B1958F041009A0720 /* NearbyTramsNetworkKit-Tests-Debug.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		5F5A727B1956EE9B00A5BD40 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5FA68A9C1958F041009A0720 /* NearbyTramsNetworkKit-Tests-Release.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
