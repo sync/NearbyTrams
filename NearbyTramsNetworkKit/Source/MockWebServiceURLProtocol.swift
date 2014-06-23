@@ -11,7 +11,7 @@ struct MockWebServiceResponse
     let statusCode: Int
     let error: NSError?
     
-    init (body: Dictionary<String, AnyObject>, header: Dictionary<String, AnyObject>, statusCode: Int = 200, error: NSError?)
+    init (body: Dictionary<String, AnyObject>, header: Dictionary<String, AnyObject>, statusCode: Int = 200, error: NSError? = nil)
     {
         self.body = body
         self.header = header
@@ -56,21 +56,23 @@ class MockWebServiceURLProtocol: NSURLProtocol
         let request = self.request
         let client: NSURLProtocolClient = self.client
         
-        let cannedResponse: MockWebServiceResponse = MockWebServiceURLProtocol.cannedResponse
-        
-        if let error = cannedResponse.error
+        if MockWebServiceURLProtocol.cannedResponse != nil
         {
-            client.URLProtocol(self, didFailWithError: error)
-        }
-        else
-        {
-            let response = NSHTTPURLResponse(URL: request.URL, statusCode: cannedResponse.statusCode, HTTPVersion: "HTTP/1.1", headerFields: cannedResponse.header)
-            client.URLProtocol(self, didReceiveResponse: response, cacheStoragePolicy: NSURLCacheStoragePolicy.NotAllowed)
-                        
-            let jsonData = NSJSONSerialization.dataWithJSONObject(cannedResponse.body, options: NSJSONWritingOptions(), error: nil)
-            client.URLProtocol(self, didLoadData: jsonData)
-            
-            client.URLProtocolDidFinishLoading(self)
+            let cannedResponse: MockWebServiceResponse = MockWebServiceURLProtocol.cannedResponse
+            if let error = cannedResponse.error
+            {
+                client.URLProtocol(self, didFailWithError: error)
+            }
+            else
+            {
+                let response = NSHTTPURLResponse(URL: request.URL, statusCode: cannedResponse.statusCode, HTTPVersion: "HTTP/1.1", headerFields: cannedResponse.header)
+                client.URLProtocol(self, didReceiveResponse: response, cacheStoragePolicy: NSURLCacheStoragePolicy.NotAllowed)
+                            
+                let jsonData = NSJSONSerialization.dataWithJSONObject(cannedResponse.body, options: NSJSONWritingOptions(), error: nil)
+                client.URLProtocol(self, didLoadData: jsonData)
+                
+                client.URLProtocolDidFinishLoading(self)
+            }
         }
     }
     
