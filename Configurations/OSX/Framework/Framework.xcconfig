@@ -2,6 +2,9 @@
 //  Copyright (c) 2014 Dblechoc. All rights reserved.
 //
 
+// Build Options
+APPLICATION_EXTENSION_API_ONLY = YES;
+
 // Deployment
 COMBINE_HIDPI_IMAGES = YES
 INSTALL_PATH = $(LOCAL_LIBRARY_DIR)/Frameworks
