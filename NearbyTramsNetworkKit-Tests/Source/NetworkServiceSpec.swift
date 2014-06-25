@@ -20,6 +20,84 @@ class NetworkServiceSpec: QuickSpec {
             }
         }
         
+        describe("getAllRoutesWithCompletionHandler") {
+            beforeEach {
+                let configuration = NSURLSessionConfiguration.ephemeralSessionConfiguration()
+                let urlProcolClass: AnyObject = ClassUtility.classFromType(MockWebServiceURLProtocol.self)
+                configuration.protocolClasses = [urlProcolClass]
+                
+                service = NetworkService(baseURL: NSURL(string: "mock://www.apple.com"), configuration: configuration)
+            }
+            
+            it("should return a session data task") {
+                let task = service.getAllRoutesWithCompletionHandler(nil)
+                
+                expect(task).notTo.beNil()
+            }
+            
+            context("when an error occur") {
+                
+                var error: NSError!
+                
+                beforeEach {
+                    error = NSError(domain: "au.com.otherTest.domain", code: 150, userInfo: nil)
+                    let response = MockWebServiceResponse(body: ["test": "blah"], header: ["Content-Type": "application/json; charset=utf-8"], statusCode: 404, error: error)
+                    MockWebServiceURLProtocol.cannedResponse = response
+                }
+                
+                afterEach {
+                    MockWebServiceURLProtocol.cannedResponse = nil
+                }
+                
+                it("should complete with an error") {
+                    
+                    var array: NSDictionary[]!
+                    var completionError: NSError!
+                    
+                    let task = service.getAllRoutesWithCompletionHandler {
+                        routes, error -> Void in
+                        
+                        array = routes
+                        completionError = error
+                    }
+                    
+                    expect{array}.will.beNil()
+                    expect{completionError}.will.equal(error)
+                }
+            }
+            
+            context("when successful") {
+                
+                var responseObject: Dictionary<String, AnyObject>[]!
+                
+                beforeEach {
+                    responseObject = [["test": "blah"], ["test": "blah"]]
+                    let response = MockWebServiceResponse(body: ["ResponseObject": responseObject], header: ["Content-Type": "application/json; charset=utf-8"])
+                    MockWebServiceURLProtocol.cannedResponse = response
+                }
+                
+                afterEach {
+                    MockWebServiceURLProtocol.cannedResponse = nil
+                }
+                
+                it("should complete with a dictionary and no error") {
+                    
+                    var array: NSDictionary[]!
+                    var completionError: NSError!
+                    
+                    let task = service.getAllRoutesWithCompletionHandler {
+                        routes, error -> Void in
+                        
+                        array = routes
+                        completionError = error
+                        }
+                    
+                    expect{array}.will.equal(responseObject)
+                    expect{completionError}.will.beNil()
+                }
+            }
+        }
+        
         describe("getStopInformationWithStopId") {
             beforeEach {
                 let configuration = NSURLSessionConfiguration.ephemeralSessionConfiguration()
