@@ -279,6 +279,100 @@ class NetworkServiceSpec: QuickSpec {
                 }
             }
         }
+        
+        describe("getNextPredictionsForStop") {
+            beforeEach {
+                let configuration = NSURLSessionConfiguration.ephemeralSessionConfiguration()
+                let urlProcolClass: AnyObject = ClassUtility.classFromType(MockWebServiceURLProtocol.self)
+                configuration.protocolClasses = [urlProcolClass]
+                
+                service = NetworkService(baseURL: NSURL(string: "mock://www.apple.com"), configuration: configuration)
+            }
+            
+            it("should return a session data task") {
+                let task = service.getNextPredictionsForStop("123", timestamp: NSDate(), completionHandler: nil)
+                
+                expect(task).notTo.beNil()
+            }
+            
+            it ("should have added to the query url the stop no") {
+                //originalRequest
+                let task = service.getNextPredictionsForStop("123", timestamp: NSDate(), completionHandler: nil)
+                
+                expect(task.originalRequest.URL.absoluteString).to.contain("123")
+            }
+            
+            it ("should have added to the query url the timestamp") {
+                let date = NSDate()
+                
+                //originalRequest
+                let task = service.getNextPredictionsForStop("123", timestamp: date, completionHandler: nil)
+                
+                expect(task.originalRequest.URL.absoluteString).to.contain(String(date.timeIntervalSince1970 * 1000))
+            }
+            
+            context("when an error occur") {
+                
+                var error: NSError!
+                
+                beforeEach {
+                    error = NSError(domain: "au.com.otherTest.domain", code: 150, userInfo: nil)
+                    let response = MockWebServiceResponse(body: ["test": "blah"], header: ["Content-Type": "application/json; charset=utf-8"], statusCode: 404, error: error)
+                    MockWebServiceURLProtocol.cannedResponse = response
+                }
+                
+                afterEach {
+                    MockWebServiceURLProtocol.cannedResponse = nil
+                }
+                
+                it("should complete with an error") {
+                    
+                    var array: NSDictionary[]!
+                    var completionError: NSError!
+                    
+                    let stopInfoTask = service.getNextPredictionsForStop("123", timestamp: NSDate(), {
+                        predictions, error -> Void in
+                        
+                        array = predictions
+                        completionError = error
+                        })
+                    
+                    expect{array}.will.beNil()
+                    expect{completionError}.will.equal(error)
+                }
+            }
+            
+            context("when successful") {
+                
+                var responseObject: Dictionary<String, AnyObject>[]!
+                
+                beforeEach {
+                    responseObject = [["test": "blah"], ["test": "blah"]]
+                    let response = MockWebServiceResponse(body: ["ResponseObject": responseObject], header: ["Content-Type": "application/json; charset=utf-8"])
+                    MockWebServiceURLProtocol.cannedResponse = response
+                }
+                
+                afterEach {
+                    MockWebServiceURLProtocol.cannedResponse = nil
+                }
+                
+                it("should complete with a dictionary and no error") {
+                    
+                    var array: NSDictionary[]!
+                    var completionError: NSError!
+                    
+                    let task = service.getNextPredictionsForStop("123", timestamp: NSDate(), {
+                        predictions, error -> Void in
+                        
+                        array = predictions
+                        completionError = error
+                        })
+                    
+                    expect{array}.will.equal(responseObject)
+                    expect{completionError}.will.beNil()
+                }
+            }
+        }
     }
 }
 
