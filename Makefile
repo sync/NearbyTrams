@@ -11,6 +11,10 @@ update:
 	@echo "\n\033[04m+ updating git submodules\033[0m"
 	xcrun git submodule sync
 	xcrun git submodule update --init --recursive
+
+clean:
+	@echo "\n\033[04m+ clean\033[0m"
+	rm -rf ~/Library/Developer/Xcode/DerivedData/NearbyTrams*/Build
 	
 test: test-storage-kit test-network-kit
 
