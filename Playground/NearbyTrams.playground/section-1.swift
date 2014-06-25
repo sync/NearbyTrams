@@ -47,10 +47,10 @@ func parseJSON(inputData: NSData) -> NSDictionary
     return dictionary
 }
 
-func getStopInformationWithStopId(stopId: NSString, completionHandler: ((NSManagedObject?, NSError?) -> Void)!) -> NSURLSessionDataTask!
+func getStopInformationWithStopNo(stopNo: NSString, completionHandler: ((NSManagedObject?, NSError?) -> Void)!) -> NSURLSessionDataTask!
 {
     // thanks to: http://wongm.com/2014/03/tramtracker-api-dumphone-access/
-    let url = NSURL(string: "http://tramtracker.com/Controllers/GetStopInformation.ashx?s=\(stopId)")
+    let url = NSURL(string: "http://tramtracker.com/Controllers/GetStopInformation.ashx?s=\(stopNo)")
     let session = NSURLSession(configuration: NSURLSessionConfiguration.ephemeralSessionConfiguration())
     let task = session.dataTaskWithURL(url, completionHandler:{
         data, response, error -> Void in
@@ -74,18 +74,18 @@ func getStopInformationWithStopId(stopId: NSString, completionHandler: ((NSManag
     return task;
 }
 
-let stopId = "1234"
-let stopInfoTask = getStopInformationWithStopId(stopId, {
+let stopNo = "1234"
+let stopInfoTask = getStopInformationWithStopNo(stopNo, {
     stop, error -> Void in
     
     if (error)
     {
-        println("there was an error dowloading stop information for id: \(stopId) error: \(error!.localizedDescription)")
+        println("there was an error dowloading stop information for id: \(stopNo) error: \(error!.localizedDescription)")
     }
     else if (stop)
     {
         println(stop)
-        println("got stop information for id: \(stopId)")
+        println("got stop information for id: \(stopNo)")
     }
 })
 

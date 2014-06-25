@@ -110,7 +110,7 @@ class NetworkServiceSpec: QuickSpec {
             }
         }
         
-        describe("getStopInformationWithStopId") {
+        describe("getStopInformationWithStopNo") {
             beforeEach {
                 let configuration = NSURLSessionConfiguration.ephemeralSessionConfiguration()
                 let urlProcolClass: AnyObject = ClassUtility.classFromType(MockWebServiceURLProtocol.self)
@@ -120,7 +120,7 @@ class NetworkServiceSpec: QuickSpec {
             }
             
             it("should return a session data task") {
-                let task = service.getStopInformationWithStopId("123", completionHandler: nil)
+                let task = service.getStopInformationWithStopNo("123", completionHandler: nil)
                 
                 expect(task).notTo.beNil()
             }
@@ -144,7 +144,7 @@ class NetworkServiceSpec: QuickSpec {
                     var dictionary: NSDictionary!
                     var completionError: NSError!
                     
-                    let stopInfoTask = service.getStopInformationWithStopId("123", {
+                    let stopInfoTask = service.getStopInformationWithStopNo("123", {
                         stop, error -> Void in
                         
                         dictionary = stop
@@ -175,7 +175,7 @@ class NetworkServiceSpec: QuickSpec {
                     var dictionary: NSDictionary!
                     var completionError: NSError!
                     
-                    let task = service.getStopInformationWithStopId("123", {
+                    let task = service.getStopInformationWithStopNo("123", {
                         stop, error -> Void in
                         
                         dictionary = stop

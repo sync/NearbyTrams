@@ -54,10 +54,10 @@ class NetworkService
         return task;
     }
     
-    func getStopInformationWithStopId(stopId: NSString, completionHandler: ((NSDictionary?, NSError?) -> Void)?) -> NSURLSessionDataTask
+    func getStopInformationWithStopNo(stopNo: NSString, completionHandler: ((NSDictionary?, NSError?) -> Void)?) -> NSURLSessionDataTask
     {
         // thanks to: http://wongm.com/2014/03/tramtracker-api-dumphone-access/
-        let url = NSURL(string: "/Controllers/GetStopInformation.ashx?s=\(stopId)", relativeToURL: baseURL)
+        let url = NSURL(string: "/Controllers/GetStopInformation.ashx?s=\(stopNo)", relativeToURL: baseURL)
         
         let session = NSURLSession(configuration: configuration)
         let task = session.dataTaskWithURL(url, completionHandler:{
