@@ -4,7 +4,7 @@
 
 import CoreData
 
-class StopInformation: NSManagedObject
+class Stop: NSManagedObject
 {
     @NSManaged var cityDirection: String?
     @NSManaged var stopDescription: String?
@@ -19,9 +19,9 @@ class StopInformation: NSManagedObject
     @NSManaged var stopNo: NSNumber? // Why when Int it crashes
     @NSManaged var suburb: String?
     
-    class func insertInManagedObjectContext(managedObjectContext: NSManagedObjectContext) -> StopInformation
+    class func insertInManagedObjectContext(managedObjectContext: NSManagedObjectContext) -> Stop
     {
-        return NSEntityDescription.insertNewObjectForEntityForName("StopInformation", inManagedObjectContext: managedObjectContext) as StopInformation
+        return NSEntityDescription.insertNewObjectForEntityForName("Stop", inManagedObjectContext: managedObjectContext) as Stop
     }
     
     func configureWithDictionaryFromRest(json: NSDictionary) -> Void

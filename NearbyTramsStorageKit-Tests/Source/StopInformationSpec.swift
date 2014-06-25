@@ -6,12 +6,12 @@ import Quick
 import Nimble
 import NearbyTramsStorageKit
 
-class StopInformationSpec: QuickSpec {
+class StopSpec: QuickSpec {
     override func spec() {
-        describe("A Stop Information") {
+        describe("A Stop") {
             var store: CoreDataTestsHelperStore!
             var moc: NSManagedObjectContext!
-            var stopInformation: StopInformation!
+            var stop: Stop!
             
             beforeEach {
                 store = CoreDataTestsHelperStore()
@@ -24,21 +24,21 @@ class StopInformationSpec: QuickSpec {
             
             describe("insertInManagedObjectContext") {
                 beforeEach {
-                    stopInformation = StopInformation.insertInManagedObjectContext(moc)
+                    stop = Stop.insertInManagedObjectContext(moc)
                 }
                 
                 it("should be non nil") {
-                    expect(stopInformation).notTo.beNil()
+                    expect(stop).notTo.beNil()
                 }
                 
                 it("should be a member of the Route class") {
-                    expect(stopInformation.isMemberOfClass(StopInformation)).to.beTrue()
+                    expect(stop.isMemberOfClass(Stop)).to.beTrue()
                 }
             }
             
             describe("configureWithDictionaryFromRest") {
                 beforeEach {
-                    stopInformation = StopInformation.insertInManagedObjectContext(moc)
+                    stop = Stop.insertInManagedObjectContext(moc)
                 }
                 
                 context("with valid values") {
@@ -58,55 +58,55 @@ class StopInformationSpec: QuickSpec {
                             "Longitude": 145.68,
                         ]
                         
-                        stopInformation.configureWithDictionaryFromRest(json)
+                        stop.configureWithDictionaryFromRest(json)
                     }
                     
                     it("should have a CityDirection") {
-                        expect(stopInformation.cityDirection).to.equal("a city direction")
+                        expect(stop.cityDirection).to.equal("a city direction")
                     }
                     
                     it("should have a Description") {
-                        expect(stopInformation.stopDescription).to.equal("a description")
+                        expect(stop.stopDescription).to.equal("a description")
                     }
                     
                     it("should have a Destination") {
-                        expect(stopInformation.destination).to.equal("a destination")
+                        expect(stop.destination).to.equal("a destination")
                     }
                     
                     it("should have a FlagStopNo") {
-                        expect(stopInformation.flagStopNo).to.equal("Stop 965a")
+                        expect(stop.flagStopNo).to.equal("Stop 965a")
                     }
                     
                     it("should have a RouteNo") {
-                        expect(stopInformation.routeNo).to.equal(5)
+                        expect(stop.routeNo).to.equal(5)
                     }
                     
                     it("should have a StopID") {
-                        expect(stopInformation.stopID).to.equal("567aab")
+                        expect(stop.stopID).to.equal("567aab")
                     }
                     
                     it("should have a StopName") {
-                        expect(stopInformation.stopName).to.equal("Burke Rd / Canterbury Rd")
+                        expect(stop.stopName).to.equal("Burke Rd / Canterbury Rd")
                     }
                     
                     it("should have a StopNo") {
-                        expect(stopInformation.stopNo).to.equal(14)
+                        expect(stop.stopNo).to.equal(14)
                     }
                     
                     it("should have a Suburb") {
-                        expect(stopInformation.suburb).to.equal("Canterbury")
+                        expect(stop.suburb).to.equal("Canterbury")
                     }
                     
                     it("should have a DistanceToLocation") {
-                        expect(stopInformation.distanceToLocation).to.equal(14.00)
+                        expect(stop.distanceToLocation).to.equal(14.00)
                     }
                     
                     it("should have a Latitude") {
-                        expect(stopInformation.latitude).to.equal(-36.45)
+                        expect(stop.latitude).to.equal(-36.45)
                     }
                     
                     it("should be a Longitude") {
-                        expect(stopInformation.longitude).to.equal(145.68)
+                        expect(stop.longitude).to.equal(145.68)
                     }
                 }
 
@@ -127,55 +127,55 @@ class StopInformationSpec: QuickSpec {
                             "Longitude": 15,
                         ]
                         
-                        stopInformation.configureWithDictionaryFromRest(json)
+                        stop.configureWithDictionaryFromRest(json)
                     }
                     
                     it("should have a CityDirection") {
-                        expect(stopInformation.cityDirection).to.beNil()
+                        expect(stop.cityDirection).to.beNil()
                     }
                     
                     it("should have a Description") {
-                        expect(stopInformation.stopDescription).to.beNil()
+                        expect(stop.stopDescription).to.beNil()
                     }
                     
                     it("should have a Destination") {
-                        expect(stopInformation.destination).to.beNil()
+                        expect(stop.destination).to.beNil()
                     }
                     
                     it("should have a FlagStopNo") {
-                        expect(stopInformation.flagStopNo).to.beNil()
+                        expect(stop.flagStopNo).to.beNil()
                     }
                     
                     it("should have a RouteNo") {
-                        expect(stopInformation.routeNo).to.beNil()
+                        expect(stop.routeNo).to.beNil()
                     }
                     
                     it("should have a StopID") {
-                        expect(stopInformation.stopID).to.beNil()
+                        expect(stop.stopID).to.beNil()
                     }
                     
                     it("should have a StopName") {
-                        expect(stopInformation.stopName).to.beNil()
+                        expect(stop.stopName).to.beNil()
                     }
                     
                     it("should have a StopNo") {
-                        expect(stopInformation.stopNo).to.beNil()
+                        expect(stop.stopNo).to.beNil()
                     }
                     
                     it("should have a Suburb") {
-                        expect(stopInformation.suburb).to.beNil()
+                        expect(stop.suburb).to.beNil()
                     }
                     
                     it("should have a DistanceToLocation") {
-                        expect(stopInformation.distanceToLocation).to.beNil()
+                        expect(stop.distanceToLocation).to.beNil()
                     }
                     
                     it("should have a Latitude") {
-                        expect(stopInformation.latitude).to.beNil()
+                        expect(stop.latitude).to.beNil()
                     }
                     
                     it("should be a Longitude") {
-                        expect(stopInformation.longitude).to.equal(15.00)
+                        expect(stop.longitude).to.equal(15.00)
                     }
                 }
             }

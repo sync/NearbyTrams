@@ -25,7 +25,7 @@
         <attribute name="isUpDestination" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="routeNo" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
     </entity>
-    <entity name="StopInformation" representedClassName="NearbyTramsStorageKit.StopInformation" syncable="YES">
+    <entity name="Stop" representedClassName="NearbyTramsStorageKit.Stop" syncable="YES">
         <attribute name="cityDirection" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="destination" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="distanceToLocation" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
@@ -40,8 +40,8 @@
         <attribute name="suburb" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Route" positionX="-63" positionY="72" width="128" height="135"/>
-        <element name="StopInformation" positionX="-63" positionY="-18" width="128" height="225"/>
         <element name="NextPredictedRoutesCollectionInfo" positionX="-63" positionY="72" width="128" height="268"/>
+        <element name="Route" positionX="-63" positionY="72" width="128" height="135"/>
+        <element name="Stop" positionX="-63" positionY="-18" width="128" height="223"/>
     </elements>
 </model>

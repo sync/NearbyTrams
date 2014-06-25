@@ -61,11 +61,11 @@ func getStopInformationWithStopNo(stopNo: NSString, completionHandler: ((NSManag
         }
         else if let dict = parseJSON(data)["ResponseObject"] as? NSDictionary
         {
-            let stop = NSEntityDescription.insertNewObjectForEntityForName("StopInformation", inManagedObjectContext: CoreDataStore().managedObjectContext) as NSManagedObject
+            let stop = NSEntityDescription.insertNewObjectForEntityForName("Stop", inManagedObjectContext: CoreDataStore().managedObjectContext) as NSManagedObject
             
             stop.setValue(10, forKey: "stopNo")
             
-            //let stop = StopInformation(json: dict)
+            //let stop = Stop(json: dict)
             completionHandler(stop, nil)
         }
     })
