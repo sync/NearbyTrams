@@ -9,7 +9,7 @@ class NetworkService
     let baseURL: NSURL
     let configuration: NSURLSessionConfiguration
     
-    init(baseURL: NSURL, configuration: NSURLSessionConfiguration = NSURLSessionConfiguration.ephemeralSessionConfiguration())
+    init(baseURL: NSURL = NSURL(string: "http://www.tramtracker.com"), configuration: NSURLSessionConfiguration = NSURLSessionConfiguration.ephemeralSessionConfiguration())
     {
         self.baseURL = baseURL
         self.configuration = configuration

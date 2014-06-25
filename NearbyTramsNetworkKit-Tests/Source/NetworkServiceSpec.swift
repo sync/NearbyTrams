@@ -11,12 +11,24 @@ class NetworkServiceSpec: QuickSpec {
         var service: NetworkService!
         
         describe("Init") {
-            beforeEach {
-                service = NetworkService(baseURL: NSURL(string: "http://www.apple.com"))
+            context("when provided with a basURL") {
+                beforeEach {
+                    service = NetworkService(baseURL: NSURL(string: "http://www.apple.com"))
+                }
+                
+                it("should have a baseURL") {
+                    expect(service.baseURL.absoluteString).to.equal("http://www.apple.com")
+                }
             }
             
-            it("should have a baseURL") {
-                expect(service.baseURL.absoluteString).to.equal("http://www.apple.com")
+            context("when provided with a configuration") {
+                beforeEach {
+                    service = NetworkService(configuration: NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier("background"))
+                }
+                
+                it("should have a configuration") {
+                    expect(service.configuration.identifier).to.equal("background")
+                }
             }
         }
         
