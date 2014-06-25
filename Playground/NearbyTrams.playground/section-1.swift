@@ -6,38 +6,29 @@ import CoreData
 
 class CoreDataStore
 {
-    let managedObjectContext: NSManagedObjectContext = {
-        var _managedObjectContext: NSManagedObjectContext? = nil
-        let databaseName = "NearbyTrams"
-        var databaseURL = NSURL(fileURLWithPath: databaseName + ".sqlite")
-        if let url = NSBundle.mainBundle().URLForResource(databaseName, withExtension: "sqlite")
-        {
-            println("found it")
-            
-            databaseURL = url
-        }
+    @lazy var managedObjectContext: NSManagedObjectContext = {
         
-        let modelURL = NSBundle.mainBundle().URLForResource(databaseName, withExtension: "momd")
+        let modelURL = NSBundle.mainBundle().URLForResource("NearbyTrams", withExtension: "momd")
         let managedObjectModel = NSManagedObjectModel(contentsOfURL: modelURL)
         
         var error: NSError? = nil
         let persistentStoreCoordinator:NSPersistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
-        if persistentStoreCoordinator.addPersistentStoreWithType(NSSQLiteStoreType,
+        if persistentStoreCoordinator.addPersistentStoreWithType(NSInMemoryStoreType,
             configuration: nil,
-            URL: databaseURL,
+            URL: nil,
             options: nil,
             error: &error) == nil
         {
-            println("there was an error: \(error!.localizedDescription)")
+            println("there was an error loading in memory core data tests store: \(error!.localizedDescription)")
             abort()
         }
         
-        _managedObjectContext = NSManagedObjectContext()
-        _managedObjectContext!.persistentStoreCoordinator = persistentStoreCoordinator
+        let _managedObjectContext = NSManagedObjectContext()
+        _managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator
         
         
-        return _managedObjectContext!
-    }()
+        return _managedObjectContext
+        }()
 }
 
 func parseJSON(inputData: NSData) -> NSDictionary
