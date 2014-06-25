@@ -125,6 +125,13 @@ class NetworkServiceSpec: QuickSpec {
                 expect(task).notTo.beNil()
             }
             
+            it ("should have added to the query url the stop no") {
+                //originalRequest
+                let task = service.getStopsByRouteAndDirectionWithStopNo("123", completionHandler: nil)
+                
+                expect(task.originalRequest.URL.absoluteString).to.contain("123")
+            }
+            
             context("when an error occur") {
                 
                 var error: NSError!
@@ -201,6 +208,13 @@ class NetworkServiceSpec: QuickSpec {
                 let task = service.getStopInformationWithStopNo("123", completionHandler: nil)
                 
                 expect(task).notTo.beNil()
+            }
+            
+            it ("should have added to the query url the stop no") {
+                //originalRequest
+                let task = service.getStopInformationWithStopNo("123", completionHandler: nil)
+                
+                expect(task.originalRequest.URL.absoluteString).to.contain("123")
             }
             
             context("when an error occur") {
