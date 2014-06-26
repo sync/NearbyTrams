@@ -4,7 +4,7 @@
 
 import Foundation
 
-class FakeClass
+class NearbyTramsRoutesProvider
 {
     func alwaysTrue() -> Bool
     {
