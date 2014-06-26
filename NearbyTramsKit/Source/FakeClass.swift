@@ -3,3 +3,11 @@
 //
 
 import Foundation
+
+class FakeClass
+{
+    func alwaysTrue() -> Bool
+    {
+        return true
+    }
+}
