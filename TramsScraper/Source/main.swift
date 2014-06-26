@@ -13,38 +13,73 @@ var managedObjectContext: NSManagedObjectContext = {
     return moc
     }()
 
-var shouldKeepRunning = true
 let service = NetworkService()
-let task = service.getAllRoutesWithCompletionHandler {
-    routes, error -> Void in
+func getAllRoutesWithCompletionHandler(completionHandler: ((NSManagedObjectID[]?, NSError?) -> Void)?) -> Void
+{
+    let task = service.getAllRoutesWithCompletionHandler {
+        routes, error -> Void in
+        
+        if (error)
+        {
+            if let handler = completionHandler
+            {
+                dispatch_async(dispatch_get_main_queue()) {
+                    handler(nil, error)
+                }
+            }
+        }
+        else if (routes)
+        {
+            let localContext = NSManagedObjectContext(concurrencyType: .ConfinementConcurrencyType)
+            localContext.parentContext = managedObjectContext
+            
+            let routesObjectIds = routes!.map {
+                (routeDictionary: NSDictionary) -> NSManagedObjectID in
+                
+                let route = Route.insertInManagedObjectContext(localContext)
+                route.configureWithDictionaryFromRest(routeDictionary)
+                localContext.obtainPermanentIDsForObjects([route], error: nil)
+                
+                return route.objectID
+            }
+            
+            localContext.save(nil)
+            
+            if let handler = completionHandler
+            {
+                dispatch_async(dispatch_get_main_queue()) {
+                    handler(routesObjectIds, nil)
+                }
+            }
+        }
+    }
+}
+
+var shouldKeepRunning = true
+getAllRoutesWithCompletionHandler {
+    routesObjectIds, error -> Void in
     
     if (error)
     {
-        println("there was an error dowloading all routes: \(error!.localizedDescription)")
+        println("there was an error dowloading all routes:r \(error!.localizedDescription)")
     }
-    else if (routes)
+    else if (routesObjectIds)
     {
-        let localContext = NSManagedObjectContext(concurrencyType: .ConfinementConcurrencyType)
-        localContext.parentContext = managedObjectContext
+        let predicate = NSPredicate(format:"self IN %@", routesObjectIds!)
+        let request = NSFetchRequest(entityName: "Route")
+        request.predicate = predicate
         
-        let coreDataRoutes = routes!.map({
-            (routeDictionary: NSDictionary) -> Route in
-            
-            let route = Route.insertInManagedObjectContext(localContext)
-            route.configureWithDictionaryFromRest(routeDictionary)
-            
-            return route
-            })
-        localContext.save(nil)
-        
-        println("got all routes")
+        //func executeFetchRequest(request: NSFetchRequest!, error: NSErrorPointer) -> AnyObject[]!
+        if let routes = managedObjectContext.executeFetchRequest(request, error: nil)
+        {
+            println("got all routes: \(routes)")
+        }
     }
     
     shouldKeepRunning = false
 }
 
-do
-{
+do {
     NSRunLoop.currentRunLoop().runUntilDate(NSDate(timeIntervalSinceNow: 1))
 }
     while (shouldKeepRunning);
