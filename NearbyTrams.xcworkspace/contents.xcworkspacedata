@@ -65,6 +65,9 @@
       </FileRef>
    </Group>
    <FileRef
+      location = "group:NearbyTramsKit.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:NearbyTramsStorageKit.xcodeproj">
    </FileRef>
    <FileRef
