@@ -2,8 +2,6 @@
 //  Copyright (c) 2014 Dblechoc. All rights reserved.
 //
 
-#include "../../Configurations/OSX/Framework/Framework.xcconfig"
-
 // Packaging
 PRODUCT_NAME = $(TARGET_NAME)
 DEFINES_MODULE = YES;

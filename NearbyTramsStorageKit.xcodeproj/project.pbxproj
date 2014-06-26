@@ -142,6 +142,9 @@
 		5F8695DE19539442000E2256 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F8695E019539442000E2256 /* NearbyTramsStorageKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyTramsStorageKit.h; sourceTree = "<group>"; };
 		5F86E95C195403530020CD54 /* CoreDataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManager.swift; sourceTree = "<group>"; };
+		5FA510A9195C4D2B000100A5 /* NearbyTramsStorageKit-Tests-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "NearbyTramsStorageKit-Tests-Debug.xcconfig"; sourceTree = "<group>"; };
+		5FA510AA195C4D2B000100A5 /* NearbyTramsStorageKit-Tests-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "NearbyTramsStorageKit-Tests-Release.xcconfig"; sourceTree = "<group>"; };
+		5FA510B1195C4DDC000100A5 /* NearbyTramsStorageKit-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NearbyTramsStorageKit-Bridging-Header.h"; sourceTree = "<group>"; };
 		5FBE5472195460FA009FF8D2 /* NearbyTramsStorageKit-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NearbyTramsStorageKit-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FD5CDFD19559D3D000243A0 /* CoreDataTestsHelperStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTestsHelperStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -268,6 +271,8 @@
 			children = (
 				5F8695D719539442000E2256 /* NearbyTramsStorageKit-Debug.xcconfig */,
 				5F8695D819539442000E2256 /* NearbyTramsStorageKit-Release.xcconfig */,
+				5FA510A9195C4D2B000100A5 /* NearbyTramsStorageKit-Tests-Debug.xcconfig */,
+				5FA510AA195C4D2B000100A5 /* NearbyTramsStorageKit-Tests-Release.xcconfig */,
 				5F8695D919539442000E2256 /* NearbyTramsStorageKit.xcconfig */,
 			);
 			name = Configurations;
@@ -288,6 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				5F8695E019539442000E2256 /* NearbyTramsStorageKit.h */,
+				5FA510B1195C4DDC000100A5 /* NearbyTramsStorageKit-Bridging-Header.h */,
 				5FD5CDFB19559D19000243A0 /* Domain */,
 				5F5A72AA1956F55200A5BD40 /* Extensions */,
 				5FD5CDFC19559D2E000243A0 /* Helper */,
@@ -579,38 +585,42 @@
 /* Begin XCBuildConfiguration section */
 		5F6BA8B81952B395005D0DDB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5F8695D719539442000E2256 /* NearbyTramsStorageKit-Debug.xcconfig */;
+			baseConfigurationReference = 5F8695D919539442000E2256 /* NearbyTramsStorageKit.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		5F6BA8B91952B395005D0DDB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5F8695D819539442000E2256 /* NearbyTramsStorageKit-Release.xcconfig */;
+			baseConfigurationReference = 5F8695D919539442000E2256 /* NearbyTramsStorageKit.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
 		};
 		5F6BA8BB1952B395005D0DDB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F8695D719539442000E2256 /* NearbyTramsStorageKit-Debug.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		5F6BA8BC1952B395005D0DDB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F8695D819539442000E2256 /* NearbyTramsStorageKit-Release.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
 		};
 		5FBE547B195460FA009FF8D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5FA510A9195C4D2B000100A5 /* NearbyTramsStorageKit-Tests-Debug.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		5FBE547C195460FA009FF8D2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5FA510AA195C4D2B000100A5 /* NearbyTramsStorageKit-Tests-Release.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
