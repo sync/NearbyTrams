@@ -3,6 +3,7 @@
 //
 
 #include "../../Configurations/OSX/Release.xcconfig"
+#include "../../Configurations/OSX/Framework/Framework.xcconfig"
 #include "NearbyTramsNetworkKit.xcconfig"
 
 SWIFT_OBJC_BRIDGING_HEADER = $(TARGET_NAME)/Source/$(TARGET_NAME)-Bridging-Header.h
