@@ -11,6 +11,7 @@
 		5F200D911952934A003A37D0 /* NearbyTrams.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5F200D8F1952934A003A37D0 /* NearbyTrams.xcdatamodeld */; };
 		5F5A72991956F03A00A5BD40 /* NearbyTramsNetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5A72931956F00900A5BD40 /* NearbyTramsNetworkKit.framework */; };
 		5F7B05FD1953F4ED003423B6 /* NearbyTramsStorageKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F7B05FA1953F4D3003423B6 /* NearbyTramsStorageKit.framework */; };
+		5FA8DBB3195E2ADC0080EEAE /* NearbyTramsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FA8DBAE195E2ACB0080EEAE /* NearbyTramsKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,27 @@
 			remoteGlobalIDString = 5FBE5472195460FA009FF8D2;
 			remoteInfo = "NearbyTramsStorageKit-Tests";
 		};
+		5FA8DBAD195E2ACB0080EEAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5FA8DBA8195E2ACB0080EEAE /* NearbyTramsKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5F6CC97E195C38D7003C3485;
+			remoteInfo = NearbyTramsKit;
+		};
+		5FA8DBAF195E2ACB0080EEAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5FA8DBA8195E2ACB0080EEAE /* NearbyTramsKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5F6CC989195C38D7003C3485;
+			remoteInfo = "NearbyTramsKit-Tests";
+		};
+		5FA8DBB1195E2AD50080EEAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5FA8DBA8195E2ACB0080EEAE /* NearbyTramsKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5F6CC97D195C38D7003C3485;
+			remoteInfo = NearbyTramsKit;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -79,6 +101,7 @@
 		5F200D901952934A003A37D0 /* NearbyTrams.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NearbyTrams.xcdatamodel; sourceTree = "<group>"; };
 		5F5A728D1956F00900A5BD40 /* NearbyTramsNetworkKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = NearbyTramsNetworkKit.xcodeproj; sourceTree = "<group>"; };
 		5F7B05F51953F4D3003423B6 /* NearbyTramsStorageKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = NearbyTramsStorageKit.xcodeproj; sourceTree = "<group>"; };
+		5FA8DBA8195E2ACB0080EEAE /* NearbyTramsKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = NearbyTramsKit.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +111,7 @@
 			files = (
 				5F7B05FD1953F4ED003423B6 /* NearbyTramsStorageKit.framework in Frameworks */,
 				5F5A72991956F03A00A5BD40 /* NearbyTramsNetworkKit.framework in Frameworks */,
+				5FA8DBB3195E2ADC0080EEAE /* NearbyTramsKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +169,7 @@
 		5F7B05F41953F4C1003423B6 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				5FA8DBA8195E2ACB0080EEAE /* NearbyTramsKit.xcodeproj */,
 				5F7B05F51953F4D3003423B6 /* NearbyTramsStorageKit.xcodeproj */,
 				5F5A728D1956F00900A5BD40 /* NearbyTramsNetworkKit.xcodeproj */,
 			);
@@ -156,6 +181,15 @@
 			children = (
 				5F7B05FA1953F4D3003423B6 /* NearbyTramsStorageKit.framework */,
 				5FA829A319546345004A5A28 /* NearbyTramsStorageKit-Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5FA8DBA9195E2ACB0080EEAE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5FA8DBAE195E2ACB0080EEAE /* NearbyTramsKit.framework */,
+				5FA8DBB0195E2ACB0080EEAE /* NearbyTramsKit-Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -183,6 +217,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				5FA8DBB2195E2AD50080EEAE /* PBXTargetDependency */,
 				5F5A72981956F01D00A5BD40 /* PBXTargetDependency */,
 				5F7B05FC1953F4E5003423B6 /* PBXTargetDependency */,
 			);
@@ -216,6 +251,10 @@
 			productRefGroup = 5F155CC419518A0900D8931F /* Products */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = 5FA8DBA9195E2ACB0080EEAE /* Products */;
+					ProjectRef = 5FA8DBA8195E2ACB0080EEAE /* NearbyTramsKit.xcodeproj */;
+				},
 				{
 					ProductGroup = 5F5A728E1956F00900A5BD40 /* Products */;
 					ProjectRef = 5F5A728D1956F00900A5BD40 /* NearbyTramsNetworkKit.xcodeproj */;
@@ -261,6 +300,20 @@
 			remoteRef = 5FA829A219546345004A5A28 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		5FA8DBAE195E2ACB0080EEAE /* NearbyTramsKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = NearbyTramsKit.framework;
+			remoteRef = 5FA8DBAD195E2ACB0080EEAE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5FA8DBB0195E2ACB0080EEAE /* NearbyTramsKit-Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "NearbyTramsKit-Tests.xctest";
+			remoteRef = 5FA8DBAF195E2ACB0080EEAE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -285,6 +338,11 @@
 			isa = PBXTargetDependency;
 			name = NearbyTramsStorageKit;
 			targetProxy = 5F7B05FB1953F4E5003423B6 /* PBXContainerItemProxy */;
+		};
+		5FA8DBB2195E2AD50080EEAE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = NearbyTramsKit;
+			targetProxy = 5FA8DBB1195E2AD50080EEAE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
