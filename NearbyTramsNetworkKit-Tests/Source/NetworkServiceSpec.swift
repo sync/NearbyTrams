@@ -125,7 +125,7 @@ class NetworkServiceSpec: QuickSpec {
                 expect(task).notTo.beNil()
             }
             
-            it ("should have added to the query url the stop no") {
+            it("should have added to the query url the stop no") {
                 //originalRequest
                 let task = service.getStopsByRouteAndDirectionWithStopNo("123", completionHandler: nil)
                 
@@ -210,7 +210,7 @@ class NetworkServiceSpec: QuickSpec {
                 expect(task).notTo.beNil()
             }
             
-            it ("should have added to the query url the stop no") {
+            it("should have added to the query url the stop no") {
                 //originalRequest
                 let task = service.getStopInformationWithStopNo("123", completionHandler: nil)
                 
@@ -295,14 +295,14 @@ class NetworkServiceSpec: QuickSpec {
                 expect(task).notTo.beNil()
             }
             
-            it ("should have added to the query url the stop no") {
+            it("should have added to the query url the stop no") {
                 //originalRequest
                 let task = service.getNextPredictionsForStop("123", timestamp: NSDate(), completionHandler: nil)
                 
                 expect(task.originalRequest.URL.absoluteString).to.contain("123")
             }
             
-            it ("should have added to the query url the timestamp") {
+            it("should have added to the query url the timestamp") {
                 let date = NSDate()
                 
                 //originalRequest

@@ -168,16 +168,16 @@ class RouteSpec: QuickSpec {
                     expect(routes[1].entity.name).to.equal("Route")
                 }
                 
-                it ("should create and store 2 routes") {
+                it("should create and store 2 routes") {
                     expect(storedRoutes.count).to.equal(2)
                 }
                 
-                it ("should have set it's routeNo") {
+                it("should have set it's routeNo") {
                     let route = storedRoutes[0]
                     expect(route.routeNo).to.equal(5)
                 }
                 
-                it ("should have set it's destination") {
+                it("should have set it's destination") {
                     let route = storedRoutes[1]
                     expect(route.destination).to.equal("Pyrmont")
                 }
