@@ -22,7 +22,7 @@ class CoreDataTestsHelperStore
             abort()
         }
         
-        let _managedObjectContext = NSManagedObjectContext()
+        let _managedObjectContext = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType)
         _managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator
         
         
