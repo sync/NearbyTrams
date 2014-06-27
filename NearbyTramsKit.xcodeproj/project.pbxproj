@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		5F6CC98A195C38D7003C3485 /* NearbyTramsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F6CC97E195C38D7003C3485 /* NearbyTramsKit.framework */; };
 		5FA5103F195C3AC7000100A5 /* NearbyTramsKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FA5103C195C3AC7000100A5 /* NearbyTramsKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5FA51048195C3C26000100A5 /* NearbyTramsRoutesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA51047195C3C26000100A5 /* NearbyTramsRoutesProvider.swift */; };
+		5FA51048195C3C26000100A5 /* RoutesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA51047195C3C26000100A5 /* RoutesProvider.swift */; };
 		5FA5106C195C3EF6000100A5 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FA51055195C3ED3000100A5 /* Nimble.framework */; };
 		5FA5106D195C3EF6000100A5 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FA51061195C3ED3000100A5 /* Quick.framework */; };
-		5FA5106F195C3F5A000100A5 /* NearbyTramsRoutesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA5106E195C3F5A000100A5 /* NearbyTramsRoutesProvider.swift */; };
+		5FA5106F195C3F5A000100A5 /* RoutesProviderSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA5106E195C3F5A000100A5 /* RoutesProviderSpec.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,10 +156,10 @@
 		5FA5103B195C3AC7000100A5 /* NearbyTramsKit-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NearbyTramsKit-Bridging-Header.h"; sourceTree = "<group>"; };
 		5FA5103C195C3AC7000100A5 /* NearbyTramsKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyTramsKit.h; sourceTree = "<group>"; };
 		5FA51042195C3B47000100A5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5FA51047195C3C26000100A5 /* NearbyTramsRoutesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearbyTramsRoutesProvider.swift; sourceTree = "<group>"; };
+		5FA51047195C3C26000100A5 /* RoutesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesProvider.swift; sourceTree = "<group>"; };
 		5FA5104A195C3ED3000100A5 /* Nimble.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Nimble.xcodeproj; path = External/Quick/Nimble/Nimble.xcodeproj; sourceTree = "<group>"; };
 		5FA5104D195C3ED3000100A5 /* Quick.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Quick.xcodeproj; path = External/Quick/Quick/Quick.xcodeproj; sourceTree = "<group>"; };
-		5FA5106E195C3F5A000100A5 /* NearbyTramsRoutesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearbyTramsRoutesProvider.swift; sourceTree = "<group>"; };
+		5FA5106E195C3F5A000100A5 /* RoutesProviderSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesProviderSpec.swift; sourceTree = "<group>"; };
 		5FA51070195C4320000100A5 /* NearbyTramsStorageKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = NearbyTramsStorageKit.xcodeproj; sourceTree = "<group>"; };
 		5FA51079195C4329000100A5 /* NearbyTramsNetworkKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = NearbyTramsNetworkKit.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -233,7 +233,7 @@
 			children = (
 				5FA5103B195C3AC7000100A5 /* NearbyTramsKit-Bridging-Header.h */,
 				5FA5103C195C3AC7000100A5 /* NearbyTramsKit.h */,
-				5FA51047195C3C26000100A5 /* NearbyTramsRoutesProvider.swift */,
+				5FA51047195C3C26000100A5 /* RoutesProvider.swift */,
 			);
 			name = Source;
 			path = NearbyTramsKit/Source;
@@ -259,7 +259,7 @@
 		5FA51043195C3B47000100A5 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				5FA5106E195C3F5A000100A5 /* NearbyTramsRoutesProvider.swift */,
+				5FA5106E195C3F5A000100A5 /* RoutesProviderSpec.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -533,7 +533,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FA51048195C3C26000100A5 /* NearbyTramsRoutesProvider.swift in Sources */,
+				5FA51048195C3C26000100A5 /* RoutesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,7 +541,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FA5106F195C3F5A000100A5 /* NearbyTramsRoutesProvider.swift in Sources */,
+				5FA5106F195C3F5A000100A5 /* RoutesProviderSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
