@@ -31,65 +31,6 @@ class RoutesProviderSpec: QuickSpec {
             let success = moc.save(nil)
         }
         
-        describe("fetchAllRoutesForManagedObjectIds") {
-            
-            var result: (routes: Route[]?, error:NSError?)?
-            
-            context("when empty") {
-                beforeEach() {
-                    result = provider.fetchAllRoutesForManagedObjectIds([NSManagedObjectID()], usingManagedObjectContext: moc)
-                }
-                
-                it("should return an empty array of routes") {
-                    expect(result?.routes?.count).to.equal(0)
-                }
-                
-                it("should return no error") {
-                    expect(result?.error).to.beNil()
-                }
-            }
-            
-            context("when not empty") {
-                
-                var routes: Route[]?
-                
-                beforeEach() {
-                    let route1 = Route.insertInManagedObjectContext(moc)
-                    route1.routeNo = 6
-                    
-                    let route2 = Route.insertInManagedObjectContext(moc)
-                    route2.routeNo = 10
-                    
-                    let route3 = Route.insertInManagedObjectContext(moc)
-                    route3.routeNo = 11
-                    
-                    moc.obtainPermanentIDsForObjects([route1, route2, route3], error: nil)
-                    moc.save(nil)
-                    
-                    result = provider.fetchAllRoutesForManagedObjectIds([route2.objectID], usingManagedObjectContext: moc)
-                }
-                
-                it("should return on route inside an array") {
-                    expect(result?.routes?.count).to.equal(1)
-                }
-                
-                it("should have the property routeNo") {
-                    expect(result?.routes?[0].routeNo).to.equal(10)
-                }
-                
-                it("should return no error") {
-                    expect(result?.error).to.beNil()
-                }
-            }
-            
-            pending("when an error occurs") {
-                // FIXME: Test returned an error
-                // would like to test here when an error occurs, but it would be quite hard
-                // without exposing the internal of the class
-            }
-        }
-
-        
         describe("getAllRoutesWithManagedObjectContext") {
             
             var completionRoutes: Route[]!

@@ -16,18 +16,6 @@ class RoutesProvider
         self.networkService = networkService
         self.managedObjectContext = managedObjectContext
     }
-    
-    // FIMXE: this needs to go somewhere else
-    func fetchAllRoutesForManagedObjectIds(managedObjectIds: NSManagedObjectID[], usingManagedObjectContext managedObjectContext: NSManagedObjectContext) -> (routes: Route[]?, error:NSError?)
-    {
-        let predicate = NSPredicate(format:"self IN %@", managedObjectIds)
-        let request = NSFetchRequest(entityName: "Route")
-        request.predicate = predicate
-        
-        var error: NSError?
-        let foundRoutes = managedObjectContext.executeFetchRequest(request, error: &error) as? Route[]
-        return (foundRoutes, error)
-    }    
 
     func getAllRoutesWithManagedObjectContext(managedObjectContext: NSManagedObjectContext, completionHandler: ((Route[]?, NSError?) -> Void)?) -> Void
     {
@@ -55,7 +43,7 @@ class RoutesProvider
                 if let handler = completionHandler
                 {
                     dispatch_async(dispatch_get_main_queue()) {
-                        let fetchedRoutes = self.fetchAllRoutesForManagedObjectIds(objectIds, usingManagedObjectContext: managedObjectContext)
+                        let fetchedRoutes = Route.fetchAllRoutesForManagedObjectIds(objectIds, usingManagedObjectContext: managedObjectContext)
                         handler(fetchedRoutes.routes, fetchedRoutes.error)
                     }
                 }

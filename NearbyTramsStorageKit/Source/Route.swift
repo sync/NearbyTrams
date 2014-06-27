@@ -53,4 +53,16 @@ extension Route
 
         return objectIds
     }
+    
+    class func fetchAllRoutesForManagedObjectIds(managedObjectIds: NSManagedObjectID[], usingManagedObjectContext managedObjectContext: NSManagedObjectContext) -> (routes: Route[]?, error:NSError?)
+    {
+        let predicate = NSPredicate(format:"self IN %@", managedObjectIds)
+        let request = NSFetchRequest(entityName: "Route")
+        request.predicate = predicate
+        
+        var error: NSError?
+        let foundRoutes = managedObjectContext.executeFetchRequest(request, error: &error) as? Route[]
+        
+        return (foundRoutes, error)
+    }
 }
