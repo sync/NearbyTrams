@@ -1,8 +1,4 @@
 //
-//  NearbyTramsKit.h
-//  NearbyTramsKit
-//
-//  Created by Anthony Mittaz on 26/06/2014.
 //  Copyright (c) 2014 Dblechoc. All rights reserved.
 //
 
