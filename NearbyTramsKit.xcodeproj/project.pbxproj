@@ -13,6 +13,8 @@
 		5FA5106C195C3EF6000100A5 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FA51055195C3ED3000100A5 /* Nimble.framework */; };
 		5FA5106D195C3EF6000100A5 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FA51061195C3ED3000100A5 /* Quick.framework */; };
 		5FA5106F195C3F5A000100A5 /* RoutesProviderSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA5106E195C3F5A000100A5 /* RoutesProviderSpec.swift */; };
+		5FA8DB97195D8B2A0080EEAE /* BrowseRoutesViewControllerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA8DB96195D8B2A0080EEAE /* BrowseRoutesViewControllerModel.swift */; };
+		5FA8DBA7195D8C5B0080EEAE /* BrowseRoutesViewControllerModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA8DBA6195D8C5B0080EEAE /* BrowseRoutesViewControllerModelSpec.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,6 +164,8 @@
 		5FA5106E195C3F5A000100A5 /* RoutesProviderSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesProviderSpec.swift; sourceTree = "<group>"; };
 		5FA51070195C4320000100A5 /* NearbyTramsStorageKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = NearbyTramsStorageKit.xcodeproj; sourceTree = "<group>"; };
 		5FA51079195C4329000100A5 /* NearbyTramsNetworkKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = NearbyTramsNetworkKit.xcodeproj; sourceTree = "<group>"; };
+		5FA8DB96195D8B2A0080EEAE /* BrowseRoutesViewControllerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseRoutesViewControllerModel.swift; sourceTree = "<group>"; };
+		5FA8DBA6195D8C5B0080EEAE /* BrowseRoutesViewControllerModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseRoutesViewControllerModelSpec.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,7 +237,8 @@
 			children = (
 				5FA5103B195C3AC7000100A5 /* NearbyTramsKit-Bridging-Header.h */,
 				5FA5103C195C3AC7000100A5 /* NearbyTramsKit.h */,
-				5FA51047195C3C26000100A5 /* RoutesProvider.swift */,
+				5FA8DB8C195D8AE90080EEAE /* Providers */,
+				5FA8DB95195D8AF90080EEAE /* Browse */,
 			);
 			name = Source;
 			path = NearbyTramsKit/Source;
@@ -259,7 +264,8 @@
 		5FA51043195C3B47000100A5 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				5FA5106E195C3F5A000100A5 /* RoutesProviderSpec.swift */,
+				5FA8DB9C195D8C360080EEAE /* Providers */,
+				5FA8DBA5195D8C430080EEAE /* Browse */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -313,6 +319,38 @@
 				5FA51081195C4329000100A5 /* NearbyTramsNetworkKit-Tests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		5FA8DB8C195D8AE90080EEAE /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				5FA51047195C3C26000100A5 /* RoutesProvider.swift */,
+			);
+			name = Providers;
+			sourceTree = "<group>";
+		};
+		5FA8DB95195D8AF90080EEAE /* Browse */ = {
+			isa = PBXGroup;
+			children = (
+				5FA8DB96195D8B2A0080EEAE /* BrowseRoutesViewControllerModel.swift */,
+			);
+			name = Browse;
+			sourceTree = "<group>";
+		};
+		5FA8DB9C195D8C360080EEAE /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				5FA5106E195C3F5A000100A5 /* RoutesProviderSpec.swift */,
+			);
+			name = Providers;
+			sourceTree = "<group>";
+		};
+		5FA8DBA5195D8C430080EEAE /* Browse */ = {
+			isa = PBXGroup;
+			children = (
+				5FA8DBA6195D8C5B0080EEAE /* BrowseRoutesViewControllerModelSpec.swift */,
+			);
+			name = Browse;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -533,6 +571,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FA8DB97195D8B2A0080EEAE /* BrowseRoutesViewControllerModel.swift in Sources */,
 				5FA51048195C3C26000100A5 /* RoutesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -542,6 +581,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FA5106F195C3F5A000100A5 /* RoutesProviderSpec.swift in Sources */,
+				5FA8DBA7195D8C5B0080EEAE /* BrowseRoutesViewControllerModelSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
