@@ -36,3 +36,21 @@ class Route: NSManagedObject
         }
     }
 }
+
+extension Route
+{
+    class func insertRoutesFromArray(array: NSDictionary[], inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> NSManagedObjectID[]
+    {
+        let objectIds = array.map {
+            routeDictionary -> NSManagedObjectID in
+
+            let route = Route.insertInManagedObjectContext(managedObjectContext)
+            route.configureWithDictionaryFromRest(routeDictionary as NSDictionary)
+            managedObjectContext.obtainPermanentIDsForObjects([route], error: nil)
+
+            return route.objectID
+        }
+
+        return objectIds
+    }
+}
