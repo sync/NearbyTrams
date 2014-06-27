@@ -19,7 +19,7 @@ class MockWebServiceURLProtocolSpec: QuickSpec {
                 }
                 
                 it("should have a body") {
-                    expect(response.body).to.equal(["test": "blah"])
+                    expect(response.body as NSDictionary).to.equal(["test": "blah"])
                 }
                 
                 it("should have an header") {

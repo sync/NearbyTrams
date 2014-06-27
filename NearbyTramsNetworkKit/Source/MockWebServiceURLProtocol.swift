@@ -6,12 +6,12 @@ import Foundation
 
 struct MockWebServiceResponse
 {
-    let body: Dictionary<String, AnyObject>
+    let body: AnyObject
     let header: Dictionary<String, AnyObject>
     let statusCode: Int
     let error: NSError?
     
-    init (body: Dictionary<String, AnyObject>, header: Dictionary<String, AnyObject>, statusCode: Int = 200, error: NSError? = nil)
+    init (body: AnyObject, header: Dictionary<String, AnyObject>, statusCode: Int = 200, error: NSError? = nil)
     {
         self.body = body
         self.header = header
