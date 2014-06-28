@@ -10,7 +10,8 @@ Singleton controller to manage the main Core Data stack for the application. It 
 */
 
 
-import Cocoa
+import Foundation
+import CoreData
 
 
 var _sharedInstance: CoreDataStackManager?

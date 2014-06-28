@@ -2,7 +2,8 @@
 //  Copyright (c) 2014 Dblechoc. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
 //! Project version number for NearbyTramsStorageKit.
 FOUNDATION_EXPORT double NearbyTramsStorageKitVersionNumber;
