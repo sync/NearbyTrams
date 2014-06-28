@@ -122,8 +122,59 @@ class RouteSpec: QuickSpec {
             }
         }
         
-        describe("Multiple Routes") {
-            describe ("asRoutesWithManagedObjectContext") {
+        describe("Rest") {
+            describe ("insertOrUpdatesRouteWithDictionaryFromRest") {
+                
+                var route: NSManagedObjectID!
+                var storedRoutes: Route[]!
+                
+                beforeEach {
+                    let json: NSDictionary = [
+                        "RouteNo": 5,
+                        "InternalRouteNo": 10,
+                        "AlphaNumericRouteNo": "5a",
+                        "Destination": "Melbourne",
+                        "IsUpDestination": true,
+                        "HasLowFloor": true
+                    ]
+                    
+                    route = Route.insertOrUpdatesRouteWithDictionaryFromRest(json, inManagedObjectContext: moc)
+                    moc.save(nil)
+                    
+                    let request = NSFetchRequest(entityName: "Route")
+                    request.sortDescriptors = [NSSortDescriptor(key: "routeNo", ascending:true)]
+                    storedRoutes = moc.executeFetchRequest(request, error: nil) as? Route[]
+                }
+                
+                it("should have a route") {
+                    expect(route).notTo.beNil()
+                }
+                
+                it("should not return temporary ID") {
+                    expect(route.temporaryID).to.beFalse()
+                }
+                
+                it("should have a route entity") {
+                    expect(route.entity.name).to.equal("Route")
+                }
+                
+                it("should create and store one route") {
+                    expect(storedRoutes.count).to.equal(1)
+                }
+                
+                it("should have set it's routeNo") {
+                    let storedRoute = storedRoutes[0]
+                    expect(storedRoute.routeNo).to.equal(5)
+                }
+                
+                it("should have set it's destination") {
+                    let storedRoute = storedRoutes[0]
+                    expect(storedRoute.destination).to.equal("Melbourne")
+                }
+            }
+
+            
+            describe ("insertOrUpdatesRoutesFromRestArray") {
                 
                 var routes: NSManagedObjectID[]!
                 var storedRoutes: Route[]!
@@ -148,7 +199,7 @@ class RouteSpec: QuickSpec {
                     ]
                     
                     let array: NSDictionary[] = [json1, json2]
-                    routes = Route.insertRoutesFromArray(array, inManagedObjectContext: moc)
+                    routes = Route.insertOrUpdatesRoutesFromRestArray(array, inManagedObjectContext: moc)
                     moc.save(nil)
                     
                     let request = NSFetchRequest(entityName: "Route")
@@ -173,13 +224,66 @@ class RouteSpec: QuickSpec {
                 }
                 
                 it("should have set it's routeNo") {
-                    let route = storedRoutes[0]
-                    expect(route.routeNo).to.equal(5)
+                    let storedRoute = storedRoutes[0]
+                    expect(storedRoute.routeNo).to.equal(5)
                 }
                 
                 it("should have set it's destination") {
-                    let route = storedRoutes[1]
-                    expect(route.destination).to.equal("Pyrmont")
+                    let storedRoute = storedRoutes[1]
+                    expect(storedRoute.destination).to.equal("Pyrmont")
+                }
+            }
+        }
+        
+        describe("Fetching route(s)") {
+            describe("fetchOneRouteForPrimaryKey") {
+                
+                var result: (route: Route?, error:NSError?)?
+                
+                context("when empty") {
+                    beforeEach() {
+                        result = Route.fetchOneRouteForPrimaryKey(5, usingManagedObjectContext: moc)
+                    }
+                    
+                    it("should return no route") {
+                        expect(result?.route?).to.beNil()
+                    }
+                    
+                    it("should return no error") {
+                        expect(result?.error).to.beNil()
+                    }
+                }
+                
+                context("when not empty") {
+                    
+                    beforeEach() {
+                        let route1 = Route.insertInManagedObjectContext(moc)
+                        route1.routeNo = 6
+                        
+                        let route2 = Route.insertInManagedObjectContext(moc)
+                        route2.routeNo = 10
+                        
+                        let route3 = Route.insertInManagedObjectContext(moc)
+                        route3.routeNo = 11
+                        
+                        moc.save(nil)
+                        
+                        result = Route.fetchOneRouteForPrimaryKey(10, usingManagedObjectContext: moc)
+                    }
+                    
+                    it("should return one route") {
+                        expect(result?.route?.routeNo).to.equal(10)
+                    }
+                    
+                    it("should return no error") {
+                        expect(result?.error).to.beNil()
+                    }
+                }
+                
+                pending("when an error occurs") {
+                    // FIXME: Test returned an error
+                    // would like to test here when an error occurs, but it would be quite hard
+                    // without exposing the internal of the class
                 }
             }
             
@@ -202,9 +306,6 @@ class RouteSpec: QuickSpec {
                 }
                 
                 context("when not empty") {
-                    
-                    var routes: Route[]?
-                    
                     beforeEach() {
                         let route1 = Route.insertInManagedObjectContext(moc)
                         route1.routeNo = 6
@@ -221,7 +322,7 @@ class RouteSpec: QuickSpec {
                         result = Route.fetchAllRoutesForManagedObjectIds([route2.objectID], usingManagedObjectContext: moc)
                     }
                     
-                    it("should return on route inside an array") {
+                    it("should return one route") {
                         expect(result?.routes?.count).to.equal(1)
                     }
                     

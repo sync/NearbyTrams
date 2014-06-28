@@ -23,7 +23,7 @@
         <attribute name="hasLowFloor" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="internalRouteNo" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="isUpDestination" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="routeNo" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="routeNo" optional="YES" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
     </entity>
     <entity name="Stop" representedClassName="NearbyTramsStorageKit.Stop" syncable="YES">
         <attribute name="cityDirection" optional="YES" attributeType="String" syncable="YES"/>

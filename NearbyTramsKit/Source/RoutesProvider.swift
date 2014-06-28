@@ -36,7 +36,7 @@ class RoutesProvider
                 let localContext = NSManagedObjectContext(concurrencyType: .ConfinementConcurrencyType)
                 localContext.parentContext = managedObjectContext
                 
-                let objectIds: NSManagedObjectID[] = Route.insertRoutesFromArray(routes!, inManagedObjectContext: localContext)
+                let objectIds: NSManagedObjectID[] = Route.insertOrUpdatesRoutesFromRestArray(routes!, inManagedObjectContext: localContext)
                 
                 localContext.save(nil)
                 
