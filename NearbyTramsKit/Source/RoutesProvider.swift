@@ -16,7 +16,7 @@ class RoutesProvider
         self.networkService = networkService
         self.managedObjectContext = managedObjectContext
     }
-
+    
     func getAllRoutesWithManagedObjectContext(managedObjectContext: NSManagedObjectContext, completionHandler: ((Route[]?, NSError?) -> Void)?) -> Void
     {
         let task = networkService.getAllRoutesWithCompletionHandler {
@@ -36,7 +36,17 @@ class RoutesProvider
                 let localContext = NSManagedObjectContext(concurrencyType: .ConfinementConcurrencyType)
                 localContext.parentContext = managedObjectContext
                 
-                let objectIds: NSManagedObjectID[] = Route.insertOrUpdateRoutesFromRestArray(routes!, inManagedObjectContext: localContext)
+                
+                let result: (routes: Route?[], errors: NSError?[]) = Route.insertOrUpdateFromRestArray(routes!, inManagedObjectContext: localContext)
+                
+                var objectIds: NSManagedObjectID[] = []
+                for potentialRoute in result.routes
+                {
+                    if let route = potentialRoute
+                    {
+                        objectIds.append(route.objectID)
+                    }
+                }
                 
                 localContext.save(nil)
                 
@@ -50,10 +60,11 @@ class RoutesProvider
             }
             else
             {
-                // FIXME: build a decent error here
                 if let handler = completionHandler
                 {
                     dispatch_async(dispatch_get_main_queue()) {
+                        // FIXME: build a decent error here
+                        let error = NSError()
                         handler(nil, nil)
                     }
                 }

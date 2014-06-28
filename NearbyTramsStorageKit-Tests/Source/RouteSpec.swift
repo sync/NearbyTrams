@@ -125,7 +125,7 @@ class RouteSpec: QuickSpec {
         describe("Rest") {
             describe ("insertOrUpdateRouteWithDictionaryFromRest") {
                 
-                var route: NSManagedObjectID!
+                var result: (route: Route?, error: NSError?)!
                 var storedRoutes: Route[]!
                 
                 beforeEach {
@@ -138,7 +138,7 @@ class RouteSpec: QuickSpec {
                         "HasLowFloor": true
                     ]
                     
-                    route = Route.insertOrUpdateRouteWithDictionaryFromRest(json, inManagedObjectContext: moc) as NSManagedObjectID
+                    result = Route.insertOrUpdateWithDictionaryFromRest(json, inManagedObjectContext: moc) as (route: Route?, error: NSError?)
                     moc.save(nil)
                     
                     let request = NSFetchRequest(entityName: "Route")
@@ -147,15 +147,15 @@ class RouteSpec: QuickSpec {
                 }
                 
                 it("should have a route") {
-                    expect(route).notTo.beNil()
+                    expect(result.route).notTo.beNil()
                 }
                 
-                it("should not return temporary ID") {
-                    expect(route.temporaryID).to.beFalse()
+                it("should have a no error") {
+                    expect(result.error).to.beNil()
                 }
                 
-                it("should have a route entity") {
-                    expect(route.entity.name).to.equal("Route")
+                it("should have a routeNo") {
+                    expect(result.route?.routeNo).to.equal(5)
                 }
                 
                 it("should create and store one route") {
@@ -175,7 +175,9 @@ class RouteSpec: QuickSpec {
             
             describe ("insertOrUpdateRoutesFromRestArray") {
                 
-                var routes: NSManagedObjectID[]!
+                var results: (routes: Route?[], errors: NSError?[])!
+                var routes: Route?[]!
+                var errors: NSError?[]!
                 var storedRoutes: Route[]!
                 
                 beforeEach {
@@ -198,8 +200,11 @@ class RouteSpec: QuickSpec {
                     ]
                     
                     let array: NSDictionary[] = [json1, json2]
-                    routes = Route.insertOrUpdateRoutesFromRestArray(array, inManagedObjectContext: moc)
+                    results = Route.insertOrUpdateFromRestArray(array, inManagedObjectContext: moc) as (routes: Route?[], errors: NSError?[])
                     moc.save(nil)
+                    
+                    routes = results.routes
+                    errors = results.errors
                     
                     let request = NSFetchRequest(entityName: "Route")
                     request.sortDescriptors = [NSSortDescriptor(key: "routeNo", ascending:true)]
@@ -210,12 +215,16 @@ class RouteSpec: QuickSpec {
                     expect(routes.count).to.equal(2)
                 }
                 
-                it("should not return temporary IDs") {
-                    expect(routes[0].temporaryID).to.beFalse()
+                it("should have 2 errors") {
+                    expect(errors.count).to.equal(2)
                 }
                 
-                it("should have a route entity") {
-                    expect(routes[1].entity.name).to.equal("Route")
+                it("should have a routeNo") {
+                    expect(routes[0]?.routeNo).to.equal(5)
+                }
+                
+                it("should have a route destination") {
+                    expect(routes[1]?.destination).to.equal("Pyrmont")
                 }
                 
                 it("should create and store 2 routes") {

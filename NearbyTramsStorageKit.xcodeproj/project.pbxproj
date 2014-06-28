@@ -23,6 +23,7 @@
 		5F7B05F31953F226003423B6 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7B05F21953F226003423B6 /* Route.swift */; };
 		5F8695E819539442000E2256 /* NearbyTramsStorageKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F8695E019539442000E2256 /* NearbyTramsStorageKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5F86E95D195403530020CD54 /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F86E95C195403530020CD54 /* CoreDataStackManager.swift */; };
+		5F8C95F7195EAE41001B329F /* NSManagedObject+REST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C95F6195EAE41001B329F /* NSManagedObject+REST.swift */; };
 		5FBE5478195460FA009FF8D2 /* NearbyTramsStorageKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F6BA8A41952B395005D0DDB /* NearbyTramsStorageKit.framework */; };
 		5FD5CDFE19559D3D000243A0 /* CoreDataTestsHelperStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD5CDFD19559D3D000243A0 /* CoreDataTestsHelperStore.swift */; };
 /* End PBXBuildFile section */
@@ -144,6 +145,7 @@
 		5F8695DE19539442000E2256 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F8695E019539442000E2256 /* NearbyTramsStorageKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyTramsStorageKit.h; sourceTree = "<group>"; };
 		5F86E95C195403530020CD54 /* CoreDataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManager.swift; sourceTree = "<group>"; };
+		5F8C95F6195EAE41001B329F /* NSManagedObject+REST.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+REST.swift"; sourceTree = "<group>"; };
 		5FA510A9195C4D2B000100A5 /* NearbyTramsStorageKit-Tests-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "NearbyTramsStorageKit-Tests-Debug.xcconfig"; sourceTree = "<group>"; };
 		5FA510AA195C4D2B000100A5 /* NearbyTramsStorageKit-Tests-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "NearbyTramsStorageKit-Tests-Release.xcconfig"; sourceTree = "<group>"; };
 		5FA510B1195C4DDC000100A5 /* NearbyTramsStorageKit-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NearbyTramsStorageKit-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 			children = (
 				5F5A72B11956F5B600A5BD40 /* NSDate+DoNet.swift */,
 				5F22E4CE195E8F61000E86D5 /* NSManagedObject+InsertAndFetch.swift */,
+				5F8C95F6195EAE41001B329F /* NSManagedObject+REST.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 				5F5A71B119569CDF00A5BD40 /* NextPredictedRoutesCollectionInfo.swift in Sources */,
 				5F7B05EF1953CB0A003423B6 /* NearbyTrams.xcdatamodeld in Sources */,
 				5FD5CDFE19559D3D000243A0 /* CoreDataTestsHelperStore.swift in Sources */,
+				5F8C95F7195EAE41001B329F /* NSManagedObject+REST.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
