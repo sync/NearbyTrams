@@ -36,12 +36,12 @@
         <attribute name="stopDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="stopID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="stopName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="stopNo" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="stopNo" optional="YES" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="suburb" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="NextPredictedRoutesCollectionInfo" positionX="-63" positionY="72" width="128" height="268"/>
         <element name="Route" positionX="-63" positionY="72" width="128" height="135"/>
-        <element name="Stop" positionX="-63" positionY="-18" width="128" height="223"/>
+        <element name="Stop" positionX="-63" positionY="-18" width="128" height="225"/>
     </elements>
 </model>

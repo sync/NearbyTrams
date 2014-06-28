@@ -24,7 +24,7 @@ class StopSpec: QuickSpec {
             
             describe("insertInManagedObjectContext") {
                 beforeEach {
-                    stop = Stop.insertInManagedObjectContext(moc)
+                    stop = Stop.insertInManagedObjectContext(moc) as Stop
                 }
                 
                 it("should be non nil") {
@@ -38,7 +38,7 @@ class StopSpec: QuickSpec {
             
             describe("configureWithDictionaryFromRest") {
                 beforeEach {
-                    stop = Stop.insertInManagedObjectContext(moc)
+                    stop = Stop.insertInManagedObjectContext(moc) as Stop
                 }
                 
                 context("with valid values") {
@@ -180,5 +180,9 @@ class StopSpec: QuickSpec {
                 }
             }
         }
+        
+        // InsertAndFetchManagedObject, RESTManagedObject conformance is based on generics
+        // Behaviour is tested inside RouteSpec
+        // There is no reason to do it again here
     }
 }

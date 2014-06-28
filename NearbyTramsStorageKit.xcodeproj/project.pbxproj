@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5F1827011955AD6C00626BBB /* StopInformationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1827001955AD6C00626BBB /* StopInformationSpec.swift */; };
+		5F1827011955AD6C00626BBB /* StopSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1827001955AD6C00626BBB /* StopSpec.swift */; };
 		5F22E4CF195E8F61000E86D5 /* NSManagedObject+InsertAndFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F22E4CE195E8F61000E86D5 /* NSManagedObject+InsertAndFetch.swift */; };
 		5F3AA7871954FED400133BCF /* CoreDataTestsHelperStoreSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3AA7851954FED400133BCF /* CoreDataTestsHelperStoreSpec.swift */; };
 		5F47BD8B195505A60054CFD1 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F3AA79E1955044700133BCF /* Quick.framework */; };
@@ -123,7 +123,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5F1827001955AD6C00626BBB /* StopInformationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopInformationSpec.swift; sourceTree = "<group>"; };
+		5F1827001955AD6C00626BBB /* StopSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopSpec.swift; sourceTree = "<group>"; };
 		5F22E4CE195E8F61000E86D5 /* NSManagedObject+InsertAndFetch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+InsertAndFetch.swift"; sourceTree = "<group>"; };
 		5F3AA7831954FED400133BCF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F3AA7851954FED400133BCF /* CoreDataTestsHelperStoreSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTestsHelperStoreSpec.swift; sourceTree = "<group>"; };
@@ -186,7 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				5F6CA07C19559F4F001A1EBA /* RouteSpec.swift */,
-				5F1827001955AD6C00626BBB /* StopInformationSpec.swift */,
+				5F1827001955AD6C00626BBB /* StopSpec.swift */,
 				5F5A71B219569D0E00A5BD40 /* NextPredictedRoutesCollectionInfoSpec.swift */,
 				5F5A72B31956F7E800A5BD40 /* Extensions */,
 				5F5A72B41956F7F400A5BD40 /* Helper */,
@@ -553,7 +553,7 @@
 			files = (
 				5F5A71AF195698CA00A5BD40 /* CoreDataStackManagerSpec.swift in Sources */,
 				5F6CA07D19559F4F001A1EBA /* RouteSpec.swift in Sources */,
-				5F1827011955AD6C00626BBB /* StopInformationSpec.swift in Sources */,
+				5F1827011955AD6C00626BBB /* StopSpec.swift in Sources */,
 				5F5A72B61956F81B00A5BD40 /* NSDateDotNetSpec.swift in Sources */,
 				5F5A71B319569D0E00A5BD40 /* NextPredictedRoutesCollectionInfoSpec.swift in Sources */,
 				5F3AA7871954FED400133BCF /* CoreDataTestsHelperStoreSpec.swift in Sources */,
