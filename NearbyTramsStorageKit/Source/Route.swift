@@ -2,9 +2,16 @@
 //  Copyright (c) 2014 Dblechoc. All rights reserved.
 //
 
-import Foundation
+import CoreData
 
-class Route: NSManagedObject
+protocol RestAPIManagedObject {
+    class func primaryKeyFromRest() -> String
+    class func insertOrUpdateRouteWithDictionaryFromRest(routeDictionary: NSDictionary, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> NSManagedObjectID
+    class func insertOrUpdateRoutesFromRestArray(array: NSDictionary[], inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> NSManagedObjectID[]
+    func configureWithDictionaryFromRest(json: NSDictionary) -> Void
+}
+
+class Route: NSManagedObject, InsertAndFetchManagedObject, RestAPIManagedObject
 {
     @NSManaged var routeNo:  NSNumber? // Why when Int it crashes
     @NSManaged var internalRouteNo: NSNumber? // Why when Int it crashes
@@ -13,35 +20,29 @@ class Route: NSManagedObject
     @NSManaged var isUpDestination: Bool
     @NSManaged var hasLowFloor: Bool
     
-    class var entityName: NSString {
+    class var entityName: String {
         get {
             return "Route"
     }
     }
     
-    class var primaryKeyFromRest: NSString {
-        get {
-            return "RouteNo"
-    }
-    }
-    
-    class var primaryKey: NSString {
+    class var primaryKey: String {
         get {
             return "routeNo"
     }
-    }
-    
-    class func insertInManagedObjectContext(managedObjectContext: NSManagedObjectContext) -> Route
-    {
-        return NSEntityDescription.insertNewObjectForEntityForName(self.entityName, inManagedObjectContext: managedObjectContext) as Route
     }
 }
 
 extension Route
     {
+    class func primaryKeyFromRest() -> String
+    {
+        return "RouteNo"
+    }
+    
     func configureWithDictionaryFromRest(json: NSDictionary) -> Void
     {
-        routeNo = json[self.dynamicType.primaryKeyFromRest] as? Int
+        routeNo = json[self.dynamicType.primaryKeyFromRest()] as? Int
         internalRouteNo = json["InternalRouteNo"] as? Int
         alphaNumericRouteNo = json["AlphaNumericRouteNo"] as? String
         destination = json["Destination"] as? String
@@ -57,65 +58,40 @@ extension Route
         }
     }
     
-    class func insertOrUpdatesRouteWithDictionaryFromRest(routeDictionary: NSDictionary, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> NSManagedObjectID
+    class func insertOrUpdateRouteWithDictionaryFromRest(routeDictionary: NSDictionary, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> NSManagedObjectID
     {
         var foundRoute: Route?
-        if let routeNo = routeDictionary[self.primaryKeyFromRest] as? Int
+        if let routeNo = routeDictionary[self.primaryKeyFromRest()] as? Int
         {
-            let result = fetchOneRouteForPrimaryKey(routeNo, usingManagedObjectContext: managedObjectContext)
+            let result: (route: Route?, error:NSError?) = fetchOneForPrimaryKey(routeNo, usingManagedObjectContext: managedObjectContext)
             foundRoute = result.route
         }
         
-        var route = (foundRoute) ? foundRoute! : insertInManagedObjectContext(managedObjectContext)
+        var route: Route
+        if foundRoute
+        {
+            route = foundRoute!
+        }
+        else
+        {
+            route = insertInManagedObjectContext(managedObjectContext) as Route
+        }
+        
         route.configureWithDictionaryFromRest(routeDictionary as NSDictionary)
         managedObjectContext.obtainPermanentIDsForObjects([route], error: nil)
         
         return route.objectID
     }
     
-    class func insertOrUpdatesRoutesFromRestArray(array: NSDictionary[], inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> NSManagedObjectID[]
+    class func insertOrUpdateRoutesFromRestArray(array: NSDictionary[], inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> NSManagedObjectID[]
     {
         let objectIds = array.map {
             routeDictionary -> NSManagedObjectID in
             
-            return self.insertOrUpdatesRouteWithDictionaryFromRest(routeDictionary, inManagedObjectContext: managedObjectContext)
+            let objectId: NSManagedObjectID = self.insertOrUpdateRouteWithDictionaryFromRest(routeDictionary, inManagedObjectContext: managedObjectContext)
+            return objectId
         }
         
         return objectIds
-    }
-}
-
-extension Route
-    {
-    class func fetchOneRouteForPrimaryKey(primaryKey: AnyObject, usingManagedObjectContext managedObjectContext: NSManagedObjectContext) -> (route: Route?, error:NSError?)
-    {
-        let predicate = NSPredicate(format:"%K == %@", argumentArray: [self.primaryKey, primaryKey])        
-        let request = NSFetchRequest(entityName: self.entityName)
-        request.predicate = predicate
-        request.fetchLimit = 1
-        
-        var error: NSError?
-        let routes = managedObjectContext.executeFetchRequest(request, error: &error)
-        
-        var route: Route?
-        if routes.count > 0
-        {
-            assert(routes.count == 1, "we sould not have duplicates routes for the same routeNo")
-            route = routes[0] as? Route
-        }
-        
-        return (route, error)
-    }
-    
-    class func fetchAllRoutesForManagedObjectIds(managedObjectIds: NSManagedObjectID[], usingManagedObjectContext managedObjectContext: NSManagedObjectContext) -> (routes: Route[]?, error:NSError?)
-    {
-        let predicate = NSPredicate(format:"self IN %@", managedObjectIds)
-        let request = NSFetchRequest(entityName: self.entityName)
-        request.predicate = predicate
-        
-        var error: NSError?
-        let foundRoutes = managedObjectContext.executeFetchRequest(request, error: &error) as? Route[]
-        
-        return (foundRoutes, error)
     }
 }

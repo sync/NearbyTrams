@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5F1827011955AD6C00626BBB /* StopInformationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1827001955AD6C00626BBB /* StopInformationSpec.swift */; };
+		5F22E4CF195E8F61000E86D5 /* NSManagedObject+InsertAndFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F22E4CE195E8F61000E86D5 /* NSManagedObject+InsertAndFetch.swift */; };
 		5F3AA7871954FED400133BCF /* CoreDataTestsHelperStoreSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3AA7851954FED400133BCF /* CoreDataTestsHelperStoreSpec.swift */; };
 		5F47BD8B195505A60054CFD1 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F3AA79E1955044700133BCF /* Quick.framework */; };
 		5F47BD90195505AD0054CFD1 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F3AA7AF195504F600133BCF /* Nimble.framework */; };
@@ -122,6 +123,7 @@
 
 /* Begin PBXFileReference section */
 		5F1827001955AD6C00626BBB /* StopInformationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopInformationSpec.swift; sourceTree = "<group>"; };
+		5F22E4CE195E8F61000E86D5 /* NSManagedObject+InsertAndFetch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+InsertAndFetch.swift"; sourceTree = "<group>"; };
 		5F3AA7831954FED400133BCF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F3AA7851954FED400133BCF /* CoreDataTestsHelperStoreSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTestsHelperStoreSpec.swift; sourceTree = "<group>"; };
 		5F3AA7961955044700133BCF /* Quick.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Quick.xcodeproj; path = External/Quick/Quick/Quick.xcodeproj; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				5F5A72B11956F5B600A5BD40 /* NSDate+DoNet.swift */,
+				5F22E4CE195E8F61000E86D5 /* NSManagedObject+InsertAndFetch.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -530,6 +533,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F7B05F31953F226003423B6 /* Route.swift in Sources */,
+				5F22E4CF195E8F61000E86D5 /* NSManagedObject+InsertAndFetch.swift in Sources */,
 				5F5A72B21956F5B600A5BD40 /* NSDate+DoNet.swift in Sources */,
 				5F86E95D195403530020CD54 /* CoreDataStackManager.swift in Sources */,
 				5F7B05F11953CB9C003423B6 /* Stop.swift in Sources */,

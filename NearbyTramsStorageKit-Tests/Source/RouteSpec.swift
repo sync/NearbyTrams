@@ -25,7 +25,7 @@ class RouteSpec: QuickSpec {
             
             describe("insertInManagedObjectContext") {
                 beforeEach {
-                    route = Route.insertInManagedObjectContext(moc)
+                    route = Route.insertInManagedObjectContext(moc) as Route
                 }
                 
                 it("should be non nil") {
@@ -39,7 +39,7 @@ class RouteSpec: QuickSpec {
             
             describe("configureWithDictionaryFromRest") {
                 beforeEach {
-                    route = Route.insertInManagedObjectContext(moc)
+                    route = Route.insertInManagedObjectContext(moc) as Route
                 }
                 
                 context("with valid values") {
@@ -123,7 +123,7 @@ class RouteSpec: QuickSpec {
         }
         
         describe("Rest") {
-            describe ("insertOrUpdatesRouteWithDictionaryFromRest") {
+            describe ("insertOrUpdateRouteWithDictionaryFromRest") {
                 
                 var route: NSManagedObjectID!
                 var storedRoutes: Route[]!
@@ -138,7 +138,7 @@ class RouteSpec: QuickSpec {
                         "HasLowFloor": true
                     ]
                     
-                    route = Route.insertOrUpdatesRouteWithDictionaryFromRest(json, inManagedObjectContext: moc)
+                    route = Route.insertOrUpdateRouteWithDictionaryFromRest(json, inManagedObjectContext: moc) as NSManagedObjectID
                     moc.save(nil)
                     
                     let request = NSFetchRequest(entityName: "Route")
@@ -172,9 +172,8 @@ class RouteSpec: QuickSpec {
                     expect(storedRoute.destination).to.equal("Melbourne")
                 }
             }
-
             
-            describe ("insertOrUpdatesRoutesFromRestArray") {
+            describe ("insertOrUpdateRoutesFromRestArray") {
                 
                 var routes: NSManagedObjectID[]!
                 var storedRoutes: Route[]!
@@ -199,7 +198,7 @@ class RouteSpec: QuickSpec {
                     ]
                     
                     let array: NSDictionary[] = [json1, json2]
-                    routes = Route.insertOrUpdatesRoutesFromRestArray(array, inManagedObjectContext: moc)
+                    routes = Route.insertOrUpdateRoutesFromRestArray(array, inManagedObjectContext: moc)
                     moc.save(nil)
                     
                     let request = NSFetchRequest(entityName: "Route")
@@ -242,7 +241,7 @@ class RouteSpec: QuickSpec {
                 
                 context("when empty") {
                     beforeEach() {
-                        result = Route.fetchOneRouteForPrimaryKey(5, usingManagedObjectContext: moc)
+                        result = Route.fetchOneForPrimaryKey(5, usingManagedObjectContext: moc)
                     }
                     
                     it("should return no route") {
@@ -257,18 +256,18 @@ class RouteSpec: QuickSpec {
                 context("when not empty") {
                     
                     beforeEach() {
-                        let route1 = Route.insertInManagedObjectContext(moc)
+                        let route1: Route = Route.insertInManagedObjectContext(moc)
                         route1.routeNo = 6
                         
-                        let route2 = Route.insertInManagedObjectContext(moc)
+                        let route2: Route = Route.insertInManagedObjectContext(moc)
                         route2.routeNo = 10
                         
-                        let route3 = Route.insertInManagedObjectContext(moc)
+                        let route3: Route = Route.insertInManagedObjectContext(moc)
                         route3.routeNo = 11
                         
                         moc.save(nil)
                         
-                        result = Route.fetchOneRouteForPrimaryKey(10, usingManagedObjectContext: moc)
+                        result = Route.fetchOneForPrimaryKey(10, usingManagedObjectContext: moc)
                     }
                     
                     it("should return one route") {
@@ -293,7 +292,7 @@ class RouteSpec: QuickSpec {
                 
                 context("when empty") {
                     beforeEach() {
-                        result = Route.fetchAllRoutesForManagedObjectIds([NSManagedObjectID()], usingManagedObjectContext: moc)
+                        result = Route.fetchAllForManagedObjectIds([NSManagedObjectID()], usingManagedObjectContext: moc)
                     }
                     
                     it("should return an empty array of routes") {
@@ -307,19 +306,19 @@ class RouteSpec: QuickSpec {
                 
                 context("when not empty") {
                     beforeEach() {
-                        let route1 = Route.insertInManagedObjectContext(moc)
+                        let route1: Route = Route.insertInManagedObjectContext(moc)
                         route1.routeNo = 6
                         
-                        let route2 = Route.insertInManagedObjectContext(moc)
+                        let route2: Route = Route.insertInManagedObjectContext(moc)
                         route2.routeNo = 10
                         
-                        let route3 = Route.insertInManagedObjectContext(moc)
+                        let route3: Route = Route.insertInManagedObjectContext(moc)
                         route3.routeNo = 11
                         
                         moc.obtainPermanentIDsForObjects([route1, route2, route3], error: nil)
                         moc.save(nil)
                         
-                        result = Route.fetchAllRoutesForManagedObjectIds([route2.objectID], usingManagedObjectContext: moc)
+                        result = Route.fetchAllForManagedObjectIds([route2.objectID], usingManagedObjectContext: moc)
                     }
                     
                     it("should return one route") {

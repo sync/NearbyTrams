@@ -36,14 +36,14 @@ class RoutesProvider
                 let localContext = NSManagedObjectContext(concurrencyType: .ConfinementConcurrencyType)
                 localContext.parentContext = managedObjectContext
                 
-                let objectIds: NSManagedObjectID[] = Route.insertOrUpdatesRoutesFromRestArray(routes!, inManagedObjectContext: localContext)
+                let objectIds: NSManagedObjectID[] = Route.insertOrUpdateRoutesFromRestArray(routes!, inManagedObjectContext: localContext)
                 
                 localContext.save(nil)
                 
                 if let handler = completionHandler
                 {
                     dispatch_async(dispatch_get_main_queue()) {
-                        let fetchedRoutes = Route.fetchAllRoutesForManagedObjectIds(objectIds, usingManagedObjectContext: managedObjectContext)
+                        let fetchedRoutes: (routes: Route[]?, error:NSError?) = Route.fetchAllForManagedObjectIds(objectIds, usingManagedObjectContext: managedObjectContext)
                         handler(fetchedRoutes.routes, fetchedRoutes.error)
                     }
                 }
