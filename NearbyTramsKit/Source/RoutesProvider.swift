@@ -65,7 +65,7 @@ class RoutesProvider
                     dispatch_async(dispatch_get_main_queue()) {
                         // FIXME: build a decent error here
                         let error = NSError()
-                        handler(nil, nil)
+                        handler(nil, error)
                     }
                 }
             }
