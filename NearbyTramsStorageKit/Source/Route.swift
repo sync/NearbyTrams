@@ -12,6 +12,7 @@ class Route: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObject
     @NSManaged var destination: String?
     @NSManaged var isUpDestination: Bool
     @NSManaged var hasLowFloor: Bool
+    @NSManaged var stops : NSMutableSet
     
     class var entityName: String {
         get {
