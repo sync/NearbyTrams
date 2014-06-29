@@ -73,7 +73,7 @@ class RoutesProviderSpec: QuickSpec {
                         completionError = error
                         })
                     
-                    expect{completionRoutes}.willNot.beNil()
+                    expect{completionRoutes}.willNot.beEmpty()
                     expect{completionError}.will.beNil()
                 }
             }
@@ -97,7 +97,7 @@ class RoutesProviderSpec: QuickSpec {
                         completionError = error
                         })
                     
-                    expect{completionRoutes}.willNot.beNil()
+                    expect{completionRoutes}.will.beEmpty()
                     expect{completionError}.will.beNil()
                 }
             }
