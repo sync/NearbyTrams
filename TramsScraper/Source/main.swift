@@ -15,23 +15,61 @@ var managedObjectContext: NSManagedObjectContext = {
     }()
 
 var shouldKeepRunning = true
-var provider = RoutesProvider(managedObjectContext: managedObjectContext)
-provider.getAllRoutesWithManagedObjectContext(managedObjectContext, {
+var routesProvider = RoutesProvider(managedObjectContext: managedObjectContext)
+var stopsProvider = StopsProvider(managedObjectContext: managedObjectContext)
+
+routesProvider.getAllRoutesWithManagedObjectContext(managedObjectContext) {
     routes, error -> Void in
     
     if (error)
     {
-        println("there was an error dowloading all routes:r \(error!.localizedDescription)")
+        println("there was an error dowloading all routes: \(error!.localizedDescription)")
     }
     else if (routes)
     {
-        println("got all routes: \(routes)")
+        println("found routes: \(routes!.count)")
+        
+        if routes!.isEmpty
+        {
+            shouldKeepRunning = false
+        }
+        else
+        {
+            var counter = routes!.count
+            for (index, route) in enumerate(routes!)
+            {
+                if let routeNo = route.routeNo
+                {
+                    stopsProvider.getStopsWithRouteNo(routeNo as Int, managedObjectContext: managedObjectContext) {
+                        stops, error -> Void in
+                        
+                        if (error)
+                        {
+                            println("there was an error dowloading all stops for route \(routeNo): \(error!.localizedDescription)")
+                        }
+                        else if (stops)
+                        {
+                            println("found stops:\(stops!.count) for route: \(routeNo)")
+                            
+                            route.stops = NSMutableSet(array: stops!)
+                            managedObjectContext.save(nil)
+                        }
+                        
+                        --counter
+                        shouldKeepRunning = counter != 0
+                    }
+                }
+                else
+                {
+                    --counter
+                    shouldKeepRunning = counter != 0
+                }
+            }
+
+        }
     }
-    
-    shouldKeepRunning = false
-    })
+}
 
 do {
     NSRunLoop.currentRunLoop().runUntilDate(NSDate(timeIntervalSinceNow: 1))
-}
-    while (shouldKeepRunning);
+} while (shouldKeepRunning)
