@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5F6CC98A195C38D7003C3485 /* NearbyTramsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F6CC97E195C38D7003C3485 /* NearbyTramsKit.framework */; };
+		5F8C95FF195ED06C001B329F /* StopsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C95FE195ED06C001B329F /* StopsProvider.swift */; };
+		5F8C9609195ED344001B329F /* StopsProviderSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C9608195ED344001B329F /* StopsProviderSpec.swift */; };
 		5FA5103F195C3AC7000100A5 /* NearbyTramsKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FA5103C195C3AC7000100A5 /* NearbyTramsKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5FA51048195C3C26000100A5 /* RoutesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA51047195C3C26000100A5 /* RoutesProvider.swift */; };
 		5FA5106C195C3EF6000100A5 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FA51055195C3ED3000100A5 /* Nimble.framework */; };
@@ -149,6 +151,8 @@
 /* Begin PBXFileReference section */
 		5F6CC97E195C38D7003C3485 /* NearbyTramsKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NearbyTramsKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F6CC989195C38D7003C3485 /* NearbyTramsKit-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NearbyTramsKit-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F8C95FE195ED06C001B329F /* StopsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopsProvider.swift; sourceTree = "<group>"; };
+		5F8C9608195ED344001B329F /* StopsProviderSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopsProviderSpec.swift; sourceTree = "<group>"; };
 		5FA51033195C3A91000100A5 /* NearbyTramsKit-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "NearbyTramsKit-Debug.xcconfig"; sourceTree = "<group>"; };
 		5FA51034195C3A91000100A5 /* NearbyTramsKit-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "NearbyTramsKit-Release.xcconfig"; sourceTree = "<group>"; };
 		5FA51035195C3A91000100A5 /* NearbyTramsKit-Tests-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "NearbyTramsKit-Tests-Debug.xcconfig"; sourceTree = "<group>"; };
@@ -325,6 +329,7 @@
 			isa = PBXGroup;
 			children = (
 				5FA51047195C3C26000100A5 /* RoutesProvider.swift */,
+				5F8C95FE195ED06C001B329F /* StopsProvider.swift */,
 			);
 			name = Providers;
 			sourceTree = "<group>";
@@ -341,6 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				5FA5106E195C3F5A000100A5 /* RoutesProviderSpec.swift */,
+				5F8C9608195ED344001B329F /* StopsProviderSpec.swift */,
 			);
 			name = Providers;
 			sourceTree = "<group>";
@@ -571,6 +577,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F8C95FF195ED06C001B329F /* StopsProvider.swift in Sources */,
 				5FA8DB97195D8B2A0080EEAE /* BrowseRoutesViewControllerModel.swift in Sources */,
 				5FA51048195C3C26000100A5 /* RoutesProvider.swift in Sources */,
 			);
@@ -580,6 +587,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F8C9609195ED344001B329F /* StopsProviderSpec.swift in Sources */,
 				5FA5106F195C3F5A000100A5 /* RoutesProviderSpec.swift in Sources */,
 				5FA8DBA7195D8C5B0080EEAE /* BrowseRoutesViewControllerModelSpec.swift in Sources */,
 			);
