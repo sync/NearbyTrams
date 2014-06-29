@@ -51,7 +51,7 @@ class NetworkService
             })
         task.resume()
         
-        return task;
+        return task
     }
 
     func getStopsByRouteAndDirectionWithRouteNo(routeNo: Int, completionHandler: ((NSDictionary[]?, NSError?) -> Void)?) -> NSURLSessionDataTask
@@ -91,7 +91,7 @@ class NetworkService
             })
         task.resume()
         
-        return task;
+        return task
     }
     
     func getStopInformationWithStopNo(stopNo: NSString, completionHandler: ((NSDictionary?, NSError?) -> Void)?) -> NSURLSessionDataTask
@@ -130,7 +130,7 @@ class NetworkService
             })
         task.resume()
         
-        return task;
+        return task
     }
     
     func getNextPredictionsForStop(stopNo: NSString, timestamp: NSDate, completionHandler: ((NSDictionary[]?, NSError?) -> Void)?) -> NSURLSessionDataTask
@@ -170,6 +170,6 @@ class NetworkService
             })
         task.resume()
         
-        return task;
+        return task
     }
 }

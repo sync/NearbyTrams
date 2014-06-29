@@ -54,7 +54,7 @@ class CoreDataStackManager {
             return nil
         }
         
-        let mom = self.managedObjectModel;
+        let mom = self.managedObjectModel
         let psc = NSPersistentStoreCoordinator(managedObjectModel:self.managedObjectModel)
         let options = [NSMigratePersistentStoresAutomaticallyOption : 1, NSInferMappingModelAutomaticallyOption : 1]
         var error: NSError?

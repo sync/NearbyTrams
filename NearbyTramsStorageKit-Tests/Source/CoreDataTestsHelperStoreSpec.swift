@@ -16,7 +16,7 @@ class CoreDataTestsStoreSpec: QuickSpec {
             }
             
             it("should be non nil") {
-                let moc = store.managedObjectContext;
+                let moc = store.managedObjectContext
                 expect(moc).notTo.beNil()
             }
         }

@@ -62,7 +62,7 @@ func getStopInformationWithStopNo(stopNo: NSString, completionHandler: ((NSManag
     })
     task.resume()
     
-    return task;
+    return task
 }
 
 let stopNo = "1234"
