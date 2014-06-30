@@ -4,7 +4,7 @@
 
 import CoreData
 
-class Schedule: NSManagedObject
+class Schedule: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObject
 {
     @NSManaged var airConditioned: Bool
     @NSManaged var destination: String?
@@ -22,9 +22,22 @@ class Schedule: NSManagedObject
     @NSManaged var tripID: NSNumber? // Why when Int it crashes
     @NSManaged var vehicleNo: NSNumber? // Why when Int it crashes
     
-    class func insertInManagedObjectContext(managedObjectContext: NSManagedObjectContext) -> Schedule
-    {
-        return NSEntityDescription.insertNewObjectForEntityForName("Schedule", inManagedObjectContext: managedObjectContext) as Schedule
+    class var entityName: String {
+        get {
+            return "Schedule"
+    }
+    }
+    
+    class var primaryKey: String {
+        get {
+            return "tripID"
+    }
+    }
+    
+    class var primaryKeyFromRest: String {
+        get {
+            return "TripID"
+    }
     }
     
     func configureWithDictionaryFromRest(json: NSDictionary) -> Void

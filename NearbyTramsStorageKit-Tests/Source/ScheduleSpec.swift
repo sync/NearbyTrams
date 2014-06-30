@@ -24,7 +24,7 @@ class ScheduleSpec: QuickSpec {
             
             describe("insertInManagedObjectContext") {
                 beforeEach {
-                    prediction = Schedule.insertInManagedObjectContext(moc)
+                    prediction = Schedule.insertInManagedObjectContext(moc) as Schedule
                 }
                 
                 it("should be non nil") {
@@ -38,7 +38,7 @@ class ScheduleSpec: QuickSpec {
             
             describe("configureWithDictionaryFromRest") {
                 beforeEach {
-                    prediction = Schedule.insertInManagedObjectContext(moc)
+                    prediction = Schedule.insertInManagedObjectContext(moc) as Schedule
                 }
                 
                 context("with valid values") {
