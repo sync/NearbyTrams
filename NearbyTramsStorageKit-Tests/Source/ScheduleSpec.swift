@@ -6,12 +6,12 @@ import Quick
 import Nimble
 import NearbyTramsStorageKit
 
-class NextPredictedRoutesCollectionInfoSpec: QuickSpec {
+class ScheduleSpec: QuickSpec {
     override func spec() {
         describe("A Prediction") {
             var store: CoreDataTestsHelperStore!
             var moc: NSManagedObjectContext!
-            var prediction: NextPredictedRoutesCollectionInfo!
+            var prediction: Schedule!
             
             beforeEach {
                 store = CoreDataTestsHelperStore()
@@ -24,7 +24,7 @@ class NextPredictedRoutesCollectionInfoSpec: QuickSpec {
             
             describe("insertInManagedObjectContext") {
                 beforeEach {
-                    prediction = NextPredictedRoutesCollectionInfo.insertInManagedObjectContext(moc)
+                    prediction = Schedule.insertInManagedObjectContext(moc)
                 }
                 
                 it("should be non nil") {
@@ -32,13 +32,13 @@ class NextPredictedRoutesCollectionInfoSpec: QuickSpec {
                 }
                 
                 it("should be a member of the Route class") {
-                    expect(prediction.isMemberOfClass(NextPredictedRoutesCollectionInfo)).to.beTrue()
+                    expect(prediction.isMemberOfClass(Schedule)).to.beTrue()
                 }
             }
             
             describe("configureWithDictionaryFromRest") {
                 beforeEach {
-                    prediction = NextPredictedRoutesCollectionInfo.insertInManagedObjectContext(moc)
+                    prediction = Schedule.insertInManagedObjectContext(moc)
                 }
                 
                 context("with valid values") {

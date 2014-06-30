@@ -4,7 +4,7 @@
 
 import CoreData
 
-class NextPredictedRoutesCollectionInfo: NSManagedObject
+class Schedule: NSManagedObject
 {
     @NSManaged var airConditioned: Bool
     @NSManaged var destination: String?
@@ -22,9 +22,9 @@ class NextPredictedRoutesCollectionInfo: NSManagedObject
     @NSManaged var tripID: NSNumber? // Why when Int it crashes
     @NSManaged var vehicleNo: NSNumber? // Why when Int it crashes
     
-    class func insertInManagedObjectContext(managedObjectContext: NSManagedObjectContext) -> NextPredictedRoutesCollectionInfo
+    class func insertInManagedObjectContext(managedObjectContext: NSManagedObjectContext) -> Schedule
     {
-        return NSEntityDescription.insertNewObjectForEntityForName("NextPredictedRoutesCollectionInfo", inManagedObjectContext: managedObjectContext) as NextPredictedRoutesCollectionInfo
+        return NSEntityDescription.insertNewObjectForEntityForName("Schedule", inManagedObjectContext: managedObjectContext) as Schedule
     }
     
     func configureWithDictionaryFromRest(json: NSDictionary) -> Void

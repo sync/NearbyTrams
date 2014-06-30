@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6172.15" systemVersion="14A261i" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="NextPredictedRoutesCollectionInfo" representedClassName="NearbyTramsStorageKit.NextPredictedRoutesCollectionInfo" syncable="YES">
+    <entity name="Route" representedClassName="NearbyTramsStorageKit.Route" syncable="YES">
+        <attribute name="alphaNumericRouteNo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="destination" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hasLowFloor" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="internalRouteNo" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="isUpDestination" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="routeNo" optional="YES" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <relationship name="stops" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Stop" inverseName="route" inverseEntity="Stop" syncable="YES"/>
+    </entity>
+    <entity name="Schedule" representedClassName="NearbyTramsStorageKit.Schedule" syncable="YES">
         <attribute name="airConditioned" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="destination" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="displayAC" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -16,15 +25,6 @@
         <attribute name="specialEventMessage" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tripID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="vehicleNo" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-    </entity>
-    <entity name="Route" representedClassName="NearbyTramsStorageKit.Route" syncable="YES">
-        <attribute name="alphaNumericRouteNo" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="destination" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="hasLowFloor" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="internalRouteNo" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="isUpDestination" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="routeNo" optional="YES" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
-        <relationship name="stops" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Stop" inverseName="route" inverseEntity="Stop" syncable="YES"/>
     </entity>
     <entity name="Stop" representedClassName="NearbyTramsStorageKit.Stop" syncable="YES">
         <attribute name="cityDirection" optional="YES" attributeType="String" syncable="YES"/>
@@ -42,7 +42,7 @@
         <relationship name="route" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Route" inverseName="stops" inverseEntity="Route" syncable="YES"/>
     </entity>
     <elements>
-        <element name="NextPredictedRoutesCollectionInfo" positionX="-63" positionY="72" width="128" height="268"/>
+        <element name="Schedule" positionX="-63" positionY="72" width="128" height="270"/>
         <element name="Route" positionX="-63" positionY="72" width="128" height="148"/>
         <element name="Stop" positionX="-63" positionY="-18" width="128" height="238"/>
     </elements>
