@@ -38,7 +38,7 @@ func parseJSON(inputData: NSData) -> NSDictionary
     return dictionary
 }
 
-func getStopInformationWithStopNo(stopNo: NSString, completionHandler: ((NSManagedObject?, NSError?) -> Void)!) -> NSURLSessionDataTask!
+func getStopInformationWithStopNo(stopNo: Int, completionHandler: ((NSManagedObject?, NSError?) -> Void)!) -> NSURLSessionDataTask!
 {
     // thanks to: http://wongm.com/2014/03/tramtracker-api-dumphone-access/
     let url = NSURL(string: "http://tramtracker.com/Controllers/GetStopInformation.ashx?s=\(stopNo)")
@@ -65,7 +65,7 @@ func getStopInformationWithStopNo(stopNo: NSString, completionHandler: ((NSManag
     return task
 }
 
-let stopNo = "1234"
+let stopNo = 1234
 let stopInfoTask = getStopInformationWithStopNo(stopNo, {
     stop, error -> Void in
     

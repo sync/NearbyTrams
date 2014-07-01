@@ -205,14 +205,14 @@ class NetworkServiceSpec: QuickSpec {
             }
             
             it("should return a session data task") {
-                let task = service.getStopInformationWithStopNo("123", completionHandler: nil)
+                let task = service.getStopInformationWithStopNo(123, completionHandler: nil)
                 
                 expect(task).notTo.beNil()
             }
             
             it("should have added to the query url the stop no") {
                 //originalRequest
-                let task = service.getStopInformationWithStopNo("123", completionHandler: nil)
+                let task = service.getStopInformationWithStopNo(123, completionHandler: nil)
                 
                 expect(task.originalRequest.URL.absoluteString).to.contain("123")
             }
@@ -236,7 +236,7 @@ class NetworkServiceSpec: QuickSpec {
                     var dictionary: NSDictionary!
                     var completionError: NSError!
                     
-                    let stopInfoTask = service.getStopInformationWithStopNo("123", {
+                    let stopInfoTask = service.getStopInformationWithStopNo(123, {
                         stop, error -> Void in
                         
                         dictionary = stop
@@ -267,7 +267,7 @@ class NetworkServiceSpec: QuickSpec {
                     var dictionary: NSDictionary!
                     var completionError: NSError!
                     
-                    let task = service.getStopInformationWithStopNo("123", {
+                    let task = service.getStopInformationWithStopNo(123, {
                         stop, error -> Void in
                         
                         dictionary = stop
@@ -280,7 +280,7 @@ class NetworkServiceSpec: QuickSpec {
             }
         }
         
-        describe("getNextPredictionsForStop") {
+        describe("getNextPredictionsWithStopNo") {
             beforeEach {
                 let configuration = NSURLSessionConfiguration.ephemeralSessionConfiguration()
                 let urlProcolClass: AnyObject = ClassUtility.classFromType(MockWebServiceURLProtocol.self)
@@ -290,14 +290,14 @@ class NetworkServiceSpec: QuickSpec {
             }
             
             it("should return a session data task") {
-                let task = service.getNextPredictionsForStop("123", timestamp: NSDate(), completionHandler: nil)
+                let task = service.getNextPredictionsWithStopNo(123, timestamp: NSDate(), completionHandler: nil)
                 
                 expect(task).notTo.beNil()
             }
             
             it("should have added to the query url the stop no") {
                 //originalRequest
-                let task = service.getNextPredictionsForStop("123", timestamp: NSDate(), completionHandler: nil)
+                let task = service.getNextPredictionsWithStopNo(123, timestamp: NSDate(), completionHandler: nil)
                 
                 expect(task.originalRequest.URL.absoluteString).to.contain("123")
             }
@@ -306,7 +306,7 @@ class NetworkServiceSpec: QuickSpec {
                 let date = NSDate()
                 
                 //originalRequest
-                let task = service.getNextPredictionsForStop("123", timestamp: date, completionHandler: nil)
+                let task = service.getNextPredictionsWithStopNo(123, timestamp: date, completionHandler: nil)
                 
                 expect(task.originalRequest.URL.absoluteString).to.contain(String(date.timeIntervalSince1970 * 1000))
             }
@@ -330,7 +330,7 @@ class NetworkServiceSpec: QuickSpec {
                     var array: NSDictionary[]!
                     var completionError: NSError!
                     
-                    let stopInfoTask = service.getNextPredictionsForStop("123", timestamp: NSDate(), {
+                    let stopInfoTask = service.getNextPredictionsWithStopNo(123, timestamp: NSDate(), {
                         predictions, error -> Void in
                         
                         array = predictions
@@ -361,7 +361,7 @@ class NetworkServiceSpec: QuickSpec {
                     var array: NSDictionary[]!
                     var completionError: NSError!
                     
-                    let task = service.getNextPredictionsForStop("123", timestamp: NSDate(), {
+                    let task = service.getNextPredictionsWithStopNo(123, timestamp: NSDate(), {
                         predictions, error -> Void in
                         
                         array = predictions

@@ -94,7 +94,7 @@ class NetworkService
         return task
     }
     
-    func getStopInformationWithStopNo(stopNo: NSString, completionHandler: ((NSDictionary?, NSError?) -> Void)?) -> NSURLSessionDataTask
+    func getStopInformationWithStopNo(stopNo: Int, completionHandler: ((NSDictionary?, NSError?) -> Void)?) -> NSURLSessionDataTask
     {
         // thanks to: http://wongm.com/2014/03/tramtracker-api-dumphone-access/
         let url = NSURL(string: "/Controllers/GetStopInformation.ashx?stopNo=\(stopNo)", relativeToURL: baseURL)
@@ -133,7 +133,7 @@ class NetworkService
         return task
     }
     
-    func getNextPredictionsForStop(stopNo: NSString, timestamp: NSDate, completionHandler: ((NSDictionary[]?, NSError?) -> Void)?) -> NSURLSessionDataTask
+    func getNextPredictionsWithStopNo(stopNo: Int, timestamp: NSDate, completionHandler: ((NSDictionary[]?, NSError?) -> Void)?) -> NSURLSessionDataTask
     {
         // thanks to: http://wongm.com/2014/03/tramtracker-api-dumphone-access/
         // not sure about ts format yet, unix time ??
