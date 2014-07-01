@@ -137,7 +137,7 @@ class NetworkService
     {
         // thanks to: http://wongm.com/2014/03/tramtracker-api-dumphone-access/
         // not sure about ts format yet, unix time ??
-        let url = NSURL(string: "/Controllers/GetNextPredictionsForStop.ashx?s=\(stopNo)&routeNo=0&isLowFloor=false&ts=\(timestamp.timeIntervalSince1970 * 1000)", relativeToURL: baseURL)
+        let url = NSURL(string: "/Controllers/GetNextPredictionsForStop.ashx?stopNo=\(stopNo)&routeNo=0&isLowFloor=false&ts=\(timestamp.timeIntervalSince1970 * 1000)", relativeToURL: baseURL)
         
         let session = NSURLSession(configuration: configuration)
         let task = session.dataTaskWithURL(url, completionHandler:{
