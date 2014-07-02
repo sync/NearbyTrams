@@ -53,4 +53,11 @@ class Stop: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObject
         latitude = json["Latitude"] as? Double
         longitude = json["Longitude"] as? Double
     }
+    
+    func configureWithPartialDictionaryFromRest(json: NSDictionary) -> Void
+    {
+        cityDirection = json["CityDirection"] as? String
+        flagStopNo = json["FlagStopNo"] as? String
+        stopName = json["StopName"] as? String
+    }
 }

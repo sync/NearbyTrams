@@ -179,6 +179,98 @@ class StopSpec: QuickSpec {
                     }
                 }
             }
+            
+            describe("configureWithPartialDictionaryFromRest") {
+                beforeEach {
+                    stop = Stop.insertInManagedObjectContext(moc) as Stop
+                }
+                
+                context("with valid values") {
+                    beforeEach {
+                        var fullJson: Dictionary<String, AnyObject> = [
+                            "CityDirection": "a city direction",
+                            "Description": "a description",
+                            "Destination": "a destination",
+                            "FlagStopNo": "Stop 965a",
+                            "RouteNo": 5,
+                            "StopID": "567aab",
+                            "StopName": "Burke Rd / Canterbury Rd",
+                            "StopNo": 14,
+                            "Suburb": "Canterbury",
+                            "DistanceToLocation": 14.00,
+                            "Latitude": -36.45,
+                            "Longitude": 145.68,
+                        ]
+                        
+                        stop.configureWithDictionaryFromRest(fullJson)
+                        
+                        var json: Dictionary<String, AnyObject> = [
+                            "CityDirection": "from city",
+                            "Description": NSNull(),
+                            "Destination": NSNull(),
+                            "FlagStopNo": "66",
+                            "RouteNo": 0,
+                            "StopID": NSNull(),
+                            "StopName": "Rathmines Rd / Canterbury Rd",
+                            "StopNo": 0,
+                            "Suburb": NSNull(),
+                            "DistanceToLocation": 0,
+                            "Latitude": 0,
+                            "Longitude": 0,
+                        ]
+                        
+                        stop.configureWithPartialDictionaryFromRest(json)
+                    }
+                    
+                    it("should have a CityDirection") {
+                        expect(stop.cityDirection).to.equal("from city")
+                    }
+                    
+                    it("should have a Description") {
+                        expect(stop.stopDescription).to.equal("a description")
+                    }
+                    
+                    it("should have a Destination") {
+                        expect(stop.destination).to.equal("a destination")
+                    }
+                    
+                    it("should have a FlagStopNo") {
+                        expect(stop.flagStopNo).to.equal("66")
+                    }
+                    
+                    it("should have a RouteNo") {
+                        expect(stop.routeNo).to.equal(5)
+                    }
+                    
+                    it("should have a StopID") {
+                        expect(stop.stopID).to.equal("567aab")
+                    }
+                    
+                    it("should have a StopName") {
+                        expect(stop.stopName).to.equal("Rathmines Rd / Canterbury Rd")
+                    }
+                    
+                    it("should have a StopNo") {
+                        expect(stop.stopNo).to.equal(14)
+                    }
+                    
+                    it("should have a Suburb") {
+                        expect(stop.suburb).to.equal("Canterbury")
+                    }
+                    
+                    it("should have a DistanceToLocation") {
+                        expect(stop.distanceToLocation).to.equal(14.00)
+                    }
+                    
+                    it("should have a Latitude") {
+                        expect(stop.latitude).to.equal(-36.45)
+                    }
+                    
+                    it("should be a Longitude") {
+                        expect(stop.longitude).to.equal(145.68)
+                    }
+                }
+            }
         }
         
         // InsertAndFetchManagedObject, RESTManagedObject conformance is based on generics
