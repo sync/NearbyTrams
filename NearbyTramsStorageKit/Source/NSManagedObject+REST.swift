@@ -18,7 +18,7 @@ extension NSManagedObject
         var foundManagedObject: T?
         if let primaryKeyValue : AnyObject = dictionary[T.primaryKeyFromRest]
         {
-            let result: (managedObject: T?, error:NSError?) = fetchOneForPrimaryKey(primaryKeyValue, usingManagedObjectContext: managedObjectContext)
+            let result: (managedObject: T?, error: NSError?) = fetchOneForPrimaryKey(primaryKeyValue, usingManagedObjectContext: managedObjectContext)
             foundManagedObject = result.managedObject
         }
         else
