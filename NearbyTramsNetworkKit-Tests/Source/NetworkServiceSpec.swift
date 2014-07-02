@@ -34,7 +34,7 @@ class NetworkServiceSpec: QuickSpec {
         
         describe("getAllRoutesWithCompletionHandler") {
             beforeEach {
-                let configuration = NSURLSessionConfiguration.ephemeralSessionConfiguration()
+                let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
                 let urlProcolClass: AnyObject = ClassUtility.classFromType(MockWebServiceURLProtocol.self)
                 configuration.protocolClasses = [urlProcolClass]
                 
@@ -112,7 +112,7 @@ class NetworkServiceSpec: QuickSpec {
         
         describe("getStopsByRouteAndDirectionWithRouteNo") {
             beforeEach {
-                let configuration = NSURLSessionConfiguration.ephemeralSessionConfiguration()
+                let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
                 let urlProcolClass: AnyObject = ClassUtility.classFromType(MockWebServiceURLProtocol.self)
                 configuration.protocolClasses = [urlProcolClass]
                 
@@ -197,7 +197,7 @@ class NetworkServiceSpec: QuickSpec {
         
         describe("getStopInformationWithStopNo") {
             beforeEach {
-                let configuration = NSURLSessionConfiguration.ephemeralSessionConfiguration()
+                let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
                 let urlProcolClass: AnyObject = ClassUtility.classFromType(MockWebServiceURLProtocol.self)
                 configuration.protocolClasses = [urlProcolClass]
                 
@@ -282,7 +282,7 @@ class NetworkServiceSpec: QuickSpec {
         
         describe("getNextPredictionsWithStopNo") {
             beforeEach {
-                let configuration = NSURLSessionConfiguration.ephemeralSessionConfiguration()
+                let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
                 let urlProcolClass: AnyObject = ClassUtility.classFromType(MockWebServiceURLProtocol.self)
                 configuration.protocolClasses = [urlProcolClass]
                 

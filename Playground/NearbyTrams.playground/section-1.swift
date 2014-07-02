@@ -42,7 +42,7 @@ func getStopInformationWithStopNo(stopNo: Int, completionHandler: ((NSManagedObj
 {
     // thanks to: http://wongm.com/2014/03/tramtracker-api-dumphone-access/
     let url = NSURL(string: "http://tramtracker.com/Controllers/GetStopInformation.ashx?s=\(stopNo)")
-    let session = NSURLSession(configuration: NSURLSessionConfiguration.ephemeralSessionConfiguration())
+    let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
     let task = session.dataTaskWithURL(url, completionHandler:{
         data, response, error -> Void in
         

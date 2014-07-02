@@ -19,7 +19,7 @@ class ScheduleProviderSpec: QuickSpec {
             store = CoreDataTestsHelperStore()
             moc = store.managedObjectContext
             
-            let configuration = NSURLSessionConfiguration.ephemeralSessionConfiguration()
+            let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
             let urlProcolClass: AnyObject = ClassUtility.classFromType(MockWebServiceURLProtocol.self)
             configuration.protocolClasses = [urlProcolClass]
             networkService = NetworkService(baseURL: NSURL(string: "mock://www.apple.com"), configuration: configuration)
