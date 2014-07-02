@@ -17,7 +17,7 @@ class SchedulesProvider
         self.managedObjectContext = managedObjectContext
     }
     
-    func getNextPredictionsWithStopNo(stopNo: Int, managedObjectContext: NSManagedObjectContext, completionHandler: ((Schedule[]?, NSError?) -> Void)?) -> Void
+    func getNextPredictionsWithStopNo(stopNo: Int, managedObjectContext: NSManagedObjectContext, completionHandler: ((NSManagedObjectID         []?, NSError?) -> Void)?) -> Void
     {
         let task = networkService.getNextPredictionsWithStopNo(stopNo, timestamp: NSDate()) {
             schedules, error -> Void in
@@ -53,8 +53,7 @@ class SchedulesProvider
                 if let handler = completionHandler
                 {
                     dispatch_async(dispatch_get_main_queue()) {
-                        let fetchedSchedules: (schedules: Schedule[]?, error:NSError?) = Schedule.fetchAllForManagedObjectIds(objectIds, usingManagedObjectContext: managedObjectContext)
-                        handler(fetchedSchedules.schedules, fetchedSchedules.error)
+                        handler(objectIds, nil)
                     }
                 }
             }

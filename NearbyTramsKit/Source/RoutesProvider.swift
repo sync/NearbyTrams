@@ -17,7 +17,7 @@ class RoutesProvider
         self.managedObjectContext = managedObjectContext
     }
     
-    func getAllRoutesWithManagedObjectContext(managedObjectContext: NSManagedObjectContext, completionHandler: ((Route[]?, NSError?) -> Void)?) -> Void
+    func getAllRoutesWithManagedObjectContext(managedObjectContext: NSManagedObjectContext, completionHandler: ((NSManagedObjectID[]?, NSError?) -> Void)?) -> Void
     {
         let task = networkService.getAllRoutesWithCompletionHandler {
             routes, error -> Void in
@@ -53,8 +53,7 @@ class RoutesProvider
                 if let handler = completionHandler
                 {
                     dispatch_async(dispatch_get_main_queue()) {
-                        let fetchedRoutes: (routes: Route[]?, error:NSError?) = Route.fetchAllForManagedObjectIds(objectIds, usingManagedObjectContext: managedObjectContext)
-                        handler(fetchedRoutes.routes, fetchedRoutes.error)
+                        handler(objectIds, nil)
                     }
                 }
             }

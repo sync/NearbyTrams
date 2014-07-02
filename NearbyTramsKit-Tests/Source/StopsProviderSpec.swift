@@ -33,7 +33,7 @@ class StopsProviderSpec: QuickSpec {
         
         describe("getStopsWithRouteNo") {
             
-            var completionStops: Stop[]!
+            var completionStops: NSManagedObjectID[]!
             var completionError: NSError!
             
             context("when some stops are avaible") {

@@ -19,50 +19,58 @@ var routesProvider = RoutesProvider(managedObjectContext: managedObjectContext)
 var stopsProvider = StopsProvider(managedObjectContext: managedObjectContext)
 
 routesProvider.getAllRoutesWithManagedObjectContext(managedObjectContext) {
-    routes, error -> Void in
+    routeObjectIds, error -> Void in
     
     if (error)
     {
         println("there was an error dowloading all routes: \(error!.localizedDescription)")
     }
-    else if (routes)
+    else if (routeObjectIds)
     {
-        println("found routes: \(routes!.count)")
+        println("found routes: \(routeObjectIds!.count)")
         
-        if routes!.isEmpty
+        if routeObjectIds!.isEmpty
         {
             shouldKeepRunning = false
         }
         else
         {
-            var counter = routes!.count
-            for (index, route) in enumerate(routes!)
+            let fetchedRoutes: (routes: Route[]?, error:NSError?) = Route.fetchAllForManagedObjectIds(routeObjectIds!, usingManagedObjectContext: managedObjectContext)
+            if let routes = fetchedRoutes.routes
             {
-                if let routeNo = route.routeNo
+                var counter = routes.count
+                for (index, route) in enumerate(routes)
                 {
-                    stopsProvider.getStopsWithRouteNo(routeNo as Int, managedObjectContext: managedObjectContext) {
-                        stops, error -> Void in
-                        
-                        if (error)
-                        {
-                            println("there was an error dowloading all stops for route \(routeNo): \(error!.localizedDescription)")
-                        }
-                        else if (stops)
-                        {
-                            println("found stops:\(stops!.count) for route: \(routeNo)")
+                    if let routeNo = route.routeNo
+                    {
+                        stopsProvider.getStopsWithRouteNo(routeNo as Int, managedObjectContext: managedObjectContext) {
+                            stopObjectIds, error -> Void in
                             
-                            route.stops = NSMutableSet(array: stops!)
-                            managedObjectContext.save(nil)
+                            if (error)
+                            {
+                                println("there was an error dowloading all stops for route \(routeNo): \(error!.localizedDescription)")
+                            }
+                            else if (stopObjectIds)
+                            {
+                                println("found stops:\(stopObjectIds!.count) for route: \(routeNo)")
+                                
+                                let fetchedStops: (stops: Stop[]?, error:NSError?) = Stop.fetchAllForManagedObjectIds(stopObjectIds!, usingManagedObjectContext: managedObjectContext)
+                                if let stops = fetchedStops.stops
+                                {
+                                    route.stops = NSMutableSet(array: stops)
+                                    managedObjectContext.save(nil)
+                                }
+                            }
+                            
+                            --counter
+                            shouldKeepRunning = counter != 0
                         }
-                        
+                    }
+                    else
+                    {
                         --counter
                         shouldKeepRunning = counter != 0
                     }
-                }
-                else
-                {
-                    --counter
-                    shouldKeepRunning = counter != 0
                 }
             }
 

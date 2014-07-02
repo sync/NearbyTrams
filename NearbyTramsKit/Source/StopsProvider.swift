@@ -17,7 +17,7 @@ class StopsProvider
         self.managedObjectContext = managedObjectContext
     }
     
-    func getStopsWithRouteNo(routeNo: Int, managedObjectContext: NSManagedObjectContext, completionHandler: ((Stop[]?, NSError?) -> Void)?) -> Void
+    func getStopsWithRouteNo(routeNo: Int, managedObjectContext: NSManagedObjectContext, completionHandler: ((NSManagedObjectID[]?, NSError?) -> Void)?) -> Void
     {
         let task = networkService.getStopsByRouteAndDirectionWithRouteNo(routeNo) {
             stops, error -> Void in
@@ -36,7 +36,6 @@ class StopsProvider
                 let localContext = NSManagedObjectContext(concurrencyType: .ConfinementConcurrencyType)
                 localContext.parentContext = managedObjectContext
                 
-                
                 let result: (stops: Stop?[], errors: NSError?[]) = Stop.insertOrUpdateFromRestArray(stops!, inManagedObjectContext: localContext)
                 
                 var objectIds: NSManagedObjectID[] = []
@@ -53,8 +52,7 @@ class StopsProvider
                 if let handler = completionHandler
                 {
                     dispatch_async(dispatch_get_main_queue()) {
-                        let fetchedStops: (stops: Stop[]?, error:NSError?) = Stop.fetchAllForManagedObjectIds(objectIds, usingManagedObjectContext: managedObjectContext)
-                        handler(fetchedStops.stops, fetchedStops.error)
+                        handler(objectIds, nil)
                     }
                 }
             }
