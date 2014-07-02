@@ -22,12 +22,16 @@ class NetworkServiceSpec: QuickSpec {
             }
             
             context("when provided with a configuration") {
+                
+                var configuration: NSURLSessionConfiguration?
+                
                 beforeEach {
-                    service = NetworkService(configuration: NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier("background"))
+                    configuration = NSURLSessionConfiguration.ephemeralSessionConfiguration()
+                    service = NetworkService(configuration: configuration!)
                 }
                 
                 it("should have a configuration") {
-                    expect(service.configuration.identifier).to.equal("background")
+                    expect(service.configuration).to.equal(configuration)
                 }
             }
         }

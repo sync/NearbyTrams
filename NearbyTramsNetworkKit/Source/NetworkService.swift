@@ -8,11 +8,13 @@ class NetworkService
 {
     let baseURL: NSURL
     let configuration: NSURLSessionConfiguration
+    let session: NSURLSession
     
     init(baseURL: NSURL = NSURL(string: "http://www.tramtracker.com"), configuration: NSURLSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration())
     {
         self.baseURL = baseURL
         self.configuration = configuration
+        self.session = NSURLSession(configuration: configuration)
     }
 
     func getAllRoutesWithCompletionHandler(completionHandler: ((NSDictionary[]?, NSError?) -> Void)?) -> NSURLSessionDataTask
@@ -20,7 +22,6 @@ class NetworkService
         // thanks to: http://wongm.com/2014/03/tramtracker-api-dumphone-access/
         let url = NSURL(string: "Controllers/GetAllRoutes.ashx", relativeToURL:baseURL)
         
-        let session = NSURLSession(configuration: configuration)
         let task = session.dataTaskWithURL(url, completionHandler:{
             data, response, error -> Void in
             
@@ -60,7 +61,6 @@ class NetworkService
         // not sure what &u=true is at the moment
         let url = NSURL(string: "/Controllers/GetStopsByRouteAndDirection.ashx?r=\(routeNo)&u=true", relativeToURL: baseURL)
         
-        let session = NSURLSession(configuration: configuration)
         let task = session.dataTaskWithURL(url, completionHandler:{
             data, response, error -> Void in
             
@@ -99,7 +99,6 @@ class NetworkService
         // thanks to: http://wongm.com/2014/03/tramtracker-api-dumphone-access/
         let url = NSURL(string: "/Controllers/GetStopInformation.ashx?s=\(stopNo)", relativeToURL: baseURL)
         
-        let session = NSURLSession(configuration: configuration)
         let task = session.dataTaskWithURL(url, completionHandler:{
             data, response, error -> Void in
             
@@ -139,7 +138,6 @@ class NetworkService
         // not sure about ts format yet, unix time ??
         let url = NSURL(string: "/Controllers/GetNextPredictionsForStop.ashx?stopNo=\(stopNo)&routeNo=0&isLowFloor=false&ts=\(timestamp.timeIntervalSince1970 * 1000)", relativeToURL: baseURL)
         
-        let session = NSURLSession(configuration: configuration)
         let task = session.dataTaskWithURL(url, completionHandler:{
             data, response, error -> Void in
             
