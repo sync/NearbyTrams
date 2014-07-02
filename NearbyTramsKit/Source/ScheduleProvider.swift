@@ -36,8 +36,8 @@ class SchedulesProvider
                 let localContext = NSManagedObjectContext(concurrencyType: .ConfinementConcurrencyType)
                 localContext.parentContext = managedObjectContext
                 
-                
                 let result: (schedules: Schedule?[], errors: NSError?[]) = Schedule.insertOrUpdateFromRestArray(schedules!, inManagedObjectContext: localContext)
+                localContext.save(nil)
                 
                 var objectIds: NSManagedObjectID[] = []
                 for potentialSchedule in result.schedules
@@ -47,8 +47,6 @@ class SchedulesProvider
                         objectIds.append(schedule.objectID)
                     }
                 }
-                
-                localContext.save(nil)
                 
                 if let handler = completionHandler
                 {

@@ -37,6 +37,7 @@ class StopsProvider
                 localContext.parentContext = managedObjectContext
                 
                 let result: (stops: Stop?[], errors: NSError?[]) = Stop.insertOrUpdateFromRestArray(stops!, inManagedObjectContext: localContext)
+                localContext.save(nil)
                 
                 var objectIds: NSManagedObjectID[] = []
                 
@@ -62,8 +63,6 @@ class StopsProvider
                         }
                     }
                 }
-                
-                localContext.save(nil)
                 
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
                     dispatch_group_wait(group, DISPATCH_TIME_FOREVER);

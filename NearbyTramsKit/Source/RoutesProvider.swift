@@ -38,6 +38,7 @@ class RoutesProvider
                 
                 
                 let result: (routes: Route?[], errors: NSError?[]) = Route.insertOrUpdateFromRestArray(routes!, inManagedObjectContext: localContext)
+                localContext.save(nil)
                 
                 var objectIds: NSManagedObjectID[] = []
                 for potentialRoute in result.routes
@@ -47,8 +48,6 @@ class RoutesProvider
                         objectIds.append(route.objectID)
                     }
                 }
-                
-                localContext.save(nil)
                 
                 if let handler = completionHandler
                 {
