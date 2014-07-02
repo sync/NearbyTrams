@@ -97,7 +97,7 @@ class NetworkService
     func getStopInformationWithStopNo(stopNo: Int, completionHandler: ((NSDictionary?, NSError?) -> Void)?) -> NSURLSessionDataTask
     {
         // thanks to: http://wongm.com/2014/03/tramtracker-api-dumphone-access/
-        let url = NSURL(string: "/Controllers/GetStopInformation.ashx?stopNo=\(stopNo)", relativeToURL: baseURL)
+        let url = NSURL(string: "/Controllers/GetStopInformation.ashx?s=\(stopNo)", relativeToURL: baseURL)
         
         let session = NSURLSession(configuration: configuration)
         let task = session.dataTaskWithURL(url, completionHandler:{

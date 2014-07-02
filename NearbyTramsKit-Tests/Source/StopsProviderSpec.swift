@@ -139,5 +139,110 @@ class StopsProviderSpec: QuickSpec {
                 }
             }
         }
+        
+        describe("getStopInformationWithStopNo") {
+            
+            var completionStop: NSManagedObjectID!
+            var completionError: NSError!
+            
+            beforeEach {
+                let stop = Stop.insertInManagedObjectContext(moc) as Stop
+                stop.stopNo = 56
+                moc.save(nil)
+            }
+            
+            context("when some stops are avaible") {
+                beforeEach {
+                    let stop = Stop.insertInManagedObjectContext(moc) as Stop
+                    stop.stopNo = 65
+                    moc.save(nil)
+                    
+                    var json1: Dictionary<String, AnyObject> = [ : ]
+                    json1["CityDirection"] = "from city"
+                    json1["Description"] = NSNull()
+                    json1["Destination"] = NSNull()
+                    json1["FlagStopNo"] = "66"
+                    json1["RouteNo"] = 0
+                    json1["StopID"] =  NSNull()
+                    json1["StopName"] = "Rathmines Rd / Canterbury Rd"
+                    json1["StopNo"] = 0
+                    json1["Suburb"] = "Canterbury"
+                    json1["DistanceToLocation"] = 0
+                    json1["Latitude"] = 0
+                    json1["Longitude"] = 0
+                    
+                    let body = ["ResponseObject": json1]
+                    let response = MockWebServiceResponse(body: body, header: ["Content-Type": "application/json; charset=utf-8"])
+                    MockWebServiceURLProtocol.cannedResponse = response
+                }
+                
+                afterEach {
+                    MockWebServiceURLProtocol.cannedResponse = nil
+                }
+                
+                it("should complete on the main thread with stops and no error") {
+                    provider.getStopInformationWithStopNo(56, managedObjectContext: moc, {
+                        stop, error -> Void in
+                        
+                        completionStop = stop
+                        completionError = error
+                        })
+                    
+                    expect{completionStop}.willNot.beNil()
+                    expect{completionError}.will.beNil()
+                }
+            }
+            
+            context("when no stops are available") {
+                beforeEach {
+                    let body = ["ResponseObject": [ : ]]
+                    let response = MockWebServiceResponse(body: body, header: ["Content-Type": "application/json; charset=utf-8"])
+                    MockWebServiceURLProtocol.cannedResponse = response
+                }
+                
+                afterEach {
+                    MockWebServiceURLProtocol.cannedResponse = nil
+                }
+                
+                it("should complete on the main thread with no stops and no error") {
+                    provider.getStopInformationWithStopNo(56, managedObjectContext: moc, {
+                        stop, error -> Void in
+                        
+                        completionStop = stop
+                        completionError = error
+                        })
+                    
+                    expect{completionStop}.willNot.beNil()
+                    expect{completionError}.will.beNil()
+                }
+            }
+            
+            context("when an error occur") {
+                
+                var error: NSError!
+                
+                beforeEach {
+                    error = NSError(domain: "au.com.otherTest.provider", code: 150, userInfo: nil)
+                    let response = MockWebServiceResponse(body: ["test": "blah"], header: ["Content-Type": "application/json; charset=utf-8"], statusCode: 404, error: error)
+                    MockWebServiceURLProtocol.cannedResponse = response
+                }
+                
+                afterEach {
+                    MockWebServiceURLProtocol.cannedResponse = nil
+                }
+                
+                it("should complete on the main thread with an error an no stops") {
+                    provider.getStopInformationWithStopNo(56, managedObjectContext: moc, {
+                        stop, error -> Void in
+                        
+                        completionStop = stop
+                        completionError = error
+                        })
+                    
+                    expect{completionStop}.will.beNil()
+                    expect{completionError}.will.equal(error)
+                }
+            }
+        }
     }
 }

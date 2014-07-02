@@ -43,7 +43,7 @@ routesProvider.getAllRoutesWithManagedObjectContext(managedObjectContext) {
                 {
                     if let routeNo = route.routeNo
                     {
-                        stopsProvider.getStopsWithRouteNo(routeNo as Int, managedObjectContext: managedObjectContext) {
+                        stopsProvider.getStopsWithRouteNo(routeNo as Int, requestStopInfo: true, managedObjectContext: managedObjectContext) {
                             stopObjectIds, error -> Void in
                             
                             if (error)
