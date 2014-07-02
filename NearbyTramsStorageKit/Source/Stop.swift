@@ -19,6 +19,7 @@ class Stop: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObject
     @NSManaged var stopNo: NSNumber? // Why when Int it crashes
     @NSManaged var suburb: String?
     @NSManaged var route : Route
+    @NSManaged var schedules : NSMutableSet
     
     class var entityName: String {
         get {
