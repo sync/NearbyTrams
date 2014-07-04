@@ -33,32 +33,31 @@ class Stop: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObject
     }
     }
     
-    class var primaryKeyFromRest: String {
-        get {
-            return "StopNo"
-    }
+    class func primaryKeyValueFromRest(dictionary: NSDictionary) -> AnyObject?
+    {
+        return dictionary["StopNo"] as? Int
     }
     
-    func configureWithDictionaryFromRest(json: NSDictionary) -> Void
+    func configureWithDictionaryFromRest(dictionary: NSDictionary) -> Void
     {
-        cityDirection = json["CityDirection"] as? String
-        stopDescription = json["Description"] as? String
-        destination = json["Destination"] as? String
-        flagStopNo = json["FlagStopNo"] as? String
-        routeNo = json["RouteNo"] as? Int
-        stopID =  json["StopID"] as? String
-        stopName = json["StopName"] as? String
-        stopNo = json["StopNo"] as? Int
-        suburb = json["Suburb"] as? String
-        distanceToLocation = json["DistanceToLocation"] as? Double
-        latitude = json["Latitude"] as? Double
-        longitude = json["Longitude"] as? Double
+        cityDirection = dictionary["CityDirection"] as? String
+        stopDescription = dictionary["Description"] as? String
+        destination = dictionary["Destination"] as? String
+        flagStopNo = dictionary["FlagStopNo"] as? String
+        routeNo = dictionary["RouteNo"] as? Int
+        stopID =  dictionary["StopID"] as? String
+        stopName = dictionary["StopName"] as? String
+        stopNo = dictionary["StopNo"] as? Int
+        suburb = dictionary["Suburb"] as? String
+        distanceToLocation = dictionary["DistanceToLocation"] as? Double
+        latitude = dictionary["Latitude"] as? Double
+        longitude = dictionary["Longitude"] as? Double
     }
     
-    func configureWithPartialDictionaryFromRest(json: NSDictionary) -> Void
+    func configureWithPartialDictionaryFromRest(dictionary: NSDictionary) -> Void
     {
-        cityDirection = json["CityDirection"] as? String
-        flagStopNo = json["FlagStopNo"] as? String
-        stopName = json["StopName"] as? String
+        cityDirection = dictionary["CityDirection"] as? String
+        flagStopNo = dictionary["FlagStopNo"] as? String
+        stopName = dictionary["StopName"] as? String
     }
 }

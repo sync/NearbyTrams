@@ -5,10 +5,10 @@
 import CoreData
 
 protocol RESTManagedObject: InsertAndFetchManagedObject {
-    class var primaryKeyFromRest: String { get }
+    class func primaryKeyValueFromRest(dictionary: NSDictionary) -> AnyObject?
     class func insertOrUpdateWithDictionaryFromRest<T where T: NSManagedObject, T: RESTManagedObject>(dictionary: NSDictionary, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> (T?, NSError?)
     class func insertOrUpdateFromRestArray<T where T: NSManagedObject, T: RESTManagedObject>(array: NSDictionary[], inManagedObjectContext managedObjectContext: NSManagedObjectContext)  -> (T?[], NSError?[])
-    mutating func configureWithDictionaryFromRest(json: NSDictionary) -> Void
+    mutating func configureWithDictionaryFromRest(dictionary: NSDictionary) -> Void
 }
 
 extension NSManagedObject
@@ -16,7 +16,7 @@ extension NSManagedObject
     class func insertOrUpdateWithDictionaryFromRest<T where T: NSManagedObject, T: RESTManagedObject>(dictionary: NSDictionary, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> (T?, NSError?)
     {
         var foundManagedObject: T?
-        if let primaryKeyValue : AnyObject = dictionary[T.primaryKeyFromRest]
+        if let primaryKeyValue : AnyObject = T.primaryKeyValueFromRest(dictionary)
         {
             let result: (managedObject: T?, error: NSError?) = fetchOneForPrimaryKey(primaryKeyValue, usingManagedObjectContext: managedObjectContext)
             foundManagedObject = result.managedObject

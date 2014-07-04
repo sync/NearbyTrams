@@ -6,6 +6,7 @@ import CoreData
 
 class Schedule: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObject
 {
+    @NSManaged var composedKey:  NSString?
     @NSManaged var airConditioned: Bool
     @NSManaged var destination: String?
     @NSManaged var displayAC: Bool
@@ -31,58 +32,60 @@ class Schedule: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObject
     
     class var primaryKey: String {
         get {
-            return "tripID"
+            return "composedKey"
     }
     }
     
-    class var primaryKeyFromRest: String {
-        get {
-            return "TripID"
-    }
-    }
-    
-    func configureWithDictionaryFromRest(json: NSDictionary) -> Void
+    class func primaryKeyValueFromRest(dictionary: NSDictionary) -> AnyObject?
     {
-        destination = json["Destination"] as? String
-        disruptionMessage = json["DisruptionMessage"] as? Dictionary<String, AnyObject>
-        headBoardRouteNo = json["HeadBoardRouteNo"] as? String
-        internalRouteNo = json["InternalRouteNo"] as? Int
-        routeNo = json["RouteNo"] as? String
-        specialEventMessage = json["SpecialEventMessage"] as? String
-        tripID = json["TripID"] as? Int
-        vehicleNo = json["VehicleNo"] as? Int
+        let tmpRouteNo =  dictionary["RouteNo"] as? Int
+        var tmpPredictedArrivalDateTime = dictionary["PredictedArrivalDateTime"] as String
         
-        if let tmp =  json["PredictedArrivalDateTime"] as? NSString
+        return "\(tmpRouteNo)-\(tmpPredictedArrivalDateTime)"
+    }
+    
+    func configureWithDictionaryFromRest(dictionary: NSDictionary) -> Void
+    {
+        destination = dictionary["Destination"] as? String
+        disruptionMessage = dictionary["DisruptionMessage"] as? Dictionary<String, AnyObject>
+        headBoardRouteNo = dictionary["HeadBoardRouteNo"] as? String
+        internalRouteNo = dictionary["InternalRouteNo"] as? Int
+        routeNo = dictionary["RouteNo"] as? String
+        specialEventMessage = dictionary["SpecialEventMessage"] as? String
+        tripID = dictionary["TripID"] as? Int
+        vehicleNo = dictionary["VehicleNo"] as? Int
+        
+        if let tmp =  dictionary["PredictedArrivalDateTime"] as? String
         {
             predictedArrivalDateTime = NSDate.fromDonet(tmp)
         }
         
-        if let tmp =  json["AirConditioned"] as? Bool
+        if let tmp =  dictionary["AirConditioned"] as? Bool
         {
             airConditioned = tmp
         }
         
-        if let tmp =  json["DisplayAC"] as? Bool
+        if let tmp =  dictionary["DisplayAC"] as? Bool
         {
             displayAC = tmp
         }
         
-        if let tmp =  json["HasDisruption"] as? Bool
+        if let tmp =  dictionary["HasDisruption"] as? Bool
         {
             hasDisruption = tmp
         }
         
-        if let tmp =  json["HasSpecialEvent"] as? Bool
+        if let tmp =  dictionary["HasSpecialEvent"] as? Bool
         {
             hasSpecialEvent = tmp
         }
         
-        if let tmp =  json["IsLowFloorTram"] as? Bool
+        if let tmp =  dictionary["IsLowFloorTram"] as? Bool
         {
             isLowFloorTram = tmp
         }
         
-        if let tmp =  json["IsTTAvailable"] as? Bool
+        if let tmp =  dictionary["IsTTAvailable"] as? Bool
         {
             isTTAvailable = tmp
         }

@@ -6,6 +6,7 @@ import CoreData
 
 class Route: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObject
 {
+    @NSManaged var composedKey:  NSString?
     @NSManaged var routeNo:  NSNumber? // Why when Int it crashes
     @NSManaged var internalRouteNo: NSNumber? // Why when Int it crashes
     @NSManaged var alphaNumericRouteNo: String?
@@ -22,29 +23,35 @@ class Route: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObject
     
     class var primaryKey: String {
         get {
-            return "routeNo"
+            return "composedKey"
     }
     }
     
-    class var primaryKeyFromRest: String {
-        get {
-            return "RouteNo"
-    }
-    }
-    
-    func configureWithDictionaryFromRest(json: NSDictionary) -> Void
+    class func primaryKeyValueFromRest(dictionary: NSDictionary) -> AnyObject?
     {
-        routeNo = json[self.dynamicType.primaryKeyFromRest] as? Int
-        internalRouteNo = json["InternalRouteNo"] as? Int
-        alphaNumericRouteNo = json["AlphaNumericRouteNo"] as? String
-        destination = json["Destination"] as? String
+        let tmpRouteNo =  dictionary["RouteNo"] as? Int
+        var tmpIsUpDestination = false
+        if let tmp =  dictionary["IsUpDestination"] as? Bool
+        {
+            tmpIsUpDestination = tmp
+        }
         
-        if let tmp =  json["IsUpDestination"] as? Bool
+        return "\(tmpRouteNo)-\(tmpIsUpDestination)"
+    }
+    
+    func configureWithDictionaryFromRest(dictionary: NSDictionary) -> Void
+    {
+        routeNo =  dictionary["RouteNo"] as? Int
+        internalRouteNo = dictionary["InternalRouteNo"] as? Int
+        alphaNumericRouteNo = dictionary["AlphaNumericRouteNo"] as? String
+        destination = dictionary["Destination"] as? String
+        
+        if let tmp =  dictionary["IsUpDestination"] as? Bool
         {
             isUpDestination = tmp
         }
         
-        if let tmp =  json["HasLowFloor"] as? Bool
+        if let tmp =  dictionary["HasLowFloor"] as? Bool
         {
             hasLowFloor = tmp
         }

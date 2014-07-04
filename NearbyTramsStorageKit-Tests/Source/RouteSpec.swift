@@ -266,21 +266,21 @@ class RouteSpec: QuickSpec {
                     
                     beforeEach() {
                         let route1: Route = Route.insertInManagedObjectContext(moc)
-                        route1.routeNo = 6
+                        route1.composedKey = "composed-6"
                         
                         let route2: Route = Route.insertInManagedObjectContext(moc)
-                        route2.routeNo = 10
+                        route2.composedKey = "composed-10"
                         
                         let route3: Route = Route.insertInManagedObjectContext(moc)
-                        route3.routeNo = 11
+                        route3.composedKey = "composed-11"
                         
                         moc.save(nil)
                         
-                        result = Route.fetchOneForPrimaryKey(10, usingManagedObjectContext: moc)
+                        result = Route.fetchOneForPrimaryKey("composed-10", usingManagedObjectContext: moc)
                     }
                     
                     it("should return one route") {
-                        expect(result?.route?.routeNo).to.equal(10)
+                        expect(result?.route?.composedKey).to.equal("composed-10")
                     }
                     
                     it("should return no error") {
