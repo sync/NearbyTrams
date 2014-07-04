@@ -12,5 +12,5 @@ FOUNDATION_EXPORT double NearbyTramsKitVersionNumber;
 FOUNDATION_EXPORT const unsigned char NearbyTramsKitVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <NearbyTramsKit/PublicHeader.h>
-
+#import <NearbyTramsKit/SNRFetchedResultsController.h>
 

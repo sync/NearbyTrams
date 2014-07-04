@@ -17,6 +17,8 @@
 		5FA5106F195C3F5A000100A5 /* RoutesProviderSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA5106E195C3F5A000100A5 /* RoutesProviderSpec.swift */; };
 		5FA8DB97195D8B2A0080EEAE /* BrowseRoutesViewControllerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA8DB96195D8B2A0080EEAE /* BrowseRoutesViewControllerModel.swift */; };
 		5FA8DBA7195D8C5B0080EEAE /* BrowseRoutesViewControllerModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA8DBA6195D8C5B0080EEAE /* BrowseRoutesViewControllerModelSpec.swift */; };
+		5FCC190E1966B10600B0B80B /* SNRFetchedResultsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCC190A1966B10600B0B80B /* SNRFetchedResultsController.m */; settings = {COMPILER_FLAGS = "-Wno-explicit-ownership-type -Wno-direct-ivar-access -Wno-unused-parameter -Wno-sign-compare"; }; };
+		5FCC19AA1966B90500B0B80B /* SNRFetchedResultsController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FCC19091966B10600B0B80B /* SNRFetchedResultsController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5FF468601962224600C5BEE9 /* ScheduleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF4685F1962224600C5BEE9 /* ScheduleProvider.swift */; };
 		5FF4686A1962226200C5BEE9 /* ScheduleProviderSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF468691962226200C5BEE9 /* ScheduleProviderSpec.swift */; };
 /* End PBXBuildFile section */
@@ -172,6 +174,8 @@
 		5FA51079195C4329000100A5 /* NearbyTramsNetworkKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = NearbyTramsNetworkKit.xcodeproj; sourceTree = "<group>"; };
 		5FA8DB96195D8B2A0080EEAE /* BrowseRoutesViewControllerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseRoutesViewControllerModel.swift; sourceTree = "<group>"; };
 		5FA8DBA6195D8C5B0080EEAE /* BrowseRoutesViewControllerModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseRoutesViewControllerModelSpec.swift; sourceTree = "<group>"; };
+		5FCC19091966B10600B0B80B /* SNRFetchedResultsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNRFetchedResultsController.h; sourceTree = "<group>"; };
+		5FCC190A1966B10600B0B80B /* SNRFetchedResultsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNRFetchedResultsController.m; sourceTree = "<group>"; };
 		5FF4685F1962224600C5BEE9 /* ScheduleProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleProvider.swift; sourceTree = "<group>"; };
 		5FF468691962226200C5BEE9 /* ScheduleProviderSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleProviderSpec.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -243,8 +247,8 @@
 		5FA5103A195C3AC7000100A5 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				5FA5103B195C3AC7000100A5 /* NearbyTramsKit-Bridging-Header.h */,
 				5FA5103C195C3AC7000100A5 /* NearbyTramsKit.h */,
+				5FA5103B195C3AC7000100A5 /* NearbyTramsKit-Bridging-Header.h */,
 				5FA8DB8C195D8AE90080EEAE /* Providers */,
 				5FA8DB95195D8AF90080EEAE /* Browse */,
 			);
@@ -281,6 +285,7 @@
 		5FA51049195C3E9D000100A5 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				5FCC19061966B10600B0B80B /* SNRFetchedResultsController */,
 				5FA51070195C4320000100A5 /* NearbyTramsStorageKit.xcodeproj */,
 				5FA51079195C4329000100A5 /* NearbyTramsNetworkKit.xcodeproj */,
 				5FA5104A195C3ED3000100A5 /* Nimble.xcodeproj */,
@@ -365,6 +370,16 @@
 			name = Browse;
 			sourceTree = "<group>";
 		};
+		5FCC19061966B10600B0B80B /* SNRFetchedResultsController */ = {
+			isa = PBXGroup;
+			children = (
+				5FCC19091966B10600B0B80B /* SNRFetchedResultsController.h */,
+				5FCC190A1966B10600B0B80B /* SNRFetchedResultsController.m */,
+			);
+			name = SNRFetchedResultsController;
+			path = External/SNRFetchedResultsController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -373,6 +388,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FA5103F195C3AC7000100A5 /* NearbyTramsKit.h in Headers */,
+				5FCC19AA1966B90500B0B80B /* SNRFetchedResultsController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -586,6 +602,7 @@
 				5F8C95FF195ED06C001B329F /* StopsProvider.swift in Sources */,
 				5FF468601962224600C5BEE9 /* ScheduleProvider.swift in Sources */,
 				5FA8DB97195D8B2A0080EEAE /* BrowseRoutesViewControllerModel.swift in Sources */,
+				5FCC190E1966B10600B0B80B /* SNRFetchedResultsController.m in Sources */,
 				5FA51048195C3C26000100A5 /* RoutesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
