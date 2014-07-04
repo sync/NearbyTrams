@@ -45,19 +45,35 @@ class MockWebServiceURLProtocolSpec: QuickSpec {
             afterEach {
                 MockWebServiceURLProtocol.cannedResponse = nil
             }
+            
 
             describe("canInitWithRequest") {
-                context("when using mock scheme") {
-                    it("should be able to init a request") {
-                        let request = NSURLRequest(URL: NSURL(string: "mock://www.apple.com"))
-                        expect(MockWebServiceURLProtocol.canInitWithRequest(request)).to.beTrue()
+                context("without a url component to match") {
+                    context("when using mock scheme") {
+                        it("should be able to init a request") {
+                            let request = NSURLRequest(URL: NSURL(string: "mock://www.apple.com"))
+                            expect(MockWebServiceURLProtocol.canInitWithRequest(request)).to.beTrue()
+                        }
+                    }
+                    
+                    context("when using http scheme") {
+                        it("should not be able to init a request") {
+                            let request = NSURLRequest(URL: NSURL(string: "http://www.apple.com"))
+                            expect(MockWebServiceURLProtocol.canInitWithRequest(request)).to.beFalse()
+                        }
                     }
                 }
                 
-                context("when using http scheme") {
-                    it("should not be able to init a request") {
-                        let request = NSURLRequest(URL: NSURL(string: "http://www.apple.com"))
-                        expect(MockWebServiceURLProtocol.canInitWithRequest(request)).to.beFalse()
+                context("with a url component to match") {
+                    beforeEach {
+                        let response = MockWebServiceResponse(body: ["test": "blah"], header: ["Content-Type": "application/json; charset=utf-8"], urlComponentToMatch:"GetStopsByRouteAndDirection.ashx")
+                        let responseNoComponent = MockWebServiceResponse(body: ["test2": "blah"], header: ["Content-Type": "application/json; charset=utf-8"])
+                        MockWebServiceURLProtocol.cannedResponses = [response, responseNoComponent]
+                    }
+                    
+                    it("should be able to init a request") {
+                        let request = NSURLRequest(URL: NSURL(string: "mock://www.apple.com/Controllers/GetStopsByRouteAndDirection.ashx?r=123&u=true"))
+                        expect(MockWebServiceURLProtocol.canInitWithRequest(request)).to.beTrue()
                     }
                 }
             }
