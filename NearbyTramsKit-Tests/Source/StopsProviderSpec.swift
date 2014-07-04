@@ -57,7 +57,7 @@ class StopsProviderSpec: QuickSpec {
                     json2["Description"] = "another description"
                     json2["Destination"] = "another destination"
                     json2["FlagStopNo"] = "Stop 145a"
-                    json2["RouteNo"] = 72
+                    json2["RouteNo"] = NSNull()
                     json2["StopID"] = "547bab"
                     json2["StopName"] = "John Rd / Canterbury Rd"
                     json2["StopNo"] = 17
@@ -65,10 +65,28 @@ class StopsProviderSpec: QuickSpec {
                     json2["DistanceToLocation"] = 11.00
                     json2["Latitude"] = -46.45
                     json2["Longitude"] = 135.68
-
-                    let body = ["ResponseObject": [json1, json2]]
-                    let response = MockWebServiceResponse(body: body, header: ["Content-Type": "application/json; charset=utf-8"])
-                    MockWebServiceURLProtocol.cannedResponse = response
+                    
+                    let responseGetStopBody = ["ResponseObject": [json1, json2]]
+                    let responseGetStop = MockWebServiceResponse(body: responseGetStopBody, header: ["Content-Type": "application/json; charset=utf-8"], urlComponentToMatch:"GetStopsByRouteAndDirection.ashx")
+                    
+                    json1 = [ : ]
+                    json1["CityDirection"] = "from city"
+                    json1["Description"] = NSNull()
+                    json1["Destination"] = NSNull()
+                    json1["FlagStopNo"] = "66"
+                    json1["RouteNo"] = 0
+                    json1["StopID"] =  NSNull()
+                    json1["StopName"] = "Rathmines Rd / Canterbury Rd"
+                    json1["StopNo"] = 0
+                    json1["Suburb"] = "Canterbury"
+                    json1["DistanceToLocation"] = 0
+                    json1["Latitude"] = 0
+                    json1["Longitude"] = 0
+                    
+                    let responseGetStopInfoBody = ["ResponseObject": json1]
+                    let responseGetStopInfo = MockWebServiceResponse(body: responseGetStopInfoBody, header: ["Content-Type": "application/json; charset=utf-8"], urlComponentToMatch:"GetStopInformation.ashx")
+                    
+                    MockWebServiceURLProtocol.cannedResponses = [responseGetStop, responseGetStopInfo]
                 }
                 
                 afterEach {
@@ -76,7 +94,7 @@ class StopsProviderSpec: QuickSpec {
                 }
                 
                 it("should complete on the main thread with stops and no error") {
-                    provider.getStopsWithRouteNo(56, managedObjectContext: moc, {
+                    provider.getStopsWithRouteNo(56, requestStopInfo: true, managedObjectContext: moc, {
                         stops, error -> Void in
                         
                         completionStops = stops
@@ -151,7 +169,7 @@ class StopsProviderSpec: QuickSpec {
                 moc.save(nil)
             }
             
-            context("when some stops are avaible") {
+            context("when some stops are available") {
                 beforeEach {
                     let stop = Stop.insertInManagedObjectContext(moc) as Stop
                     stop.stopNo = 65
