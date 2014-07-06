@@ -11,6 +11,8 @@
 		5F2D526B19690B58002CECA0 /* StopsRepositorySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D526A19690B58002CECA0 /* StopsRepositorySpec.swift */; };
 		5F2D5275196910F4002CECA0 /* SchedulesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D5274196910F4002CECA0 /* SchedulesRepository.swift */; };
 		5F2D527F1969119D002CECA0 /* SchedulesRepositorySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D527E1969119D002CECA0 /* SchedulesRepositorySpec.swift */; };
+		5F2D529619691BFF002CECA0 /* RouteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D529519691BFF002CECA0 /* RouteViewModel.swift */; };
+		5F2D52981969257A002CECA0 /* RouteViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D52971969257A002CECA0 /* RouteViewModelSpec.swift */; };
 		5F551C231968BD42000D3A31 /* RoutesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F551C221968BD42000D3A31 /* RoutesRepository.swift */; };
 		5F551C261968BD7B000D3A31 /* RoutesRepositorySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F551C251968BD7B000D3A31 /* RoutesRepositorySpec.swift */; };
 		5F6CC98A195C38D7003C3485 /* NearbyTramsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F6CC97E195C38D7003C3485 /* NearbyTramsKit.framework */; };
@@ -163,6 +165,8 @@
 		5F2D526A19690B58002CECA0 /* StopsRepositorySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopsRepositorySpec.swift; sourceTree = "<group>"; };
 		5F2D5274196910F4002CECA0 /* SchedulesRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchedulesRepository.swift; sourceTree = "<group>"; };
 		5F2D527E1969119D002CECA0 /* SchedulesRepositorySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchedulesRepositorySpec.swift; sourceTree = "<group>"; };
+		5F2D529519691BFF002CECA0 /* RouteViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteViewModel.swift; sourceTree = "<group>"; };
+		5F2D52971969257A002CECA0 /* RouteViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteViewModelSpec.swift; sourceTree = "<group>"; };
 		5F551C221968BD42000D3A31 /* RoutesRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesRepository.swift; sourceTree = "<group>"; };
 		5F551C251968BD7B000D3A31 /* RoutesRepositorySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesRepositorySpec.swift; sourceTree = "<group>"; };
 		5F6CC97E195C38D7003C3485 /* NearbyTramsKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NearbyTramsKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -213,6 +217,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F2D5291196918E3002CECA0 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				5F2D52971969257A002CECA0 /* RouteViewModelSpec.swift */,
+				5F2D5292196918FD002CECA0 /* RoutesViewModelSpec.swift */,
+			);
+			name = ViewModels;
+			sourceTree = "<group>";
+		};
 		5F551C191968BD1D000D3A31 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,6 +294,7 @@
 			children = (
 				5FA5103C195C3AC7000100A5 /* NearbyTramsKit.h */,
 				5FA5103B195C3AC7000100A5 /* NearbyTramsKit-Bridging-Header.h */,
+				5F2D528019691434002CECA0 /* ViewModels */,
 				5F551C191968BD1D000D3A31 /* Repositories */,
 				5FA8DB8C195D8AE90080EEAE /* Providers */,
 				5FA8DB95195D8AF90080EEAE /* Browse */,
@@ -309,6 +323,7 @@
 		5FA51043195C3B47000100A5 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				5F2D5291196918E3002CECA0 /* ViewModels */,
 				5F551C241968BD67000D3A31 /* Repostories */,
 				5FA8DB9C195D8C360080EEAE /* Providers */,
 				5FA8DBA5195D8C430080EEAE /* Browse */,
@@ -635,6 +650,7 @@
 			files = (
 				5F8C95FF195ED06C001B329F /* StopsProvider.swift in Sources */,
 				5F551C231968BD42000D3A31 /* RoutesRepository.swift in Sources */,
+				5F2D529619691BFF002CECA0 /* RouteViewModel.swift in Sources */,
 				5FF468601962224600C5BEE9 /* SchedulesProvider.swift in Sources */,
 				5FA8DB97195D8B2A0080EEAE /* BrowseRoutesViewControllerModel.swift in Sources */,
 				5F2D5275196910F4002CECA0 /* SchedulesRepository.swift in Sources */,
@@ -652,6 +668,7 @@
 				5FF4686A1962226200C5BEE9 /* SchedulesProviderSpec.swift in Sources */,
 				5F8C9609195ED344001B329F /* StopsProviderSpec.swift in Sources */,
 				5F551C261968BD7B000D3A31 /* RoutesRepositorySpec.swift in Sources */,
+				5F2D52981969257A002CECA0 /* RouteViewModelSpec.swift in Sources */,
 				5F2D527F1969119D002CECA0 /* SchedulesRepositorySpec.swift in Sources */,
 				5FA5106F195C3F5A000100A5 /* RoutesProviderSpec.swift in Sources */,
 				5FA8DBA7195D8C5B0080EEAE /* BrowseRoutesViewControllerModelSpec.swift in Sources */,
