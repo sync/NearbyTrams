@@ -13,6 +13,10 @@
 		5F2D527F1969119D002CECA0 /* SchedulesRepositorySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D527E1969119D002CECA0 /* SchedulesRepositorySpec.swift */; };
 		5F2D529619691BFF002CECA0 /* RouteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D529519691BFF002CECA0 /* RouteViewModel.swift */; };
 		5F2D52981969257A002CECA0 /* RouteViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D52971969257A002CECA0 /* RouteViewModelSpec.swift */; };
+		5F2D529E19696421002CECA0 /* FetchedResultsControllerChangeSetSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D529D19696421002CECA0 /* FetchedResultsControllerChangeSetSpec.swift */; };
+		5F2D52A21969659A002CECA0 /* FetchedResultsControllerChangeSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D52A11969659A002CECA0 /* FetchedResultsControllerChangeSet.swift */; };
+		5F2D52A4196965B9002CECA0 /* FetchedResultsControllerChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D52A3196965B9002CECA0 /* FetchedResultsControllerChange.swift */; };
+		5F2D52A6196965F8002CECA0 /* FetchedResultsControllerChangeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D52A5196965F8002CECA0 /* FetchedResultsControllerChangeSpec.swift */; };
 		5F551C231968BD42000D3A31 /* RoutesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F551C221968BD42000D3A31 /* RoutesRepository.swift */; };
 		5F551C261968BD7B000D3A31 /* RoutesRepositorySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F551C251968BD7B000D3A31 /* RoutesRepositorySpec.swift */; };
 		5F6CC98A195C38D7003C3485 /* NearbyTramsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F6CC97E195C38D7003C3485 /* NearbyTramsKit.framework */; };
@@ -167,6 +171,10 @@
 		5F2D527E1969119D002CECA0 /* SchedulesRepositorySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchedulesRepositorySpec.swift; sourceTree = "<group>"; };
 		5F2D529519691BFF002CECA0 /* RouteViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteViewModel.swift; sourceTree = "<group>"; };
 		5F2D52971969257A002CECA0 /* RouteViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteViewModelSpec.swift; sourceTree = "<group>"; };
+		5F2D529D19696421002CECA0 /* FetchedResultsControllerChangeSetSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerChangeSetSpec.swift; sourceTree = "<group>"; };
+		5F2D52A11969659A002CECA0 /* FetchedResultsControllerChangeSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerChangeSet.swift; sourceTree = "<group>"; };
+		5F2D52A3196965B9002CECA0 /* FetchedResultsControllerChange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerChange.swift; sourceTree = "<group>"; };
+		5F2D52A5196965F8002CECA0 /* FetchedResultsControllerChangeSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerChangeSpec.swift; sourceTree = "<group>"; };
 		5F551C221968BD42000D3A31 /* RoutesRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesRepository.swift; sourceTree = "<group>"; };
 		5F551C251968BD7B000D3A31 /* RoutesRepositorySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesRepositorySpec.swift; sourceTree = "<group>"; };
 		5F6CC97E195C38D7003C3485 /* NearbyTramsKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NearbyTramsKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -224,6 +232,25 @@
 				5F2D5292196918FD002CECA0 /* RoutesViewModelSpec.swift */,
 			);
 			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		5F2D529C19696402002CECA0 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				5F2D52A5196965F8002CECA0 /* FetchedResultsControllerChangeSpec.swift */,
+				5F2D529D19696421002CECA0 /* FetchedResultsControllerChangeSetSpec.swift */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		5F2D52A01969659A002CECA0 /* REA-Group */ = {
+			isa = PBXGroup;
+			children = (
+				5F2D52A3196965B9002CECA0 /* FetchedResultsControllerChange.swift */,
+				5F2D52A11969659A002CECA0 /* FetchedResultsControllerChangeSet.swift */,
+			);
+			name = "REA-Group";
+			path = "External/REA-Group";
 			sourceTree = "<group>";
 		};
 		5F551C191968BD1D000D3A31 /* Repositories */ = {
@@ -327,6 +354,7 @@
 				5F551C241968BD67000D3A31 /* Repostories */,
 				5FA8DB9C195D8C360080EEAE /* Providers */,
 				5FA8DBA5195D8C430080EEAE /* Browse */,
+				5F2D529C19696402002CECA0 /* Core */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -334,6 +362,7 @@
 		5FA51049195C3E9D000100A5 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				5F2D52A01969659A002CECA0 /* REA-Group */,
 				5FCC19061966B10600B0B80B /* SNRFetchedResultsController */,
 				5FA51070195C4320000100A5 /* NearbyTramsStorageKit.xcodeproj */,
 				5FA51079195C4329000100A5 /* NearbyTramsNetworkKit.xcodeproj */,
@@ -652,10 +681,12 @@
 				5F551C231968BD42000D3A31 /* RoutesRepository.swift in Sources */,
 				5F2D529619691BFF002CECA0 /* RouteViewModel.swift in Sources */,
 				5FF468601962224600C5BEE9 /* SchedulesProvider.swift in Sources */,
+				5F2D52A21969659A002CECA0 /* FetchedResultsControllerChangeSet.swift in Sources */,
 				5FA8DB97195D8B2A0080EEAE /* BrowseRoutesViewControllerModel.swift in Sources */,
 				5F2D5275196910F4002CECA0 /* SchedulesRepository.swift in Sources */,
 				5F2D526119690B3A002CECA0 /* StopsRepository.swift in Sources */,
 				5FCC190E1966B10600B0B80B /* SNRFetchedResultsController.m in Sources */,
+				5F2D52A4196965B9002CECA0 /* FetchedResultsControllerChange.swift in Sources */,
 				5FA51048195C3C26000100A5 /* RoutesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -665,9 +696,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F2D526B19690B58002CECA0 /* StopsRepositorySpec.swift in Sources */,
+				5F2D52A6196965F8002CECA0 /* FetchedResultsControllerChangeSpec.swift in Sources */,
 				5FF4686A1962226200C5BEE9 /* SchedulesProviderSpec.swift in Sources */,
 				5F8C9609195ED344001B329F /* StopsProviderSpec.swift in Sources */,
 				5F551C261968BD7B000D3A31 /* RoutesRepositorySpec.swift in Sources */,
+				5F2D529E19696421002CECA0 /* FetchedResultsControllerChangeSetSpec.swift in Sources */,
 				5F2D52981969257A002CECA0 /* RouteViewModelSpec.swift in Sources */,
 				5F2D527F1969119D002CECA0 /* SchedulesRepositorySpec.swift in Sources */,
 				5FA5106F195C3F5A000100A5 /* RoutesProviderSpec.swift in Sources */,
