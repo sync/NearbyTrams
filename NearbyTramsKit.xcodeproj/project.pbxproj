@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5F2D526119690B3A002CECA0 /* StopsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D526019690B3A002CECA0 /* StopsRepository.swift */; };
 		5F2D526B19690B58002CECA0 /* StopsRepositorySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D526A19690B58002CECA0 /* StopsRepositorySpec.swift */; };
+		5F2D5275196910F4002CECA0 /* SchedulesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D5274196910F4002CECA0 /* SchedulesRepository.swift */; };
+		5F2D527F1969119D002CECA0 /* SchedulesRepositorySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D527E1969119D002CECA0 /* SchedulesRepositorySpec.swift */; };
 		5F551C231968BD42000D3A31 /* RoutesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F551C221968BD42000D3A31 /* RoutesRepository.swift */; };
 		5F551C261968BD7B000D3A31 /* RoutesRepositorySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F551C251968BD7B000D3A31 /* RoutesRepositorySpec.swift */; };
 		5F6CC98A195C38D7003C3485 /* NearbyTramsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F6CC97E195C38D7003C3485 /* NearbyTramsKit.framework */; };
@@ -159,6 +161,8 @@
 /* Begin PBXFileReference section */
 		5F2D526019690B3A002CECA0 /* StopsRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopsRepository.swift; sourceTree = "<group>"; };
 		5F2D526A19690B58002CECA0 /* StopsRepositorySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopsRepositorySpec.swift; sourceTree = "<group>"; };
+		5F2D5274196910F4002CECA0 /* SchedulesRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchedulesRepository.swift; sourceTree = "<group>"; };
+		5F2D527E1969119D002CECA0 /* SchedulesRepositorySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchedulesRepositorySpec.swift; sourceTree = "<group>"; };
 		5F551C221968BD42000D3A31 /* RoutesRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesRepository.swift; sourceTree = "<group>"; };
 		5F551C251968BD7B000D3A31 /* RoutesRepositorySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesRepositorySpec.swift; sourceTree = "<group>"; };
 		5F6CC97E195C38D7003C3485 /* NearbyTramsKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NearbyTramsKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -214,6 +218,7 @@
 			children = (
 				5F551C221968BD42000D3A31 /* RoutesRepository.swift */,
 				5F2D526019690B3A002CECA0 /* StopsRepository.swift */,
+				5F2D5274196910F4002CECA0 /* SchedulesRepository.swift */,
 			);
 			name = Repositories;
 			sourceTree = "<group>";
@@ -223,6 +228,7 @@
 			children = (
 				5F551C251968BD7B000D3A31 /* RoutesRepositorySpec.swift */,
 				5F2D526A19690B58002CECA0 /* StopsRepositorySpec.swift */,
+				5F2D527E1969119D002CECA0 /* SchedulesRepositorySpec.swift */,
 			);
 			name = Repostories;
 			sourceTree = "<group>";
@@ -631,6 +637,7 @@
 				5F551C231968BD42000D3A31 /* RoutesRepository.swift in Sources */,
 				5FF468601962224600C5BEE9 /* SchedulesProvider.swift in Sources */,
 				5FA8DB97195D8B2A0080EEAE /* BrowseRoutesViewControllerModel.swift in Sources */,
+				5F2D5275196910F4002CECA0 /* SchedulesRepository.swift in Sources */,
 				5F2D526119690B3A002CECA0 /* StopsRepository.swift in Sources */,
 				5FCC190E1966B10600B0B80B /* SNRFetchedResultsController.m in Sources */,
 				5FA51048195C3C26000100A5 /* RoutesProvider.swift in Sources */,
@@ -645,6 +652,7 @@
 				5FF4686A1962226200C5BEE9 /* SchedulesProviderSpec.swift in Sources */,
 				5F8C9609195ED344001B329F /* StopsProviderSpec.swift in Sources */,
 				5F551C261968BD7B000D3A31 /* RoutesRepositorySpec.swift in Sources */,
+				5F2D527F1969119D002CECA0 /* SchedulesRepositorySpec.swift in Sources */,
 				5FA5106F195C3F5A000100A5 /* RoutesProviderSpec.swift in Sources */,
 				5FA8DBA7195D8C5B0080EEAE /* BrowseRoutesViewControllerModelSpec.swift in Sources */,
 			);
