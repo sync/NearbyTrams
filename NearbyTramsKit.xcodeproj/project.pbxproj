@@ -23,8 +23,8 @@
 		5FA8DBA7195D8C5B0080EEAE /* BrowseRoutesViewControllerModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA8DBA6195D8C5B0080EEAE /* BrowseRoutesViewControllerModelSpec.swift */; };
 		5FCC190E1966B10600B0B80B /* SNRFetchedResultsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCC190A1966B10600B0B80B /* SNRFetchedResultsController.m */; settings = {COMPILER_FLAGS = "-Wno-explicit-ownership-type -Wno-direct-ivar-access -Wno-unused-parameter -Wno-sign-compare"; }; };
 		5FCC19AA1966B90500B0B80B /* SNRFetchedResultsController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FCC19091966B10600B0B80B /* SNRFetchedResultsController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5FF468601962224600C5BEE9 /* ScheduleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF4685F1962224600C5BEE9 /* ScheduleProvider.swift */; };
-		5FF4686A1962226200C5BEE9 /* ScheduleProviderSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF468691962226200C5BEE9 /* ScheduleProviderSpec.swift */; };
+		5FF468601962224600C5BEE9 /* SchedulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF4685F1962224600C5BEE9 /* SchedulesProvider.swift */; };
+		5FF4686A1962226200C5BEE9 /* SchedulesProviderSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF468691962226200C5BEE9 /* SchedulesProviderSpec.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,8 +184,8 @@
 		5FA8DBA6195D8C5B0080EEAE /* BrowseRoutesViewControllerModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseRoutesViewControllerModelSpec.swift; sourceTree = "<group>"; };
 		5FCC19091966B10600B0B80B /* SNRFetchedResultsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNRFetchedResultsController.h; sourceTree = "<group>"; };
 		5FCC190A1966B10600B0B80B /* SNRFetchedResultsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNRFetchedResultsController.m; sourceTree = "<group>"; };
-		5FF4685F1962224600C5BEE9 /* ScheduleProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleProvider.swift; sourceTree = "<group>"; };
-		5FF468691962226200C5BEE9 /* ScheduleProviderSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleProviderSpec.swift; sourceTree = "<group>"; };
+		5FF4685F1962224600C5BEE9 /* SchedulesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchedulesProvider.swift; sourceTree = "<group>"; };
+		5FF468691962226200C5BEE9 /* SchedulesProviderSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchedulesProviderSpec.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -367,7 +367,7 @@
 			children = (
 				5FA51047195C3C26000100A5 /* RoutesProvider.swift */,
 				5F8C95FE195ED06C001B329F /* StopsProvider.swift */,
-				5FF4685F1962224600C5BEE9 /* ScheduleProvider.swift */,
+				5FF4685F1962224600C5BEE9 /* SchedulesProvider.swift */,
 			);
 			name = Providers;
 			sourceTree = "<group>";
@@ -385,7 +385,7 @@
 			children = (
 				5FA5106E195C3F5A000100A5 /* RoutesProviderSpec.swift */,
 				5F8C9608195ED344001B329F /* StopsProviderSpec.swift */,
-				5FF468691962226200C5BEE9 /* ScheduleProviderSpec.swift */,
+				5FF468691962226200C5BEE9 /* SchedulesProviderSpec.swift */,
 			);
 			name = Providers;
 			sourceTree = "<group>";
@@ -629,7 +629,7 @@
 			files = (
 				5F8C95FF195ED06C001B329F /* StopsProvider.swift in Sources */,
 				5F551C231968BD42000D3A31 /* RoutesRepository.swift in Sources */,
-				5FF468601962224600C5BEE9 /* ScheduleProvider.swift in Sources */,
+				5FF468601962224600C5BEE9 /* SchedulesProvider.swift in Sources */,
 				5FA8DB97195D8B2A0080EEAE /* BrowseRoutesViewControllerModel.swift in Sources */,
 				5F2D526119690B3A002CECA0 /* StopsRepository.swift in Sources */,
 				5FCC190E1966B10600B0B80B /* SNRFetchedResultsController.m in Sources */,
@@ -642,7 +642,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F2D526B19690B58002CECA0 /* StopsRepositorySpec.swift in Sources */,
-				5FF4686A1962226200C5BEE9 /* ScheduleProviderSpec.swift in Sources */,
+				5FF4686A1962226200C5BEE9 /* SchedulesProviderSpec.swift in Sources */,
 				5F8C9609195ED344001B329F /* StopsProviderSpec.swift in Sources */,
 				5F551C261968BD7B000D3A31 /* RoutesRepositorySpec.swift in Sources */,
 				5FA5106F195C3F5A000100A5 /* RoutesProviderSpec.swift in Sources */,

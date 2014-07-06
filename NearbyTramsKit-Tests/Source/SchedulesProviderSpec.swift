@@ -8,7 +8,7 @@ import NearbyTramsKit
 import NearbyTramsNetworkKit
 import NearbyTramsStorageKit
 
-class ScheduleProviderSpec: QuickSpec {
+class SchedulesProviderSpec: QuickSpec {
     override func spec() {
         var store: CoreDataTestsHelperStore!
         var moc: NSManagedObjectContext!
