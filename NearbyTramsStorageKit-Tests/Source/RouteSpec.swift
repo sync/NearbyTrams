@@ -246,7 +246,7 @@ class RouteSpec: QuickSpec {
         describe("Fetching route(s)") {
             describe("fetchOneRouteForPrimaryKey") {
                 
-                var result: (route: Route?, error:NSError?)?
+                var result: (route: Route?, error:NSError?)!
                 
                 context("when empty") {
                     beforeEach() {
@@ -254,11 +254,11 @@ class RouteSpec: QuickSpec {
                     }
                     
                     it("should return no route") {
-                        expect(result?.route?).to.beNil()
+                        expect(result.route?).to.beNil()
                     }
                     
                     it("should return no error") {
-                        expect(result?.error).to.beNil()
+                        expect(result.error).to.beNil()
                     }
                 }
                 
@@ -297,7 +297,7 @@ class RouteSpec: QuickSpec {
             
             describe("fetchAllRoutesForManagedObjectIds") {
                 
-                var result: (routes: Route[]?, error:NSError?)?
+                var result: (routes: Route[]?, error:NSError?)!
                 
                 context("when empty") {
                     beforeEach() {
@@ -305,11 +305,11 @@ class RouteSpec: QuickSpec {
                     }
                     
                     it("should return an empty array of routes") {
-                        expect(result?.routes?.count).to.equal(0)
+                        expect(result.routes?.count).to.equal(0)
                     }
                     
                     it("should return no error") {
-                        expect(result?.error).to.beNil()
+                        expect(result.error).to.beNil()
                     }
                 }
                 
