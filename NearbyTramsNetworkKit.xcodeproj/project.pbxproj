@@ -553,14 +553,12 @@
 /* Begin XCBuildConfiguration section */
 		5F5A71E81956E51B00A5BD40 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5F5A72111956E7CC00A5BD40 /* NearbyTramsNetworkKit.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		5F5A71E91956E51B00A5BD40 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5F5A72111956E7CC00A5BD40 /* NearbyTramsNetworkKit.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;

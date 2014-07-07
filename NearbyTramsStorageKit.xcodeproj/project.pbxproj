@@ -593,14 +593,12 @@
 /* Begin XCBuildConfiguration section */
 		5F6BA8B81952B395005D0DDB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5F8695D919539442000E2256 /* NearbyTramsStorageKit.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		5F6BA8B91952B395005D0DDB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5F8695D919539442000E2256 /* NearbyTramsStorageKit.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;

@@ -349,26 +349,26 @@
 /* Begin XCBuildConfiguration section */
 		5F155CC819518A0900D8931F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5F155CCE19518E4600D8931F /* TramsScraper-Debug.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		5F155CC919518A0900D8931F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5F155CCF19518E4600D8931F /* TramsScraper-Release.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
 		};
 		5F155CCB19518A0900D8931F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F155CCE19518E4600D8931F /* TramsScraper-Debug.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		5F155CCC19518A0900D8931F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F155CCE19518E4600D8931F /* TramsScraper-Debug.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
