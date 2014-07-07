@@ -50,10 +50,9 @@ class StopsProvider
                         
                         if requestStopInfo
                         {
-                            dispatch_group_enter(group);
-                            
                             if let stopNo: Int = stop.stopNo?.integerValue
                             {
+                                dispatch_group_enter(group);
                                 self.getStopInformationWithStopNo(stopNo, managedObjectContext: managedObjectContext) {
                                     objectId, stopInformationError -> Void in
                                     
