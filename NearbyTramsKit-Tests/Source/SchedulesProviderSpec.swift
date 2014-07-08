@@ -33,7 +33,7 @@ class SchedulesProviderSpec: QuickSpec {
         
         describe("getNextPredictionsWithStopNo") {
             
-            var completionSchedules: NSManagedObjectID[]!
+            var completionSchedules: [NSManagedObjectID]!
             var completionError: NSError!
             
             context("when some schedules are avaible") {
@@ -64,11 +64,11 @@ class SchedulesProviderSpec: QuickSpec {
                     
                     let body = ["ResponseObject": [json1]]
                     let response = MockWebServiceResponse(body: body, header: ["Content-Type": "application/json; charset=utf-8"])
-                    MockWebServiceURLProtocol.cannedResponse = response
+                    MockWebServiceURLProtocol.cannedResponse(response)
                 }
                 
                 afterEach {
-                    MockWebServiceURLProtocol.cannedResponse = nil
+                    MockWebServiceURLProtocol.cannedResponse(nil)
                 }
                 
                 it("should complete on the main thread with schedules and no error") {
@@ -88,11 +88,11 @@ class SchedulesProviderSpec: QuickSpec {
                 beforeEach {
                     let body = ["ResponseObject": []]
                     let response = MockWebServiceResponse(body: body, header: ["Content-Type": "application/json; charset=utf-8"])
-                    MockWebServiceURLProtocol.cannedResponse = response
+                    MockWebServiceURLProtocol.cannedResponse(response)
                 }
                 
                 afterEach {
-                    MockWebServiceURLProtocol.cannedResponse = nil
+                    MockWebServiceURLProtocol.cannedResponse(nil)
                 }
                 
                 it("should complete on the main thread with no schedules and no error") {
@@ -115,11 +115,11 @@ class SchedulesProviderSpec: QuickSpec {
                 beforeEach {
                     error = NSError(domain: "au.com.otherTest.provider", code: 150, userInfo: nil)
                     let response = MockWebServiceResponse(body: ["test": "blah"], header: ["Content-Type": "application/json; charset=utf-8"], statusCode: 404, error: error)
-                    MockWebServiceURLProtocol.cannedResponse = response
+                    MockWebServiceURLProtocol.cannedResponse(response)
                 }
                 
                 afterEach {
-                    MockWebServiceURLProtocol.cannedResponse = nil
+                    MockWebServiceURLProtocol.cannedResponse(nil)
                 }
                 
                 it("should complete on the main thread with an error an no schedules") {

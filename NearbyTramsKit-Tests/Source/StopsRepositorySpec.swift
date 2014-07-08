@@ -166,13 +166,13 @@ class StopsRepositorySpec: QuickSpec {
                 let responseGetStopInfoBody = ["ResponseObject": json1]
                 let responseGetStopInfo = MockWebServiceResponse(body: responseGetStopInfoBody, header: ["Content-Type": "application/json; charset=utf-8"], urlComponentToMatch:"GetStopInformation.ashx")
                 
-                MockWebServiceURLProtocol.cannedResponses = [responseGetStop, responseGetStopInfo]
+                MockWebServiceURLProtocol.cannedResponses([responseGetStop, responseGetStopInfo])
                 
                 repository.update()
             }
             
             afterEach {
-                MockWebServiceURLProtocol.cannedResponse = nil
+                MockWebServiceURLProtocol.cannedResponse(nil)
             }
             
             func fetchRoute() -> Route?

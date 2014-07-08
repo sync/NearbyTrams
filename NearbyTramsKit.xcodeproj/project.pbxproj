@@ -191,7 +191,6 @@
 		5FA51036195C3A91000100A5 /* NearbyTramsKit-Tests-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "NearbyTramsKit-Tests-Release.xcconfig"; sourceTree = "<group>"; };
 		5FA51037195C3A91000100A5 /* NearbyTramsKit.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = NearbyTramsKit.xcconfig; sourceTree = "<group>"; };
 		5FA51039195C3AC7000100A5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5FA5103B195C3AC7000100A5 /* NearbyTramsKit-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NearbyTramsKit-Bridging-Header.h"; sourceTree = "<group>"; };
 		5FA5103C195C3AC7000100A5 /* NearbyTramsKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyTramsKit.h; sourceTree = "<group>"; };
 		5FA51042195C3B47000100A5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5FA51047195C3C26000100A5 /* RoutesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesProvider.swift; sourceTree = "<group>"; };
@@ -333,7 +332,6 @@
 			isa = PBXGroup;
 			children = (
 				5FA5103C195C3AC7000100A5 /* NearbyTramsKit.h */,
-				5FA5103B195C3AC7000100A5 /* NearbyTramsKit-Bridging-Header.h */,
 				5F2D528019691434002CECA0 /* ViewModels */,
 				5F551C191968BD1D000D3A31 /* Repositories */,
 				5FA8DB8C195D8AE90080EEAE /* Providers */,

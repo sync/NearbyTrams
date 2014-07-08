@@ -58,16 +58,16 @@ class NetworkServiceSpec: QuickSpec {
                 beforeEach {
                     error = NSError(domain: "au.com.otherTest.domain", code: 150, userInfo: nil)
                     let response = MockWebServiceResponse(body: ["test": "blah"], header: ["Content-Type": "application/json; charset=utf-8"], statusCode: 404, error: error)
-                    MockWebServiceURLProtocol.cannedResponse = response
+                    MockWebServiceURLProtocol.cannedResponse(response)
                 }
                 
                 afterEach {
-                    MockWebServiceURLProtocol.cannedResponse = nil
+                    MockWebServiceURLProtocol.cannedResponse(nil)
                 }
                 
                 it("should complete with an error") {
                     
-                    var array: NSDictionary[]!
+                    var array: [NSDictionary]!
                     var completionError: NSError!
                     
                     let task = service.getAllRoutesWithCompletionHandler {
@@ -84,21 +84,21 @@ class NetworkServiceSpec: QuickSpec {
             
             context("when successful") {
                 
-                var responseObject: Dictionary<String, AnyObject>[]!
+                var responseObject: [Dictionary<String, AnyObject>]!
                 
                 beforeEach {
                     responseObject = [["test": "blah"], ["test": "blah"]]
                     let response = MockWebServiceResponse(body: ["ResponseObject": responseObject], header: ["Content-Type": "application/json; charset=utf-8"])
-                    MockWebServiceURLProtocol.cannedResponse = response
+                    MockWebServiceURLProtocol.cannedResponse(response)
                 }
                 
                 afterEach {
-                    MockWebServiceURLProtocol.cannedResponse = nil
+                    MockWebServiceURLProtocol.cannedResponse(nil)
                 }
                 
                 it("should complete with a dictionary and no error") {
                     
-                    var array: NSDictionary[]!
+                    var array: [NSDictionary]!
                     var completionError: NSError!
                     
                     let task = service.getAllRoutesWithCompletionHandler {
@@ -143,16 +143,16 @@ class NetworkServiceSpec: QuickSpec {
                 beforeEach {
                     error = NSError(domain: "au.com.otherTest.domain", code: 150, userInfo: nil)
                     let response = MockWebServiceResponse(body: ["test": "blah"], header: ["Content-Type": "application/json; charset=utf-8"], statusCode: 404, error: error)
-                    MockWebServiceURLProtocol.cannedResponse = response
+                    MockWebServiceURLProtocol.cannedResponse(response)
                 }
                 
                 afterEach {
-                    MockWebServiceURLProtocol.cannedResponse = nil
+                    MockWebServiceURLProtocol.cannedResponse(nil)
                 }
                 
                 it("should complete with an error") {
                     
-                    var array: NSDictionary[]!
+                    var array: [NSDictionary]!
                     var completionError: NSError!
                     
                     let stopInfoTask = service.getStopsByRouteAndDirectionWithRouteNo(123, isUpDestination: true, {
@@ -169,21 +169,21 @@ class NetworkServiceSpec: QuickSpec {
             
             context("when successful") {
                 
-                var responseObject: Dictionary<String, AnyObject>[]!
+                var responseObject: [Dictionary<String, AnyObject>]!
                 
                 beforeEach {
                     responseObject = [["test": "blah"], ["test": "blah"]]
                     let response = MockWebServiceResponse(body: ["ResponseObject": responseObject], header: ["Content-Type": "application/json; charset=utf-8"])
-                    MockWebServiceURLProtocol.cannedResponse = response
+                    MockWebServiceURLProtocol.cannedResponse(response)
                 }
                 
                 afterEach {
-                    MockWebServiceURLProtocol.cannedResponse = nil
+                    MockWebServiceURLProtocol.cannedResponse(nil)
                 }
                 
                 it("should complete with a dictionary and no error") {
                     
-                    var array: NSDictionary[]!
+                    var array: [NSDictionary]!
                     var completionError: NSError!
                     
                     let task = service.getStopsByRouteAndDirectionWithRouteNo(123, isUpDestination: true, {
@@ -228,11 +228,11 @@ class NetworkServiceSpec: QuickSpec {
                 beforeEach {
                     error = NSError(domain: "au.com.otherTest.domain", code: 150, userInfo: nil)
                     let response = MockWebServiceResponse(body: ["test": "blah"], header: ["Content-Type": "application/json; charset=utf-8"], statusCode: 404, error: error)
-                    MockWebServiceURLProtocol.cannedResponse = response
+                    MockWebServiceURLProtocol.cannedResponse(response)
                 }
                 
                 afterEach {
-                    MockWebServiceURLProtocol.cannedResponse = nil
+                    MockWebServiceURLProtocol.cannedResponse(nil)
                 }
                 
                 it("should complete with an error") {
@@ -259,11 +259,11 @@ class NetworkServiceSpec: QuickSpec {
                 beforeEach {
                     responseObject = ["test": "blah"]
                     let response = MockWebServiceResponse(body: ["ResponseObject": responseObject], header: ["Content-Type": "application/json; charset=utf-8"])
-                    MockWebServiceURLProtocol.cannedResponse = response
+                    MockWebServiceURLProtocol.cannedResponse(response)
                 }
                 
                 afterEach {
-                    MockWebServiceURLProtocol.cannedResponse = nil
+                    MockWebServiceURLProtocol.cannedResponse(nil)
                 }
                 
                 it("should complete with a dictionary and no error") {
@@ -322,16 +322,16 @@ class NetworkServiceSpec: QuickSpec {
                 beforeEach {
                     error = NSError(domain: "au.com.otherTest.domain", code: 150, userInfo: nil)
                     let response = MockWebServiceResponse(body: ["test": "blah"], header: ["Content-Type": "application/json; charset=utf-8"], statusCode: 404, error: error)
-                    MockWebServiceURLProtocol.cannedResponse = response
+                    MockWebServiceURLProtocol.cannedResponse(response)
                 }
                 
                 afterEach {
-                    MockWebServiceURLProtocol.cannedResponse = nil
+                    MockWebServiceURLProtocol.cannedResponse(nil)
                 }
                 
                 it("should complete with an error") {
                     
-                    var array: NSDictionary[]!
+                    var array: [NSDictionary]!
                     var completionError: NSError!
                     
                     let stopInfoTask = service.getNextPredictionsWithStopNo(123, timestamp: NSDate(), {
@@ -348,21 +348,21 @@ class NetworkServiceSpec: QuickSpec {
             
             context("when successful") {
                 
-                var responseObject: Dictionary<String, AnyObject>[]!
+                var responseObject: [Dictionary<String, AnyObject>]!
                 
                 beforeEach {
                     responseObject = [["test": "blah"], ["test": "blah"]]
                     let response = MockWebServiceResponse(body: ["ResponseObject": responseObject], header: ["Content-Type": "application/json; charset=utf-8"])
-                    MockWebServiceURLProtocol.cannedResponse = response
+                    MockWebServiceURLProtocol.cannedResponse(response)
                 }
                 
                 afterEach {
-                    MockWebServiceURLProtocol.cannedResponse = nil
+                    MockWebServiceURLProtocol.cannedResponse(nil)
                 }
                 
                 it("should complete with a dictionary and no error") {
                     
-                    var array: NSDictionary[]!
+                    var array: [NSDictionary]!
                     var completionError: NSError!
                     
                     let task = service.getNextPredictionsWithStopNo(123, timestamp: NSDate(), {

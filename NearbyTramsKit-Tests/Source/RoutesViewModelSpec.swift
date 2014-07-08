@@ -10,21 +10,21 @@ import NearbyTramsStorageKit
 
 class FakeRoutesViewModelDelegate: RoutesViewModelDelegate
 {
-    var addedRoutes: RouteViewModel[]?
-    var removedRoutes: RouteViewModel[]?
-    var updatedRoutes: RouteViewModel[]?
+    var addedRoutes: [RouteViewModel]?
+    var removedRoutes: [RouteViewModel]?
+    var updatedRoutes: [RouteViewModel]?
     
-    func routesViewModelDidAddRoutes(routesViewModel: RoutesViewModel, routes: RouteViewModel[])
+    func routesViewModelDidAddRoutes(routesViewModel: RoutesViewModel, routes: [RouteViewModel])
     {
         addedRoutes = routes
     }
     
-    func routesViewModelDidRemoveRoutes(routesViewModel: RoutesViewModel, routes: RouteViewModel[])
+    func routesViewModelDidRemoveRoutes(routesViewModel: RoutesViewModel, routes: [RouteViewModel])
     {
         removedRoutes = routes
     }
     
-    func routesViewModelDidUpdateRoutes(routesViewModel: RoutesViewModel, routes: RouteViewModel[])
+    func routesViewModelDidUpdateRoutes(routesViewModel: RoutesViewModel, routes: [RouteViewModel])
     {
         updatedRoutes = routes
     }

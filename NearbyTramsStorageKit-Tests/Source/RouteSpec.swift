@@ -126,7 +126,7 @@ class RouteSpec: QuickSpec {
             describe ("insertOrUpdateRouteWithDictionaryFromRest") {
                 
                 var result: (route: Route?, error: NSError?)!
-                var storedRoutes: Route[]!
+                var storedRoutes: [Route]!
                 
                 beforeEach {
                     let json: NSDictionary = [
@@ -143,7 +143,7 @@ class RouteSpec: QuickSpec {
                     
                     let request = NSFetchRequest(entityName: "Route")
                     request.sortDescriptors = [NSSortDescriptor(key: "routeNo", ascending:true)]
-                    storedRoutes = moc.executeFetchRequest(request, error: nil) as? Route[]
+                    storedRoutes = moc.executeFetchRequest(request, error: nil) as? [Route]
                 }
                 
                 it("should have a route") {
@@ -175,10 +175,10 @@ class RouteSpec: QuickSpec {
             
             describe ("insertOrUpdateRoutesFromRestArray") {
                 
-                var results: (routes: Route?[], errors: NSError?[])!
-                var routes: Route?[]!
-                var errors: NSError?[]!
-                var storedRoutes: Route[]!
+                var results: (routes: [Route?], errors: [NSError?])!
+                var routes: [Route?]!
+                var errors: [NSError?]!
+                var storedRoutes: [Route]!
                 
                 beforeEach {
                     let json1: NSDictionary = [
@@ -208,8 +208,8 @@ class RouteSpec: QuickSpec {
                         "HasLowFloor": false
                     ]
                     
-                    let array: NSDictionary[] = [json1, json2, json3]
-                    results = Route.insertOrUpdateFromRestArray(array, inManagedObjectContext: moc) as (routes: Route?[], errors: NSError?[])
+                    let array: [NSDictionary] = [json1, json2, json3]
+                    results = Route.insertOrUpdateFromRestArray(array, inManagedObjectContext: moc) as (routes: [Route?], errors: [NSError?])
                     moc.save(nil)
                     
                     routes = results.routes
@@ -217,7 +217,7 @@ class RouteSpec: QuickSpec {
                     
                     let request = NSFetchRequest(entityName: "Route")
                     request.sortDescriptors = [NSSortDescriptor(key: "routeNo", ascending:true)]
-                    storedRoutes = moc.executeFetchRequest(request, error: nil) as? Route[]
+                    storedRoutes = moc.executeFetchRequest(request, error: nil) as? [Route]
                 }
                 
                 it("should have 2 routes") {
@@ -306,7 +306,7 @@ class RouteSpec: QuickSpec {
             
             describe("fetchAllRoutesForManagedObjectIds") {
                 
-                var result: (routes: Route[]?, error:NSError?)!
+                var result: (routes: [Route]?, error:NSError?)!
                 
                 context("when empty") {
                     beforeEach() {

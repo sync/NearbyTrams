@@ -33,7 +33,7 @@ class RoutesProviderSpec: QuickSpec {
         
         describe("getAllRoutesWithManagedObjectContext") {
             
-            var completionRoutes: NSManagedObjectID[]!
+            var completionRoutes: [NSManagedObjectID]!
             var completionError: NSError!
             
             context("when some routes are avaible") {
@@ -58,11 +58,11 @@ class RoutesProviderSpec: QuickSpec {
                     
                     let body = ["ResponseObject": [json1, json2]]
                     let response = MockWebServiceResponse(body: body, header: ["Content-Type": "application/json; charset=utf-8"])
-                    MockWebServiceURLProtocol.cannedResponse = response
+                    MockWebServiceURLProtocol.cannedResponse(response)
                 }
                 
                 afterEach {
-                    MockWebServiceURLProtocol.cannedResponse = nil
+                    MockWebServiceURLProtocol.cannedResponse(nil)
                 }
                 
                 it("should complete on the main thread with routes and no error") {
@@ -82,11 +82,11 @@ class RoutesProviderSpec: QuickSpec {
                 beforeEach {
                    let body = ["ResponseObject": []]
                     let response = MockWebServiceResponse(body: body, header: ["Content-Type": "application/json; charset=utf-8"])
-                    MockWebServiceURLProtocol.cannedResponse = response
+                    MockWebServiceURLProtocol.cannedResponse(response)
                 }
                 
                 afterEach {
-                    MockWebServiceURLProtocol.cannedResponse = nil
+                    MockWebServiceURLProtocol.cannedResponse(nil)
                 }
                 
                 it("should complete on the main thread with no routes and no error") {
@@ -109,11 +109,11 @@ class RoutesProviderSpec: QuickSpec {
                 beforeEach {
                     error = NSError(domain: "au.com.otherTest.provider", code: 150, userInfo: nil)
                     let response = MockWebServiceResponse(body: ["test": "blah"], header: ["Content-Type": "application/json; charset=utf-8"], statusCode: 404, error: error)
-                    MockWebServiceURLProtocol.cannedResponse = response
+                    MockWebServiceURLProtocol.cannedResponse(response)
                 }
                 
                 afterEach {
-                    MockWebServiceURLProtocol.cannedResponse = nil
+                    MockWebServiceURLProtocol.cannedResponse(nil)
                 }
                 
                 it("should complete on the main thread with an error an no routes") {

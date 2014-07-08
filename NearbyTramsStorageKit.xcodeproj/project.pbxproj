@@ -148,7 +148,6 @@
 		5F8C95F6195EAE41001B329F /* NSManagedObject+REST.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+REST.swift"; sourceTree = "<group>"; };
 		5FA510A9195C4D2B000100A5 /* NearbyTramsStorageKit-Tests-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "NearbyTramsStorageKit-Tests-Debug.xcconfig"; sourceTree = "<group>"; };
 		5FA510AA195C4D2B000100A5 /* NearbyTramsStorageKit-Tests-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "NearbyTramsStorageKit-Tests-Release.xcconfig"; sourceTree = "<group>"; };
-		5FA510B1195C4DDC000100A5 /* NearbyTramsStorageKit-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NearbyTramsStorageKit-Bridging-Header.h"; sourceTree = "<group>"; };
 		5FBE5472195460FA009FF8D2 /* NearbyTramsStorageKit-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NearbyTramsStorageKit-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FD5CDFD19559D3D000243A0 /* CoreDataTestsHelperStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTestsHelperStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -299,7 +298,6 @@
 			isa = PBXGroup;
 			children = (
 				5F8695E019539442000E2256 /* NearbyTramsStorageKit.h */,
-				5FA510B1195C4DDC000100A5 /* NearbyTramsStorageKit-Bridging-Header.h */,
 				5FD5CDFB19559D19000243A0 /* Domain */,
 				5F5A72AA1956F55200A5BD40 /* Extensions */,
 				5FD5CDFC19559D2E000243A0 /* Helper */,

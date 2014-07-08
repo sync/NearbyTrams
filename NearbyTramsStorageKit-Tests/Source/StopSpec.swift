@@ -53,9 +53,9 @@ class StopSpec: QuickSpec {
                             "StopName": "Burke Rd / Canterbury Rd",
                             "StopNo": 14,
                             "Suburb": "Canterbury",
-                            "DistanceToLocation": 14.00,
-                            "Latitude": -36.45,
-                            "Longitude": 145.68,
+                            "DistanceToLocation": 14,
+                            "Latitude": -36,
+                            "Longitude": 145,
                         ]
                         
                         stop.configureWithDictionaryFromRest(json)
@@ -102,11 +102,11 @@ class StopSpec: QuickSpec {
                     }
                     
                     it("should have a Latitude") {
-                        expect(stop.latitude).to.equal(-36.45)
+                        expect(stop.latitude).to.equal(-36)
                     }
                     
                     it("should be a Longitude") {
-                        expect(stop.longitude).to.equal(145.68)
+                        expect(stop.longitude).to.equal(145)
                     }
                 }
 
@@ -197,9 +197,9 @@ class StopSpec: QuickSpec {
                             "StopName": "Burke Rd / Canterbury Rd",
                             "StopNo": 14,
                             "Suburb": "Canterbury",
-                            "DistanceToLocation": 14.00,
-                            "Latitude": -36.45,
-                            "Longitude": 145.68,
+                            "DistanceToLocation": 14,
+                            "Latitude": -36,
+                            "Longitude": 145,
                         ]
                         
                         stop.configureWithDictionaryFromRest(fullJson)
@@ -263,11 +263,11 @@ class StopSpec: QuickSpec {
                     }
                     
                     it("should have a Latitude") {
-                        expect(stop.latitude).to.equal(-36.45)
+                        expect(stop.latitude).to.equal(-36)
                     }
                     
                     it("should be a Longitude") {
-                        expect(stop.longitude).to.equal(145.68)
+                        expect(stop.longitude).to.equal(145)
                     }
                 }
             }

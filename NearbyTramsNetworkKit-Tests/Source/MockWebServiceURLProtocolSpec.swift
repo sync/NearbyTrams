@@ -39,11 +39,11 @@ class MockWebServiceURLProtocolSpec: QuickSpec {
         describe("MockWebServiceURLProtocol") {
             beforeEach {
                 let response = MockWebServiceResponse(body: ["test": "blah"], header: ["Content-Type": "application/json; charset=utf-8"])
-                MockWebServiceURLProtocol.cannedResponse = response
+                MockWebServiceURLProtocol.cannedResponse(response)
             }
             
             afterEach {
-                MockWebServiceURLProtocol.cannedResponse = nil
+                MockWebServiceURLProtocol.cannedResponse(nil)
             }
             
 
@@ -68,7 +68,7 @@ class MockWebServiceURLProtocolSpec: QuickSpec {
                     beforeEach {
                         let response = MockWebServiceResponse(body: ["test": "blah"], header: ["Content-Type": "application/json; charset=utf-8"], urlComponentToMatch:"GetStopsByRouteAndDirection.ashx")
                         let responseNoComponent = MockWebServiceResponse(body: ["test2": "blah"], header: ["Content-Type": "application/json; charset=utf-8"])
-                        MockWebServiceURLProtocol.cannedResponses = [response, responseNoComponent]
+                        MockWebServiceURLProtocol.cannedResponses([response, responseNoComponent])
                     }
                     
                     it("should be able to init a request") {

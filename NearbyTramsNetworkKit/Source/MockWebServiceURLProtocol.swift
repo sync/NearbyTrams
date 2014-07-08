@@ -22,46 +22,34 @@ struct MockWebServiceResponse
     }
 }
 
-struct MockWebServiceResponseStorage
-{
-    static var storage: MockWebServiceResponse[]?
-}
-
+var storage: [MockWebServiceResponse]?
 class MockWebServiceURLProtocol: NSURLProtocol
 {
-    class var cannedResponses:(response: MockWebServiceResponse[]!) {
-        get {
-        return MockWebServiceResponseStorage.storage
-        }
-        set {
-            MockWebServiceResponseStorage.storage = newValue
-    }
-    }
-    
-    class var cannedResponse:(response: MockWebServiceResponse!) {
-        get {
-        return MockWebServiceResponseStorage.storage?[0]
-        }
-        set {
-            if newValue != nil
-            {
-                MockWebServiceResponseStorage.storage = [newValue]
-            }
-            else
-            {
-                MockWebServiceResponseStorage.storage = nil
-            }
-    }
-    }
-    
-    class func responsesForURL(URL: NSURL) -> MockWebServiceResponse[]?
+    class func cannedResponses(responses: [MockWebServiceResponse]?)
     {
-        if MockWebServiceURLProtocol.cannedResponses != nil
+        storage = responses
+    }
+    
+    class func cannedResponse(response: MockWebServiceResponse?)
+    {
+        if let aResponse = response
         {
-            let responses = (cannedResponses as MockWebServiceResponse[]).filter{
+             storage = [aResponse]
+        }
+        else
+        {
+            storage = nil
+        }
+    }
+
+    class func responsesForURL(URL: NSURL) -> [MockWebServiceResponse]?
+    {
+        if let responses = storage
+        {
+            var responses = (responses as [MockWebServiceResponse]).filter{
                 cannedResponse -> Bool in
                 
-                return (cannedResponse.urlComponent) ? contains(URL.pathComponents as String[], cannedResponse.urlComponent!) : true
+                return (cannedResponse.urlComponent) ? contains(URL.pathComponents as [String], cannedResponse.urlComponent!) : true
             }
             
             // give priority to responses that have a urlComponent
@@ -99,9 +87,7 @@ class MockWebServiceURLProtocol: NSURLProtocol
         let request = self.request
         let client: NSURLProtocolClient = self.client
         
-        if MockWebServiceURLProtocol.cannedResponses != nil
-        {
-            if let cannedResponses = self.dynamicType.responsesForURL(request.URL)
+        if let cannedResponses = self.dynamicType.responsesForURL(request.URL)
             {
                 let cannedResponse: MockWebServiceResponse = cannedResponses[0]
                 if let error = cannedResponse.error
@@ -120,7 +106,7 @@ class MockWebServiceURLProtocol: NSURLProtocol
                 }
                 
             }
-        }
+
     }
     
     override func stopLoading()

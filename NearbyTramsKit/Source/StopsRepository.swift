@@ -50,7 +50,7 @@ class StopsRepository
                     
                     if let objectIds = stopObjectIds
                     {
-                        let result: (stops: Stop[]?, error:NSError?) = Stop.fetchAllForManagedObjectIds(objectIds, usingManagedObjectContext: self.managedObjectContext)
+                        let result: (stops: [Stop]?, error:NSError?) = Stop.fetchAllForManagedObjectIds(objectIds, usingManagedObjectContext: self.managedObjectContext)
                         if let stops = result.stops
                         {
                             route.stops = NSMutableSet(array: stops)

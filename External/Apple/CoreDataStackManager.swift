@@ -91,7 +91,7 @@ class CoreDataStackManager {
         let properties = applicationSupportDirectory.resourceValuesForKeys([NSURLIsDirectoryKey!], error:&error)
         
         if properties {
-            if !properties[NSURLIsDirectoryKey].boolValue {
+            if !(properties[NSURLIsDirectoryKey] as NSNumber).boolValue {
                 let description = NSLocalizedString("Could not access the application data folder.", comment: "Failed to initialize the PSC")
                 let reason = NSLocalizedString("Found a file in its place.", comment: "Failed to initialize the PSC")
                 let dict = [NSLocalizedDescriptionKey : description, NSLocalizedFailureReasonErrorKey : reason]

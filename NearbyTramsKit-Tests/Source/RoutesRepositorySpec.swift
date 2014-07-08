@@ -132,13 +132,13 @@ class RoutesRepositorySpec: QuickSpec {
                 
                 let body = ["ResponseObject": [json1, json2]]
                 let response = MockWebServiceResponse(body: body, header: ["Content-Type": "application/json; charset=utf-8"])
-                MockWebServiceURLProtocol.cannedResponse = response
+                MockWebServiceURLProtocol.cannedResponse(response)
                 
                 repository.update()
             }
             
             afterEach {
-                MockWebServiceURLProtocol.cannedResponse = nil
+                MockWebServiceURLProtocol.cannedResponse(nil)
             }
             
             it("should add routes") {

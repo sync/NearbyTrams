@@ -33,7 +33,7 @@ class StopsProviderSpec: QuickSpec {
         
         describe("getStopsWithRouteNo") {
             
-            var completionStops: NSManagedObjectID[]!
+            var completionStops: [NSManagedObjectID]!
             var completionError: NSError!
             
             context("when some stops are avaible") {
@@ -86,11 +86,11 @@ class StopsProviderSpec: QuickSpec {
                     let responseGetStopInfoBody = ["ResponseObject": json1]
                     let responseGetStopInfo = MockWebServiceResponse(body: responseGetStopInfoBody, header: ["Content-Type": "application/json; charset=utf-8"], urlComponentToMatch:"GetStopInformation.ashx")
                     
-                    MockWebServiceURLProtocol.cannedResponses = [responseGetStop, responseGetStopInfo]
+                    MockWebServiceURLProtocol.cannedResponses([responseGetStop, responseGetStopInfo])
                 }
                 
                 afterEach {
-                    MockWebServiceURLProtocol.cannedResponse = nil
+                    MockWebServiceURLProtocol.cannedResponse(nil)
                 }
                 
                 it("should complete on the main thread with stops and no error") {
@@ -110,11 +110,11 @@ class StopsProviderSpec: QuickSpec {
                 beforeEach {
                     let body = ["ResponseObject": []]
                     let response = MockWebServiceResponse(body: body, header: ["Content-Type": "application/json; charset=utf-8"])
-                    MockWebServiceURLProtocol.cannedResponse = response
+                    MockWebServiceURLProtocol.cannedResponse(response)
                 }
                 
                 afterEach {
-                    MockWebServiceURLProtocol.cannedResponse = nil
+                    MockWebServiceURLProtocol.cannedResponse(nil)
                 }
                 
                 it("should complete on the main thread with no stops and no error") {
@@ -137,11 +137,11 @@ class StopsProviderSpec: QuickSpec {
                 beforeEach {
                     error = NSError(domain: "au.com.otherTest.provider", code: 150, userInfo: nil)
                     let response = MockWebServiceResponse(body: ["test": "blah"], header: ["Content-Type": "application/json; charset=utf-8"], statusCode: 404, error: error)
-                    MockWebServiceURLProtocol.cannedResponse = response
+                    MockWebServiceURLProtocol.cannedResponse(response)
                 }
                 
                 afterEach {
-                    MockWebServiceURLProtocol.cannedResponse = nil
+                    MockWebServiceURLProtocol.cannedResponse(nil)
                 }
                 
                 it("should complete on the main thread with an error an no stops") {
@@ -188,11 +188,11 @@ class StopsProviderSpec: QuickSpec {
                     
                     let body = ["ResponseObject": json1]
                     let response = MockWebServiceResponse(body: body, header: ["Content-Type": "application/json; charset=utf-8"])
-                    MockWebServiceURLProtocol.cannedResponse = response
+                    MockWebServiceURLProtocol.cannedResponse(response)
                 }
                 
                 afterEach {
-                    MockWebServiceURLProtocol.cannedResponse = nil
+                    MockWebServiceURLProtocol.cannedResponse(nil)
                 }
                 
                 it("should complete on the main thread with stops and no error") {
@@ -212,11 +212,11 @@ class StopsProviderSpec: QuickSpec {
                 beforeEach {
                     let body = ["ResponseObject": [ : ]]
                     let response = MockWebServiceResponse(body: body, header: ["Content-Type": "application/json; charset=utf-8"])
-                    MockWebServiceURLProtocol.cannedResponse = response
+                    MockWebServiceURLProtocol.cannedResponse(response)
                 }
                 
                 afterEach {
-                    MockWebServiceURLProtocol.cannedResponse = nil
+                    MockWebServiceURLProtocol.cannedResponse(nil)
                 }
                 
                 it("should complete on the main thread with no stops and no error") {
@@ -239,11 +239,11 @@ class StopsProviderSpec: QuickSpec {
                 beforeEach {
                     error = NSError(domain: "au.com.otherTest.provider", code: 150, userInfo: nil)
                     let response = MockWebServiceResponse(body: ["test": "blah"], header: ["Content-Type": "application/json; charset=utf-8"], statusCode: 404, error: error)
-                    MockWebServiceURLProtocol.cannedResponse = response
+                    MockWebServiceURLProtocol.cannedResponse(response)
                 }
                 
                 afterEach {
-                    MockWebServiceURLProtocol.cannedResponse = nil
+                    MockWebServiceURLProtocol.cannedResponse(nil)
                 }
                 
                 it("should complete on the main thread with an error an no stops") {

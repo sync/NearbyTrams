@@ -1,6 +1,6 @@
 [submodule "External/Quick"]
 	path = External/Quick
-	url = git@github.com:modocache/Quick.git
+	url = git@github.com:Quick/Quick.git
 [submodule "External/SNRFetchedResultsController"]
 	path = External/SNRFetchedResultsController
 	url = git@github.com:sync/SNRFetchedResultsController.git

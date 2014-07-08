@@ -141,13 +141,13 @@ class SchedulesRepositorySpec: QuickSpec {
                 
                 let body = ["ResponseObject": [json1]]
                 let response = MockWebServiceResponse(body: body, header: ["Content-Type": "application/json; charset=utf-8"])
-                MockWebServiceURLProtocol.cannedResponse = response
+                MockWebServiceURLProtocol.cannedResponse(response)
                 
                 repository.update()
             }
             
             afterEach {
-                MockWebServiceURLProtocol.cannedResponse = nil
+                MockWebServiceURLProtocol.cannedResponse(nil)
             }
             
             func fetchStop() -> Stop?

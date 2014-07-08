@@ -17,7 +17,7 @@ class SchedulesProvider
         self.managedObjectContext = managedObjectContext
     }
     
-    func getNextPredictionsWithStopNo(stopNo: Int, managedObjectContext: NSManagedObjectContext, completionHandler: ((NSManagedObjectID[]?, NSError?) -> Void)?) -> Void
+    func getNextPredictionsWithStopNo(stopNo: Int, managedObjectContext: NSManagedObjectContext, completionHandler: (([NSManagedObjectID]?, NSError?) -> Void)?) -> Void
     {
         let task = networkService.getNextPredictionsWithStopNo(stopNo, timestamp: NSDate()) {
             schedules, error -> Void in
@@ -36,10 +36,10 @@ class SchedulesProvider
                 let localContext = NSManagedObjectContext(concurrencyType: .ConfinementConcurrencyType)
                 localContext.parentContext = managedObjectContext
                 
-                let result: (schedules: Schedule?[], errors: NSError?[]) = Schedule.insertOrUpdateFromRestArray(schedules!, inManagedObjectContext: localContext)
+                let result: (schedules: [Schedule?], errors: [NSError?]) = Schedule.insertOrUpdateFromRestArray(schedules!, inManagedObjectContext: localContext)
                 localContext.save(nil)
                 
-                var objectIds: NSManagedObjectID[] = []
+                var objectIds: [NSManagedObjectID] = []
                 for potentialSchedule in result.schedules
                 {
                     if let schedule = potentialSchedule

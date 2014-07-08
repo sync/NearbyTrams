@@ -17,7 +17,7 @@ class StopsProvider
         self.managedObjectContext = managedObjectContext
     }
     
-    func getStopsWithRouteNo(routeNo: Int, isUpDestination: Bool, requestStopInfo: Bool = false, managedObjectContext: NSManagedObjectContext, completionHandler: ((NSManagedObjectID[]?, NSError?) -> Void)?) -> Void
+    func getStopsWithRouteNo(routeNo: Int, isUpDestination: Bool, requestStopInfo: Bool = false, managedObjectContext: NSManagedObjectContext, completionHandler: (([NSManagedObjectID]?, NSError?) -> Void)?) -> Void
     {
         let task = networkService.getStopsByRouteAndDirectionWithRouteNo(routeNo, isUpDestination: isUpDestination) {
             stops, error -> Void in
@@ -36,10 +36,10 @@ class StopsProvider
                 let localContext = NSManagedObjectContext(concurrencyType: .ConfinementConcurrencyType)
                 localContext.parentContext = managedObjectContext
                 
-                let result: (stops: Stop?[], errors: NSError?[]) = Stop.insertOrUpdateFromRestArray(stops!, inManagedObjectContext: localContext)
+                let result: (stops: [Stop?], errors: [NSError?]) = Stop.insertOrUpdateFromRestArray(stops!, inManagedObjectContext: localContext)
                 localContext.save(nil)
                 
-                var objectIds: NSManagedObjectID[] = []
+                var objectIds: [NSManagedObjectID] = []
                 
                 let group = dispatch_group_create();
                 for potentialStop in result.stops

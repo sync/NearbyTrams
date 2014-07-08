@@ -17,7 +17,7 @@ class RoutesProvider
         self.managedObjectContext = managedObjectContext
     }
     
-    func getAllRoutesWithManagedObjectContext(managedObjectContext: NSManagedObjectContext, completionHandler: ((NSManagedObjectID[]?, NSError?) -> Void)?) -> Void
+    func getAllRoutesWithManagedObjectContext(managedObjectContext: NSManagedObjectContext, completionHandler: (([NSManagedObjectID]?, NSError?) -> Void)?) -> Void
     {
         let task = networkService.getAllRoutesWithCompletionHandler {
             routes, error -> Void in
@@ -37,10 +37,10 @@ class RoutesProvider
                 localContext.parentContext = managedObjectContext
                 
                 
-                let result: (routes: Route?[], errors: NSError?[]) = Route.insertOrUpdateFromRestArray(routes!, inManagedObjectContext: localContext)
+                let result: (routes: [Route?], errors: [NSError?]) = Route.insertOrUpdateFromRestArray(routes!, inManagedObjectContext: localContext)
                 localContext.save(nil)
                 
-                var objectIds: NSManagedObjectID[] = []
+                var objectIds: [NSManagedObjectID] = []
                 for potentialRoute in result.routes
                 {
                     if let route = potentialRoute

@@ -17,7 +17,7 @@ class NetworkService
         self.session = NSURLSession(configuration: configuration)
     }
 
-    func getAllRoutesWithCompletionHandler(completionHandler: ((NSDictionary[]?, NSError?) -> Void)?) -> NSURLSessionDataTask
+    func getAllRoutesWithCompletionHandler(completionHandler: (([NSDictionary]?, NSError?) -> Void)?) -> NSURLSessionDataTask
     {
         // thanks to: http://wongm.com/2014/03/tramtracker-api-dumphone-access/
         let url = NSURL(string: "Controllers/GetAllRoutes.ashx", relativeToURL:baseURL)
@@ -39,7 +39,7 @@ class NetworkService
             {
                 if let handler = completionHandler
                 {
-                    handler(dictionary["ResponseObject"] as? NSDictionary[], nil)
+                    handler(dictionary["ResponseObject"] as? [NSDictionary], nil)
                 }
             }
             else
@@ -55,7 +55,7 @@ class NetworkService
         return task
     }
 
-    func getStopsByRouteAndDirectionWithRouteNo(routeNo: Int, isUpDestination: Bool, completionHandler: ((NSDictionary[]?, NSError?) -> Void)?) -> NSURLSessionDataTask
+    func getStopsByRouteAndDirectionWithRouteNo(routeNo: Int, isUpDestination: Bool, completionHandler: (([NSDictionary]?, NSError?) -> Void)?) -> NSURLSessionDataTask
     {
         // thanks to: http://wongm.com/2014/03/tramtracker-api-dumphone-access/
         let url = NSURL(string: "/Controllers/GetStopsByRouteAndDirection.ashx?r=\(routeNo)&u=\(isUpDestination)", relativeToURL: baseURL)
@@ -77,7 +77,7 @@ class NetworkService
             {
                 if let handler = completionHandler
                 {
-                    handler(dictionary["ResponseObject"] as? NSDictionary[], nil)
+                    handler(dictionary["ResponseObject"] as? [NSDictionary], nil)
                 }
             }
             else
@@ -131,7 +131,7 @@ class NetworkService
         return task
     }
     
-    func getNextPredictionsWithStopNo(stopNo: Int, timestamp: NSDate, completionHandler: ((NSDictionary[]?, NSError?) -> Void)?) -> NSURLSessionDataTask
+    func getNextPredictionsWithStopNo(stopNo: Int, timestamp: NSDate, completionHandler: (([NSDictionary]?, NSError?) -> Void)?) -> NSURLSessionDataTask
     {
         // thanks to: http://wongm.com/2014/03/tramtracker-api-dumphone-access/
         // not sure about ts format yet, unix time ??
@@ -154,7 +154,7 @@ class NetworkService
             {
                 if let handler = completionHandler
                 {
-                    handler(dictionary["ResponseObject"] as? NSDictionary[], nil)
+                    handler(dictionary["ResponseObject"] as? [NSDictionary], nil)
                 }
             }
             else

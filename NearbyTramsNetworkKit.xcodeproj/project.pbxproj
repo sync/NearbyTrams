@@ -123,7 +123,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5F3F327319583A320090891F /* NearbyTramsNetworkKit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NearbyTramsNetworkKit-Bridging-Header.h"; sourceTree = "<group>"; };
 		5F5A71D41956E51B00A5BD40 /* NearbyTramsNetworkKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NearbyTramsNetworkKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F5A72091956E72B00A5BD40 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F5A720B1956E72B00A5BD40 /* NearbyTramsNetworkKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyTramsNetworkKit.h; sourceTree = "<group>"; };
@@ -201,7 +200,6 @@
 			isa = PBXGroup;
 			children = (
 				5F5A720B1956E72B00A5BD40 /* NearbyTramsNetworkKit.h */,
-				5F3F327319583A320090891F /* NearbyTramsNetworkKit-Bridging-Header.h */,
 				5F5A729A1956F08700A5BD40 /* NetworkService.swift */,
 				5FA68AB119594058009A0720 /* Core */,
 				5FD148E819581FBF00B2EAEF /* Helper */,
