@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import NearbyTramsStorageKit
 
 protocol SchedulesRepositoryDelegate
 {
@@ -14,7 +15,7 @@ class SchedulesRepository
 {
     var delegate: SchedulesRepositoryDelegate?
     
-    let stopNo: Int
+    let stopIdentifier: String
     let schedulesProvider: SchedulesProvider
     let managedObjectContext: NSManagedObjectContext
     var isLoading: Bool {
@@ -23,22 +24,44 @@ class SchedulesRepository
     }
     }
     
-    init (stopNo: Int, schedulesProvider: SchedulesProvider, managedObjectContext: NSManagedObjectContext)
+    init (stopIdentifier: String, schedulesProvider: SchedulesProvider, managedObjectContext: NSManagedObjectContext)
     {
-        self.stopNo = stopNo
+        self.stopIdentifier = stopIdentifier
         self.schedulesProvider = schedulesProvider
         self.managedObjectContext = managedObjectContext
         self.isLoading = false
     }
     
+    func fetchStop() -> Stop?
+    {
+        let result: (managedObject: Stop?, error: NSError?) = Stop.fetchOneForPrimaryKeyValue(self.stopIdentifier, usingManagedObjectContext: self.managedObjectContext)
+        return result.managedObject
+    }
+    
     func update() -> Void
     {
-        self.isLoading = true
-        schedulesProvider.getNextPredictionsWithStopNo(stopNo, managedObjectContext: managedObjectContext) {
-            scheduleObjectIds, error -> Void in
-            
-            self.isLoading = false
-            self.delegate?.schedulesRepositoryDidFinsishLoading(self, error: error)
+        if let stop = fetchStop()
+        {
+            if let stopNo = stop.stopNo as? Int
+            {
+                self.isLoading = true
+                schedulesProvider.getNextPredictionsWithStopNo(stopNo, managedObjectContext: managedObjectContext) {
+                    scheduleObjectIds, error -> Void in
+                    
+                    if let objectIds = scheduleObjectIds
+                    {
+                        let result: (schedules: Schedule[]?, error:NSError?) = Schedule.fetchAllForManagedObjectIds(objectIds, usingManagedObjectContext: self.managedObjectContext)
+                        if let stops = result.schedules
+                        {
+                            stop.schedules = NSMutableSet(array: stops)
+                            self.managedObjectContext.save(nil)
+                        }
+                    }
+                    
+                    self.isLoading = false
+                    self.delegate?.schedulesRepositoryDidFinsishLoading(self, error: error)
+                }
+            }
         }
     }
 }

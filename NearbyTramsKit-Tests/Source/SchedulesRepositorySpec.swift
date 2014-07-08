@@ -45,12 +45,24 @@ class SchedulesRepositorySpec: QuickSpec {
             store = CoreDataTestsHelperStore()
             moc = store.managedObjectContext
             
-            networkService = NetworkService(baseURL: NSURL(string: "mock://www.apple.com"))
+            let stop: Stop = Stop.insertInManagedObjectContext(moc)
+            stop.uniqueIdentifier = "2166"
+            stop.stopNo = 2166
+            moc.save(nil)
+            
+            let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+            let urlProcolClass: AnyObject = ClassUtility.classFromType(MockWebServiceURLProtocol.self)
+            configuration.protocolClasses = [urlProcolClass]
+            networkService = NetworkService(baseURL: NSURL(string: "mock://www.apple.com"), configuration: configuration)
             provider = SchedulesProvider(networkService: networkService, managedObjectContext: moc)
             
-            repository = SchedulesRepository(stopNo: 2166, schedulesProvider: provider, managedObjectContext: moc)
+            repository = SchedulesRepository(stopIdentifier: "2166", schedulesProvider: provider, managedObjectContext: moc)
             fakeDelegate = SchedulesRepositoryFakeDelegate()
             repository.delegate = fakeDelegate
+        }
+        
+        afterEach {
+            let success = moc.save(nil)
         }
         
         describe("isLoading") {
@@ -100,6 +112,52 @@ class SchedulesRepositorySpec: QuickSpec {
                         expect{fakeDelegate.error}.willNot.beNil()
                     }
                 }
+            }
+        }
+        
+        describe("on success") {
+            beforeEach {
+                let json1: Dictionary<String, AnyObject> = [
+                    "AirConditioned": true,
+                    "Destination": "Sth Melb Beach",
+                    "DisplayAC": true,
+                    "DisruptionMessage": [
+                        "DisplayType": "Text",
+                        "MessageCount": 2,
+                        "Messages": ["Message 1", "Message 2"]
+                    ],
+                    "HasDisruption": true,
+                    "HasSpecialEvent": true,
+                    "HeadBoardRouteNo": "1",
+                    "InternalRouteNo": 1,
+                    "IsLowFloorTram": true,
+                    "IsTTAvailable": true,
+                    "PredictedArrivalDateTime": "/Date(1388977800000+1000)/",
+                    "RouteNo": "1",
+                    "SpecialEventMessage": "a special message",
+                    "TripID": 10,
+                    "VehicleNo": 2101
+                ]
+                
+                let body = ["ResponseObject": [json1]]
+                let response = MockWebServiceResponse(body: body, header: ["Content-Type": "application/json; charset=utf-8"])
+                MockWebServiceURLProtocol.cannedResponse = response
+                
+                repository.update()
+            }
+            
+            afterEach {
+                MockWebServiceURLProtocol.cannedResponse = nil
+            }
+            
+            func fetchStop() -> Stop?
+            {
+                var result: (stop: Stop?, error:NSError?) = Stop.fetchOneForPrimaryKeyValue("2166", usingManagedObjectContext: moc)
+                return result.stop
+            }
+            
+            it("should add schedules and assign the to it's corresponding stop") {
+                expect{fetchStop()?.schedules.count}.will.equal(1)
             }
         }
     }

@@ -45,12 +45,19 @@ class RoutesRepositorySpec: QuickSpec {
             store = CoreDataTestsHelperStore()
             moc = store.managedObjectContext
             
-            networkService = NetworkService(baseURL: NSURL(string: "mock://www.apple.com"))
+            let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+            let urlProcolClass: AnyObject = ClassUtility.classFromType(MockWebServiceURLProtocol.self)
+            configuration.protocolClasses = [urlProcolClass]
+            networkService = NetworkService(baseURL: NSURL(string: "mock://www.apple.com"), configuration: configuration)
             provider = RoutesProvider(networkService: networkService, managedObjectContext: moc)
             
             repository = RoutesRepository(routesProvider: provider, managedObjectContext: moc)
             fakeDelegate = RoutesRepositoryFakeDelegate()
             repository.delegate = fakeDelegate
+        }
+        
+        afterEach {
+            let success = moc.save(nil)
         }
         
         describe("isLoading") {
@@ -100,6 +107,43 @@ class RoutesRepositorySpec: QuickSpec {
                         expect{fakeDelegate.error}.willNot.beNil()
                     }
                 }
+            }
+        }
+        
+        describe("on success") {
+            beforeEach {
+                let json1: NSDictionary = [
+                    "RouteNo": 5,
+                    "InternalRouteNo": 10,
+                    "AlphaNumericRouteNo": "5a",
+                    "Destination": "Melbourne",
+                    "IsUpDestination": true,
+                    "HasLowFloor": true
+                ]
+                
+                let json2: NSDictionary = [
+                    "RouteNo": 10,
+                    "InternalRouteNo": 25,
+                    "AlphaNumericRouteNo": "6a",
+                    "Destination": "Pyrmont",
+                    "IsUpDestination": false,
+                    "HasLowFloor": false
+                ]
+                
+                let body = ["ResponseObject": [json1, json2]]
+                let response = MockWebServiceResponse(body: body, header: ["Content-Type": "application/json; charset=utf-8"])
+                MockWebServiceURLProtocol.cannedResponse = response
+                
+                repository.update()
+            }
+            
+            afterEach {
+                MockWebServiceURLProtocol.cannedResponse = nil
+            }
+            
+            it("should add routes") {
+                let fetchRequest = NSFetchRequest(entityName: Route.entityName)
+                expect{moc.executeFetchRequest(fetchRequest, error: nil).count}.will.equal(2)
             }
         }
     }
