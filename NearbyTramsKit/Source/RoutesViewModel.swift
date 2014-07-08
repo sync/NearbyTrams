@@ -153,14 +153,14 @@ class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
             let routesViewModel = array.filter {
                 route -> Bool in
                 
-                return route.uniqueIdentifier != nil
+                return route.uniqueIdentifier != nil && route.routeNo != nil
                 }.map {
                     route -> RouteViewModel in
                     
                     assert(self.existingModelForRoute(route) == nil, "route should not already exist!")
                     
                     let identifier = route.uniqueIdentifier!
-                    let viewModel = RouteViewModel(identifier: identifier, routeNo: Int(route.routeNo!))
+                    let viewModel = RouteViewModel(identifier: identifier, routeNo: Int(route.routeNo!), isUpDestination:route.isUpDestination)
                     self.routesStorage[identifier] = viewModel
                     return viewModel
             }
