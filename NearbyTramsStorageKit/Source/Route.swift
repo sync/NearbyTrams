@@ -6,7 +6,7 @@ import CoreData
 
 class Route: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObject
 {
-    @NSManaged var composedKey:  NSString?
+    @NSManaged var uniqueIdentifier:  NSString?
     @NSManaged var routeNo:  NSNumber? // Why when Int it crashes
     @NSManaged var internalRouteNo: NSNumber? // Why when Int it crashes
     @NSManaged var alphaNumericRouteNo: String?
@@ -23,11 +23,11 @@ class Route: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObject
     
     class var primaryKey: String {
         get {
-            return "composedKey"
+            return "uniqueIdentifier"
     }
     }
     
-    class func primaryKeyValueFromRest(dictionary: NSDictionary) -> AnyObject?
+    class func primaryKeyValueFromRest(dictionary: NSDictionary) -> String?
     {
         let tmpRouteNo =  dictionary["RouteNo"] as? Int
         var tmpIsUpDestination = false

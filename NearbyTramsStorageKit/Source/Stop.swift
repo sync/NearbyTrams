@@ -6,6 +6,7 @@ import CoreData
 
 class Stop: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObject
 {
+    @NSManaged var uniqueIdentifier:  NSString?
     @NSManaged var cityDirection: String?
     @NSManaged var stopDescription: String?
     @NSManaged var destination: String?
@@ -29,13 +30,18 @@ class Stop: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObject
     
     class var primaryKey: String {
         get {
-            return "stopNo"
+            return "uniqueIdentifier"
     }
     }
     
-    class func primaryKeyValueFromRest(dictionary: NSDictionary) -> AnyObject?
+    class func primaryKeyValueFromRest(dictionary: NSDictionary) -> String?
     {
-        return dictionary["StopNo"] as? Int
+        if let intValue = dictionary["StopNo"] as? Int
+        {
+            return String(intValue)
+        }
+        
+        return nil
     }
     
     func configureWithDictionaryFromRest(dictionary: NSDictionary) -> Void

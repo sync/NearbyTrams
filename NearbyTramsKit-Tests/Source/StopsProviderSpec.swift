@@ -165,16 +165,13 @@ class StopsProviderSpec: QuickSpec {
             
             beforeEach {
                 let stop = Stop.insertInManagedObjectContext(moc) as Stop
+                stop.uniqueIdentifier = "56"
                 stop.stopNo = 56
                 moc.save(nil)
             }
             
             context("when some stops are available") {
                 beforeEach {
-                    let stop = Stop.insertInManagedObjectContext(moc) as Stop
-                    stop.stopNo = 65
-                    moc.save(nil)
-                    
                     var json1: Dictionary<String, AnyObject> = [ : ]
                     json1["CityDirection"] = "from city"
                     json1["Description"] = NSNull()

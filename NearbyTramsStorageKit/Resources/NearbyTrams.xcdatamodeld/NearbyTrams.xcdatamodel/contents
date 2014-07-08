@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6172.15" systemVersion="14A261i" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6172.15" systemVersion="14A283o" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Route" representedClassName="NearbyTramsStorageKit.Route" syncable="YES">
         <attribute name="alphaNumericRouteNo" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="composedKey" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="destination" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="hasLowFloor" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="internalRouteNo" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="isUpDestination" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="routeNo" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="uniqueIdentifier" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <relationship name="stops" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Stop" inverseName="route" inverseEntity="Stop" syncable="YES"/>
     </entity>
     <entity name="Schedule" representedClassName="NearbyTramsStorageKit.Schedule" syncable="YES">
         <attribute name="airConditioned" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="composedKey" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="destination" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="displayAC" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="disruptionMessage" optional="YES" attributeType="Transformable" syncable="YES"/>
@@ -26,6 +25,7 @@
         <attribute name="routeNo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="specialEventMessage" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tripID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="uniqueIdentifier" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="vehicleNo" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <relationship name="stop" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Stop" inverseName="schedules" inverseEntity="Stop" syncable="YES"/>
     </entity>
@@ -38,16 +38,17 @@
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="routeNo" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="stopDescription" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="stopID" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="stopID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="stopName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="stopNo" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="suburb" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uniqueIdentifier" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <relationship name="route" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Route" inverseName="stops" inverseEntity="Route" syncable="YES"/>
         <relationship name="schedules" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Schedule" inverseName="stop" inverseEntity="Schedule" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Route" positionX="-63" positionY="72" width="128" height="163"/>
-        <element name="Schedule" positionX="-63" positionY="72" width="128" height="298"/>
-        <element name="Stop" positionX="-63" positionY="-18" width="128" height="255"/>
+        <element name="Route" positionX="-63" positionY="72" width="128" height="165"/>
+        <element name="Schedule" positionX="-63" positionY="72" width="128" height="300"/>
+        <element name="Stop" positionX="-63" positionY="-18" width="128" height="270"/>
     </elements>
 </model>

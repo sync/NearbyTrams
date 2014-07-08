@@ -5,7 +5,7 @@
 import CoreData
 
 protocol RESTManagedObject: InsertAndFetchManagedObject {
-    class func primaryKeyValueFromRest(dictionary: NSDictionary) -> AnyObject?
+    class func primaryKeyValueFromRest(dictionary: NSDictionary) -> String?
     class func insertOrUpdateWithDictionaryFromRest<T where T: NSManagedObject, T: RESTManagedObject>(dictionary: NSDictionary, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> (T?, NSError?)
     class func insertOrUpdateFromRestArray<T where T: NSManagedObject, T: RESTManagedObject>(array: NSDictionary[], inManagedObjectContext managedObjectContext: NSManagedObjectContext)  -> (T?[], NSError?[])
     mutating func configureWithDictionaryFromRest(dictionary: NSDictionary) -> Void
@@ -16,9 +16,11 @@ extension NSManagedObject
     class func insertOrUpdateWithDictionaryFromRest<T where T: NSManagedObject, T: RESTManagedObject>(dictionary: NSDictionary, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> (T?, NSError?)
     {
         var foundManagedObject: T?
-        if let primaryKeyValue : AnyObject = T.primaryKeyValueFromRest(dictionary)
+        
+        let primaryKeyValue : String? = T.primaryKeyValueFromRest(dictionary)
+        if primaryKeyValue
         {
-            let result: (managedObject: T?, error: NSError?) = fetchOneForPrimaryKey(primaryKeyValue, usingManagedObjectContext: managedObjectContext)
+            let result: (managedObject: T?, error: NSError?) = fetchOneForPrimaryKeyValue(primaryKeyValue!, usingManagedObjectContext: managedObjectContext)
             foundManagedObject = result.managedObject
         }
         else
@@ -36,10 +38,11 @@ extension NSManagedObject
         else
         {
             managedObject = insertInManagedObjectContext(managedObjectContext) as T
+            managedObject.setValue(primaryKeyValue, forKey: T.primaryKey)
+            managedObjectContext.obtainPermanentIDsForObjects([managedObject], error: nil)
         }
         
         managedObject.configureWithDictionaryFromRest(dictionary as NSDictionary)
-        managedObjectContext.obtainPermanentIDsForObjects([managedObject], error: nil)
         
         return (managedObject, nil)
     }

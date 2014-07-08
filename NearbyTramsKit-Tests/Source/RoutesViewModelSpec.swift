@@ -72,7 +72,7 @@ class RoutesViewModelSpec: QuickSpec {
                 beforeEach {
                     let route: Route = Route.insertInManagedObjectContext(moc)
                     route.routeNo = 123
-                    route.composedKey = "123-true"
+                    route.uniqueIdentifier = "123-true"
                     moc.save(nil)
                 }
                 
@@ -108,11 +108,11 @@ class RoutesViewModelSpec: QuickSpec {
                 beforeEach {
                     let route1: Route = Route.insertInManagedObjectContext(moc)
                     route1.routeNo = 123
-                    route1.composedKey = "123-true"
+                    route1.uniqueIdentifier = "123-true"
                     
                     let route2: Route = Route.insertInManagedObjectContext(moc)
                     route2.routeNo = 456
-                    route2.composedKey = "456-false"
+                    route2.uniqueIdentifier = "456-false"
                     
                     moc.save(nil)
                 }
@@ -140,11 +140,11 @@ class RoutesViewModelSpec: QuickSpec {
             beforeEach {
                 route1 = Route.insertInManagedObjectContext(moc) as Route
                 route1.routeNo = 123
-                route1.composedKey = "123-true"
+                route1.uniqueIdentifier = "123-true"
                 
                 route2 = Route.insertInManagedObjectContext(moc) as Route
                 route2.routeNo = 456
-                route2.composedKey = "456-false"
+                route2.uniqueIdentifier = "456-false"
                 
                 moc.save(nil)
             }
@@ -198,11 +198,11 @@ class RoutesViewModelSpec: QuickSpec {
             beforeEach {
                 route1 = Route.insertInManagedObjectContext(moc) as Route
                 route1.routeNo = 123
-                route1.composedKey = "123-true"
+                route1.uniqueIdentifier = "123-true"
                 
                 route2 = Route.insertInManagedObjectContext(moc) as Route
                 route2.routeNo = 456
-                route2.composedKey = "456-false"
+                route2.uniqueIdentifier = "456-false"
                 
                 moc.save(nil)
             }
@@ -242,7 +242,7 @@ class RoutesViewModelSpec: QuickSpec {
                 
                 let route1: Route = Route.insertInManagedObjectContext(moc)
                 route1.routeNo = 123
-                route1.composedKey = "123-true"
+                route1.uniqueIdentifier = "123-true"
                 moc.save(nil)
             }
             
@@ -256,21 +256,21 @@ class RoutesViewModelSpec: QuickSpec {
                 beforeEach {
                     let route1: Route = Route.insertInManagedObjectContext(moc)
                     route1.routeNo = 123
-                    route1.composedKey = "123-true"
+                    route1.uniqueIdentifier = "123-true"
                     
                     let route2: Route = Route.insertInManagedObjectContext(moc)
                     route2.routeNo = 456
-                    route2.composedKey = "456-false"
+                    route2.uniqueIdentifier = "456-false"
                     
                     moc.save(nil)
                     
                     fetchRequest = NSFetchRequest(entityName: Route.entityName)
-                    fetchRequest.predicate = NSPredicate(format:"composedKey == %@", "123-true")
+                    fetchRequest.predicate = NSPredicate(format:"uniqueIdentifier == %@", "123-true")
                     viewModel.startUpdatingRoutesWithFetchRequest(fetchRequest)
                     
                     let route3: Route = Route.insertInManagedObjectContext(moc)
                     route3.routeNo = 789
-                    route3.composedKey = "789-true"
+                    route3.uniqueIdentifier = "789-true"
                     
                     moc.save(nil)
                 }

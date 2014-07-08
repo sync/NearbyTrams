@@ -8,7 +8,7 @@ protocol InsertAndFetchManagedObject {
     class var entityName: String { get }
     class var primaryKey: String { get }
     class func insertInManagedObjectContext<T where T: NSManagedObject, T: InsertAndFetchManagedObject>(managedObjectContext: NSManagedObjectContext) -> T
-    class func fetchOneForPrimaryKey<T where T: NSManagedObject, T: InsertAndFetchManagedObject>(primaryKey: AnyObject, usingManagedObjectContext managedObjectContext: NSManagedObjectContext) -> (T?, NSError?)
+    class func fetchOneForPrimaryKeyValue<T where T: NSManagedObject, T: InsertAndFetchManagedObject>(primaryKey: AnyObject, usingManagedObjectContext managedObjectContext: NSManagedObjectContext) -> (T?, NSError?)
     class func fetchAllForManagedObjectIds<T where T: NSManagedObject, T: InsertAndFetchManagedObject>(managedObjectIds: NSManagedObjectID[], usingManagedObjectContext managedObjectContext: NSManagedObjectContext) -> (T[]?, NSError?)
 }
 
@@ -19,9 +19,9 @@ extension NSManagedObject
         return NSEntityDescription.insertNewObjectForEntityForName(T.entityName, inManagedObjectContext: managedObjectContext) as T
     }
     
-    class func fetchOneForPrimaryKey<T where T: NSManagedObject, T: InsertAndFetchManagedObject>(primaryKey: AnyObject, usingManagedObjectContext managedObjectContext: NSManagedObjectContext) -> (T?, NSError?)
+    class func fetchOneForPrimaryKeyValue<T where T: NSManagedObject, T: InsertAndFetchManagedObject>(primaryKeyValue: AnyObject, usingManagedObjectContext managedObjectContext: NSManagedObjectContext) -> (T?, NSError?)
     {
-        let predicate = NSPredicate(format:"%K == %@", argumentArray: [T.primaryKey, primaryKey])
+        let predicate = NSPredicate(format:"%K == %@", argumentArray: [T.primaryKey, primaryKeyValue])        
         let request = NSFetchRequest(entityName: T.entityName)
         request.predicate = predicate
         request.fetchLimit = 1

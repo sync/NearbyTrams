@@ -6,7 +6,7 @@ import CoreData
 
 class Schedule: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObject
 {
-    @NSManaged var composedKey:  NSString?
+    @NSManaged var uniqueIdentifier:  NSString?
     @NSManaged var airConditioned: Bool
     @NSManaged var destination: String?
     @NSManaged var displayAC: Bool
@@ -32,11 +32,11 @@ class Schedule: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObject
     
     class var primaryKey: String {
         get {
-            return "composedKey"
+            return "uniqueIdentifier"
     }
     }
     
-    class func primaryKeyValueFromRest(dictionary: NSDictionary) -> AnyObject?
+    class func primaryKeyValueFromRest(dictionary: NSDictionary) -> String?
     {
         let tmpRouteNo =  dictionary["RouteNo"] as? Int
         var tmpPredictedArrivalDateTime = dictionary["PredictedArrivalDateTime"] as String

@@ -107,7 +107,7 @@ class StopsProvider
                 let localContext = NSManagedObjectContext(concurrencyType: .ConfinementConcurrencyType)
                 localContext.parentContext = managedObjectContext
                 
-                let result: (managedObject: Stop?, error: NSError?) = Stop.fetchOneForPrimaryKey(stopNo, usingManagedObjectContext: managedObjectContext)
+                let result: (managedObject: Stop?, error: NSError?) = Stop.fetchOneForPrimaryKeyValue(String(stopNo), usingManagedObjectContext: managedObjectContext)
                 if let foundStop = result.managedObject
                 {
                     foundStop.configureWithPartialDictionaryFromRest(dictionary!)
@@ -120,12 +120,12 @@ class StopsProvider
                         }
                     }
                 }
-                else if let error = result.error
+                else
                 {
                     if let handler = completionHandler
                     {
                         dispatch_async(dispatch_get_main_queue()) {
-                            handler(nil, error)
+                            handler(nil, result.error)
                         }
                     }
                 }

@@ -199,7 +199,16 @@ class RouteSpec: QuickSpec {
                         "HasLowFloor": false
                     ]
                     
-                    let array: NSDictionary[] = [json1, json2]
+                    let json3: NSDictionary = [
+                        "RouteNo": 10,
+                        "InternalRouteNo": 25,
+                        "AlphaNumericRouteNo": "6a",
+                        "Destination": "Pyrmont",
+                        "IsUpDestination": false,
+                        "HasLowFloor": false
+                    ]
+                    
+                    let array: NSDictionary[] = [json1, json2, json3]
                     results = Route.insertOrUpdateFromRestArray(array, inManagedObjectContext: moc) as (routes: Route?[], errors: NSError?[])
                     moc.save(nil)
                     
@@ -212,11 +221,11 @@ class RouteSpec: QuickSpec {
                 }
                 
                 it("should have 2 routes") {
-                    expect(routes.count).to.equal(2)
+                    expect(routes.count).to.equal(3)
                 }
                 
                 it("should have 2 errors") {
-                    expect(errors.count).to.equal(2)
+                    expect(errors.count).to.equal(3)
                 }
                 
                 it("should have a routeNo") {
@@ -224,7 +233,7 @@ class RouteSpec: QuickSpec {
                 }
                 
                 it("should have a route destination") {
-                    expect(routes[1]?.destination).to.equal("Pyrmont")
+                    expect(routes[2]?.destination).to.equal("Pyrmont")
                 }
                 
                 it("should create and store 2 routes") {
@@ -250,7 +259,7 @@ class RouteSpec: QuickSpec {
                 
                 context("when empty") {
                     beforeEach() {
-                        result = Route.fetchOneForPrimaryKey(5, usingManagedObjectContext: moc)
+                        result = Route.fetchOneForPrimaryKeyValue(5, usingManagedObjectContext: moc)
                     }
                     
                     it("should return no route") {
@@ -266,21 +275,21 @@ class RouteSpec: QuickSpec {
                     
                     beforeEach() {
                         let route1: Route = Route.insertInManagedObjectContext(moc)
-                        route1.composedKey = "composed-6"
+                        route1.uniqueIdentifier = "composed-6"
                         
                         let route2: Route = Route.insertInManagedObjectContext(moc)
-                        route2.composedKey = "composed-10"
+                        route2.uniqueIdentifier = "composed-10"
                         
                         let route3: Route = Route.insertInManagedObjectContext(moc)
-                        route3.composedKey = "composed-11"
+                        route3.uniqueIdentifier = "composed-11"
                         
                         moc.save(nil)
                         
-                        result = Route.fetchOneForPrimaryKey("composed-10", usingManagedObjectContext: moc)
+                        result = Route.fetchOneForPrimaryKeyValue("composed-10", usingManagedObjectContext: moc)
                     }
                     
                     it("should return one route") {
-                        expect(result?.route?.composedKey).to.equal("composed-10")
+                        expect(result?.route?.uniqueIdentifier).to.equal("composed-10")
                     }
                     
                     it("should return no error") {
