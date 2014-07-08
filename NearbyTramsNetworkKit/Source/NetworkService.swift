@@ -55,11 +55,10 @@ class NetworkService
         return task
     }
 
-    func getStopsByRouteAndDirectionWithRouteNo(routeNo: Int, completionHandler: ((NSDictionary[]?, NSError?) -> Void)?) -> NSURLSessionDataTask
+    func getStopsByRouteAndDirectionWithRouteNo(routeNo: Int, isUpDestination: Bool, completionHandler: ((NSDictionary[]?, NSError?) -> Void)?) -> NSURLSessionDataTask
     {
         // thanks to: http://wongm.com/2014/03/tramtracker-api-dumphone-access/
-        // not sure what &u=true is at the moment
-        let url = NSURL(string: "/Controllers/GetStopsByRouteAndDirection.ashx?r=\(routeNo)&u=true", relativeToURL: baseURL)
+        let url = NSURL(string: "/Controllers/GetStopsByRouteAndDirection.ashx?r=\(routeNo)&u=\(isUpDestination)", relativeToURL: baseURL)
         
         let task = session.dataTaskWithURL(url, completionHandler:{
             data, response, error -> Void in

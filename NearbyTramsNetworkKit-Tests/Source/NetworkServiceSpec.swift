@@ -124,14 +124,14 @@ class NetworkServiceSpec: QuickSpec {
             }
             
             it("should return a session data task") {
-                let task = service.getStopsByRouteAndDirectionWithRouteNo(123, completionHandler: nil)
+                let task = service.getStopsByRouteAndDirectionWithRouteNo(123, isUpDestination: true, completionHandler: nil)
                 
                 expect(task).notTo.beNil()
             }
             
             it("should have added to the query url the stop no") {
                 //originalRequest
-                let task = service.getStopsByRouteAndDirectionWithRouteNo(123, completionHandler: nil)
+                let task = service.getStopsByRouteAndDirectionWithRouteNo(123, isUpDestination: true, completionHandler: nil)
                 
                 expect(task.originalRequest.URL.absoluteString).to.contain("123")
             }
@@ -155,7 +155,7 @@ class NetworkServiceSpec: QuickSpec {
                     var array: NSDictionary[]!
                     var completionError: NSError!
                     
-                    let stopInfoTask = service.getStopsByRouteAndDirectionWithRouteNo(123, {
+                    let stopInfoTask = service.getStopsByRouteAndDirectionWithRouteNo(123, isUpDestination: true, {
                         stops, error -> Void in
                         
                         array = stops
@@ -186,7 +186,7 @@ class NetworkServiceSpec: QuickSpec {
                     var array: NSDictionary[]!
                     var completionError: NSError!
                     
-                    let task = service.getStopsByRouteAndDirectionWithRouteNo(123, {
+                    let task = service.getStopsByRouteAndDirectionWithRouteNo(123, isUpDestination: true, {
                         stops, error -> Void in
                         
                         array = stops

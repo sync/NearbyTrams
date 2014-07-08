@@ -34,7 +34,7 @@ class StopsRepository
     func update() -> Void
     {
         self.isLoading = true
-        stopsProvider.getStopsWithRouteNo(routeNo, requestStopInfo: true, managedObjectContext: managedObjectContext) {
+        stopsProvider.getStopsWithRouteNo(routeNo, isUpDestination:true, requestStopInfo: true, managedObjectContext: managedObjectContext) {
             stopObjectIds, error -> Void in
             
             self.isLoading = false
