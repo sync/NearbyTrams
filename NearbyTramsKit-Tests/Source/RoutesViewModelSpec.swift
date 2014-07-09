@@ -73,6 +73,7 @@ class RoutesViewModelSpec: QuickSpec {
                     let route: Route = Route.insertInManagedObjectContext(moc)
                     route.routeNo = 123
                     route.uniqueIdentifier = "123-true"
+                    route.destination = "destination"
                     moc.save(nil)
                 }
                 
@@ -85,7 +86,7 @@ class RoutesViewModelSpec: QuickSpec {
                 }
                 
                 it("should tell delegate about the added route") {
-                    expect(fakeDelegate.addedRoutes![0].identifier).to.equal("123-true")
+                    expect(fakeDelegate.addedRoutes?[0].identifier).to.equal("123-true")
                 }
             }
             
@@ -109,10 +110,12 @@ class RoutesViewModelSpec: QuickSpec {
                     let route1: Route = Route.insertInManagedObjectContext(moc)
                     route1.routeNo = 123
                     route1.uniqueIdentifier = "123-true"
+                    route1.destination = "a destination"
                     
                     let route2: Route = Route.insertInManagedObjectContext(moc)
                     route2.routeNo = 456
                     route2.uniqueIdentifier = "456-false"
+                    route2.destination = "another destination"
                     
                     moc.save(nil)
                 }
@@ -141,10 +144,12 @@ class RoutesViewModelSpec: QuickSpec {
                 route1 = Route.insertInManagedObjectContext(moc) as Route
                 route1.routeNo = 123
                 route1.uniqueIdentifier = "123-true"
+                route1.destination = "a destination"
                 
                 route2 = Route.insertInManagedObjectContext(moc) as Route
                 route2.routeNo = 456
                 route2.uniqueIdentifier = "456-false"
+                route2.destination = "another destination"
                 
                 moc.save(nil)
             }
@@ -164,7 +169,7 @@ class RoutesViewModelSpec: QuickSpec {
                 }
                 
                 it("should tell delegate about the removed route") {
-                     expect(fakeDelegate.removedRoutes![0].identifier).to.equal("123-true")
+                     expect(fakeDelegate.removedRoutes?[0].identifier).to.equal("123-true")
                 }
             }
             
@@ -199,10 +204,12 @@ class RoutesViewModelSpec: QuickSpec {
                 route1 = Route.insertInManagedObjectContext(moc) as Route
                 route1.routeNo = 123
                 route1.uniqueIdentifier = "123-true"
+                route1.destination = "a destination"
                 
                 route2 = Route.insertInManagedObjectContext(moc) as Route
                 route2.routeNo = 456
                 route2.uniqueIdentifier = "456-false"
+                route2.destination = "another destination"
                 
                 moc.save(nil)
             }
@@ -215,7 +222,7 @@ class RoutesViewModelSpec: QuickSpec {
                 }
                 
                 it("should tell delegate about the updated route") {
-                     expect(fakeDelegate.updatedRoutes![0].identifier).to.equal("123-true")
+                     expect(fakeDelegate.updatedRoutes?[0].identifier).to.equal("123-true")
                 }
             }
             
@@ -243,6 +250,7 @@ class RoutesViewModelSpec: QuickSpec {
                 let route1: Route = Route.insertInManagedObjectContext(moc)
                 route1.routeNo = 123
                 route1.uniqueIdentifier = "123-true"
+                route1.destination = "a destination"
                 moc.save(nil)
             }
             
@@ -257,10 +265,12 @@ class RoutesViewModelSpec: QuickSpec {
                     let route1: Route = Route.insertInManagedObjectContext(moc)
                     route1.routeNo = 123
                     route1.uniqueIdentifier = "123-true"
+                    route1.destination = "a destination"
                     
                     let route2: Route = Route.insertInManagedObjectContext(moc)
                     route2.routeNo = 456
                     route2.uniqueIdentifier = "456-false"
+                    route2.destination = "another destination"
                     
                     moc.save(nil)
                     
@@ -271,6 +281,7 @@ class RoutesViewModelSpec: QuickSpec {
                     let route3: Route = Route.insertInManagedObjectContext(moc)
                     route3.routeNo = 789
                     route3.uniqueIdentifier = "789-true"
+                    route3.destination = "a third destination"
                     
                     moc.save(nil)
                 }
@@ -290,11 +301,11 @@ class RoutesViewModelSpec: QuickSpec {
                 }
                 
                 it("should tell delegate about the updated route") {
-                     expect(fakeDelegate.updatedRoutes![0].identifier).to.equal("123-true")
+                     expect(fakeDelegate.updatedRoutes?[0].identifier).to.equal("123-true")
                 }
                 
                 it("should tell delegate about the removed route") {
-                    expect(fakeDelegate.removedRoutes![0].identifier).to.equal("456-false")
+                    expect(fakeDelegate.removedRoutes?[0].identifier).to.equal("456-false")
                 }
             }
         }
