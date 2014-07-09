@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5FA1E2E8196CC33800832B68"
-               BuildableName = "TramsScraper.app"
-               BlueprintName = "TramsScraper"
+               BlueprintIdentifier = "5FA1E345196CC5B500832B68"
+               BuildableName = "TramsScraperKit.framework"
+               BlueprintName = "TramsScraperKit"
                ReferencedContainer = "container:TramsScraper.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,13 +28,23 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "5FA1E34F196CC5B500832B68"
+               BuildableName = "TramsScraperKitTests.xctest"
+               BlueprintName = "TramsScraperKitTests"
+               ReferencedContainer = "container:TramsScraper.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5FA1E2E8196CC33800832B68"
-            BuildableName = "TramsScraper.app"
-            BlueprintName = "TramsScraper"
+            BlueprintIdentifier = "5FA1E345196CC5B500832B68"
+            BuildableName = "TramsScraperKit.framework"
+            BlueprintName = "TramsScraperKit"
             ReferencedContainer = "container:TramsScraper.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -48,21 +58,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5FA1E2E8196CC33800832B68"
-            BuildableName = "TramsScraper.app"
-            BlueprintName = "TramsScraper"
+            BlueprintIdentifier = "5FA1E345196CC5B500832B68"
+            BuildableName = "TramsScraperKit.framework"
+            BlueprintName = "TramsScraperKit"
             ReferencedContainer = "container:TramsScraper.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
-      <CommandLineArguments>
-         <CommandLineArgument
-            argument = "-h"
-            isEnabled = "NO">
-         </CommandLineArgument>
-      </CommandLineArguments>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -72,15 +76,15 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5FA1E2E8196CC33800832B68"
-            BuildableName = "TramsScraper.app"
-            BlueprintName = "TramsScraper"
+            BlueprintIdentifier = "5FA1E345196CC5B500832B68"
+            BuildableName = "TramsScraperKit.framework"
+            BlueprintName = "TramsScraperKit"
             ReferencedContainer = "container:TramsScraper.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

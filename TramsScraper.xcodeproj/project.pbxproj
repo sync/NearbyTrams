@@ -7,55 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5F155CD319518E4600D8931F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F155CD219518E4600D8931F /* main.swift */; };
-		5F200D911952934A003A37D0 /* NearbyTrams.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5F200D8F1952934A003A37D0 /* NearbyTrams.xcdatamodeld */; };
-		5F5A72991956F03A00A5BD40 /* NearbyTramsNetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5A72931956F00900A5BD40 /* NearbyTramsNetworkKit.framework */; };
-		5F7B05FD1953F4ED003423B6 /* NearbyTramsStorageKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F7B05FA1953F4D3003423B6 /* NearbyTramsStorageKit.framework */; };
-		5FA8DBB3195E2ADC0080EEAE /* NearbyTramsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FA8DBAE195E2ACB0080EEAE /* NearbyTramsKit.framework */; };
+		5F39505C196D0AE700E1D64D /* TramsScraperKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FA1E346196CC5B500832B68 /* TramsScraperKit.framework */; };
+		5F39505D196D0AE700E1D64D /* TramsScraperKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5FA1E346196CC5B500832B68 /* TramsScraperKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		5F3ECC33196CFCD400BD988D /* FakeTramsScraperKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3ECC32196CFCD400BD988D /* FakeTramsScraperKit.swift */; };
+		5FA1E340196CC57200832B68 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F155CD219518E4600D8931F /* main.swift */; };
+		5FA1E36B196CC5E000832B68 /* NearbyTramsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FA8DBAE195E2ACB0080EEAE /* NearbyTramsKit.framework */; };
+		5FA1E37A196CC7CA00832B68 /* TramsScraperKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FA1E379196CC7B600832B68 /* TramsScraperKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		5F5A72921956F00900A5BD40 /* PBXContainerItemProxy */ = {
+		5F39505E196D0AE700E1D64D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 5F5A728D1956F00900A5BD40 /* NearbyTramsNetworkKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 5F5A71D41956E51B00A5BD40;
-			remoteInfo = NearbyTramsNetworkKit;
-		};
-		5F5A72941956F00900A5BD40 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5F5A728D1956F00900A5BD40 /* NearbyTramsNetworkKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 5F5A72701956EE9B00A5BD40;
-			remoteInfo = "NearbyTramsNetworkKit-Tests";
-		};
-		5F5A72971956F01D00A5BD40 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5F5A728D1956F00900A5BD40 /* NearbyTramsNetworkKit.xcodeproj */;
+			containerPortal = 5F155CBB19518A0900D8931F /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 5F5A71D31956E51B00A5BD40;
-			remoteInfo = NearbyTramsNetworkKit;
+			remoteGlobalIDString = 5FA1E345196CC5B500832B68;
+			remoteInfo = TramsScraperKit;
 		};
-		5F7B05F91953F4D3003423B6 /* PBXContainerItemProxy */ = {
+		5FA1E365196CC5CC00832B68 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 5F7B05F51953F4D3003423B6 /* NearbyTramsStorageKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 5F6BA8A41952B395005D0DDB;
-			remoteInfo = NearbyTramsStorageKit;
-		};
-		5F7B05FB1953F4E5003423B6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5F7B05F51953F4D3003423B6 /* NearbyTramsStorageKit.xcodeproj */;
+			containerPortal = 5FA8DBA8195E2ACB0080EEAE /* NearbyTramsKit.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 5F6BA8A31952B395005D0DDB;
-			remoteInfo = NearbyTramsStorageKit;
-		};
-		5FA829A219546345004A5A28 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5F7B05F51953F4D3003423B6 /* NearbyTramsStorageKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 5FBE5472195460FA009FF8D2;
-			remoteInfo = "NearbyTramsStorageKit-Tests";
+			remoteGlobalIDString = 5F6CC97D195C38D7003C3485;
+			remoteInfo = NearbyTramsKit;
 		};
 		5FA8DBAD195E2ACB0080EEAE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -71,47 +44,53 @@
 			remoteGlobalIDString = 5F6CC989195C38D7003C3485;
 			remoteInfo = "NearbyTramsKit-Tests";
 		};
-		5FA8DBB1195E2AD50080EEAE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5FA8DBA8195E2ACB0080EEAE /* NearbyTramsKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 5F6CC97D195C38D7003C3485;
-			remoteInfo = NearbyTramsKit;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		5F155CC119518A0900D8931F /* CopyFiles */ = {
+		5F395060196D0AE700E1D64D /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			dstPath = "";
+			dstSubfolderSpec = 10;
 			files = (
+				5F39505D196D0AE700E1D64D /* TramsScraperKit.framework in Embed Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5F155CC319518A0900D8931F /* TramsScraper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TramsScraper; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F155CCE19518E4600D8931F /* TramsScraper-Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "TramsScraper-Debug.xcconfig"; sourceTree = "<group>"; };
 		5F155CCF19518E4600D8931F /* TramsScraper-Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "TramsScraper-Release.xcconfig"; sourceTree = "<group>"; };
 		5F155CD019518E4600D8931F /* TramsScraper.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = TramsScraper.xcconfig; sourceTree = "<group>"; };
 		5F155CD219518E4600D8931F /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		5F200D901952934A003A37D0 /* NearbyTrams.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NearbyTrams.xcdatamodel; sourceTree = "<group>"; };
-		5F5A728D1956F00900A5BD40 /* NearbyTramsNetworkKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = NearbyTramsNetworkKit.xcodeproj; sourceTree = "<group>"; };
-		5F7B05F51953F4D3003423B6 /* NearbyTramsStorageKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = NearbyTramsStorageKit.xcodeproj; sourceTree = "<group>"; };
+		5F3ECC32196CFCD400BD988D /* FakeTramsScraperKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeTramsScraperKit.swift; sourceTree = "<group>"; };
+		5FA1E2E9196CC33800832B68 /* TramsScraper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TramsScraper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FA1E333196CC41100832B68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5FA1E346196CC5B500832B68 /* TramsScraperKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TramsScraperKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FA1E377196CC7B600832B68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5FA1E379196CC7B600832B68 /* TramsScraperKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TramsScraperKit.h; sourceTree = "<group>"; };
+		5FA1E37B196CC83700832B68 /* TramsScraperKit-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "TramsScraperKit-Debug.xcconfig"; sourceTree = "<group>"; };
+		5FA1E37C196CC83700832B68 /* TramsScraperKit-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "TramsScraperKit-Release.xcconfig"; sourceTree = "<group>"; };
+		5FA1E37D196CC83700832B68 /* TramsScraperKit.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = TramsScraperKit.xcconfig; sourceTree = "<group>"; };
 		5FA8DBA8195E2ACB0080EEAE /* NearbyTramsKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = NearbyTramsKit.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		5F155CC019518A0900D8931F /* Frameworks */ = {
+		5FA1E2E6196CC33800832B68 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F7B05FD1953F4ED003423B6 /* NearbyTramsStorageKit.framework in Frameworks */,
-				5F5A72991956F03A00A5BD40 /* NearbyTramsNetworkKit.framework in Frameworks */,
-				5FA8DBB3195E2ADC0080EEAE /* NearbyTramsKit.framework in Frameworks */,
+				5F39505C196D0AE700E1D64D /* TramsScraperKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5FA1E342196CC5B500832B68 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FA1E36B196CC5E000832B68 /* NearbyTramsKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +104,7 @@
 				5F155CCD19518E4600D8931F /* Configurations */,
 				5F155CD119518E4600D8931F /* Source */,
 				5FF40FB319528D27000E94C4 /* Resources */,
+				5FA1E375196CC7B600832B68 /* TramsScraperKit */,
 				5F155CC419518A0900D8931F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -132,7 +112,8 @@
 		5F155CC419518A0900D8931F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5F155CC319518A0900D8931F /* TramsScraper */,
+				5FA1E2E9196CC33800832B68 /* TramsScraper.app */,
+				5FA1E346196CC5B500832B68 /* TramsScraperKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -143,6 +124,9 @@
 				5F155CCE19518E4600D8931F /* TramsScraper-Debug.xcconfig */,
 				5F155CCF19518E4600D8931F /* TramsScraper-Release.xcconfig */,
 				5F155CD019518E4600D8931F /* TramsScraper.xcconfig */,
+				5FA1E37B196CC83700832B68 /* TramsScraperKit-Debug.xcconfig */,
+				5FA1E37C196CC83700832B68 /* TramsScraperKit-Release.xcconfig */,
+				5FA1E37D196CC83700832B68 /* TramsScraperKit.xcconfig */,
 			);
 			name = Configurations;
 			path = TramsScraper/Configurations;
@@ -157,32 +141,38 @@
 			path = TramsScraper/Source;
 			sourceTree = "<group>";
 		};
-		5F5A728E1956F00900A5BD40 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				5F5A72931956F00900A5BD40 /* NearbyTramsNetworkKit.framework */,
-				5F5A72951956F00900A5BD40 /* NearbyTramsNetworkKit-Tests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		5F7B05F41953F4C1003423B6 /* External */ = {
 			isa = PBXGroup;
 			children = (
 				5FA8DBA8195E2ACB0080EEAE /* NearbyTramsKit.xcodeproj */,
-				5F7B05F51953F4D3003423B6 /* NearbyTramsStorageKit.xcodeproj */,
-				5F5A728D1956F00900A5BD40 /* NearbyTramsNetworkKit.xcodeproj */,
 			);
 			name = External;
 			sourceTree = "<group>";
 		};
-		5F7B05F61953F4D3003423B6 /* Products */ = {
+		5FA1E375196CC7B600832B68 /* TramsScraperKit */ = {
 			isa = PBXGroup;
 			children = (
-				5F7B05FA1953F4D3003423B6 /* NearbyTramsStorageKit.framework */,
-				5FA829A319546345004A5A28 /* NearbyTramsStorageKit-Tests.xctest */,
+				5FA1E378196CC7B600832B68 /* Source */,
+				5FA1E376196CC7B600832B68 /* Resources */,
 			);
-			name = Products;
+			path = TramsScraperKit;
+			sourceTree = "<group>";
+		};
+		5FA1E376196CC7B600832B68 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5FA1E377196CC7B600832B68 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		5FA1E378196CC7B600832B68 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				5FA1E379196CC7B600832B68 /* TramsScraperKit.h */,
+				5F3ECC32196CFCD400BD988D /* FakeTramsScraperKit.swift */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 		5FA8DBA9195E2ACB0080EEAE /* Products */ = {
@@ -197,7 +187,7 @@
 		5FF40FB319528D27000E94C4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				5F200D8F1952934A003A37D0 /* NearbyTrams.xcdatamodeld */,
+				5FA1E333196CC41100832B68 /* Info.plist */,
 			);
 			name = Resources;
 			path = TramsScraper/Resources;
@@ -205,26 +195,55 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		5FA1E343196CC5B500832B68 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FA1E37A196CC7CA00832B68 /* TramsScraperKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		5F155CC219518A0900D8931F /* TramsScraper */ = {
+		5FA1E2E8196CC33800832B68 /* TramsScraper */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5F155CCA19518A0900D8931F /* Build configuration list for PBXNativeTarget "TramsScraper" */;
+			buildConfigurationList = 5FA1E309196CC33800832B68 /* Build configuration list for PBXNativeTarget "TramsScraper" */;
 			buildPhases = (
-				5F155CBF19518A0900D8931F /* Sources */,
-				5F155CC019518A0900D8931F /* Frameworks */,
-				5F155CC119518A0900D8931F /* CopyFiles */,
+				5FA1E2E5196CC33800832B68 /* Sources */,
+				5FA1E2E6196CC33800832B68 /* Frameworks */,
+				5FA1E2E7196CC33800832B68 /* Resources */,
+				5F395060196D0AE700E1D64D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				5FA8DBB2195E2AD50080EEAE /* PBXTargetDependency */,
-				5F5A72981956F01D00A5BD40 /* PBXTargetDependency */,
-				5F7B05FC1953F4E5003423B6 /* PBXTargetDependency */,
+				5F39505F196D0AE700E1D64D /* PBXTargetDependency */,
 			);
 			name = TramsScraper;
-			productName = TramsScraper;
-			productReference = 5F155CC319518A0900D8931F /* TramsScraper */;
-			productType = "com.apple.product-type.tool";
+			productName = TramsScraperApp;
+			productReference = 5FA1E2E9196CC33800832B68 /* TramsScraper.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5FA1E345196CC5B500832B68 /* TramsScraperKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5FA1E35F196CC5B500832B68 /* Build configuration list for PBXNativeTarget "TramsScraperKit" */;
+			buildPhases = (
+				5FA1E341196CC5B500832B68 /* Sources */,
+				5FA1E342196CC5B500832B68 /* Frameworks */,
+				5FA1E343196CC5B500832B68 /* Headers */,
+				5FA1E344196CC5B500832B68 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5FA1E366196CC5CC00832B68 /* PBXTargetDependency */,
+			);
+			name = TramsScraperKit;
+			productName = TramsScraperKit;
+			productReference = 5FA1E346196CC5B500832B68 /* TramsScraperKit.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -235,7 +254,10 @@
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = Dblechoc;
 				TargetAttributes = {
-					5F155CC219518A0900D8931F = {
+					5FA1E2E8196CC33800832B68 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					5FA1E345196CC5B500832B68 = {
 						CreatedOnToolsVersion = 6.0;
 					};
 				};
@@ -246,6 +268,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 5F155CBA19518A0900D8931F;
 			productRefGroup = 5F155CC419518A0900D8931F /* Products */;
@@ -255,51 +278,16 @@
 					ProductGroup = 5FA8DBA9195E2ACB0080EEAE /* Products */;
 					ProjectRef = 5FA8DBA8195E2ACB0080EEAE /* NearbyTramsKit.xcodeproj */;
 				},
-				{
-					ProductGroup = 5F5A728E1956F00900A5BD40 /* Products */;
-					ProjectRef = 5F5A728D1956F00900A5BD40 /* NearbyTramsNetworkKit.xcodeproj */;
-				},
-				{
-					ProductGroup = 5F7B05F61953F4D3003423B6 /* Products */;
-					ProjectRef = 5F7B05F51953F4D3003423B6 /* NearbyTramsStorageKit.xcodeproj */;
-				},
 			);
 			projectRoot = "";
 			targets = (
-				5F155CC219518A0900D8931F /* TramsScraper */,
+				5FA1E2E8196CC33800832B68 /* TramsScraper */,
+				5FA1E345196CC5B500832B68 /* TramsScraperKit */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		5F5A72931956F00900A5BD40 /* NearbyTramsNetworkKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = NearbyTramsNetworkKit.framework;
-			remoteRef = 5F5A72921956F00900A5BD40 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		5F5A72951956F00900A5BD40 /* NearbyTramsNetworkKit-Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "NearbyTramsNetworkKit-Tests.xctest";
-			remoteRef = 5F5A72941956F00900A5BD40 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		5F7B05FA1953F4D3003423B6 /* NearbyTramsStorageKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = NearbyTramsStorageKit.framework;
-			remoteRef = 5F7B05F91953F4D3003423B6 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		5FA829A319546345004A5A28 /* NearbyTramsStorageKit-Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "NearbyTramsStorageKit-Tests.xctest";
-			remoteRef = 5FA829A219546345004A5A28 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		5FA8DBAE195E2ACB0080EEAE /* NearbyTramsKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -316,33 +304,52 @@
 		};
 /* End PBXReferenceProxy section */
 
+/* Begin PBXResourcesBuildPhase section */
+		5FA1E2E7196CC33800832B68 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5FA1E344196CC5B500832B68 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		5F155CBF19518A0900D8931F /* Sources */ = {
+		5FA1E2E5196CC33800832B68 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F155CD319518E4600D8931F /* main.swift in Sources */,
-				5F200D911952934A003A37D0 /* NearbyTrams.xcdatamodeld in Sources */,
+				5FA1E340196CC57200832B68 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5FA1E341196CC5B500832B68 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F3ECC33196CFCD400BD988D /* FakeTramsScraperKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		5F5A72981956F01D00A5BD40 /* PBXTargetDependency */ = {
+		5F39505F196D0AE700E1D64D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = NearbyTramsNetworkKit;
-			targetProxy = 5F5A72971956F01D00A5BD40 /* PBXContainerItemProxy */;
+			target = 5FA1E345196CC5B500832B68 /* TramsScraperKit */;
+			targetProxy = 5F39505E196D0AE700E1D64D /* PBXContainerItemProxy */;
 		};
-		5F7B05FC1953F4E5003423B6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = NearbyTramsStorageKit;
-			targetProxy = 5F7B05FB1953F4E5003423B6 /* PBXContainerItemProxy */;
-		};
-		5FA8DBB2195E2AD50080EEAE /* PBXTargetDependency */ = {
+		5FA1E366196CC5CC00832B68 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = NearbyTramsKit;
-			targetProxy = 5FA8DBB1195E2AD50080EEAE /* PBXContainerItemProxy */;
+			targetProxy = 5FA1E365196CC5CC00832B68 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -359,16 +366,30 @@
 			};
 			name = Release;
 		};
-		5F155CCB19518A0900D8931F /* Debug */ = {
+		5FA1E302196CC33800832B68 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5F155CCE19518E4600D8931F /* TramsScraper-Debug.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
-		5F155CCC19518A0900D8931F /* Release */ = {
+		5FA1E303196CC33800832B68 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5F155CCE19518E4600D8931F /* TramsScraper-Debug.xcconfig */;
+			baseConfigurationReference = 5F155CCF19518E4600D8931F /* TramsScraper-Release.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		5FA1E360196CC5B500832B68 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5FA1E37B196CC83700832B68 /* TramsScraperKit-Debug.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		5FA1E361196CC5B500832B68 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5FA1E37C196CC83700832B68 /* TramsScraperKit-Release.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
@@ -385,30 +406,25 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5F155CCA19518A0900D8931F /* Build configuration list for PBXNativeTarget "TramsScraper" */ = {
+		5FA1E309196CC33800832B68 /* Build configuration list for PBXNativeTarget "TramsScraper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5F155CCB19518A0900D8931F /* Debug */,
-				5F155CCC19518A0900D8931F /* Release */,
+				5FA1E302196CC33800832B68 /* Debug */,
+				5FA1E303196CC33800832B68 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5FA1E35F196CC5B500832B68 /* Build configuration list for PBXNativeTarget "TramsScraperKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5FA1E360196CC5B500832B68 /* Debug */,
+				5FA1E361196CC5B500832B68 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		5F200D8F1952934A003A37D0 /* NearbyTrams.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				5F200D901952934A003A37D0 /* NearbyTrams.xcdatamodel */,
-			);
-			currentVersion = 5F200D901952934A003A37D0 /* NearbyTrams.xcdatamodel */;
-			name = NearbyTrams.xcdatamodeld;
-			path = ../../Fixtures/NearbyTrams.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 5F155CBB19518A0900D8931F /* Project object */;
 }

@@ -1,0 +1,7 @@
+//
+//  Copyright (c) 2014 Dblechoc. All rights reserved.
+//
+
+#include "../../Configurations/OSX/Release.xcconfig"
+#include "../../Configurations/OSX/Framework/Framework.xcconfig"
+#include "TramsScraperKit.xcconfig"

@@ -4,3 +4,5 @@
 
 // Packaging
 PRODUCT_NAME = $(TARGET_NAME)
+
+INFOPLIST_FILE = $(TARGET_NAME)/Resources/Info.plist
