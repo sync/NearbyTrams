@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F1F4284196D7DDA00ED4C2B /* LIFXOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1F4283196D7DC100ED4C2B /* LIFXOSX.framework */; };
 		5F3984B8196CD8BD00D9D908 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F3984AB196CD8AE00D9D908 /* Main.storyboard */; };
 		5F3984B9196CD8C000D9D908 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F3984AD196CD8AE00D9D908 /* Images.xcassets */; };
 		5F3984BE196CD8D200D9D908 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3984B0196CD8AE00D9D908 /* AppDelegate.swift */; };
@@ -21,6 +22,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5F1F4280196D7DC100ED4C2B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F1F427B196D7DC000ED4C2B /* LIFXKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 01A9104D18D027B200AD0A54;
+			remoteInfo = "LIFXKit Static Library";
+		};
+		5F1F4282196D7DC100ED4C2B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F1F427B196D7DC000ED4C2B /* LIFXKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5FA23097196D521000B1D123;
+			remoteInfo = LIFXOSX;
+		};
+		5F1F4285196D7DE700ED4C2B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F1F427B196D7DC000ED4C2B /* LIFXKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5FA23096196D521000B1D123;
+			remoteInfo = LIFXOSX;
+		};
 		5F395050196D094F00E1D64D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5F398459196CD64E00D9D908 /* Project object */;
@@ -143,6 +165,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5F1F427B196D7DC000ED4C2B /* LIFXKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = LIFXKit.xcodeproj; path = External/LIFXKit/LIFXKit/LIFXKit.xcodeproj; sourceTree = "<group>"; };
 		5F398461196CD64E00D9D908 /* NearbyTramsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NearbyTramsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F398475196CD64E00D9D908 /* NearbyTramsApp-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NearbyTramsApp-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F3984A5196CD8AE00D9D908 /* NearbyTramsApp-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "NearbyTramsApp-Debug.xcconfig"; sourceTree = "<group>"; };
@@ -190,12 +213,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FFCA3AC196D08C000DCDBAF /* NearbyTramsKit.framework in Frameworks */,
+				5F1F4284196D7DDA00ED4C2B /* LIFXOSX.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F1F427C196D7DC000ED4C2B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5F1F4281196D7DC100ED4C2B /* libLIFXKit.a */,
+				5F1F4283196D7DC100ED4C2B /* LIFXOSX.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		5F398458196CD64E00D9D908 = {
 			isa = PBXGroup;
 			children = (
@@ -250,8 +283,8 @@
 		5F3984AF196CD8AE00D9D908 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				5F3984B0196CD8AE00D9D908 /* AppDelegate.swift */,
 				5F3984B1196CD8AE00D9D908 /* main.swift */,
+				5F3984B0196CD8AE00D9D908 /* AppDelegate.swift */,
 				5F3984B2196CD8AE00D9D908 /* ViewController.swift */,
 			);
 			name = Source;
@@ -312,6 +345,7 @@
 		5FFCA3A2196D089A00DCDBAF /* External */ = {
 			isa = PBXGroup;
 			children = (
+				5F1F427B196D7DC000ED4C2B /* LIFXKit.xcodeproj */,
 				5FFCA3A3196D08AD00DCDBAF /* NearbyTramsKit.xcodeproj */,
 			);
 			name = External;
@@ -399,6 +433,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				5F1F4286196D7DE700ED4C2B /* PBXTargetDependency */,
 				5F395055196D09A300E1D64D /* PBXTargetDependency */,
 			);
 			name = NearbyTramsAppKit;
@@ -440,6 +475,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = 5F1F427C196D7DC000ED4C2B /* Products */;
+					ProjectRef = 5F1F427B196D7DC000ED4C2B /* LIFXKit.xcodeproj */;
+				},
+				{
 					ProductGroup = 5FFCA3A4196D08AD00DCDBAF /* Products */;
 					ProjectRef = 5FFCA3A3196D08AD00DCDBAF /* NearbyTramsKit.xcodeproj */;
 				},
@@ -454,6 +493,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		5F1F4281196D7DC100ED4C2B /* libLIFXKit.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libLIFXKit.a;
+			remoteRef = 5F1F4280196D7DC100ED4C2B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5F1F4283196D7DC100ED4C2B /* LIFXOSX.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = LIFXOSX.framework;
+			remoteRef = 5F1F4282196D7DC100ED4C2B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		5FFCA3A9196D08C000DCDBAF /* NearbyTramsKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -526,6 +579,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5F1F4286196D7DE700ED4C2B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = LIFXOSX;
+			targetProxy = 5F1F4285196D7DE700ED4C2B /* PBXContainerItemProxy */;
+		};
 		5F395051196D094F00E1D64D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5F398460196CD64E00D9D908 /* NearbyTramsApp */;

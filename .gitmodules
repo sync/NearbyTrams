@@ -4,3 +4,6 @@
 [submodule "External/SNRFetchedResultsController"]
 	path = External/SNRFetchedResultsController
 	url = git@github.com:sync/SNRFetchedResultsController.git
+[submodule "External/LIFXKit"]
+	path = External/LIFXKit
+	url = git@github.com:sync/LIFXKit.git

@@ -51,6 +51,9 @@
       location = "group:External"
       name = "External">
       <FileRef
+         location = "group:LIFXKit/LIFXKit/LIFXKit.xcodeproj">
+      </FileRef>
+      <FileRef
          location = "group:Quick/Nimble/Nimble.xcodeproj">
       </FileRef>
       <FileRef
