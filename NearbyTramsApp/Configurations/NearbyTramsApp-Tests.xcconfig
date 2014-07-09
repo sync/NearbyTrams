@@ -1,0 +1,8 @@
+//
+//  Copyright (c) 2014 Dblechoc. All rights reserved.
+//
+
+#include "NearbyTramsApp.xcconfig"
+
+BUNDLE_LOADER = $(BUILT_PRODUCTS_DIR)/NearbyTramsApp.app/Contents/MacOS/NearbyTramsApp
+TEST_HOST = $(BUNDLE_LOADER)

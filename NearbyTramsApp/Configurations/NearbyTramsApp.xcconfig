@@ -1,0 +1,11 @@
+//
+//  Copyright (c) 2014 Dblechoc. All rights reserved.
+//
+
+// Packaging
+PRODUCT_NAME = $(TARGET_NAME)
+
+INFOPLIST_FILE = $(TARGET_NAME)/Resources/Info.plist
+
+COMBINE_HIDPI_IMAGES = YES
+ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon

@@ -1,0 +1,7 @@
+//
+//  Copyright (c) 2014 Dblechoc. All rights reserved.
+//
+
+#include "../../Configurations/OSX/Debug.xcconfig"
+#include "../../Configurations/OSX/Framework/Framework.xcconfig"
+#include "NearbyTramsAppKit.xcconfig"

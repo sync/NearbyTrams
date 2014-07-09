@@ -8,15 +8,15 @@
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5F398474196CD64E00D9D908"
-               BuildableName = "NearbyTramsApp-Tests.xctest"
-               BlueprintName = "NearbyTramsApp-Tests"
+               BlueprintIdentifier = "5F3ECBE7196CF7DF00BD988D"
+               BuildableName = "NearbyTramsAppKit.framework"
+               BlueprintName = "NearbyTramsAppKit"
                ReferencedContainer = "container:NearbyTramsApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,39 +32,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5F6CC988195C38D7003C3485"
-               BuildableName = "NearbyTramsKit-Tests.xctest"
-               BlueprintName = "NearbyTramsKit-Tests"
-               ReferencedContainer = "container:NearbyTramsKit.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5F5A726F1956EE9B00A5BD40"
-               BuildableName = "NearbyTramsNetworkKit-Tests.xctest"
-               BlueprintName = "NearbyTramsNetworkKit-Tests"
-               ReferencedContainer = "container:NearbyTramsNetworkKit.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5FBE5471195460FA009FF8D2"
-               BuildableName = "NearbyTramsStorageKit-Tests.xctest"
-               BlueprintName = "NearbyTramsStorageKit-Tests"
-               ReferencedContainer = "container:NearbyTramsStorageKit.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5F398474196CD64E00D9D908"
-               BuildableName = "NearbyTramsApp-Tests.xctest"
-               BlueprintName = "NearbyTramsApp-Tests"
+               BlueprintIdentifier = "5F3ECB99196CF52200BD988D"
+               BuildableName = "NearbyTramsAppKitTests.xctest"
+               BlueprintName = "NearbyTramsAppKitTests"
                ReferencedContainer = "container:NearbyTramsApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -72,9 +42,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5F398474196CD64E00D9D908"
-            BuildableName = "NearbyTramsApp-Tests.xctest"
-            BlueprintName = "NearbyTramsApp-Tests"
+            BlueprintIdentifier = "5F3ECBE7196CF7DF00BD988D"
+            BuildableName = "NearbyTramsAppKit.framework"
+            BlueprintName = "NearbyTramsAppKit"
             ReferencedContainer = "container:NearbyTramsApp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -89,6 +59,15 @@
       debugDocumentVersioning = "YES"
       debugXPCServices = "NO"
       allowLocationSimulation = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "5F3ECBE7196CF7DF00BD988D"
+            BuildableName = "NearbyTramsAppKit.framework"
+            BlueprintName = "NearbyTramsAppKit"
+            ReferencedContainer = "container:NearbyTramsApp.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -98,6 +77,15 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "5F3ECBE7196CF7DF00BD988D"
+            BuildableName = "NearbyTramsAppKit.framework"
+            BlueprintName = "NearbyTramsAppKit"
+            ReferencedContainer = "container:NearbyTramsApp.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
