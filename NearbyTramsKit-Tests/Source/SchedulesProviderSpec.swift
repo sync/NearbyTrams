@@ -33,7 +33,7 @@ class SchedulesProviderSpec: QuickSpec {
         
         describe("getNextPredictionsWithStopNo") {
             
-            var completionSchedules: [NSManagedObjectID]!
+            var completionSchedules: NSManagedObjectID[]!
             var completionError: NSError!
             
             context("when some schedules are avaible") {

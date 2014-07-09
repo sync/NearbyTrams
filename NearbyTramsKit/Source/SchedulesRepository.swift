@@ -50,7 +50,7 @@ class SchedulesRepository
                     
                     if let objectIds = scheduleObjectIds
                     {
-                        let result: (schedules: [Schedule]?, error:NSError?) = Schedule.fetchAllForManagedObjectIds(objectIds, usingManagedObjectContext: self.managedObjectContext)
+                        let result: (schedules: Schedule[]?, error:NSError?) = Schedule.fetchAllForManagedObjectIds(objectIds, usingManagedObjectContext: self.managedObjectContext)
                         if let stops = result.schedules
                         {
                             stop.schedules = NSMutableSet(array: stops)
