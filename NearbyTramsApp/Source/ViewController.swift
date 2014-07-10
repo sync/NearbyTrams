@@ -65,13 +65,13 @@ class ViewController: NSViewController, NearbyStopsViewControllerModelDelegate, 
                 let differenceInSeconds = tramDate.timeIntervalSinceNow
                 let differenceInMinutes = Int(differenceInSeconds / 60)
                 switch differenceInMinutes {
-                case 0..2:
+                case 0...2:
                     // red
                     color = LFXHSBKColor(hue: 0, saturation: 0.98, brightness: 1.0)
-                case 2..3:
+                case 3...4:
                     // orange
                     color = LFXHSBKColor(hue: 34, saturation: 0.98, brightness: 1.0)
-                case 3..6:
+                case 5...7:
                     // green
                     color = LFXHSBKColor(hue: 131, saturation: 0.98, brightness: 1.0)
                 default:
