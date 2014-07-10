@@ -312,7 +312,8 @@ class NetworkServiceSpec: QuickSpec {
                 //originalRequest
                 let task = service.getNextPredictionsWithStopNo(123, timestamp: date, completionHandler: nil)
                 
-                expect(task.originalRequest.URL.absoluteString).to.contain(String(date.timeIntervalSince1970 * 1000))
+                let timestamp = Int(date.timeIntervalSince1970 * 1000)
+                expect(task.originalRequest.URL.absoluteString).to.contain(String(timestamp))
             }
             
             context("when an error occur") {
