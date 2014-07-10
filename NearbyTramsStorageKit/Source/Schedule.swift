@@ -22,7 +22,7 @@ class Schedule: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObject
     @NSManaged var specialEventMessage: String?
     @NSManaged var tripID: NSNumber? // Why when Int it crashes
     @NSManaged var vehicleNo: NSNumber? // Why when Int it crashes
-    @NSManaged var stop : Stop
+    @NSManaged var stop : Stop?
     
     class var entityName: String {
         get {
