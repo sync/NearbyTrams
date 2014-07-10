@@ -81,6 +81,6 @@ let stopInfoTask = getStopInformationWithStopNo(stopNo, {
 })
 
 let randomCGColor = CGColorCreateGenericRGB(CGFloat(arc4random_uniform(255)) / 255.0, CGFloat(arc4random_uniform(255)) / 255.0, CGFloat(arc4random_uniform(255)) / 255.0, 0.5)
-let color = NSColor(CGColor: x)
+let color = NSColor(CGColor: randomCGColor)
 
 XCPSetExecutionShouldContinueIndefinitely(continueIndefinitely: true)
