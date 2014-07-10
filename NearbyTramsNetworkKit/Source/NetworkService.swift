@@ -154,7 +154,7 @@ class NetworkService
             {
                 if let handler = completionHandler
                 {
-                    handler(dictionary["ResponseObject"] as? NSDictionary[], nil)
+                    handler(dictionary["responseObject"] as? NSDictionary[], nil)
                 }
             }
             else

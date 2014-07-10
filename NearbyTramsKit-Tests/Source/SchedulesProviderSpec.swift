@@ -62,7 +62,7 @@ class SchedulesProviderSpec: QuickSpec {
                         "VehicleNo": 2101
                     ]
                     
-                    let body = ["ResponseObject": [json1]]
+                    let body = ["responseObject": [json1]]
                     let response = MockWebServiceResponse(body: body, header: ["Content-Type": "application/json; charset=utf-8"])
                     MockWebServiceURLProtocol.cannedResponse(response)
                 }
@@ -86,7 +86,7 @@ class SchedulesProviderSpec: QuickSpec {
             
             context("when no schedules are available") {
                 beforeEach {
-                    let body = ["ResponseObject": []]
+                    let body = ["responseObject": []]
                     let response = MockWebServiceResponse(body: body, header: ["Content-Type": "application/json; charset=utf-8"])
                     MockWebServiceURLProtocol.cannedResponse(response)
                 }
