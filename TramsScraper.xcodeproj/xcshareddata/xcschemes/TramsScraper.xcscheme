@@ -28,16 +28,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5F398474196CD64E00D9D908"
-               BuildableName = "NearbyTramsApp-Tests.xctest"
-               BlueprintName = "NearbyTramsApp-Tests"
-               ReferencedContainer = "container:NearbyTramsApp.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

@@ -4,5 +4,6 @@
 
 // Packaging
 PRODUCT_NAME = $(TARGET_NAME)
+DEFINES_MODULE = YES
 
 INFOPLIST_FILE = $(TARGET_NAME)/Resources/Info.plist
