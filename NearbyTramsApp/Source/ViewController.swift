@@ -93,7 +93,7 @@ class ViewController: NSViewController, NearbyStopsViewControllerModelDelegate, 
         
         if self.lights.count > 0
         {
-            let light: LFXLight = self.lights[0]
+            let light = self.lights[0]
 
             let color = self.colorForCurrentSchedule(self.schedule)
             light.setColor(color)
