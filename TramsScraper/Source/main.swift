@@ -22,7 +22,7 @@ func printHelpForAppNamed(appName: String)
 
 let arguments = Process.arguments
 
-let shouldPrintHelp = contains(arguments as String[], "-h")
+let shouldPrintHelp = contains(arguments as [String], "-h")
 if shouldPrintHelp
 {
     let appName = arguments[0].lastPathComponent
@@ -31,8 +31,8 @@ if shouldPrintHelp
     exit(0)
 }
 
-let shouldRequestStopInfo = contains(arguments as String[], "-stopInfo")
-let shouldRequestSchedules = contains(arguments as String[], "-schedules")
+let shouldRequestStopInfo = contains(arguments as [String], "-stopInfo")
+let shouldRequestSchedules = contains(arguments as [String], "-schedules")
 
 let managedObjectContext: NSManagedObjectContext = {
     let moc = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
@@ -53,7 +53,7 @@ routesProvider.getAllRoutesWithManagedObjectContext(managedObjectContext) {
     {
         println("found routes: \(routeObjectIds!.count)")
         
-        let fetchedRoutes: (routes: Route[]?, error:NSError?) = Route.fetchAllForManagedObjectIds(routeObjectIds!, usingManagedObjectContext: managedObjectContext)
+        let fetchedRoutes: (routes: [Route]?, error:NSError?) = Route.fetchAllForManagedObjectIds(routeObjectIds!, usingManagedObjectContext: managedObjectContext)
         if let routes = fetchedRoutes.routes
         {
             for (index, route) in enumerate(routes)
@@ -68,7 +68,7 @@ routesProvider.getAllRoutesWithManagedObjectContext(managedObjectContext) {
                         {
                             println("found stops:\(stopObjectIds!.count) for route: \(routeNo)")
                             
-                            let fetchedStops: (stops: Stop[]?, error:NSError?) = Stop.fetchAllForManagedObjectIds(stopObjectIds!, usingManagedObjectContext: managedObjectContext)
+                            let fetchedStops: (stops: [Stop]?, error:NSError?) = Stop.fetchAllForManagedObjectIds(stopObjectIds!, usingManagedObjectContext: managedObjectContext)
                             if let stops = fetchedStops.stops
                             {
                                 route.stops = NSMutableSet(array: stops)

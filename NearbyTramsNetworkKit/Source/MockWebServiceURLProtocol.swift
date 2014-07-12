@@ -22,10 +22,10 @@ struct MockWebServiceResponse
     }
 }
 
-var storage: MockWebServiceResponse[]?
+var storage: [MockWebServiceResponse]?
 class MockWebServiceURLProtocol: NSURLProtocol
 {
-    class func cannedResponses(responses: MockWebServiceResponse[]?)
+    class func cannedResponses(responses: [MockWebServiceResponse]?)
     {
         storage = responses
     }
@@ -42,14 +42,14 @@ class MockWebServiceURLProtocol: NSURLProtocol
         }
     }
 
-    class func responsesForURL(URL: NSURL) -> MockWebServiceResponse[]?
+    class func responsesForURL(URL: NSURL) -> [MockWebServiceResponse]?
     {
         if let tmpResponses = storage
         {
-            var responses = (tmpResponses as MockWebServiceResponse[]).filter{
+            var responses = (tmpResponses as [MockWebServiceResponse]).filter{
                 cannedResponse -> Bool in
                 
-                return (cannedResponse.urlComponent) ? contains(URL.pathComponents as String[], cannedResponse.urlComponent!) : true
+                return (cannedResponse.urlComponent) ? contains(URL.pathComponents as [String], cannedResponse.urlComponent!) : true
             }
             
             // give priority to responses that have a urlComponent

@@ -32,7 +32,7 @@ class CoreDataStackManager {
     /**
     Returns the managed object model for the application.
     */
-    @lazy var managedObjectModel: NSManagedObjectModel = {
+    lazy var managedObjectModel: NSManagedObjectModel = {
         let bundle = NSBundle(forClass: CoreDataStackManager.self)
         let modelPath = bundle.pathForResource("NearbyTrams", ofType: "momd")
         let modelURL = NSURL(fileURLWithPath: modelPath)

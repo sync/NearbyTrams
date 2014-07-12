@@ -65,7 +65,7 @@ class Stop: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObject
 
 extension Stop
     {
-    var nextScheduledArrivalDates: NSDate[]? {
+    var nextScheduledArrivalDates: [NSDate]? {
     if let identifier = self.uniqueIdentifier
     {
         let fetchRequest = NSFetchRequest(entityName: Schedule.entityName)

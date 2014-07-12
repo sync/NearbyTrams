@@ -33,7 +33,7 @@ class RoutesProviderSpec: QuickSpec {
         
         describe("getAllRoutesWithManagedObjectContext") {
             
-            var completionRoutes: NSManagedObjectID[]!
+            var completionRoutes: [NSManagedObjectID]!
             var completionError: NSError!
             
             context("when some routes are available") {

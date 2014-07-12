@@ -77,7 +77,7 @@ class StopsViewControllerModel: NSObject, StopsViewModelDelegate, SchedulesRepos
     }
     
     // StopsViewModelDelegate
-    func stopsViewModelDidAddStops(stopsViewModel: StopsViewModel, stops: StopViewModel[])
+    func stopsViewModelDidAddStops(stopsViewModel: StopsViewModel, stops: [StopViewModel])
     {
         for stop in stops
         {
@@ -88,12 +88,12 @@ class StopsViewControllerModel: NSObject, StopsViewModelDelegate, SchedulesRepos
         didUpdateStops()
     }
     
-    func stopsViewModelDidUpdateStops(stopsViewModel: StopsViewModel, stops: StopViewModel[])
+    func stopsViewModelDidUpdateStops(stopsViewModel: StopsViewModel, stops: [StopViewModel])
     {
         didUpdateStops()
     }
     
-    func stopsViewModelDidRemoveStops(stopsViewModel: StopsViewModel, stops: StopViewModel[])
+    func stopsViewModelDidRemoveStops(stopsViewModel: StopsViewModel, stops: [StopViewModel])
     {
         for stop in stops
         {

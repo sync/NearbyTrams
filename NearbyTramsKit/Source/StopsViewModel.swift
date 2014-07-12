@@ -7,9 +7,9 @@ import NearbyTramsStorageKit
 
 protocol StopsViewModelDelegate
 {
-    func stopsViewModelDidAddStops(stopsViewModel: StopsViewModel, stops: StopViewModel[])
-    func stopsViewModelDidRemoveStops(stopsViewModel: StopsViewModel, stops: StopViewModel[])
-    func stopsViewModelDidUpdateStops(stopsViewModel: StopsViewModel, stops: StopViewModel[])
+    func stopsViewModelDidAddStops(stopsViewModel: StopsViewModel, stops: [StopViewModel])
+    func stopsViewModelDidRemoveStops(stopsViewModel: StopsViewModel, stops: [StopViewModel])
+    func stopsViewModelDidUpdateStops(stopsViewModel: StopsViewModel, stops: [StopViewModel])
 }
 
 class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
@@ -21,7 +21,7 @@ class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
     var fetchedResultsController: SNRFetchedResultsController?
     var stopsStorage: Dictionary<String, StopViewModel> = [ : ]
     var currentChangeSet: FetchedResultsControllerChangeSet?
-    var stops: StopViewModel[]
+    var stops: [StopViewModel]
     
     init (managedObjectContext: NSManagedObjectContext)
     {
@@ -48,7 +48,7 @@ class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
             var error: NSError?
             if currentFetchedResultsController.performFetch(&error)
             {
-                if let fetchedStops = currentFetchedResultsController.fetchedObjects as? Stop[]
+                if let fetchedStops = currentFetchedResultsController.fetchedObjects as? [Stop]
                 {
                     synchronizeStopsWithObjectsFromArray(fetchedStops)
                 }
@@ -80,7 +80,7 @@ class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
         return nil
     }
     
-    func synchronizeStopsWithObjectsFromArray(array: Stop[])
+    func synchronizeStopsWithObjectsFromArray(array: [Stop])
     {
         var stopsByIdentifier: Dictionary<String, Stop> = [ : ]
         for stop in array
@@ -105,7 +105,7 @@ class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
         
         if identifiersToAdd.allObjects
         {
-            var addedObjects: Stop[] = []
+            var addedObjects: [Stop] = []
             for identifier : AnyObject in identifiersToAdd.allObjects
             {
                 let stop = stopsByIdentifier[identifier as String]
@@ -119,7 +119,7 @@ class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
         
         if identifiersToRemove.allObjects
         {
-            var removedStopModels: StopViewModel[] = []
+            var removedStopModels: [StopViewModel] = []
             for identifier : AnyObject in identifiersToRemove.allObjects
             {
                 if let stopViewModel = stopsStorage[identifier as String]
@@ -132,7 +132,7 @@ class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
         
         if identifiersToUpdate.allObjects
         {
-            var updatedObjects: Stop[] = []
+            var updatedObjects: [Stop] = []
             for identifier : AnyObject in identifiersToUpdate.allObjects
             {
                 if let stop = stopsByIdentifier[identifier as String]
@@ -144,7 +144,7 @@ class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
         }
     }
     
-    func addStopsForObjects(array: Stop[])
+    func addStopsForObjects(array: [Stop])
     {
         if !array.isEmpty
         {
@@ -171,12 +171,12 @@ class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
         }
     }
     
-    func updateStopsForObjects(array: Stop[])
+    func updateStopsForObjects(array: [Stop])
     {
         if !array.isEmpty
         {
-            var updatedStops: StopViewModel[] = []
-            var deletedStopModels: StopViewModel[] = []
+            var updatedStops: [StopViewModel] = []
+            var deletedStopModels: [StopViewModel] = []
             for stop in array {
                 if let existingStopModel = existingModelForIdentifier(stop.uniqueIdentifier)
                 {
@@ -205,11 +205,11 @@ class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
         }
     }
     
-    func removeStopModels(array: StopViewModel[])
+    func removeStopModels(array: [StopViewModel])
     {
         if !array.isEmpty
         {
-            var removedStops: StopViewModel[] = []
+            var removedStops: [StopViewModel] = []
             for stop in array {
                 if let existingStopModel = existingModelForIdentifier(stop.identifier)
                 {
@@ -225,11 +225,11 @@ class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
         }
     }
     
-    func removeStopsForObjects(array: Stop[])
+    func removeStopsForObjects(array: [Stop])
     {
         if !array.isEmpty
         {
-            var removedStopModels: StopViewModel[] = []
+            var removedStopModels: [StopViewModel] = []
             for stop in array {
                 if let existingStopModel = existingModelForIdentifier(stop.uniqueIdentifier)
                 {
@@ -241,21 +241,21 @@ class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
         }
     }
     
-    func didAddStops(stops: StopViewModel[])
+    func didAddStops(stops: [StopViewModel])
     {
         self.stops = Array(stopsStorage.values)
         
         self.delegate?.stopsViewModelDidAddStops(self, stops: stops)
     }
     
-    func didRemoveStops(stops: StopViewModel[])
+    func didRemoveStops(stops: [StopViewModel])
     {
         self.stops = Array(stopsStorage.values)
         
         self.delegate?.stopsViewModelDidRemoveStops(self, stops: stops)
     }
     
-    func didUpdateStops(stops: StopViewModel[])
+    func didUpdateStops(stops: [StopViewModel])
     {
         self.stops = Array(stopsStorage.values)
         
@@ -292,17 +292,17 @@ class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
     
     func updateModelWithChangeSet(changeSet: FetchedResultsControllerChangeSet)
     {
-        if let addedObjects = changeSet.allAddedObjects as? Stop[]
+        if let addedObjects = changeSet.allAddedObjects as? [Stop]
         {
             addStopsForObjects(addedObjects)
         }
         
-        if let updatedObjects = changeSet.allUpdatedObjects as? Stop[]
+        if let updatedObjects = changeSet.allUpdatedObjects as? [Stop]
         {
             updateStopsForObjects(updatedObjects)
         }
         
-        if let removedObjects = changeSet.allRemovedObjects as? Stop[]
+        if let removedObjects = changeSet.allRemovedObjects as? [Stop]
         {
             removeStopsForObjects(removedObjects)
         }

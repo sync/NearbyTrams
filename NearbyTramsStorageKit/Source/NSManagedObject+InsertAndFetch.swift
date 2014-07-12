@@ -9,7 +9,7 @@ protocol InsertAndFetchManagedObject {
     class var primaryKey: String { get }
     class func insertInManagedObjectContext<T where T: NSManagedObject, T: InsertAndFetchManagedObject>(managedObjectContext: NSManagedObjectContext) -> T
     class func fetchOneForPrimaryKeyValue<T where T: NSManagedObject, T: InsertAndFetchManagedObject>(primaryKey: AnyObject, usingManagedObjectContext managedObjectContext: NSManagedObjectContext) -> (T?, NSError?)
-    class func fetchAllForManagedObjectIds<T where T: NSManagedObject, T: InsertAndFetchManagedObject>(managedObjectIds: NSManagedObjectID[], usingManagedObjectContext managedObjectContext: NSManagedObjectContext) -> (T[]?, NSError?)
+    class func fetchAllForManagedObjectIds<T where T: NSManagedObject, T: InsertAndFetchManagedObject>(managedObjectIds: [NSManagedObjectID], usingManagedObjectContext managedObjectContext: NSManagedObjectContext) -> ([T]?, NSError?)
 }
 
 extension NSManagedObject
@@ -39,14 +39,14 @@ extension NSManagedObject
         return (managedObject, error)
     }
     
-    class func fetchAllForManagedObjectIds<T where T: NSManagedObject, T: InsertAndFetchManagedObject>(managedObjectIds: NSManagedObjectID[], usingManagedObjectContext managedObjectContext: NSManagedObjectContext) -> (T[]?, NSError?)
+    class func fetchAllForManagedObjectIds<T where T: NSManagedObject, T: InsertAndFetchManagedObject>(managedObjectIds: [NSManagedObjectID], usingManagedObjectContext managedObjectContext: NSManagedObjectContext) -> ([T]?, NSError?)
     {
         let predicate = NSPredicate(format:"self IN %@", managedObjectIds)
         let request = NSFetchRequest(entityName: T.entityName)
         request.predicate = predicate
         
         var error: NSError?
-        let foundManagedObjects = managedObjectContext.executeFetchRequest(request, error: &error) as? T[]
+        let foundManagedObjects = managedObjectContext.executeFetchRequest(request, error: &error) as? [T]
         
         return (foundManagedObjects, error)
     }

@@ -205,7 +205,7 @@ class StopSpec: QuickSpec {
                 }
                 
                 context("with a schedule but no predicted arrival date") {
-                    var arrivalDates: NSDate[]?
+                    var arrivalDates: [NSDate]?
                     
                     beforeEach {
                         let schedule1 = Schedule.insertInManagedObjectContext(moc) as Schedule

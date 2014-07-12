@@ -7,9 +7,9 @@ import NearbyTramsStorageKit
 
 protocol RoutesViewModelDelegate
 {
-    func routesViewModelDidAddRoutes(routesViewModel: RoutesViewModel, routes: RouteViewModel[])
-    func routesViewModelDidRemoveRoutes(routesViewModel: RoutesViewModel, routes: RouteViewModel[])
-    func routesViewModelDidUpdateRoutes(routesViewModel: RoutesViewModel, routes: RouteViewModel[])
+    func routesViewModelDidAddRoutes(routesViewModel: RoutesViewModel, routes: [RouteViewModel])
+    func routesViewModelDidRemoveRoutes(routesViewModel: RoutesViewModel, routes: [RouteViewModel])
+    func routesViewModelDidUpdateRoutes(routesViewModel: RoutesViewModel, routes: [RouteViewModel])
 }
 
 class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
@@ -27,7 +27,7 @@ class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
         self.managedObjectContext = managedObjectContext
     }
     
-    var orderedRouteIdentifiers: String[] {
+    var orderedRouteIdentifiers: [String] {
     let orderedIdentifiers = self.fetchedResultsController?.fetchedObjects.filter {
         route -> Bool in
         
@@ -46,7 +46,7 @@ class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
         return orderedIdentifiers ? orderedIdentifiers! : []
     }
     
-    var routes: RouteViewModel[] {
+    var routes: [RouteViewModel] {
     return self.orderedRouteIdentifiers.filter {
         identifier -> Bool in
         
@@ -75,7 +75,7 @@ class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
         var error: NSError?
         if currentFetchedResultsController.performFetch(&error)
         {
-            if let fetchedRoutes = currentFetchedResultsController.fetchedObjects as? Route[]
+            if let fetchedRoutes = currentFetchedResultsController.fetchedObjects as? [Route]
             {
                 synchronizeRoutesWithObjectsFromArray(fetchedRoutes)
             }
@@ -108,7 +108,7 @@ class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
         return nil
     }
     
-    func synchronizeRoutesWithObjectsFromArray(array: Route[])
+    func synchronizeRoutesWithObjectsFromArray(array: [Route])
     {
         var routesByIdentifier: Dictionary<String, Route> = [ : ]
         for route in array
@@ -133,7 +133,7 @@ class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
         
         if identifiersToAdd.allObjects
         {
-            var addedObjects: Route[] = []
+            var addedObjects: [Route] = []
             for identifier : AnyObject in identifiersToAdd.allObjects
             {
                 let route = routesByIdentifier[identifier as String]
@@ -147,7 +147,7 @@ class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
         
         if identifiersToRemove.allObjects
         {
-            var removedObjects: Route[] = []
+            var removedObjects: [Route] = []
             for identifier : AnyObject in identifiersToRemove.allObjects
             {
                 let routeViewModel = routesStorage[identifier as String]
@@ -165,7 +165,7 @@ class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
         
         if identifiersToUpdate.allObjects
         {
-            var updatedObjects: Route[] = []
+            var updatedObjects: [Route] = []
             for identifier : AnyObject in identifiersToUpdate.allObjects
             {
                 let route = routesByIdentifier[identifier as String]
@@ -178,7 +178,7 @@ class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
         }
     }
     
-    func addRoutesForObjects(array: Route[])
+    func addRoutesForObjects(array: [Route])
     {
         if !array.isEmpty
         {
@@ -204,12 +204,12 @@ class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
         }
     }
     
-    func updateRoutesForObjects(array: Route[])
+    func updateRoutesForObjects(array: [Route])
     {
         if !array.isEmpty
         {
-            var updatedRoutes: RouteViewModel[] = []
-            var deletedRoutes: Route[] = []
+            var updatedRoutes: [RouteViewModel] = []
+            var deletedRoutes: [Route] = []
             for route in array {
                 if let existingRouteModel = existingModelForRoute(route)
                 {
@@ -237,11 +237,11 @@ class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
         }
     }
     
-    func removeRoutesForObjects(array: Route[])
+    func removeRoutesForObjects(array: [Route])
     {
         if !array.isEmpty
         {
-            var removedRoutes: RouteViewModel[] = []
+            var removedRoutes: [RouteViewModel] = []
             for route in array {
                 if let existingRouteModel = existingModelForRoute(route)
                 {
@@ -257,17 +257,17 @@ class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
         }
     }
     
-    func didAddRoutes(routes: RouteViewModel[])
+    func didAddRoutes(routes: [RouteViewModel])
     {
         self.delegate?.routesViewModelDidAddRoutes(self, routes: routes)
     }
     
-    func didRemoveRoutes(routes: RouteViewModel[])
+    func didRemoveRoutes(routes: [RouteViewModel])
     {
         self.delegate?.routesViewModelDidRemoveRoutes(self, routes: routes)
     }
     
-    func didUpdateRoutes(routes: RouteViewModel[])
+    func didUpdateRoutes(routes: [RouteViewModel])
     {
         self.delegate?.routesViewModelDidUpdateRoutes(self, routes: routes)
     }
@@ -302,17 +302,17 @@ class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
     
     func updateModelWithChangeSet(changeSet: FetchedResultsControllerChangeSet)
     {
-        if let addedObjects = changeSet.allAddedObjects as? Route[]
+        if let addedObjects = changeSet.allAddedObjects as? [Route]
         {
             addRoutesForObjects(addedObjects)
         }
         
-        if let updatedObjects = changeSet.allUpdatedObjects as? Route[]
+        if let updatedObjects = changeSet.allUpdatedObjects as? [Route]
         {
             updateRoutesForObjects(updatedObjects)
         }
         
-        if let removedObjects = changeSet.allRemovedObjects as? Route[]
+        if let removedObjects = changeSet.allRemovedObjects as? [Route]
         {
             removeRoutesForObjects(removedObjects)
         }

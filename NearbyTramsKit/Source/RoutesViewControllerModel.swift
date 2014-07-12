@@ -46,17 +46,17 @@ class RoutesViewControllerModel: NSObject, RoutesViewModelDelegate
     }
     
     // RoutesViewModelDelegate
-    func routesViewModelDidAddRoutes(routesViewModel: RoutesViewModel, routes: RouteViewModel[])
+    func routesViewModelDidAddRoutes(routesViewModel: RoutesViewModel, routes: [RouteViewModel])
     {
         didUpdateRoutes()
     }
     
-    func routesViewModelDidRemoveRoutes(routesViewModel: RoutesViewModel, routes: RouteViewModel[])
+    func routesViewModelDidRemoveRoutes(routesViewModel: RoutesViewModel, routes: [RouteViewModel])
     {
         didUpdateRoutes()
     }
     
-    func routesViewModelDidUpdateRoutes(routesViewModel: RoutesViewModel, routes: RouteViewModel[])
+    func routesViewModelDidUpdateRoutes(routesViewModel: RoutesViewModel, routes: [RouteViewModel])
     {
         didUpdateRoutes()
     }

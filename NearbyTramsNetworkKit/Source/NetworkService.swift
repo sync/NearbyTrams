@@ -38,7 +38,7 @@ class NetworkService
         return NSURL(string: tokenisedString, relativeToURL:self.baseURL)
     }
 
-    func getAllRoutesWithCompletionHandler(completionHandler: ((NSDictionary[]?, NSError?) -> Void)?) -> NSURLSessionDataTask
+    func getAllRoutesWithCompletionHandler(completionHandler: (([NSDictionary]?, NSError?) -> Void)?) -> NSURLSessionDataTask
     {
         let url = tokenisedURLWithString("TramTracker/RestService/GetRouteSummaries/")
         
@@ -87,7 +87,7 @@ class NetworkService
                 {
                     if let handler = completionHandler
                     {
-                        handler(dictionary["responseObject"] as? NSDictionary[], nil)
+                        handler(dictionary["responseObject"] as? [NSDictionary], nil)
                     }
                 }
             }
@@ -107,7 +107,7 @@ class NetworkService
         return task
     }
     
-    func getStopsByRouteWithRouteNo(routeNo: Int, completionHandler: ((NSDictionary[]?, NSError?) -> Void)?) -> NSURLSessionDataTask
+    func getStopsByRouteWithRouteNo(routeNo: Int, completionHandler: (([NSDictionary]?, NSError?) -> Void)?) -> NSURLSessionDataTask
     {
         let url = tokenisedURLWithString("TramTracker/RestService/GetRouteStopsByRoute/\(routeNo)/")
         
@@ -156,7 +156,7 @@ class NetworkService
                 {
                     if let handler = completionHandler
                     {
-                        handler(dictionary["responseObject"] as? NSDictionary[], nil)
+                        handler(dictionary["responseObject"] as? [NSDictionary], nil)
                     }
                 }
             }
@@ -245,7 +245,7 @@ class NetworkService
         return task
     }
     
-    func getNextPredictionsWithStopNo(stopNo: Int, routeNo: String = "0", completionHandler: ((NSDictionary[]?, NSError?) -> Void)?) -> NSURLSessionDataTask
+    func getNextPredictionsWithStopNo(stopNo: Int, routeNo: String = "0", completionHandler: (([NSDictionary]?, NSError?) -> Void)?) -> NSURLSessionDataTask
     {
         let url = tokenisedURLWithString("TramTracker/RestService/GetNextPredictedRoutesCollection/\(stopNo)/\(routeNo)/false/", appendCid: true)
         
@@ -294,7 +294,7 @@ class NetworkService
                 {
                     if let handler = completionHandler
                     {
-                        handler(dictionary["responseObject"] as? NSDictionary[], nil)
+                        handler(dictionary["responseObject"] as? [NSDictionary], nil)
                     }
                 }
             }

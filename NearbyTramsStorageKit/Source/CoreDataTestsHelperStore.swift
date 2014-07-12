@@ -6,7 +6,7 @@ import CoreData
 
 class CoreDataTestsHelperStore
 {
-    @lazy var managedObjectContext: NSManagedObjectContext = {
+    lazy var managedObjectContext: NSManagedObjectContext = {
         
         let managedObjectModel = CoreDataStackManager.sharedInstance.managedObjectModel
         

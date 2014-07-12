@@ -12,9 +12,9 @@ class StopViewModel: Equatable
     var isUpStop: Bool
     var stopNo: Int
     var stopName: String
-    var schedules: NSDate[]?
+    var schedules: [NSDate]?
     
-    init (identifier: String, routeNo: String, routeDescription: String, isUpStop: Bool, stopNo: Int, stopName: String, schedules: NSDate[]?)
+    init (identifier: String, routeNo: String, routeDescription: String, isUpStop: Bool, stopNo: Int, stopName: String, schedules: [NSDate]?)
     {
         self.identifier = identifier
         self.routeNo = routeNo
@@ -25,7 +25,7 @@ class StopViewModel: Equatable
         self.schedules = schedules
     }
     
-    func updateWithRouteNo(routeNo: String, routeDescription: String, isUpStop: Bool, stopNo: Int, stopName: String, schedules: NSDate[]?)
+    func updateWithRouteNo(routeNo: String, routeDescription: String, isUpStop: Bool, stopNo: Int, stopName: String, schedules: [NSDate]?)
     {
         self.routeNo = routeNo
         self.routeDescription = routeDescription

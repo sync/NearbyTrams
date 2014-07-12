@@ -10,21 +10,21 @@ import NearbyTramsStorageKit
 
 class FakeStopsViewModelDelegate: StopsViewModelDelegate
 {
-    var addedStops: StopViewModel[]?
-    var removedStops: StopViewModel[]?
-    var updatedStops: StopViewModel[]?
+    var addedStops: [StopViewModel]?
+    var removedStops: [StopViewModel]?
+    var updatedStops: [StopViewModel]?
     
-    func stopsViewModelDidAddStops(stopsViewModel: StopsViewModel, stops: StopViewModel[])
+    func stopsViewModelDidAddStops(stopsViewModel: StopsViewModel, stops: [StopViewModel])
     {
         addedStops = stops
     }
     
-    func stopsViewModelDidRemoveStops(stopsViewModel: StopsViewModel, stops: StopViewModel[])
+    func stopsViewModelDidRemoveStops(stopsViewModel: StopsViewModel, stops: [StopViewModel])
     {
         removedStops = stops
     }
     
-    func stopsViewModelDidUpdateStops(stopsViewModel: StopsViewModel, stops: StopViewModel[])
+    func stopsViewModelDidUpdateStops(stopsViewModel: StopsViewModel, stops: [StopViewModel])
     {
         updatedStops = stops
     }
