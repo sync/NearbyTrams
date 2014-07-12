@@ -17,7 +17,7 @@ class ViewController: NSViewController, NearbyStopsViewControllerModelDelegate, 
     var schedule: Schedule?
     
     let lifxNetworkContext: LFXNetworkContext
-    var lights: LFXLight[]?
+    var lights: LFXLight[]
     
     let managedObjectContext: NSManagedObjectContext = {
         let moc = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
@@ -36,7 +36,8 @@ class ViewController: NSViewController, NearbyStopsViewControllerModelDelegate, 
         
         self.stopsViewModel = stopsViewModel
         self.schedulesRepository = schedulesRepository
-        
+        self.lights = []
+
         super.init(coder: coder)
         
         self.nearbyStopsViewControllerModel.delegate = self
@@ -85,11 +86,15 @@ class ViewController: NSViewController, NearbyStopsViewControllerModelDelegate, 
     
     func updateLights()
     {
-        self.lights = self.lifxNetworkContext.allLightsCollection.lights as? LFXLight[]
-        if self.lights?.count > 0
+        if let lights = self.lifxNetworkContext.allLightsCollection.lights as? LFXLight[]
         {
-            let light: LFXLight = self.lights![0]
-            
+            self.lights = lights
+        }
+        
+        if self.lights.count > 0
+        {
+            let light = self.lights[0]
+
             let color = self.colorForCurrentSchedule(self.schedule)
             light.setColor(color)
         }
