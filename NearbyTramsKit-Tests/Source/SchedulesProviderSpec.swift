@@ -38,8 +38,6 @@ class SchedulesProviderSpec: QuickSpec {
             
             context("when some schedules are avaible") {
                 beforeEach {
-                    
-                    
                     let json1: Dictionary<String, AnyObject> = [
                         "AirConditioned": true,
                         "Destination": "Sth Melb Beach",
@@ -71,16 +69,32 @@ class SchedulesProviderSpec: QuickSpec {
                     MockWebServiceURLProtocol.cannedResponse(nil)
                 }
                 
-                it("should complete on the main thread with schedules and no error") {
-                    provider.getNextPredictionsWithStopNo(56, managedObjectContext: moc, {
-                        schedules, error -> Void in
+                context("with no routeNo") {
+                    it("should complete on the main thread with schedules and no error") {
+                        provider.getNextPredictionsWithStopNo(56, managedObjectContext: moc, {
+                            schedules, error -> Void in
+                            
+                            completionSchedules = schedules
+                            completionError = error
+                            })
                         
-                        completionSchedules = schedules
-                        completionError = error
-                        })
-                    
-                    expect{completionSchedules}.willNot.beEmpty()
-                    expect{completionError}.will.beNil()
+                        expect{completionSchedules}.willNot.beEmpty()
+                        expect{completionError}.will.beNil()
+                    }
+                }
+                
+                context("with a routeNo") {
+                    it("should complete on the main thread with schedules and no error") {
+                        provider.getNextPredictionsWithStopNo(56, routeNo: 1, managedObjectContext: moc, {
+                            schedules, error -> Void in
+                            
+                            completionSchedules = schedules
+                            completionError = error
+                            })
+                        
+                        expect{completionSchedules}.willNot.beEmpty()
+                        expect{completionError}.will.beNil()
+                    }
                 }
             }
             

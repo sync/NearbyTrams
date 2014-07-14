@@ -45,9 +45,14 @@ class SchedulesRepositorySpec: QuickSpec {
             store = CoreDataTestsHelperStore()
             moc = store.managedObjectContext
             
+            let route: Route = Route.insertInManagedObjectContext(moc)
+            route.uniqueIdentifier = "16-false"
+            route.routeNo = 16
+            
             let stop: Stop = Stop.insertInManagedObjectContext(moc)
             stop.uniqueIdentifier = "2166"
             stop.stopNo = 2166
+            stop.route = route
             moc.save(nil)
             
             let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()

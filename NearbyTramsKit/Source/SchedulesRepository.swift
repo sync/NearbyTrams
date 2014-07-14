@@ -42,24 +42,27 @@ class SchedulesRepository
     {
         if let stop = fetchStop()
         {
-            if let stopNo = stop.stopNo as? Int
+            if let routeNo = stop.route?.routeNo
             {
-                self.isLoading = true
-                schedulesProvider.getNextPredictionsWithStopNo(stopNo, managedObjectContext: managedObjectContext) {
-                    scheduleObjectIds, error -> Void in
-                    
-                    if let objectIds = scheduleObjectIds
-                    {
-                        let result: (schedules: Schedule[]?, error:NSError?) = Schedule.fetchAllForManagedObjectIds(objectIds, usingManagedObjectContext: self.managedObjectContext)
-                        if let schedules = result.schedules
+                if let stopNo = stop.stopNo as? Int
+                {
+                    self.isLoading = true
+                    schedulesProvider.getNextPredictionsWithStopNo(stopNo, routeNo: routeNo as Int, managedObjectContext: managedObjectContext) {
+                        scheduleObjectIds, error -> Void in
+                        
+                        if let objectIds = scheduleObjectIds
                         {
-                            stop.schedules = NSMutableSet(array: schedules)
-                            self.managedObjectContext.save(nil)
+                            let result: (schedules: Schedule[]?, error:NSError?) = Schedule.fetchAllForManagedObjectIds(objectIds, usingManagedObjectContext: self.managedObjectContext)
+                            if let schedules = result.schedules
+                            {
+                                stop.schedules = NSMutableSet(array: schedules)
+                                self.managedObjectContext.save(nil)
+                            }
                         }
+                        
+                        self.isLoading = false
+                        self.delegate?.schedulesRepositoryDidFinsishLoading(self, error: error)
                     }
-                    
-                    self.isLoading = false
-                    self.delegate?.schedulesRepositoryDidFinsishLoading(self, error: error)
                 }
             }
         }

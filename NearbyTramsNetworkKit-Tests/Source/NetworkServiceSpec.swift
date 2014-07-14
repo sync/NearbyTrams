@@ -299,11 +299,20 @@ class NetworkServiceSpec: QuickSpec {
                 expect(task).notTo.beNil()
             }
             
-            it("should have added to the query url the stop no") {
+            it("should have added to the query url the stop no and a zero route no") {
                 //originalRequest
                 let task = service.getNextPredictionsWithStopNo(123, timestamp: NSDate(), completionHandler: nil)
                 
-                expect(task.originalRequest.URL.absoluteString).to.contain("123")
+                expect(task.originalRequest.URL.absoluteString).to.contain("stopNo=123")
+                expect(task.originalRequest.URL.absoluteString).to.contain("routeNo=0")
+            }
+            
+            it("should have added to the query url the stop no and the route no") {
+                //originalRequest
+                let task = service.getNextPredictionsWithStopNo(456, routeNo: 16, timestamp: NSDate(), completionHandler: nil)
+                
+                expect(task.originalRequest.URL.absoluteString).to.contain("stopNo=456")
+                expect(task.originalRequest.URL.absoluteString).to.contain("routeNo=16")
             }
             
             it("should have added to the query url the timestamp") {
