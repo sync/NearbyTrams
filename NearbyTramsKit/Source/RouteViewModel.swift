@@ -3,7 +3,6 @@
 //
 
 import Foundation
-import CoreFoundation
 
 class RouteViewModel
 {
@@ -13,7 +12,7 @@ class RouteViewModel
     let isUpDestination: Bool
     let color: CGColorRef
     
-    init (identifier: String, routeNo: Int, destination: String, isUpDestination: Bool, color: CGColorRef = CGColorCreateGenericRGB(CGFloat(arc4random_uniform(255)) / 255.0, CGFloat(arc4random_uniform(255)) / 255.0, CGFloat(arc4random_uniform(255)) / 255.0, 1.0))
+    init (identifier: String, routeNo: Int, destination: String, isUpDestination: Bool, color: CGColorRef = ColorUtility.generateRandomColor())
     {
         self.identifier = identifier
         self.routeNo = routeNo

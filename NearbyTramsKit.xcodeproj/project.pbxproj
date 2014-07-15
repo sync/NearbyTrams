@@ -36,6 +36,8 @@
 		5FA5106F195C3F5A000100A5 /* RoutesProviderSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA5106E195C3F5A000100A5 /* RoutesProviderSpec.swift */; };
 		5FA8DB97195D8B2A0080EEAE /* BrowseRoutesViewControllerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA8DB96195D8B2A0080EEAE /* BrowseRoutesViewControllerModel.swift */; };
 		5FA8DBA7195D8C5B0080EEAE /* BrowseRoutesViewControllerModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA8DBA6195D8C5B0080EEAE /* BrowseRoutesViewControllerModelSpec.swift */; };
+		5FC9AC9E1974C7E000E59BB8 /* ColorUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC9AC9D1974C7E000E59BB8 /* ColorUtility.swift */; };
+		5FC9ACA11974C84900E59BB8 /* ColorUtilitySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC9ACA01974C84900E59BB8 /* ColorUtilitySpec.swift */; };
 		5FCC190E1966B10600B0B80B /* SNRFetchedResultsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCC190A1966B10600B0B80B /* SNRFetchedResultsController.m */; settings = {COMPILER_FLAGS = "-Wno-explicit-ownership-type -Wno-direct-ivar-access -Wno-unused-parameter -Wno-sign-compare"; }; };
 		5FCC19AA1966B90500B0B80B /* SNRFetchedResultsController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FCC19091966B10600B0B80B /* SNRFetchedResultsController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5FF468601962224600C5BEE9 /* SchedulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF4685F1962224600C5BEE9 /* SchedulesProvider.swift */; };
@@ -211,6 +213,8 @@
 		5FA51079195C4329000100A5 /* NearbyTramsNetworkKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = NearbyTramsNetworkKit.xcodeproj; sourceTree = "<group>"; };
 		5FA8DB96195D8B2A0080EEAE /* BrowseRoutesViewControllerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseRoutesViewControllerModel.swift; sourceTree = "<group>"; };
 		5FA8DBA6195D8C5B0080EEAE /* BrowseRoutesViewControllerModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseRoutesViewControllerModelSpec.swift; sourceTree = "<group>"; };
+		5FC9AC9D1974C7E000E59BB8 /* ColorUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorUtility.swift; sourceTree = "<group>"; };
+		5FC9ACA01974C84900E59BB8 /* ColorUtilitySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorUtilitySpec.swift; sourceTree = "<group>"; };
 		5FCC19091966B10600B0B80B /* SNRFetchedResultsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNRFetchedResultsController.h; sourceTree = "<group>"; };
 		5FCC190A1966B10600B0B80B /* SNRFetchedResultsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNRFetchedResultsController.m; sourceTree = "<group>"; };
 		5FF4685F1962224600C5BEE9 /* SchedulesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchedulesProvider.swift; sourceTree = "<group>"; };
@@ -312,6 +316,7 @@
 			children = (
 				5F2D52A5196965F8002CECA0 /* FetchedResultsControllerChangeSpec.swift */,
 				5F2D529D19696421002CECA0 /* FetchedResultsControllerChangeSetSpec.swift */,
+				5FC9ACA01974C84900E59BB8 /* ColorUtilitySpec.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -398,6 +403,7 @@
 				5F551C191968BD1D000D3A31 /* Repositories */,
 				5FA8DB8C195D8AE90080EEAE /* Providers */,
 				5FA8DB95195D8AF90080EEAE /* Browse */,
+				5FC9AC941974C68600E59BB8 /* Core */,
 			);
 			name = Source;
 			path = NearbyTramsKit/Source;
@@ -520,6 +526,14 @@
 				5FA8DBA6195D8C5B0080EEAE /* BrowseRoutesViewControllerModelSpec.swift */,
 			);
 			name = Browse;
+			sourceTree = "<group>";
+		};
+		5FC9AC941974C68600E59BB8 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				5FC9AC9D1974C7E000E59BB8 /* ColorUtility.swift */,
+			);
+			name = Core;
 			sourceTree = "<group>";
 		};
 		5FCC19061966B10600B0B80B /* SNRFetchedResultsController */ = {
@@ -751,6 +765,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FC9AC9E1974C7E000E59BB8 /* ColorUtility.swift in Sources */,
 				5F8C95FF195ED06C001B329F /* StopsProvider.swift in Sources */,
 				5F551C231968BD42000D3A31 /* RoutesRepository.swift in Sources */,
 				5F1F42B3196E18C300ED4C2B /* NearbyStopsViewControllerModel.swift in Sources */,
@@ -784,6 +799,7 @@
 				5F2D527F1969119D002CECA0 /* SchedulesRepositorySpec.swift in Sources */,
 				5F2D5293196918FD002CECA0 /* RoutesViewModelSpec.swift in Sources */,
 				5FA5106F195C3F5A000100A5 /* RoutesProviderSpec.swift in Sources */,
+				5FC9ACA11974C84900E59BB8 /* ColorUtilitySpec.swift in Sources */,
 				5FA8DBA7195D8C5B0080EEAE /* BrowseRoutesViewControllerModelSpec.swift in Sources */,
 				5F1F42B0196E069F00ED4C2B /* StopsViewModelSpec.swift in Sources */,
 			);
