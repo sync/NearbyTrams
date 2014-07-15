@@ -21,10 +21,8 @@ class RouteViewModelSpec: QuickSpec {
                 }
                 
                 it ("should remember it") {
-                    // FIXME: hack for test to compile
-                    let modelColors: NSArray = [viewModel.color]
-                    let colors: NSArray = [color!]
-                    expect(modelColors).to.equal(colors)
+                    let colorsAreEqual = CGColorEqualToColor(color, viewModel.color)
+                    expect(colorsAreEqual).to.beTrue()
                 }
             }
         }
