@@ -102,7 +102,7 @@ class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
         if identifiersToAdd.allObjects
         {
             var addedObjects: Stop[] = []
-            for identifier : AnyObject in identifiersToRemove.allObjects
+            for identifier : AnyObject in identifiersToAdd.allObjects
             {
                 let stop = stopsByIdentifier[identifier as String]
                 if stop
@@ -153,7 +153,7 @@ class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
             let stopsViewModel = array.filter {
                 stop -> Bool in
                 
-                return stop.uniqueIdentifier && stop.stopNo && stop.destination && stop.routeNo && stop.stopName && stop.route
+                return stop.isValidForViewModel
                 }.map {
                     stop -> StopViewModel in
                     
@@ -161,12 +161,15 @@ class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
                     
                     let identifier = stop.uniqueIdentifier!
                     let route = stop.route!
-                    let viewModel = StopViewModel(identifier: identifier, routeNo: Int(stop.routeNo!), destination: stop.destination!, isUpDestination: route.isUpDestination, stopNo: Int(stop.stopNo!), stopName: stop.stopName!)
+                    let viewModel = StopViewModel(identifier: identifier, routeNo: Int(stop.route!.routeNo!), destination: stop.route!.destination!, isUpDestination: route.isUpDestination, stopNo: Int(stop.stopNo!), stopName: stop.stopName!)
                     self.stopsStorage[identifier] = viewModel
                     return viewModel
             }
             
-            didAddStops(stopsViewModel)
+            if !stopsViewModel.isEmpty
+            {
+                 didAddStops(stopsViewModel)
+            }
         }
     }
     
@@ -175,11 +178,26 @@ class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
         if !array.isEmpty
         {
             var updatedStops: StopViewModel[] = []
+            var deletedStops: Stop[] = []
             for stop in array {
-                if let existingStopModel = existingModelForStop(stop )
+                if let existingStopModel = existingModelForStop(stop)
                 {
-                    updatedStops.append(existingStopModel)
+                    if stop.isValidForViewModel
+                    {
+                        let route = stop.route!
+                        existingStopModel.updateWithRouteNo(Int(stop.route!.routeNo!), destination: stop.route!.destination!, isUpDestination: route.isUpDestination, stopNo: Int(stop.stopNo!), stopName: stop.stopName!)
+                        updatedStops.append(existingStopModel)
+                    }
+                    else
+                    {
+                        deletedStops.append(stop)
+                    }
                 }
+            }
+            
+            if !deletedStops.isEmpty
+            {
+                removeStopsForObjects(deletedStops)
             }
             
             if !updatedStops.isEmpty
@@ -195,7 +213,7 @@ class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
         {
             var removedStops: StopViewModel[] = []
             for stop in array {
-                if let existingStopModel = existingModelForStop(stop )
+                if let existingStopModel = existingModelForStop(stop)
                 {
                     removedStops.append(existingStopModel)
                     stopsStorage.removeValueForKey(existingStopModel.identifier)
@@ -268,5 +286,12 @@ class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
         {
             removeStopsForObjects(removedObjecst)
         }
+    }
+}
+
+extension Stop
+    {
+    var isValidForViewModel: Bool {
+    return (self.uniqueIdentifier && self.route?.routeNo && self.route?.destination && self.routeNo && self.stopName && self.route)
     }
 }

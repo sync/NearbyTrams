@@ -28,11 +28,11 @@ class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
     }
     
     var routes: RouteViewModel[] {
-        return Array(routesStorage.values)
+    return Array(routesStorage.values)
     }
     
     var routesCount: Int {
-        return routes.count
+    return routes.count
     }
     
     func startUpdatingRoutesWithFetchRequest(fetchRequest: NSFetchRequest)
@@ -102,7 +102,7 @@ class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
         if identifiersToAdd.allObjects
         {
             var addedObjects: Route[] = []
-            for identifier : AnyObject in identifiersToRemove.allObjects
+            for identifier : AnyObject in identifiersToAdd.allObjects
             {
                 let route = routesByIdentifier[identifier as String]
                 if route
@@ -153,7 +153,7 @@ class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
             let routesViewModel = array.filter {
                 route -> Bool in
                 
-                return route.uniqueIdentifier && route.routeNo &&  route.destination
+                return route.isValidForViewModel
                 }.map {
                     route -> RouteViewModel in
                     
@@ -165,7 +165,10 @@ class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
                     return viewModel
             }
             
-            didAddRoutes(routesViewModel)
+            if !routesViewModel.isEmpty
+            {
+                didAddRoutes(routesViewModel)
+            }
         }
     }
     
@@ -174,11 +177,25 @@ class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
         if !array.isEmpty
         {
             var updatedRoutes: RouteViewModel[] = []
+            var deletedRoutes: Route[] = []
             for route in array {
-                if let existingRouteModel = existingModelForRoute(route )
+                if let existingRouteModel = existingModelForRoute(route)
                 {
-                    updatedRoutes.append(existingRouteModel)
+                    if route.isValidForViewModel
+                    {
+                        existingRouteModel.updateWithRouteNo(Int(route.routeNo!), destination: route.destination!, isUpDestination: route.isUpDestination)
+                        updatedRoutes.append(existingRouteModel)
+                    }
+                    else
+                    {
+                        deletedRoutes.append(route)
+                    }
                 }
+            }
+            
+            if !deletedRoutes.isEmpty
+            {
+                removeRoutesForObjects(deletedRoutes)
             }
             
             if !updatedRoutes.isEmpty
@@ -194,7 +211,7 @@ class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
         {
             var removedRoutes: RouteViewModel[] = []
             for route in array {
-                if let existingRouteModel = existingModelForRoute(route )
+                if let existingRouteModel = existingModelForRoute(route)
                 {
                     removedRoutes.append(existingRouteModel)
                     routesStorage.removeValueForKey(existingRouteModel.identifier)
@@ -267,5 +284,12 @@ class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
         {
             removeRoutesForObjects(removedObjecst)
         }
+    }
+}
+
+extension Route
+    {
+    var isValidForViewModel: Bool {
+    return (self.uniqueIdentifier && self.routeNo && self.destination)
     }
 }

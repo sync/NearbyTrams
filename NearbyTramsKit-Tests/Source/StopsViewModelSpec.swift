@@ -273,32 +273,47 @@ class StopsViewModelSpec: QuickSpec {
             
             context("when updating one stop") {
                 beforeEach {
-                    stop1.destination = "new destination"
+                    stop1.stopName = "new stop name"
                     
                     moc.save(nil)
                 }
                 
                 it("should tell delegate about the updated stop") {
-                    expect(fakeDelegate.updatedStops?[0].identifier).to.equal("2166")
+                    expect(fakeDelegate.updatedStops?[0].stopName).to.equal("new stop name")
                 }
             }
             
             context("when updating multiple stops") {
                 beforeEach {
-                    stop1.destination = "new destination"
-                    stop2.destination = "another new destination"
+                    stop1.stopName = "new stop name"
+                    stop2.stopName = "another new stop name"
                     
                     moc.save(nil)
                 }
                 
                 it("should tell delegate about the two updated stop") {
-                    let identifiers = [fakeDelegate.updatedStops![0].identifier, fakeDelegate.updatedStops![1].identifier]
-                    expect(identifiers).to.contain("2166")
-                    expect(identifiers).to.contain("3126")
+                    let stopNames = [fakeDelegate.updatedStops![0].stopName, fakeDelegate.updatedStops![1].stopName]
+                    expect(stopNames).to.contain("new stop name")
+                    expect(stopNames).to.contain("another new stop name")
+                }
+            }
+            
+            context("when one update to a stop invalidate it's corresponding view model") {
+                beforeEach {
+                    stop1.stopName = nil
+                    
+                    moc.save(nil)
+                }
+                
+                it("should have per routes count one") {
+                    expect(viewModel.stopsCount).to.equal(1)
+                }
+                
+                it("should tell delegate about the removed route") {
+                    expect(fakeDelegate.removedStops?[0].identifier).to.equal("2166")
                 }
             }
         }
-        
         
         describe("stopUpdatingStops") {
             beforeEach {

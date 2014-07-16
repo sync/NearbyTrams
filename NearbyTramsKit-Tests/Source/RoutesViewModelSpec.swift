@@ -222,7 +222,7 @@ class RoutesViewModelSpec: QuickSpec {
                 }
                 
                 it("should tell delegate about the updated route") {
-                     expect(fakeDelegate.updatedRoutes?[0].identifier).to.equal("123-true")
+                     expect(fakeDelegate.updatedRoutes?[0].destination).to.equal("new destination")
                 }
             }
             
@@ -235,9 +235,25 @@ class RoutesViewModelSpec: QuickSpec {
                 }
                 
                 it("should tell delegate about the two updated route") {
-                    let identifiers = [fakeDelegate.updatedRoutes![0].identifier, fakeDelegate.updatedRoutes![1].identifier]
-                    expect(identifiers).to.contain("123-true")
-                    expect(identifiers).to.contain("456-false")
+                    let destinations = [fakeDelegate.updatedRoutes![0].destination, fakeDelegate.updatedRoutes![1].destination]
+                    expect(destinations).to.contain("new destination")
+                    expect(destinations).to.contain("another new destination")
+                }
+            }
+            
+            context("when one update to a route invalidate it's corresponding view model") {
+                beforeEach {
+                    route1.destination = nil
+                    
+                    moc.save(nil)
+                }
+                
+                it("should have per routes count one") {
+                    expect(viewModel.routesCount).to.equal(1)
+                }
+                
+                it("should tell delegate about the removed route") {
+                    expect(fakeDelegate.removedRoutes?[0].identifier).to.equal("123-true")
                 }
             }
         }
