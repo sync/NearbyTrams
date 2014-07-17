@@ -36,52 +36,33 @@ class StopsProviderSpec: QuickSpec {
             var completionStops: NSManagedObjectID[]!
             var completionError: NSError!
             
-            context("when some stops are avaible") {
+            context("when some stops are available") {
                 beforeEach {
                     var json1: Dictionary<String, AnyObject> = [ : ]
-                    json1["CityDirection"] = "a city direction"
                     json1["Description"] = "a description"
-                    json1["Destination"] = "a destination"
-                    json1["FlagStopNo"] = "Stop 965a"
-                    json1["RouteNo"] = 5
-                    json1["StopID"] = "567aab"
-                    json1["StopName"] = "Burke Rd / Canterbury Rd"
-                    json1["StopNo"] = 14
-                    json1["Suburb"] = "Canterbury"
-                    json1["DistanceToLocation"] = 14.00
                     json1["Latitude"] = -36.45
                     json1["Longitude"] = 145.68
+                    json1["Name"] = "Burke Rd / Canterbury Rd"
+                    json1["StopNo"] = 14
+                    json1["SuburbName"] = "Canterbury"
                     
                     var json2: Dictionary<String, AnyObject> = [ : ]
-                    json2["CityDirection"] = "a camberwell direction"
                     json2["Description"] = "another description"
-                    json2["Destination"] = "another destination"
-                    json2["FlagStopNo"] = "Stop 145a"
-                    json2["RouteNo"] = NSNull()
-                    json2["StopID"] = "547bab"
-                    json2["StopName"] = "John Rd / Canterbury Rd"
-                    json2["StopNo"] = 17
-                    json2["Suburb"] = "Camberwell"
-                    json2["DistanceToLocation"] = 11.00
                     json2["Latitude"] = -46.45
                     json2["Longitude"] = 135.68
+                    json2["Name"] = "John Rd / Canterbury Rd"
+                    json2["StopNo"] = 17
+                    json2["SuburbName"] = "Camberwell"
                     
                     let responseGetStopBody = ["ResponseObject": [json1, json2]]
                     let responseGetStop = MockWebServiceResponse(body: responseGetStopBody, header: ["Content-Type": "application/json; charset=utf-8"], urlComponentToMatch:"GetListOfStopsByRouteNoAndDirection")
                     
                     json1 = [ : ]
                     json1["CityDirection"] = "from city"
-                    json1["Description"] = NSNull()
-                    json1["Destination"] = NSNull()
-                    json1["FlagStopNo"] = "66"
-                    json1["RouteNo"] = 0
-                    json1["StopID"] =  NSNull()
-                    json1["StopName"] = "Rathmines Rd / Canterbury Rd"
-                    json1["StopNo"] = 0
-                    json1["Suburb"] = "Canterbury"
-                    json1["DistanceToLocation"] = 0
                     json1["Latitude"] = 0
                     json1["Longitude"] = 0
+                    json1["StopName"] = "Rathmines Rd / Canterbury Rd"
+                    json1["Zones"] = "1"
                     
                     let responseGetStopInfoBody = ["ResponseObject": json1]
                     let responseGetStopInfo = MockWebServiceResponse(body: responseGetStopInfoBody, header: ["Content-Type": "application/json; charset=utf-8"], urlComponentToMatch:"GetStopInformation")
@@ -172,19 +153,20 @@ class StopsProviderSpec: QuickSpec {
             
             context("when some stops are available") {
                 beforeEach {
+                    /*
+                    CityDirection: "from City",
+                    latitude: -37.8215147250498,
+                    Longitude: 145.058459701017,
+                    StopName: "Rathmines Rd & Burke Rd",
+                    Zones: "1"
+                    */
+                    
                     var json1: Dictionary<String, AnyObject> = [ : ]
                     json1["CityDirection"] = "from city"
-                    json1["Description"] = NSNull()
-                    json1["Destination"] = NSNull()
-                    json1["FlagStopNo"] = "66"
-                    json1["RouteNo"] = 0
-                    json1["StopID"] =  NSNull()
-                    json1["StopName"] = "Rathmines Rd / Canterbury Rd"
-                    json1["StopNo"] = 0
-                    json1["Suburb"] = "Canterbury"
-                    json1["DistanceToLocation"] = 0
                     json1["Latitude"] = 0
                     json1["Longitude"] = 0
+                    json1["StopName"] = "Rathmines Rd / Canterbury Rd"
+                    json1["Zones"] = "1"                    
                     
                     let body = ["ResponseObject": json1]
                     let response = MockWebServiceResponse(body: body, header: ["Content-Type": "application/json; charset=utf-8"])

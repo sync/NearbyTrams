@@ -17,7 +17,7 @@ class StopViewModelSpec: QuickSpec {
                 
                 beforeEach {
                     stopName = "a stop name"
-                    viewModel = StopViewModel(identifier: "an identifier", routeNo: 76, name: "a name",  isUpStop: true, stopNo: 45, stopName: stopName, schedules: nil)
+                    viewModel = StopViewModel(identifier: "an identifier", routeNo: 76, routeName: "a name",  isUpStop: true, stopNo: 45, stopName: stopName, schedules: nil)
                 }
                 
                 it ("should remember it") {

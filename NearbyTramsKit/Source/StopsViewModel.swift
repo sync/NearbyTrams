@@ -161,7 +161,7 @@ class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
                     
                     let identifier = stop.uniqueIdentifier!
                     let route = stop.route!
-                    let viewModel = StopViewModel(identifier: identifier, routeNo: Int(stop.route!.routeNo!), name: stop.route!.name!, isUpStop: route.isUpStop, stopNo: Int(stop.stopNo!), stopName: stop.stopName!, schedules: stop.nextScheduledArrivalDates)
+                    let viewModel = StopViewModel(identifier: identifier, routeNo: Int(stop.route!.routeNo!), routeName: stop.route!.name!, isUpStop: route.isUpStop, stopNo: Int(stop.stopNo!), stopName: stop.name!, schedules: stop.nextScheduledArrivalDates)
                     self.stopsStorage[identifier] = viewModel
                     return viewModel
             }
@@ -185,7 +185,7 @@ class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
                     if stop.isValidForViewModel
                     {
                         let route = stop.route!
-                        existingStopModel.updateWithRouteNo(Int(stop.route!.routeNo!), name: stop.route!.name!, isUpStop: route.isUpStop, stopNo: Int(stop.stopNo!), stopName: stop.stopName!, schedules: stop.nextScheduledArrivalDates)
+                        existingStopModel.updateWithRouteNo(Int(stop.route!.routeNo!), routeName: stop.route!.name!, isUpStop: route.isUpStop, stopNo: Int(stop.stopNo!), stopName: stop.name!, schedules: stop.nextScheduledArrivalDates)
                         updatedStops.append(existingStopModel)
                     }
                     else
@@ -292,6 +292,6 @@ class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
 extension Stop
     {
     var isValidForViewModel: Bool {
-    return (self.uniqueIdentifier && self.route?.routeNo && self.route?.name && self.routeNo && self.stopName && self.route)
+    return (self.uniqueIdentifier && self.route?.routeNo && self.route?.name &&  self.route?.routeNo && self.name && self.route)
     }
 }

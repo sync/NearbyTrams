@@ -28,24 +28,20 @@
     </entity>
     <entity name="Stop" representedClassName="NearbyTramsStorageKit.Stop" syncable="YES">
         <attribute name="cityDirection" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="destination" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="distanceToLocation" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="flagStopNo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="routeNo" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="stopDescription" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="stopID" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="stopName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="stopNo" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="suburb" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uniqueIdentifier" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="zones" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="route" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Route" inverseName="stops" inverseEntity="Route" syncable="YES"/>
         <relationship name="schedules" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Schedule" inverseName="stop" inverseEntity="Schedule" syncable="YES"/>
     </entity>
     <elements>
         <element name="Route" positionX="-63" positionY="72" width="128" height="120"/>
         <element name="Schedule" positionX="-63" positionY="72" width="128" height="300"/>
-        <element name="Stop" positionX="-63" positionY="-18" width="128" height="270"/>
+        <element name="Stop" positionX="-63" positionY="-18" width="128" height="208"/>
     </elements>
 </model>

@@ -78,9 +78,7 @@ class StopsViewModelSpec: QuickSpec {
                     let stop: Stop = Stop.insertInManagedObjectContext(moc)
                     stop.uniqueIdentifier = "2166"
                     stop.stopNo = 2166
-                    stop.destination = "a name"
-                    stop.routeNo = 123
-                    stop.stopName = "a stop name"
+                    stop.name = "a stop name"
                     stop.route = route
                     
                     moc.save(nil)
@@ -124,9 +122,7 @@ class StopsViewModelSpec: QuickSpec {
                     let stop1 = Stop.insertInManagedObjectContext(moc) as Stop
                     stop1.uniqueIdentifier = "2166"
                     stop1.stopNo = 2166
-                    stop1.destination = "a destination"
-                    stop1.routeNo = 123
-                    stop1.stopName = "a stop name"
+                    stop1.name = "a stop name"
                     stop1.route = route1
                     
                     let route2: Route = Route.insertInManagedObjectContext(moc) as Route
@@ -137,9 +133,7 @@ class StopsViewModelSpec: QuickSpec {
                     let stop2 = Stop.insertInManagedObjectContext(moc) as Stop
                     stop2.uniqueIdentifier = "3126"
                     stop2.stopNo = 2166
-                    stop2.destination = "another destination"
-                    stop2.routeNo = 123
-                    stop2.stopName = "another stop name"
+                    stop2.name = "another stop name"
                     stop2.route = route2
                     
                     moc.save(nil)
@@ -174,9 +168,7 @@ class StopsViewModelSpec: QuickSpec {
                 stop1 = Stop.insertInManagedObjectContext(moc) as Stop
                 stop1.uniqueIdentifier = "2166"
                 stop1.stopNo = 2166
-                stop1.destination = "a destination"
-                stop1.routeNo = 123
-                stop1.stopName = "a stop name"
+                stop1.name = "a stop name"
                 stop1.route = route1
                 
                 let route2: Route = Route.insertInManagedObjectContext(moc) as Route
@@ -187,9 +179,7 @@ class StopsViewModelSpec: QuickSpec {
                 stop2 = Stop.insertInManagedObjectContext(moc) as Stop
                 stop2.uniqueIdentifier = "3126"
                 stop2.stopNo = 2166
-                stop2.destination = "another destination"
-                stop2.routeNo = 123
-                stop2.stopName = "another stop name"
+                stop2.name = "another stop name"
                 stop2.route = route2
                 
                 moc.save(nil)
@@ -250,9 +240,7 @@ class StopsViewModelSpec: QuickSpec {
                 stop1 = Stop.insertInManagedObjectContext(moc) as Stop
                 stop1.uniqueIdentifier = "2166"
                 stop1.stopNo = 2166
-                stop1.destination = "a destination"
-                stop1.routeNo = 123
-                stop1.stopName = "a stop name"
+                stop1.name = "a stop name"
                 stop1.route = route1
                 
                 let route2: Route = Route.insertInManagedObjectContext(moc) as Route
@@ -263,9 +251,7 @@ class StopsViewModelSpec: QuickSpec {
                 stop2 = Stop.insertInManagedObjectContext(moc) as Stop
                 stop2.uniqueIdentifier = "3126"
                 stop2.stopNo = 2166
-                stop2.destination = "another destination"
-                stop2.routeNo = 123
-                stop2.stopName = "another stop name"
+                stop2.name = "another stop name"
                 stop2.route = route2
                 
                 moc.save(nil)
@@ -273,7 +259,7 @@ class StopsViewModelSpec: QuickSpec {
             
             context("when updating one stop") {
                 beforeEach {
-                    stop1.stopName = "new stop name"
+                    stop1.name = "new stop name"
                     
                     moc.save(nil)
                 }
@@ -285,8 +271,8 @@ class StopsViewModelSpec: QuickSpec {
             
             context("when updating multiple stops") {
                 beforeEach {
-                    stop1.stopName = "new stop name"
-                    stop2.stopName = "another new stop name"
+                    stop1.name = "new stop name"
+                    stop2.name = "another new stop name"
                     
                     moc.save(nil)
                 }
@@ -300,7 +286,7 @@ class StopsViewModelSpec: QuickSpec {
             
             context("when one update to a stop invalidate it's corresponding view model") {
                 beforeEach {
-                    stop1.stopName = nil
+                    stop1.name = nil
                     
                     moc.save(nil)
                 }
@@ -342,9 +328,7 @@ class StopsViewModelSpec: QuickSpec {
                     let stop1: Stop = Stop.insertInManagedObjectContext(moc) as Stop
                     stop1.uniqueIdentifier = "2166"
                     stop1.stopNo = 2166
-                    stop1.destination = "a destination"
-                    stop1.routeNo = 123
-                    stop1.stopName = "a stop name"
+                    stop1.name = "a stop name"
                     stop1.route = route1
                     
                     let route2: Route = Route.insertInManagedObjectContext(moc) as Route
@@ -355,9 +339,7 @@ class StopsViewModelSpec: QuickSpec {
                     let stop2: Stop = Stop.insertInManagedObjectContext(moc) as Stop
                     stop2.uniqueIdentifier = "3126"
                     stop2.stopNo = 2166
-                    stop2.destination = "another destination"
-                    stop2.routeNo = 123
-                    stop2.stopName = "another stop name"
+                    stop2.name = "another stop name"
                     stop2.route = route2
                     
                     moc.save(nil)
@@ -374,9 +356,7 @@ class StopsViewModelSpec: QuickSpec {
                     let stop3: Stop = Stop.insertInManagedObjectContext(moc) as Stop
                     stop3.uniqueIdentifier = "4589"
                     stop3.stopNo = 2166
-                    stop3.destination = "ta third destination"
-                    stop3.routeNo = 456
-                    stop3.stopName = "a third stop name"
+                    stop3.name = "a third stop name"
                     stop3.route = route3
                     
                     moc.save(nil)

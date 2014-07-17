@@ -44,61 +44,19 @@ class StopSpec: QuickSpec {
                 context("with valid values") {
                     beforeEach {
                         var json: Dictionary<String, AnyObject> = [
-                            "CityDirection": "a city direction",
                             "Description": "a description",
-                            "Destination": "a destination",
-                            "FlagStopNo": "Stop 965a",
-                            "RouteNo": 5,
-                            "StopID": "567aab",
-                            "StopName": "Burke Rd / Canterbury Rd",
-                            "StopNo": 14,
-                            "Suburb": "Canterbury",
-                            "DistanceToLocation": 14,
                             "Latitude": -36,
                             "Longitude": 145,
+                            "Name": "Burke Rd / Canterbury Rd",
+                            "StopNo": 14,
+                            "SuburbName": "Canterbury"
                         ]
                         
                         stop.configureWithDictionaryFromRest(json)
                     }
                     
-                    it("should have a CityDirection") {
-                        expect(stop.cityDirection).to.equal("a city direction")
-                    }
-                    
                     it("should have a Description") {
                         expect(stop.stopDescription).to.equal("a description")
-                    }
-                    
-                    it("should have a Destination") {
-                        expect(stop.destination).to.equal("a destination")
-                    }
-                    
-                    it("should have a FlagStopNo") {
-                        expect(stop.flagStopNo).to.equal("Stop 965a")
-                    }
-                    
-                    it("should have a RouteNo") {
-                        expect(stop.routeNo).to.equal(5)
-                    }
-                    
-                    it("should have a StopID") {
-                        expect(stop.stopID).to.equal("567aab")
-                    }
-                    
-                    it("should have a StopName") {
-                        expect(stop.stopName).to.equal("Burke Rd / Canterbury Rd")
-                    }
-                    
-                    it("should have a StopNo") {
-                        expect(stop.stopNo).to.equal(14)
-                    }
-                    
-                    it("should have a Suburb") {
-                        expect(stop.suburb).to.equal("Canterbury")
-                    }
-                    
-                    it("should have a DistanceToLocation") {
-                        expect(stop.distanceToLocation).to.equal(14.00)
                     }
                     
                     it("should have a Latitude") {
@@ -108,66 +66,36 @@ class StopSpec: QuickSpec {
                     it("should be a Longitude") {
                         expect(stop.longitude).to.equal(145)
                     }
+                    
+                    it("should have a name") {
+                        expect(stop.name).to.equal("Burke Rd / Canterbury Rd")
+                    }
+                    
+                    it("should have a StopNo") {
+                        expect(stop.stopNo).to.equal(14)
+                    }
+                    
+                    it("should have a Suburb") {
+                        expect(stop.suburb).to.equal("Canterbury")
+                    }
                 }
                 
                 context("with invalid values") {
                     beforeEach {
                         var json: Dictionary<String, AnyObject> = [
-                            "CityDirection": NSNull(),
                             "Description": NSNull(),
-                            "Destination": NSNull(),
-                            "FlagStopNo": NSNull(),
-                            "RouteNo": "5",
-                            "StopID": NSNull(),
-                            "StopName": NSNull(),
-                            "StopNo": "14",
-                            "Suburb": NSNull(),
-                            "DistanceToLocation": NSNull(),
                             "Latitude": NSNull(),
                             "Longitude": 15,
+                            "Name": NSNull(),
+                            "StopNo": "14",
+                            "SuburbName": NSNull(),
                         ]
                         
                         stop.configureWithDictionaryFromRest(json)
                     }
                     
-                    it("should have a CityDirection") {
-                        expect(stop.cityDirection).to.beNil()
-                    }
-                    
                     it("should have a Description") {
                         expect(stop.stopDescription).to.beNil()
-                    }
-                    
-                    it("should have a Destination") {
-                        expect(stop.destination).to.beNil()
-                    }
-                    
-                    it("should have a FlagStopNo") {
-                        expect(stop.flagStopNo).to.beNil()
-                    }
-                    
-                    it("should have a RouteNo") {
-                        expect(stop.routeNo).to.beNil()
-                    }
-                    
-                    it("should have a StopID") {
-                        expect(stop.stopID).to.beNil()
-                    }
-                    
-                    it("should have a StopName") {
-                        expect(stop.stopName).to.beNil()
-                    }
-                    
-                    it("should have a StopNo") {
-                        expect(stop.stopNo).to.beNil()
-                    }
-                    
-                    it("should have a Suburb") {
-                        expect(stop.suburb).to.beNil()
-                    }
-                    
-                    it("should have a DistanceToLocation") {
-                        expect(stop.distanceToLocation).to.beNil()
                     }
                     
                     it("should have a Latitude") {
@@ -176,6 +104,18 @@ class StopSpec: QuickSpec {
                     
                     it("should be a Longitude") {
                         expect(stop.longitude).to.equal(15.00)
+                    }
+                    
+                    it("should have a name") {
+                        expect(stop.name).to.beNil()
+                    }
+                    
+                    it("should have a StopNo") {
+                        expect(stop.stopNo).to.beNil()
+                    }
+                    
+                    it("should have a Suburb") {
+                        expect(stop.suburb).to.beNil()
                     }
                 }
             }
@@ -194,29 +134,22 @@ class StopSpec: QuickSpec {
                             "FlagStopNo": "Stop 965a",
                             "RouteNo": 5,
                             "StopID": "567aab",
-                            "StopName": "Burke Rd / Canterbury Rd",
+                            "Name": "Burke Rd / Canterbury Rd",
                             "StopNo": 14,
-                            "Suburb": "Canterbury",
+                            "SuburbName": "Canterbury",
                             "DistanceToLocation": 14,
                             "Latitude": -36,
-                            "Longitude": 145,
+                            "Longitude": 145
                         ]
                         
                         stop.configureWithDictionaryFromRest(fullJson)
                         
                         var json: Dictionary<String, AnyObject> = [
                             "CityDirection": "from city",
-                            "Description": NSNull(),
-                            "Destination": NSNull(),
-                            "FlagStopNo": "66",
-                            "RouteNo": 0,
-                            "StopID": NSNull(),
-                            "StopName": "Rathmines Rd / Canterbury Rd",
-                            "StopNo": 0,
-                            "Suburb": NSNull(),
-                            "DistanceToLocation": 0,
                             "Latitude": 0,
                             "Longitude": 0,
+                            "StopName": "Burke Rd / Canterbury Rd",
+                            "Zones": "1"
                         ]
                         
                         stop.configureWithPartialDictionaryFromRest(json)
@@ -226,40 +159,12 @@ class StopSpec: QuickSpec {
                         expect(stop.cityDirection).to.equal("from city")
                     }
                     
+                    it("should have a Zones") {
+                        expect(stop.zones).to.equal("1")
+                    }
+                    
                     it("should have a Description") {
                         expect(stop.stopDescription).to.equal("a description")
-                    }
-                    
-                    it("should have a Destination") {
-                        expect(stop.destination).to.equal("a destination")
-                    }
-                    
-                    it("should have a FlagStopNo") {
-                        expect(stop.flagStopNo).to.equal("66")
-                    }
-                    
-                    it("should have a RouteNo") {
-                        expect(stop.routeNo).to.equal(5)
-                    }
-                    
-                    it("should have a StopID") {
-                        expect(stop.stopID).to.equal("567aab")
-                    }
-                    
-                    it("should have a StopName") {
-                        expect(stop.stopName).to.equal("Rathmines Rd / Canterbury Rd")
-                    }
-                    
-                    it("should have a StopNo") {
-                        expect(stop.stopNo).to.equal(14)
-                    }
-                    
-                    it("should have a Suburb") {
-                        expect(stop.suburb).to.equal("Canterbury")
-                    }
-                    
-                    it("should have a DistanceToLocation") {
-                        expect(stop.distanceToLocation).to.equal(14.00)
                     }
                     
                     it("should have a Latitude") {
@@ -268,6 +173,18 @@ class StopSpec: QuickSpec {
                     
                     it("should be a Longitude") {
                         expect(stop.longitude).to.equal(145)
+                    }
+                    
+                    it("should have a name") {
+                        expect(stop.name).to.equal("Burke Rd / Canterbury Rd")
+                    }
+                    
+                    it("should have a StopNo") {
+                        expect(stop.stopNo).to.equal(14)
+                    }
+                    
+                    it("should have a Suburb") {
+                        expect(stop.suburb).to.equal("Canterbury")
                     }
                 }
             }
