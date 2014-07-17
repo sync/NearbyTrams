@@ -48,7 +48,7 @@ class StopsRepositorySpec: QuickSpec {
             let route: Route = Stop.insertInManagedObjectContext(moc)
             route.uniqueIdentifier = "66-true"
             route.routeNo = 66
-            route.isUpDestination = true
+            route.isUpStop = true
             moc.save(nil)
             
             let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()

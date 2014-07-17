@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6172.15" systemVersion="14A283o" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Route" representedClassName="NearbyTramsStorageKit.Route" syncable="YES">
-        <attribute name="alphaNumericRouteNo" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="destination" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="hasLowFloor" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="internalRouteNo" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="isUpDestination" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isUpStop" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="routeNo" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="uniqueIdentifier" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <relationship name="stops" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Stop" inverseName="route" inverseEntity="Stop" syncable="YES"/>
@@ -47,7 +44,7 @@
         <relationship name="schedules" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Schedule" inverseName="stop" inverseEntity="Schedule" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Route" positionX="-63" positionY="72" width="128" height="165"/>
+        <element name="Route" positionX="-63" positionY="72" width="128" height="120"/>
         <element name="Schedule" positionX="-63" positionY="72" width="128" height="300"/>
         <element name="Stop" positionX="-63" positionY="-18" width="128" height="270"/>
     </elements>

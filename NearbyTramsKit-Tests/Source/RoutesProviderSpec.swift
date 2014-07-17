@@ -36,24 +36,18 @@ class RoutesProviderSpec: QuickSpec {
             var completionRoutes: NSManagedObjectID[]!
             var completionError: NSError!
             
-            context("when some routes are avaible") {
+            context("when some routes are available") {
                 beforeEach {
                     let json1: NSDictionary = [
-                        "RouteNo": 5,
-                        "InternalRouteNo": 10,
-                        "AlphaNumericRouteNo": "5a",
-                        "Destination": "Melbourne",
-                        "IsUpDestination": true,
-                        "HasLowFloor": true
+                        "RouteNumber": 5,
+                        "Name": "Melbourne",
+                        "IsUpStop": true
                     ]
                     
                     let json2: NSDictionary = [
-                        "RouteNo": 10,
-                        "InternalRouteNo": 25,
-                        "AlphaNumericRouteNo": "6a",
-                        "Destination": "Pyrmont",
-                        "IsUpDestination": false,
-                        "HasLowFloor": false
+                        "RouteNumber": 10,
+                        "Name": "Pyrmont",
+                        "IsUpStop": false
                     ]
                     
                     let body = ["ResponseObject": [json1, json2]]

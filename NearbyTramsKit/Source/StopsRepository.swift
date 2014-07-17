@@ -45,7 +45,7 @@ class StopsRepository
             if let routeNo = route.routeNo as? Int
             {
                 self.isLoading = true
-                stopsProvider.getStopsWithRouteNo(routeNo, isUpDestination: route.isUpDestination, requestStopInfo: true, managedObjectContext: managedObjectContext) {
+                stopsProvider.getStopsWithRouteNo(routeNo, isUpStop: route.isUpStop, requestStopInfo: true, managedObjectContext: managedObjectContext) {
                     stopObjectIds, error -> Void in
                     
                     if let objectIds = stopObjectIds

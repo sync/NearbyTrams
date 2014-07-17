@@ -73,12 +73,12 @@ class StopsViewModelSpec: QuickSpec {
                     let route: Route = Route.insertInManagedObjectContext(moc)
                     route.routeNo = 123
                     route.uniqueIdentifier = "123-true"
-                    route.destination = "destination"
+                    route.name = "name"
                     
                     let stop: Stop = Stop.insertInManagedObjectContext(moc)
                     stop.uniqueIdentifier = "2166"
                     stop.stopNo = 2166
-                    stop.destination = "a destination"
+                    stop.destination = "a name"
                     stop.routeNo = 123
                     stop.stopName = "a stop name"
                     stop.route = route
@@ -119,7 +119,7 @@ class StopsViewModelSpec: QuickSpec {
                     let route1: Route = Route.insertInManagedObjectContext(moc) as Route
                     route1.routeNo = 123
                     route1.uniqueIdentifier = "123-true"
-                    route1.destination = "a destination"
+                    route1.name = "a name"
                     
                     let stop1 = Stop.insertInManagedObjectContext(moc) as Stop
                     stop1.uniqueIdentifier = "2166"
@@ -132,7 +132,7 @@ class StopsViewModelSpec: QuickSpec {
                     let route2: Route = Route.insertInManagedObjectContext(moc) as Route
                     route2.routeNo = 456
                     route2.uniqueIdentifier = "456-false"
-                    route2.destination = "another destination"
+                    route2.name = "another name"
                     
                     let stop2 = Stop.insertInManagedObjectContext(moc) as Stop
                     stop2.uniqueIdentifier = "3126"
@@ -169,7 +169,7 @@ class StopsViewModelSpec: QuickSpec {
                 let route1: Route = Route.insertInManagedObjectContext(moc) as Route
                 route1.routeNo = 123
                 route1.uniqueIdentifier = "123-true"
-                route1.destination = "a destination"
+                route1.name = "a name"
                 
                 stop1 = Stop.insertInManagedObjectContext(moc) as Stop
                 stop1.uniqueIdentifier = "2166"
@@ -182,7 +182,7 @@ class StopsViewModelSpec: QuickSpec {
                 let route2: Route = Route.insertInManagedObjectContext(moc) as Route
                 route2.routeNo = 456
                 route2.uniqueIdentifier = "456-false"
-                route2.destination = "another destination"
+                route2.name = "another name"
                 
                 stop2 = Stop.insertInManagedObjectContext(moc) as Stop
                 stop2.uniqueIdentifier = "3126"
@@ -245,7 +245,7 @@ class StopsViewModelSpec: QuickSpec {
                 let route1: Route = Route.insertInManagedObjectContext(moc) as Route
                 route1.routeNo = 123
                 route1.uniqueIdentifier = "123-true"
-                route1.destination = "a destination"
+                route1.name = "a name"
                 
                 stop1 = Stop.insertInManagedObjectContext(moc) as Stop
                 stop1.uniqueIdentifier = "2166"
@@ -258,7 +258,7 @@ class StopsViewModelSpec: QuickSpec {
                 let route2: Route = Route.insertInManagedObjectContext(moc) as Route
                 route2.routeNo = 456
                 route2.uniqueIdentifier = "456-false"
-                route2.destination = "another destination"
+                route2.name = "another name"
                 
                 stop2 = Stop.insertInManagedObjectContext(moc) as Stop
                 stop2.uniqueIdentifier = "3126"
@@ -322,7 +322,7 @@ class StopsViewModelSpec: QuickSpec {
                 let route1: Route = Route.insertInManagedObjectContext(moc)
                 route1.routeNo = 123
                 route1.uniqueIdentifier = "123-true"
-                route1.destination = "a destination"
+                route1.name = "a name"
                 moc.save(nil)
             }
             
@@ -337,7 +337,7 @@ class StopsViewModelSpec: QuickSpec {
                     let route1: Route = Route.insertInManagedObjectContext(moc) as Route
                     route1.routeNo = 123
                     route1.uniqueIdentifier = "123-true"
-                    route1.destination = "a destination"
+                    route1.name = "a name"
                     
                     let stop1: Stop = Stop.insertInManagedObjectContext(moc) as Stop
                     stop1.uniqueIdentifier = "2166"
@@ -350,7 +350,7 @@ class StopsViewModelSpec: QuickSpec {
                     let route2: Route = Route.insertInManagedObjectContext(moc) as Route
                     route2.routeNo = 456
                     route2.uniqueIdentifier = "456-false"
-                    route2.destination = "another destination"
+                    route2.name = "another name"
                     
                     let stop2: Stop = Stop.insertInManagedObjectContext(moc) as Stop
                     stop2.uniqueIdentifier = "3126"
@@ -369,7 +369,7 @@ class StopsViewModelSpec: QuickSpec {
                     let route3: Route = Route.insertInManagedObjectContext(moc)
                     route3.routeNo = 789
                     route3.uniqueIdentifier = "789-true"
-                    route3.destination = "a third destination"
+                    route3.name = "a third name"
                     
                     let stop3: Stop = Stop.insertInManagedObjectContext(moc) as Stop
                     stop3.uniqueIdentifier = "4589"

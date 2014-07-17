@@ -160,7 +160,7 @@ class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
                     assert(!self.existingModelForRoute(route), "route should not already exist!")
                     
                     let identifier = route.uniqueIdentifier!
-                    let viewModel = RouteViewModel(identifier: identifier, routeNo: Int(route.routeNo!), destination: route.destination!, isUpDestination: route.isUpDestination)
+                    let viewModel = RouteViewModel(identifier: identifier, routeNo: Int(route.routeNo!), name: route.name!, isUpStop: route.isUpStop)
                     self.routesStorage[identifier] = viewModel
                     return viewModel
             }
@@ -183,7 +183,7 @@ class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
                 {
                     if route.isValidForViewModel
                     {
-                        existingRouteModel.updateWithRouteNo(Int(route.routeNo!), destination: route.destination!, isUpDestination: route.isUpDestination)
+                        existingRouteModel.updateWithRouteNo(Int(route.routeNo!), name: route.name!, isUpStop: route.isUpStop)
                         updatedRoutes.append(existingRouteModel)
                     }
                     else
@@ -290,6 +290,6 @@ class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
 extension Route
     {
     var isValidForViewModel: Bool {
-    return (self.uniqueIdentifier && self.routeNo && self.destination)
+    return (self.uniqueIdentifier && self.routeNo && self.name)
     }
 }

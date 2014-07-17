@@ -73,7 +73,7 @@ class RoutesViewModelSpec: QuickSpec {
                     let route: Route = Route.insertInManagedObjectContext(moc)
                     route.routeNo = 123
                     route.uniqueIdentifier = "123-true"
-                    route.destination = "destination"
+                    route.name = "name"
                     moc.save(nil)
                 }
                 
@@ -110,12 +110,12 @@ class RoutesViewModelSpec: QuickSpec {
                     let route1: Route = Route.insertInManagedObjectContext(moc)
                     route1.routeNo = 123
                     route1.uniqueIdentifier = "123-true"
-                    route1.destination = "a destination"
+                    route1.name = "a name"
                     
                     let route2: Route = Route.insertInManagedObjectContext(moc)
                     route2.routeNo = 456
                     route2.uniqueIdentifier = "456-false"
-                    route2.destination = "another destination"
+                    route2.name = "another name"
                     
                     moc.save(nil)
                 }
@@ -144,12 +144,12 @@ class RoutesViewModelSpec: QuickSpec {
                 route1 = Route.insertInManagedObjectContext(moc) as Route
                 route1.routeNo = 123
                 route1.uniqueIdentifier = "123-true"
-                route1.destination = "a destination"
+                route1.name = "a name"
                 
                 route2 = Route.insertInManagedObjectContext(moc) as Route
                 route2.routeNo = 456
                 route2.uniqueIdentifier = "456-false"
-                route2.destination = "another destination"
+                route2.name = "another name"
                 
                 moc.save(nil)
             }
@@ -204,46 +204,46 @@ class RoutesViewModelSpec: QuickSpec {
                 route1 = Route.insertInManagedObjectContext(moc) as Route
                 route1.routeNo = 123
                 route1.uniqueIdentifier = "123-true"
-                route1.destination = "a destination"
+                route1.name = "a name"
                 
                 route2 = Route.insertInManagedObjectContext(moc) as Route
                 route2.routeNo = 456
                 route2.uniqueIdentifier = "456-false"
-                route2.destination = "another destination"
+                route2.name = "another name"
                 
                 moc.save(nil)
             }
             
             context("when updating one route") {
                 beforeEach {
-                    route1.destination = "new destination"
+                    route1.name = "new name"
                     
                     moc.save(nil)
                 }
                 
                 it("should tell delegate about the updated route") {
-                     expect(fakeDelegate.updatedRoutes?[0].destination).to.equal("new destination")
+                     expect(fakeDelegate.updatedRoutes?[0].name).to.equal("new name")
                 }
             }
             
             context("when updating multiple routes") {
                 beforeEach {
-                    route1.destination = "new destination"
-                    route2.destination = "another new destination"
+                    route1.name = "new name"
+                    route2.name = "another new name"
                     
                     moc.save(nil)
                 }
                 
                 it("should tell delegate about the two updated route") {
-                    let destinations = [fakeDelegate.updatedRoutes![0].destination, fakeDelegate.updatedRoutes![1].destination]
-                    expect(destinations).to.contain("new destination")
-                    expect(destinations).to.contain("another new destination")
+                    let names = [fakeDelegate.updatedRoutes![0].name, fakeDelegate.updatedRoutes![1].name]
+                    expect(names).to.contain("new name")
+                    expect(names).to.contain("another new name")
                 }
             }
             
             context("when one update to a route invalidate it's corresponding view model") {
                 beforeEach {
-                    route1.destination = nil
+                    route1.name = nil
                     
                     moc.save(nil)
                 }
@@ -266,7 +266,7 @@ class RoutesViewModelSpec: QuickSpec {
                 let route1: Route = Route.insertInManagedObjectContext(moc)
                 route1.routeNo = 123
                 route1.uniqueIdentifier = "123-true"
-                route1.destination = "a destination"
+                route1.name = "a name"
                 moc.save(nil)
             }
             
@@ -281,12 +281,12 @@ class RoutesViewModelSpec: QuickSpec {
                     let route1: Route = Route.insertInManagedObjectContext(moc)
                     route1.routeNo = 123
                     route1.uniqueIdentifier = "123-true"
-                    route1.destination = "a destination"
+                    route1.name = "a name"
                     
                     let route2: Route = Route.insertInManagedObjectContext(moc)
                     route2.routeNo = 456
                     route2.uniqueIdentifier = "456-false"
-                    route2.destination = "another destination"
+                    route2.name = "another name"
                     
                     moc.save(nil)
                     
@@ -297,7 +297,7 @@ class RoutesViewModelSpec: QuickSpec {
                     let route3: Route = Route.insertInManagedObjectContext(moc)
                     route3.routeNo = 789
                     route3.uniqueIdentifier = "789-true"
-                    route3.destination = "a third destination"
+                    route3.name = "a third name"
                     
                     moc.save(nil)
                 }

@@ -61,12 +61,12 @@ routesProvider.getAllRoutesWithManagedObjectContext(managedObjectContext) {
                 if let routeNo = route.routeNo
                 {
                     dispatch_group_enter(group)
-                    stopsProvider.getStopsWithRouteNo(routeNo as Int, isUpDestination: route.isUpDestination, requestStopInfo: shouldRequestStopInfo, managedObjectContext: managedObjectContext) {
+                    stopsProvider.getStopsWithRouteNo(routeNo as Int, isUpStop: route.isUpStop, requestStopInfo: shouldRequestStopInfo, managedObjectContext: managedObjectContext) {
                         stopObjectIds, error -> Void in
                         
                         if (stopObjectIds)
                         {
-                            println("found stops:\(stopObjectIds!.count) for route: \(routeNo), up destination: \(route.isUpDestination)")
+                            println("found stops:\(stopObjectIds!.count) for route: \(routeNo), up destination: \(route.isUpStop)")
                             
                             let fetchedStops: (stops: Stop[]?, error:NSError?) = Stop.fetchAllForManagedObjectIds(stopObjectIds!, usingManagedObjectContext: managedObjectContext)
                             if let stops = fetchedStops.stops

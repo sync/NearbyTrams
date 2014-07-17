@@ -8,23 +8,23 @@ class RouteViewModel
 {
     let identifier: String
     var routeNo: Int
-    var destination: String
-    var isUpDestination: Bool
+    var name: String
+    var isUpStop: Bool
     let color: CGColorRef
     
-    init (identifier: String, routeNo: Int, destination: String, isUpDestination: Bool, color: CGColorRef = ColorUtility.generateRandomColor())
+    init (identifier: String, routeNo: Int, name: String, isUpStop: Bool, color: CGColorRef = ColorUtility.generateRandomColor())
     {
         self.identifier = identifier
         self.routeNo = routeNo
-        self.destination = destination
-        self.isUpDestination = isUpDestination
+        self.name = name
+        self.isUpStop = isUpStop
         self.color = color
     }
     
-    func updateWithRouteNo(routeNo: Int, destination: String, isUpDestination: Bool)
+    func updateWithRouteNo(routeNo: Int, name: String, isUpStop: Bool)
     {
         self.routeNo = routeNo
-        self.isUpDestination = isUpDestination
-        self.destination = destination
+        self.isUpStop = isUpStop
+        self.name = name
     }
 }

@@ -17,7 +17,7 @@ class RouteViewModelSpec: QuickSpec {
                 
                 beforeEach {
                     color = CGColorCreateGenericGray(0.5, 1.0)
-                    viewModel = RouteViewModel(identifier: "an identifier", routeNo: 76, destination: "a destination",  isUpDestination: true, color: color)
+                    viewModel = RouteViewModel(identifier: "an identifier", routeNo: 76, name: "a name",  isUpStop: true, color: color)
                 }
                 
                 it ("should remember it") {

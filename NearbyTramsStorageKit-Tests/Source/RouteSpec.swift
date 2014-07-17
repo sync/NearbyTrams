@@ -45,12 +45,9 @@ class RouteSpec: QuickSpec {
                 context("with valid values") {
                     beforeEach {
                         let json: Dictionary<String, AnyObject> = [
-                            "RouteNo": 5,
-                            "InternalRouteNo": 10,
-                            "AlphaNumericRouteNo": "5a",
-                            "Destination": "Melbourne",
-                            "IsUpDestination": true,
-                            "HasLowFloor": true
+                            "RouteNumber": 5,
+                            "Name": "Melbourne",
+                            "IsUpStop": true
                         ]
                         
                         route.configureWithDictionaryFromRest(json)
@@ -60,63 +57,36 @@ class RouteSpec: QuickSpec {
                         expect(route.routeNo).to.equal(5)
                     }
                     
-                    it("should have a InternalRouteNo") {
-                        expect(route.internalRouteNo).to.equal(10)
+                    it("should have a name") {
+                        expect(route.name).to.equal("Melbourne")
                     }
                     
-                    it("should have a AlphaNumericRouteNo") {
-                        expect(route.alphaNumericRouteNo).to.equal("5a")
-                    }
-                    
-                    it("should have a Destination") {
-                        expect(route.destination).to.equal("Melbourne")
-                    }
-                    
-                    it("should be an IsUpDestination route") {
-                        expect(route.isUpDestination).to.beTrue()
-                    }
-                    
-                    it("should be an HasLowFloor route") {
-                        expect(route.hasLowFloor).to.beTrue()
+                    it("should be an up stop route") {
+                        expect(route.isUpStop).to.beTrue()
                     }
                 }
                 
                 context("with invalid values") {
                     beforeEach {
                         let json: Dictionary<String, AnyObject> = [
-                            "RouteNo": "5",
-                            "InternalRouteNo": NSNull(),
-                            "AlphaNumericRouteNo": NSNull(),
-                            "Destination": NSNull(),
-                            "IsUpDestination": "test",
-                            "HasLowFloor": "fake"
+                            "RouteNumber": "5",
+                            "Name": NSNull(),
+                            "IsUpStop": "test"
                         ]
                         
                         route.configureWithDictionaryFromRest(json)
                     }
                     
-                    it("should have a RouteNo") {
+                    it("should not have a routeNo") {
                         expect(route.routeNo).to.beNil()
                     }
                     
-                    it("should have a InternalRouteNo") {
-                        expect(route.internalRouteNo).to.beNil()
+                    it("should not have a name") {
+                        expect(route.name).to.beNil()
                     }
                     
-                    it("should have a AlphaNumericRouteNo") {
-                        expect(route.alphaNumericRouteNo).to.beNil()
-                    }
-                    
-                    it("should have a Destination") {
-                        expect(route.destination).to.beNil()
-                    }
-                    
-                    it("should be an IsUpDestination route") {
-                        expect(route.isUpDestination).to.beFalse()
-                    }
-                    
-                    it("should be an HasLowFloor route") {
-                        expect(route.hasLowFloor).to.beFalse()
+                    it("should not be an up stop route") {
+                        expect(route.isUpStop).to.beFalse()
                     }
                 }
             }
@@ -130,12 +100,9 @@ class RouteSpec: QuickSpec {
                 
                 beforeEach {
                     let json: NSDictionary = [
-                        "RouteNo": 5,
-                        "InternalRouteNo": 10,
-                        "AlphaNumericRouteNo": "5a",
-                        "Destination": "Melbourne",
-                        "IsUpDestination": true,
-                        "HasLowFloor": true
+                        "RouteNumber": 5,
+                        "Name": "Melbourne",
+                        "IsUpStop": true
                     ]
                     
                     result = Route.insertOrUpdateWithDictionaryFromRest(json, inManagedObjectContext: moc) as (route: Route?, error: NSError?)
@@ -167,9 +134,9 @@ class RouteSpec: QuickSpec {
                     expect(storedRoute.routeNo).to.equal(5)
                 }
                 
-                it("should have set it's destination") {
+                it("should have set it's name") {
                     let storedRoute = storedRoutes[0]
-                    expect(storedRoute.destination).to.equal("Melbourne")
+                    expect(storedRoute.name).to.equal("Melbourne")
                 }
             }
             
@@ -182,30 +149,21 @@ class RouteSpec: QuickSpec {
                 
                 beforeEach {
                     let json1: NSDictionary = [
-                        "RouteNo": 5,
-                        "InternalRouteNo": 10,
-                        "AlphaNumericRouteNo": "5a",
-                        "Destination": "Melbourne",
-                        "IsUpDestination": true,
-                        "HasLowFloor": true
+                        "RouteNumber": 5,
+                        "Name": "Melbourne",
+                        "IsUpStop": true
                     ]
                     
                     let json2: NSDictionary = [
-                        "RouteNo": 10,
-                        "InternalRouteNo": 25,
-                        "AlphaNumericRouteNo": "6a",
-                        "Destination": "Pyrmont",
-                        "IsUpDestination": false,
-                        "HasLowFloor": false
+                        "RouteNumber": 10,
+                        "Name": "Pyrmont",
+                        "IsUpStop": false
                     ]
                     
                     let json3: NSDictionary = [
-                        "RouteNo": 10,
-                        "InternalRouteNo": 25,
-                        "AlphaNumericRouteNo": "6a",
-                        "Destination": "Pyrmont",
-                        "IsUpDestination": false,
-                        "HasLowFloor": false
+                        "RouteNumber": 10,
+                        "Name": "Pyrmont",
+                        "IsUpStop": false
                     ]
                     
                     let array: NSDictionary[] = [json1, json2, json3]
@@ -232,8 +190,8 @@ class RouteSpec: QuickSpec {
                     expect(routes[0]?.routeNo).to.equal(5)
                 }
                 
-                it("should have a route destination") {
-                    expect(routes[2]?.destination).to.equal("Pyrmont")
+                it("should have a route name") {
+                    expect(routes[2]?.name).to.equal("Pyrmont")
                 }
                 
                 it("should create and store 2 routes") {
@@ -245,9 +203,9 @@ class RouteSpec: QuickSpec {
                     expect(storedRoute.routeNo).to.equal(5)
                 }
                 
-                it("should have set it's destination") {
+                it("should have set it's name") {
                     let storedRoute = storedRoutes[1]
-                    expect(storedRoute.destination).to.equal("Pyrmont")
+                    expect(storedRoute.name).to.equal("Pyrmont")
                 }
             }
         }
