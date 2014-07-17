@@ -161,14 +161,14 @@ class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
                     
                     let identifier = stop.uniqueIdentifier!
                     let route = stop.route!
-                    let viewModel = StopViewModel(identifier: identifier, routeNo: Int(stop.route!.routeNo!), destination: stop.route!.destination!, isUpDestination: route.isUpDestination, stopNo: Int(stop.stopNo!), stopName: stop.stopName!)
+                    let viewModel = StopViewModel(identifier: identifier, routeNo: Int(stop.route!.routeNo!), destination: stop.route!.destination!, isUpDestination: route.isUpDestination, stopNo: Int(stop.stopNo!), stopName: stop.stopName!, schedules: stop.nextScheduledArrivalDates)
                     self.stopsStorage[identifier] = viewModel
                     return viewModel
             }
             
             if !stopsViewModel.isEmpty
             {
-                 didAddStops(stopsViewModel)
+                didAddStops(stopsViewModel)
             }
         }
     }
@@ -185,7 +185,7 @@ class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
                     if stop.isValidForViewModel
                     {
                         let route = stop.route!
-                        existingStopModel.updateWithRouteNo(Int(stop.route!.routeNo!), destination: stop.route!.destination!, isUpDestination: route.isUpDestination, stopNo: Int(stop.stopNo!), stopName: stop.stopName!)
+                        existingStopModel.updateWithRouteNo(Int(stop.route!.routeNo!), destination: stop.route!.destination!, isUpDestination: route.isUpDestination, stopNo: Int(stop.stopNo!), stopName: stop.stopName!, schedules: stop.nextScheduledArrivalDates)
                         updatedStops.append(existingStopModel)
                     }
                     else

@@ -67,3 +67,25 @@ class Stop: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObject
         stopName = dictionary["StopName"] as? String
     }
 }
+
+extension Stop
+    {
+    var nextScheduledArrivalDates: NSDate[]? {
+    if let identifier = self.uniqueIdentifier
+    {
+        let fetchRequest = NSFetchRequest(entityName: Schedule.entityName)
+        fetchRequest.fetchLimit = 3
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "predictedArrivalDateTime", ascending: true)]
+        fetchRequest.predicate = NSPredicate(format:"stop.uniqueIdentifier == %@ AND predictedArrivalDateTime >= %@", identifier, NSDate())
+        
+        let arrivalDates = self.managedObjectContext.executeFetchRequest(fetchRequest, error: nil).map {
+            schedule -> NSDate in
+            
+            return (schedule as Schedule).predictedArrivalDateTime!
+        }
+        
+        return arrivalDates
+        }
+        return nil
+    }
+}
