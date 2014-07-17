@@ -36,7 +36,7 @@ class SchedulesProviderSpec: QuickSpec {
             var completionSchedules: NSManagedObjectID[]!
             var completionError: NSError!
             
-            context("when some schedules are avaible") {
+            context("when some schedules are available") {
                 beforeEach {
                     let json1: Dictionary<String, AnyObject> = [
                         "AirConditioned": true,
