@@ -6,7 +6,7 @@ import CoreData
 
 class Schedule: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObject
 {
-    @NSManaged var uniqueIdentifier:  NSString?
+    @NSManaged var uniqueIdentifier: NSString?
     @NSManaged var airConditioned: Bool
     @NSManaged var destination: String?
     @NSManaged var displayAC: Bool
