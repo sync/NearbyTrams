@@ -8,12 +8,10 @@ import NearbyTramsKit
 import NearbyTramsStorageKit
 import CoreData
 
-class ViewController: NSViewController, NearbyStopsViewControllerModelDelegate, LFXNetworkContextObserver, LFXLightCollectionObserver, LFXLightObserver
+class ViewController: NSViewController, StopsViewControllerModelDelegate, LFXNetworkContextObserver, LFXLightCollectionObserver, LFXLightObserver
 {
-    let stopsViewModel: StopsViewModel
-    let schedulesRepository: SchedulesRepository
-    let nearbyStopsViewControllerModel: NearbyStopsViewControllerModel
-    
+    let stopsViewControllerModel: StopsViewControllerModel
+
     var schedule: Schedule?
     
     let lifxNetworkContext: LFXNetworkContext
@@ -28,19 +26,14 @@ class ViewController: NSViewController, NearbyStopsViewControllerModelDelegate, 
     init(coder: NSCoder!)
     {
         let stopsViewModel = StopsViewModel(managedObjectContext: managedObjectContext)
-        
         let provider = SchedulesProvider(managedObjectContext: managedObjectContext)
-        let schedulesRepository = SchedulesRepository(stopIdentifier: "2166", schedulesProvider: provider, managedObjectContext: managedObjectContext)
-        self.nearbyStopsViewControllerModel = NearbyStopsViewControllerModel(viewModel: stopsViewModel, repository: schedulesRepository)
+        self.stopsViewControllerModel = StopsViewControllerModel(viewModel: stopsViewModel, provider: provider, managedObjectContext: managedObjectContext)
         self.lifxNetworkContext = LFXClient.sharedClient().localNetworkContext
-        
-        self.stopsViewModel = stopsViewModel
-        self.schedulesRepository = schedulesRepository
         self.lights = []
 
         super.init(coder: coder)
         
-        self.nearbyStopsViewControllerModel.delegate = self
+        self.stopsViewControllerModel.delegate = self
         
         self.lifxNetworkContext.addNetworkContextObserver(self)
         self.lifxNetworkContext.allLightsCollection.addLightCollectionObserver(self)
@@ -107,15 +100,15 @@ class ViewController: NSViewController, NearbyStopsViewControllerModelDelegate, 
         self.title = "LIFX Browser \(status)"
     }
     
-    // NearbyStopsViewControllerModelDelegate
-    func nearbyStopsViewControllerModelDidFinishLoading(nearbyStopsViewControllerModel: NearbyStopsViewControllerModel)
+    // StopsViewControllerModelDelegate
+    func stopsViewControllerModelDidFinishLoading(stopsViewControllerModel: StopsViewControllerModel, stopIdentifier: String)
     {
-        println("updated schedules")
+        println("updated schedules for stop identifier: \(stopIdentifier)")
         
         let fetchRequest = NSFetchRequest(entityName: Schedule.entityName)
         fetchRequest.fetchLimit = 1
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "predictedArrivalDateTime", ascending: true)]
-        fetchRequest.predicate = NSPredicate(format:"stop.uniqueIdentifier == %@", "2166")
+        fetchRequest.predicate = NSPredicate(format:"stop.uniqueIdentifier == %@", stopIdentifier)
         
         let schedules = self.managedObjectContext.executeFetchRequest(fetchRequest, error: nil)
         if !schedules.isEmpty
