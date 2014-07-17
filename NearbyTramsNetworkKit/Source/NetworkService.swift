@@ -7,20 +7,30 @@ import Foundation
 class NetworkService
 {
     let baseURL: NSURL
+    let aid: NSString
+    let token: NSString
     let configuration: NSURLSessionConfiguration
     let session: NSURLSession
     
-    init(baseURL: NSURL = NSURL(string: "http://www.tramtracker.com"), configuration: NSURLSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration())
+    // FIXME: token need to be generated on the fly, per user
+    init(baseURL: NSURL = NSURL(string: "http://ws3.tramtracker.com.au"), aid: NSString = "TTIOSJSON", token: NSString = "b79c738a-281c-4d81-9111-36591a5237bf", configuration: NSURLSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration())
     {
         self.baseURL = baseURL
+        self.aid = aid
+        self.token = token
         self.configuration = configuration
         self.session = NSURLSession(configuration: configuration)
+    }
+    
+    func tokenisedURLWithString(string: String, appendCid: Bool = false) -> NSURL
+    {
+        let tokenisedString = "\(string)?aid=\(self.aid)&tkn=\(self.token)" + (appendCid ? "&cid=2" : "")
+        return NSURL(string: tokenisedString, relativeToURL:self.baseURL)
     }
 
     func getAllRoutesWithCompletionHandler(completionHandler: ((NSDictionary[]?, NSError?) -> Void)?) -> NSURLSessionDataTask
     {
-        // thanks to: http://wongm.com/2014/03/tramtracker-api-dumphone-access/
-        let url = NSURL(string: "Controllers/GetAllRoutes.ashx", relativeToURL:baseURL)
+        let url = tokenisedURLWithString("TramTracker/RestService/GetDestinationsForAllRoutes/")
         
         let task = session.dataTaskWithURL(url, completionHandler:{
             data, response, error -> Void in
@@ -57,8 +67,7 @@ class NetworkService
 
     func getStopsByRouteAndDirectionWithRouteNo(routeNo: Int, isUpDestination: Bool, completionHandler: ((NSDictionary[]?, NSError?) -> Void)?) -> NSURLSessionDataTask
     {
-        // thanks to: http://wongm.com/2014/03/tramtracker-api-dumphone-access/
-        let url = NSURL(string: "/Controllers/GetStopsByRouteAndDirection.ashx?r=\(routeNo)&u=\(isUpDestination)", relativeToURL: baseURL)
+        let url = tokenisedURLWithString("TramTracker/RestService/GetListOfStopsByRouteNoAndDirection/\(routeNo)/\(isUpDestination)/")
         
         let task = session.dataTaskWithURL(url, completionHandler:{
             data, response, error -> Void in
@@ -92,11 +101,10 @@ class NetworkService
         
         return task
     }
-    
+
     func getStopInformationWithStopNo(stopNo: Int, completionHandler: ((NSDictionary?, NSError?) -> Void)?) -> NSURLSessionDataTask
     {
-        // thanks to: http://wongm.com/2014/03/tramtracker-api-dumphone-access/
-        let url = NSURL(string: "/Controllers/GetStopInformation.ashx?s=\(stopNo)", relativeToURL: baseURL)
+        let url = tokenisedURLWithString("TramTracker/RestService/GetStopInformation/\(stopNo)/")
         
         let task = session.dataTaskWithURL(url, completionHandler:{
             data, response, error -> Void in
@@ -131,11 +139,9 @@ class NetworkService
         return task
     }
     
-    func getNextPredictionsWithStopNo(stopNo: Int, routeNo: Int = 0, timestamp: NSDate, completionHandler: ((NSDictionary[]?, NSError?) -> Void)?) -> NSURLSessionDataTask
+    func getNextPredictionsWithStopNo(stopNo: Int, routeNo: Int = 0, completionHandler: ((NSDictionary[]?, NSError?) -> Void)?) -> NSURLSessionDataTask
     {
-        // thanks to: http://wongm.com/2014/03/tramtracker-api-dumphone-access/
-        // not sure about ts format yet, unix time ??
-        let url = NSURL(string: "/Controllers/GetNextPredictionsForStop.ashx?stopNo=\(stopNo)&routeNo=\(routeNo)&isLowFloor=false&ts=\(Int(timestamp.timeIntervalSince1970 * 1000))", relativeToURL: baseURL)
+        let url = tokenisedURLWithString("TramTracker/RestService/GetNextPredictedRoutesCollection/\(stopNo)/\(routeNo)/false/", appendCid: true)
         
         let task = session.dataTaskWithURL(url, completionHandler:{
             data, response, error -> Void in

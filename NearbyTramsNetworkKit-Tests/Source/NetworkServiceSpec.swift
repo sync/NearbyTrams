@@ -294,35 +294,25 @@ class NetworkServiceSpec: QuickSpec {
             }
             
             it("should return a session data task") {
-                let task = service.getNextPredictionsWithStopNo(123, timestamp: NSDate(), completionHandler: nil)
+                let task = service.getNextPredictionsWithStopNo(123, completionHandler: nil)
                 
                 expect(task).notTo.beNil()
             }
             
             it("should have added to the query url the stop no and a zero route no") {
                 //originalRequest
-                let task = service.getNextPredictionsWithStopNo(123, timestamp: NSDate(), completionHandler: nil)
+                let task = service.getNextPredictionsWithStopNo(123, completionHandler: nil)
                 
-                expect(task.originalRequest.URL.absoluteString).to.contain("stopNo=123")
-                expect(task.originalRequest.URL.absoluteString).to.contain("routeNo=0")
+                expect(task.originalRequest.URL.absoluteString).to.contain("/123/")
+                expect(task.originalRequest.URL.absoluteString).to.contain("/0/")
             }
             
             it("should have added to the query url the stop no and the route no") {
                 //originalRequest
-                let task = service.getNextPredictionsWithStopNo(456, routeNo: 16, timestamp: NSDate(), completionHandler: nil)
+                let task = service.getNextPredictionsWithStopNo(456, routeNo: 16, completionHandler: nil)
                 
-                expect(task.originalRequest.URL.absoluteString).to.contain("stopNo=456")
-                expect(task.originalRequest.URL.absoluteString).to.contain("routeNo=16")
-            }
-            
-            it("should have added to the query url the timestamp") {
-                let date = NSDate()
-                
-                //originalRequest
-                let task = service.getNextPredictionsWithStopNo(123, timestamp: date, completionHandler: nil)
-                
-                let timestamp = Int(date.timeIntervalSince1970 * 1000)
-                expect(task.originalRequest.URL.absoluteString).to.contain(String(timestamp))
+                expect(task.originalRequest.URL.absoluteString).to.contain("/456/")
+                expect(task.originalRequest.URL.absoluteString).to.contain("/16/")
             }
             
             context("when an error occur") {
@@ -344,7 +334,7 @@ class NetworkServiceSpec: QuickSpec {
                     var array: NSDictionary[]!
                     var completionError: NSError!
                     
-                    let stopInfoTask = service.getNextPredictionsWithStopNo(123, timestamp: NSDate(), {
+                    let stopInfoTask = service.getNextPredictionsWithStopNo(123, completionHandler: {
                         predictions, error -> Void in
                         
                         array = predictions
@@ -375,7 +365,7 @@ class NetworkServiceSpec: QuickSpec {
                     var array: NSDictionary[]!
                     var completionError: NSError!
                     
-                    let task = service.getNextPredictionsWithStopNo(123, timestamp: NSDate(), {
+                    let task = service.getNextPredictionsWithStopNo(123, completionHandler: {
                         predictions, error -> Void in
                         
                         array = predictions
