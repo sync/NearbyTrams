@@ -6,7 +6,7 @@ import CoreData
 
 class Stop: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObject
 {
-    @NSManaged var uniqueIdentifier:  NSString?
+    @NSManaged var uniqueIdentifier: NSString?
     
     @NSManaged var stopDescription: String?
     @NSManaged var latitude: NSNumber? // Why when Double it crashes

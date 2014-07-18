@@ -71,7 +71,7 @@ class RoutesViewModelSpec: QuickSpec {
             context("when adding one route") {
                 beforeEach {
                     let route: Route = Route.insertInManagedObjectContext(moc)
-                    route.routeNo = 123
+                    route.routeNo = "123"
                     route.uniqueIdentifier = "123-true"
                     route.name = "name"
                     moc.save(nil)
@@ -108,12 +108,12 @@ class RoutesViewModelSpec: QuickSpec {
             context("when adding multiple routes") {
                 beforeEach {
                     let route1: Route = Route.insertInManagedObjectContext(moc)
-                    route1.routeNo = 123
+                    route1.routeNo = "123"
                     route1.uniqueIdentifier = "123-true"
                     route1.name = "a name"
                     
                     let route2: Route = Route.insertInManagedObjectContext(moc)
-                    route2.routeNo = 456
+                    route2.routeNo = "456"
                     route2.uniqueIdentifier = "456-false"
                     route2.name = "another name"
                     
@@ -142,12 +142,12 @@ class RoutesViewModelSpec: QuickSpec {
             
             beforeEach {
                 route1 = Route.insertInManagedObjectContext(moc) as Route
-                route1.routeNo = 123
+                route1.routeNo = "123"
                 route1.uniqueIdentifier = "123-true"
                 route1.name = "a name"
                 
                 route2 = Route.insertInManagedObjectContext(moc) as Route
-                route2.routeNo = 456
+                route2.routeNo = "456"
                 route2.uniqueIdentifier = "456-false"
                 route2.name = "another name"
                 
@@ -202,12 +202,12 @@ class RoutesViewModelSpec: QuickSpec {
             
             beforeEach {
                 route1 = Route.insertInManagedObjectContext(moc) as Route
-                route1.routeNo = 123
+                route1.routeNo = "123"
                 route1.uniqueIdentifier = "123-true"
                 route1.name = "a name"
                 
                 route2 = Route.insertInManagedObjectContext(moc) as Route
-                route2.routeNo = 456
+                route2.routeNo = "456"
                 route2.uniqueIdentifier = "456-false"
                 route2.name = "another name"
                 
@@ -264,7 +264,7 @@ class RoutesViewModelSpec: QuickSpec {
                 viewModel.stopUpdatingRoutes()
                 
                 let route1: Route = Route.insertInManagedObjectContext(moc)
-                route1.routeNo = 123
+                route1.routeNo = "123"
                 route1.uniqueIdentifier = "123-true"
                 route1.name = "a name"
                 moc.save(nil)
@@ -279,12 +279,12 @@ class RoutesViewModelSpec: QuickSpec {
             context("when adding one route") {
                 beforeEach {
                     let route1: Route = Route.insertInManagedObjectContext(moc)
-                    route1.routeNo = 123
+                    route1.routeNo = "123"
                     route1.uniqueIdentifier = "123-true"
                     route1.name = "a name"
                     
                     let route2: Route = Route.insertInManagedObjectContext(moc)
-                    route2.routeNo = 456
+                    route2.routeNo = "456"
                     route2.uniqueIdentifier = "456-false"
                     route2.name = "another name"
                     
@@ -295,7 +295,7 @@ class RoutesViewModelSpec: QuickSpec {
                     viewModel.startUpdatingRoutesWithFetchRequest(fetchRequest)
                     
                     let route3: Route = Route.insertInManagedObjectContext(moc)
-                    route3.routeNo = 789
+                    route3.routeNo = "789"
                     route3.uniqueIdentifier = "789-true"
                     route3.name = "a third name"
                     

@@ -85,7 +85,7 @@ class SchedulesProviderSpec: QuickSpec {
                 
                 context("with a routeNo") {
                     it("should complete on the main thread with schedules and no error") {
-                        provider.getNextPredictionsWithStopNo(56, routeNo: 1, managedObjectContext: moc, {
+                        provider.getNextPredictionsWithStopNo(56, routeNo: "1", managedObjectContext: moc, {
                             schedules, error -> Void in
                             
                             completionSchedules = schedules

@@ -7,12 +7,12 @@ import Foundation
 class RouteViewModel
 {
     let identifier: String
-    var routeNo: Int
+    var routeNo: String
     var name: String
     var isUpStop: Bool
     let color: CGColorRef
     
-    init (identifier: String, routeNo: Int, name: String, isUpStop: Bool, color: CGColorRef = ColorUtility.generateRandomColor())
+    init (identifier: String, routeNo: String, name: String, isUpStop: Bool, color: CGColorRef = ColorUtility.generateRandomColor())
     {
         self.identifier = identifier
         self.routeNo = routeNo
@@ -21,7 +21,7 @@ class RouteViewModel
         self.color = color
     }
     
-    func updateWithRouteNo(routeNo: Int, name: String, isUpStop: Bool)
+    func updateWithRouteNo(routeNo: String, name: String, isUpStop: Bool)
     {
         self.routeNo = routeNo
         self.isUpStop = isUpStop

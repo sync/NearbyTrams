@@ -47,7 +47,7 @@ class SchedulesRepository
                 if let stopNo = stop.stopNo as? Int
                 {
                     self.isLoading = true
-                    schedulesProvider.getNextPredictionsWithStopNo(stopNo, routeNo: routeNo as Int, managedObjectContext: managedObjectContext) {
+                    schedulesProvider.getNextPredictionsWithStopNo(stopNo, routeNo: routeNo, managedObjectContext: managedObjectContext) {
                         scheduleObjectIds, error -> Void in
                         
                         if let objectIds = scheduleObjectIds

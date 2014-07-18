@@ -88,7 +88,7 @@ class NetworkServiceSpec: QuickSpec {
                 
                 beforeEach {
                     responseObject = [["test": "blah"], ["test": "blah"]]
-                    let response = MockWebServiceResponse(body: ["ResponseObject": responseObject], header: ["Content-Type": "application/json; charset=utf-8"])
+                    let response = MockWebServiceResponse(body: ["responseObject": responseObject], header: ["Content-Type": "application/json; charset=utf-8"])
                     MockWebServiceURLProtocol.cannedResponse(response)
                 }
                 
@@ -173,7 +173,7 @@ class NetworkServiceSpec: QuickSpec {
                 
                 beforeEach {
                     responseObject = [["test": "blah"], ["test": "blah"]]
-                    let response = MockWebServiceResponse(body: ["ResponseObject": responseObject], header: ["Content-Type": "application/json; charset=utf-8"])
+                    let response = MockWebServiceResponse(body: ["responseObject": responseObject], header: ["Content-Type": "application/json; charset=utf-8"])
                     MockWebServiceURLProtocol.cannedResponse(response)
                 }
                 
@@ -258,7 +258,7 @@ class NetworkServiceSpec: QuickSpec {
                 
                 beforeEach {
                     responseObject = ["test": "blah"]
-                    let response = MockWebServiceResponse(body: ["ResponseObject": responseObject], header: ["Content-Type": "application/json; charset=utf-8"])
+                    let response = MockWebServiceResponse(body: ["responseObject": responseObject], header: ["Content-Type": "application/json; charset=utf-8"])
                     MockWebServiceURLProtocol.cannedResponse(response)
                 }
                 
@@ -309,7 +309,7 @@ class NetworkServiceSpec: QuickSpec {
             
             it("should have added to the query url the stop no and the route no") {
                 //originalRequest
-                let task = service.getNextPredictionsWithStopNo(456, routeNo: 16, completionHandler: nil)
+                let task = service.getNextPredictionsWithStopNo(456, routeNo: "16", completionHandler: nil)
                 
                 expect(task.originalRequest.URL.absoluteString).to.contain("/456/")
                 expect(task.originalRequest.URL.absoluteString).to.contain("/16/")

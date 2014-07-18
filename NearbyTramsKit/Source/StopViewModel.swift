@@ -7,14 +7,14 @@ import Foundation
 class StopViewModel
 {
     let identifier: String
-    var routeNo: Int
+    var routeNo: String
     var routeName: String
     var isUpStop: Bool
     var stopNo: Int
     var stopName: String
     var schedules: NSDate[]?
     
-    init (identifier: String, routeNo: Int, routeName: String, isUpStop: Bool, stopNo: Int, stopName: String, schedules: NSDate[]?)
+    init (identifier: String, routeNo: String, routeName: String, isUpStop: Bool, stopNo: Int, stopName: String, schedules: NSDate[]?)
     {
         self.identifier = identifier
         self.routeNo = routeNo
@@ -25,7 +25,7 @@ class StopViewModel
         self.schedules = schedules
     }
     
-    func updateWithRouteNo(routeNo: Int, routeName: String, isUpStop: Bool, stopNo: Int, stopName: String, schedules: NSDate[]?)
+    func updateWithRouteNo(routeNo: String, routeName: String, isUpStop: Bool, stopNo: Int, stopName: String, schedules: NSDate[]?)
     {
         self.routeNo = routeNo
         self.routeName = routeName

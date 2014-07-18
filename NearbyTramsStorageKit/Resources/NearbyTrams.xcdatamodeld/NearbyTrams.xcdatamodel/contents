@@ -3,7 +3,7 @@
     <entity name="Route" representedClassName="NearbyTramsStorageKit.Route" syncable="YES">
         <attribute name="isUpStop" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="routeNo" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="routeNo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uniqueIdentifier" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <relationship name="stops" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Stop" inverseName="route" inverseEntity="Stop" syncable="YES"/>
     </entity>

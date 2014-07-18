@@ -42,7 +42,7 @@ class StopsRepository
     {
         if let route = fetchRoute()
         {
-            if let routeNo = route.routeNo as? Int
+            if let routeNo = route.routeNo
             {
                 self.isLoading = true
                 stopsProvider.getStopsWithRouteNo(routeNo, isUpStop: route.isUpStop, requestStopInfo: true, managedObjectContext: managedObjectContext) {

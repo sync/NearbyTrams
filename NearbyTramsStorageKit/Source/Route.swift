@@ -6,8 +6,8 @@ import CoreData
 
 class Route: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObject
 {
-    @NSManaged var uniqueIdentifier:  NSString?
-    @NSManaged var routeNo:  NSNumber? // Why when Int it crashes
+    @NSManaged var uniqueIdentifier: NSString?
+    @NSManaged var routeNo: String?
     @NSManaged var name: String?
     @NSManaged var isUpStop: Bool
     @NSManaged var stops : NSMutableSet
@@ -26,7 +26,7 @@ class Route: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObject
     
     class func primaryKeyValueFromRest(dictionary: NSDictionary) -> String?
     {
-        let tmpRouteNo =  dictionary["RouteNumber"] as? Int
+        let tmpRouteNo =  dictionary["RouteNumber"] as? String
         var tmpIsUpStop = false
         if let tmp =  dictionary["IsUpStop"] as? Bool
         {
@@ -38,7 +38,7 @@ class Route: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObject
     
     func configureWithDictionaryFromRest(dictionary: NSDictionary) -> Void
     {
-        routeNo =  dictionary["RouteNumber"] as? Int
+        routeNo =  dictionary["RouteNumber"] as? String
         name = dictionary["Name"] as? String
         
         if let tmp =  dictionary["IsUpStop"] as? Bool

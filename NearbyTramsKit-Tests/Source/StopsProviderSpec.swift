@@ -75,7 +75,7 @@ class StopsProviderSpec: QuickSpec {
                 }
                 
                 it("should complete on the main thread with stops and no error") {
-                    provider.getStopsWithRouteNo(56, isUpStop: false, requestStopInfo: true, managedObjectContext: moc, {
+                    provider.getStopsWithRouteNo("56", isUpStop: false, requestStopInfo: true, managedObjectContext: moc, {
                         stops, error -> Void in
                         
                         completionStops = stops
@@ -99,7 +99,7 @@ class StopsProviderSpec: QuickSpec {
                 }
                 
                 it("should complete on the main thread with no stops and no error") {
-                    provider.getStopsWithRouteNo(56, isUpStop: true, managedObjectContext: moc, {
+                    provider.getStopsWithRouteNo("56", isUpStop: true, managedObjectContext: moc, {
                         stops, error -> Void in
                         
                         completionStops = stops
@@ -126,7 +126,7 @@ class StopsProviderSpec: QuickSpec {
                 }
                 
                 it("should complete on the main thread with an error an no stops") {
-                    provider.getStopsWithRouteNo(56, isUpStop: true, managedObjectContext: moc, {
+                    provider.getStopsWithRouteNo("56", isUpStop: true, managedObjectContext: moc, {
                         stops, error -> Void in
                         
                         completionStops = stops

@@ -61,7 +61,7 @@ routesProvider.getAllRoutesWithManagedObjectContext(managedObjectContext) {
                 if let routeNo = route.routeNo
                 {
                     dispatch_group_enter(group)
-                    stopsProvider.getStopsWithRouteNo(routeNo as Int, isUpStop: route.isUpStop, requestStopInfo: shouldRequestStopInfo, managedObjectContext: managedObjectContext) {
+                    stopsProvider.getStopsWithRouteNo(routeNo, isUpStop: route.isUpStop, requestStopInfo: shouldRequestStopInfo, managedObjectContext: managedObjectContext) {
                         stopObjectIds, error -> Void in
                         
                         if (stopObjectIds)

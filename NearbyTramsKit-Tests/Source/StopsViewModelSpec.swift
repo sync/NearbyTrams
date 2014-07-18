@@ -71,7 +71,7 @@ class StopsViewModelSpec: QuickSpec {
             context("when adding one stop") {
                 beforeEach {
                     let route: Route = Route.insertInManagedObjectContext(moc)
-                    route.routeNo = 123
+                    route.routeNo = "123"
                     route.uniqueIdentifier = "123-true"
                     route.name = "name"
                     
@@ -115,7 +115,7 @@ class StopsViewModelSpec: QuickSpec {
             context("when adding multiple stops") {
                 beforeEach {
                     let route1: Route = Route.insertInManagedObjectContext(moc) as Route
-                    route1.routeNo = 123
+                    route1.routeNo = "123"
                     route1.uniqueIdentifier = "123-true"
                     route1.name = "a name"
                     
@@ -126,7 +126,7 @@ class StopsViewModelSpec: QuickSpec {
                     stop1.route = route1
                     
                     let route2: Route = Route.insertInManagedObjectContext(moc) as Route
-                    route2.routeNo = 456
+                    route2.routeNo = "456"
                     route2.uniqueIdentifier = "456-false"
                     route2.name = "another name"
                     
@@ -161,7 +161,7 @@ class StopsViewModelSpec: QuickSpec {
             
             beforeEach {
                 let route1: Route = Route.insertInManagedObjectContext(moc) as Route
-                route1.routeNo = 123
+                route1.routeNo = "123"
                 route1.uniqueIdentifier = "123-true"
                 route1.name = "a name"
                 
@@ -172,7 +172,7 @@ class StopsViewModelSpec: QuickSpec {
                 stop1.route = route1
                 
                 let route2: Route = Route.insertInManagedObjectContext(moc) as Route
-                route2.routeNo = 456
+                route2.routeNo = "456"
                 route2.uniqueIdentifier = "456-false"
                 route2.name = "another name"
                 
@@ -233,7 +233,7 @@ class StopsViewModelSpec: QuickSpec {
             
             beforeEach {
                 let route1: Route = Route.insertInManagedObjectContext(moc) as Route
-                route1.routeNo = 123
+                route1.routeNo = "123"
                 route1.uniqueIdentifier = "123-true"
                 route1.name = "a name"
                 
@@ -244,7 +244,7 @@ class StopsViewModelSpec: QuickSpec {
                 stop1.route = route1
                 
                 let route2: Route = Route.insertInManagedObjectContext(moc) as Route
-                route2.routeNo = 456
+                route2.routeNo = "456"
                 route2.uniqueIdentifier = "456-false"
                 route2.name = "another name"
                 
@@ -306,7 +306,7 @@ class StopsViewModelSpec: QuickSpec {
                 viewModel.stopUpdatingStops()
                 
                 let route1: Route = Route.insertInManagedObjectContext(moc)
-                route1.routeNo = 123
+                route1.routeNo = "123"
                 route1.uniqueIdentifier = "123-true"
                 route1.name = "a name"
                 moc.save(nil)
@@ -321,7 +321,7 @@ class StopsViewModelSpec: QuickSpec {
             context("when adding one stop") {
                 beforeEach {
                     let route1: Route = Route.insertInManagedObjectContext(moc) as Route
-                    route1.routeNo = 123
+                    route1.routeNo = "123"
                     route1.uniqueIdentifier = "123-true"
                     route1.name = "a name"
                     
@@ -332,7 +332,7 @@ class StopsViewModelSpec: QuickSpec {
                     stop1.route = route1
                     
                     let route2: Route = Route.insertInManagedObjectContext(moc) as Route
-                    route2.routeNo = 456
+                    route2.routeNo = "456"
                     route2.uniqueIdentifier = "456-false"
                     route2.name = "another name"
                     
@@ -349,7 +349,7 @@ class StopsViewModelSpec: QuickSpec {
                     viewModel.startUpdatingStopsWithFetchRequest(fetchRequest)
                     
                     let route3: Route = Route.insertInManagedObjectContext(moc)
-                    route3.routeNo = 789
+                    route3.routeNo = "789"
                     route3.uniqueIdentifier = "789-true"
                     route3.name = "a third name"
                     

@@ -47,7 +47,7 @@ class SchedulesRepositorySpec: QuickSpec {
             
             let route: Route = Route.insertInManagedObjectContext(moc)
             route.uniqueIdentifier = "16-false"
-            route.routeNo = 16
+            route.routeNo = "16"
             
             let stop: Stop = Stop.insertInManagedObjectContext(moc)
             stop.uniqueIdentifier = "2166"

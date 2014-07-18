@@ -17,7 +17,7 @@ class SchedulesProvider
         self.managedObjectContext = managedObjectContext
     }
     
-    func getNextPredictionsWithStopNo(stopNo: Int, routeNo: Int = 0, managedObjectContext: NSManagedObjectContext, completionHandler: ((NSManagedObjectID[]?, NSError?) -> Void)?) -> Void
+    func getNextPredictionsWithStopNo(stopNo: Int, routeNo: String = "0", managedObjectContext: NSManagedObjectContext, completionHandler: ((NSManagedObjectID[]?, NSError?) -> Void)?) -> Void
     {
         let task = networkService.getNextPredictionsWithStopNo(stopNo, routeNo: routeNo) {
             schedules, error -> Void in

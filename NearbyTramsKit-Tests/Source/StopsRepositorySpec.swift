@@ -47,7 +47,7 @@ class StopsRepositorySpec: QuickSpec {
             
             let route: Route = Stop.insertInManagedObjectContext(moc)
             route.uniqueIdentifier = "66-true"
-            route.routeNo = 66
+            route.routeNo = "66"
             route.isUpStop = true
             moc.save(nil)
             
