@@ -6,6 +6,16 @@ import Foundation
 
 class NetworkService
 {
+    struct Error {
+        struct Domain {
+            static let name = "au.com.dlbechoc.network"
+        }
+        
+        enum Code: Int {
+            case Unknown = 0, API
+        }
+    }
+    
     let baseURL: NSURL
     let aid: NSString
     let token: NSString
@@ -35,7 +45,7 @@ class NetworkService
         let task = session.dataTaskWithURL(url, completionHandler:{
             data, response, error -> Void in
             
-            if (error)
+            if let requestError = error
             {
                 if let handler = completionHandler
                 {
@@ -44,20 +54,52 @@ class NetworkService
                 return
             }
             
-            let (object : AnyObject?, error) = JSONParser.parseJSON(data)
-            if let dictionary = object as? NSDictionary
+            let (object : AnyObject?, jsonParserError) = JSONParser.parseJSON(data)
+            
+            if let parserError = jsonParserError
             {
                 if let handler = completionHandler
                 {
-                    handler(dictionary["responseObject"] as? NSDictionary[], nil)
+                    handler(nil, parserError)
+                }
+                return
+            }
+            
+            if let dictionary = object as? NSDictionary
+            {
+                let hasAPIError = dictionary["hasError"] as? Bool
+                if hasAPIError && hasAPIError!
+                {
+                    if let handler = completionHandler
+                    {
+                        var userInfo: Dictionary<String, AnyObject> = [ : ]
+                        if let errorMessage = dictionary["errorMessage"] as? String
+                        {
+                            userInfo[NSLocalizedDescriptionKey] = errorMessage
+                        }
+                        
+                        let apiError = NSError(domain: Error.Domain.name, code: Error.Code.API.toRaw(), userInfo: userInfo)
+                        handler(nil, apiError)
+                    }
+                    return
+                }
+                else
+                {
+                    if let handler = completionHandler
+                    {
+                        handler(dictionary["responseObject"] as? NSDictionary[], nil)
+                    }
                 }
             }
             else
             {
                 if let handler = completionHandler
                 {
-                    handler(nil, error)
+                    var userInfo: Dictionary<String, AnyObject> = [ NSLocalizedDescriptionKey: "Unable to parse server response" ]
+                    let emptyContentError =  NSError(domain: Error.Domain.name, code: Error.Code.API.toRaw(), userInfo: userInfo)
+                    handler(nil, emptyContentError)
                 }
+                return
             }
             })
         task.resume()
@@ -72,7 +114,7 @@ class NetworkService
         let task = session.dataTaskWithURL(url, completionHandler:{
             data, response, error -> Void in
             
-            if (error)
+            if let requestError = error
             {
                 if let handler = completionHandler
                 {
@@ -81,27 +123,59 @@ class NetworkService
                 return
             }
             
-            let (object : AnyObject?, error) = JSONParser.parseJSON(data)
-            if let dictionary = object as? NSDictionary
+            let (object : AnyObject?, jsonParserError) = JSONParser.parseJSON(data)
+            
+            if let parserError = jsonParserError
             {
                 if let handler = completionHandler
                 {
-                    handler(dictionary["responseObject"] as? NSDictionary[], nil)
+                    handler(nil, parserError)
+                }
+                return
+            }
+            
+            if let dictionary = object as? NSDictionary
+            {
+                let hasAPIError = dictionary["hasError"] as? Bool
+                if hasAPIError && hasAPIError!
+                {
+                    if let handler = completionHandler
+                    {
+                        var userInfo: Dictionary<String, AnyObject> = [ : ]
+                        if let errorMessage = dictionary["errorMessage"] as? String
+                        {
+                            userInfo[NSLocalizedDescriptionKey] = errorMessage
+                        }
+                        
+                        let apiError = NSError(domain: Error.Domain.name, code: Error.Code.API.toRaw(), userInfo: userInfo)
+                        handler(nil, apiError)
+                    }
+                    return
+                }
+                else
+                {
+                    if let handler = completionHandler
+                    {
+                        handler(dictionary["responseObject"] as? NSDictionary[], nil)
+                    }
                 }
             }
             else
             {
                 if let handler = completionHandler
                 {
-                    handler(nil, error)
+                    var userInfo: Dictionary<String, AnyObject> = [ NSLocalizedDescriptionKey: "Unable to parse server response" ]
+                    let emptyContentError =  NSError(domain: Error.Domain.name, code: Error.Code.API.toRaw(), userInfo: userInfo)
+                    handler(nil, emptyContentError)
                 }
+                return
             }
             })
         task.resume()
         
         return task
     }
-
+    
     func getStopInformationWithStopNo(stopNo: Int, completionHandler: ((NSDictionary?, NSError?) -> Void)?) -> NSURLSessionDataTask
     {
         let url = tokenisedURLWithString("TramTracker/RestService/GetStopInformation/\(stopNo)/")
@@ -109,7 +183,7 @@ class NetworkService
         let task = session.dataTaskWithURL(url, completionHandler:{
             data, response, error -> Void in
             
-            if (error)
+            if let requestError = error
             {
                 if let handler = completionHandler
                 {
@@ -118,20 +192,52 @@ class NetworkService
                 return
             }
             
-            let (object : AnyObject?, error) = JSONParser.parseJSON(data)
-            if let dictionary = object as? NSDictionary
+            let (object : AnyObject?, jsonParserError) = JSONParser.parseJSON(data)
+            
+            if let parserError = jsonParserError
             {
                 if let handler = completionHandler
                 {
-                    handler(dictionary["responseObject"] as? NSDictionary, nil)
+                    handler(nil, parserError)
+                }
+                return
+            }
+            
+            if let dictionary = object as? NSDictionary
+            {
+                let hasAPIError = dictionary["hasError"] as? Bool
+                if hasAPIError && hasAPIError!
+                {
+                    if let handler = completionHandler
+                    {
+                        var userInfo: Dictionary<String, AnyObject> = [ : ]
+                        if let errorMessage = dictionary["errorMessage"] as? String
+                        {
+                            userInfo[NSLocalizedDescriptionKey] = errorMessage
+                        }
+                        
+                        let apiError = NSError(domain: Error.Domain.name, code: Error.Code.API.toRaw(), userInfo: userInfo)
+                        handler(nil, apiError)
+                    }
+                    return
+                }
+                else
+                {
+                    if let handler = completionHandler
+                    {
+                        handler(dictionary["responseObject"] as? NSDictionary, nil)
+                    }
                 }
             }
             else
             {
                 if let handler = completionHandler
                 {
-                    handler(nil, error)
+                    var userInfo: Dictionary<String, AnyObject> = [ NSLocalizedDescriptionKey: "Unable to parse server response" ]
+                    let emptyContentError =  NSError(domain: Error.Domain.name, code: Error.Code.API.toRaw(), userInfo: userInfo)
+                    handler(nil, emptyContentError)
                 }
+                return
             }
             })
         task.resume()
@@ -146,7 +252,7 @@ class NetworkService
         let task = session.dataTaskWithURL(url, completionHandler:{
             data, response, error -> Void in
             
-            if (error)
+            if let requestError = error
             {
                 if let handler = completionHandler
                 {
@@ -155,20 +261,52 @@ class NetworkService
                 return
             }
             
-            let (object : AnyObject?, error) = JSONParser.parseJSON(data)
-            if let dictionary = object as? NSDictionary
+            let (object : AnyObject?, jsonParserError) = JSONParser.parseJSON(data)
+            
+            if let parserError = jsonParserError
             {
                 if let handler = completionHandler
                 {
-                    handler(dictionary["responseObject"] as? NSDictionary[], nil)
+                    handler(nil, parserError)
+                }
+                return
+            }
+            
+            if let dictionary = object as? NSDictionary
+            {
+                let hasAPIError = dictionary["hasError"] as? Bool
+                if hasAPIError && hasAPIError!
+                {
+                    if let handler = completionHandler
+                    {
+                        var userInfo: Dictionary<String, AnyObject> = [ : ]
+                        if let errorMessage = dictionary["errorMessage"] as? String
+                        {
+                            userInfo[NSLocalizedDescriptionKey] = errorMessage
+                        }
+                        
+                        let apiError = NSError(domain: Error.Domain.name, code: Error.Code.API.toRaw(), userInfo: userInfo)
+                        handler(nil, apiError)
+                    }
+                    return
+                }
+                else
+                {
+                    if let handler = completionHandler
+                    {
+                        handler(dictionary["responseObject"] as? NSDictionary[], nil)
+                    }
                 }
             }
             else
             {
                 if let handler = completionHandler
                 {
-                    handler(nil, error)
+                    var userInfo: Dictionary<String, AnyObject> = [ NSLocalizedDescriptionKey: "Unable to parse server response" ]
+                    let emptyContentError =  NSError(domain: Error.Domain.name, code: Error.Code.API.toRaw(), userInfo: userInfo)
+                    handler(nil, emptyContentError)
                 }
+                return
             }
             })
         task.resume()
