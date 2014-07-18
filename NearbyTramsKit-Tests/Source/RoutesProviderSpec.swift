@@ -50,7 +50,7 @@ class RoutesProviderSpec: QuickSpec {
                         "IsUpStop": false
                     ]
                     
-                    let body = ["ResponseObject": [json1, json2]]
+                    let body = ["responseObject": [json1, json2]]
                     let response = MockWebServiceResponse(body: body, header: ["Content-Type": "application/json; charset=utf-8"])
                     MockWebServiceURLProtocol.cannedResponse(response)
                 }
@@ -74,7 +74,7 @@ class RoutesProviderSpec: QuickSpec {
             
             context("when no routes are available") {
                 beforeEach {
-                   let body = ["ResponseObject": []]
+                   let body = ["responseObject": []]
                     let response = MockWebServiceResponse(body: body, header: ["Content-Type": "application/json; charset=utf-8"])
                     MockWebServiceURLProtocol.cannedResponse(response)
                 }

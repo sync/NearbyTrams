@@ -146,7 +146,7 @@ class StopsRepositorySpec: QuickSpec {
                 json2["Latitude"] = -46.45
                 json2["Longitude"] = 135.68
                 
-                let responseGetStopBody = ["ResponseObject": [json1, json2]]
+                let responseGetStopBody = ["responseObject": [json1, json2]]
                 let responseGetStop = MockWebServiceResponse(body: responseGetStopBody, header: ["Content-Type": "application/json; charset=utf-8"], urlComponentToMatch:"GetListOfStopsByRouteNoAndDirection")
                 
                 json1 = [ : ]
@@ -163,7 +163,7 @@ class StopsRepositorySpec: QuickSpec {
                 json1["Latitude"] = 0
                 json1["Longitude"] = 0
                 
-                let responseGetStopInfoBody = ["ResponseObject": json1]
+                let responseGetStopInfoBody = ["responseObject": json1]
                 let responseGetStopInfo = MockWebServiceResponse(body: responseGetStopInfoBody, header: ["Content-Type": "application/json; charset=utf-8"], urlComponentToMatch:"GetStopInformation")
                 
                 MockWebServiceURLProtocol.cannedResponses([responseGetStop, responseGetStopInfo])
