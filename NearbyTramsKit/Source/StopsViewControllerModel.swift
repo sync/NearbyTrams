@@ -7,7 +7,7 @@ import NearbyTramsStorageKit
 
 protocol StopsViewControllerModelDelegate
 {
-    func stopsViewControllerModelDidFinishLoading(stopsViewControllerModel: StopsViewControllerModel, stopIdentifier: String)
+    func stopsViewControllerModelDidUpdateStops(model: StopsViewControllerModel)
 }
 
 class StopsViewControllerModel: NSObject, StopsViewModelDelegate, SchedulesRepositoryDelegate
@@ -15,25 +15,36 @@ class StopsViewControllerModel: NSObject, StopsViewModelDelegate, SchedulesRepos
     var delegate: StopsViewControllerModelDelegate?
     var schedulesRepostiories: Dictionary<String, SchedulesRepository>
     
-    let stopsViewModel: StopsViewModel
+    var route: Route? {
+    didSet {
+        if route
+        {
+            let fetchRequest = NSFetchRequest(entityName: Stop.entityName)
+            fetchRequest.predicate = NSPredicate(format:"route == %@", route!)
+            viewModel.startUpdatingStopsWithFetchRequest(fetchRequest)
+        }
+        else
+        {
+            viewModel.stopUpdatingStops()
+        }
+    }
+    }
+    
+    let viewModel: StopsViewModel
     let managedObjectContext: NSManagedObjectContext
     let provider: SchedulesProvider
     let timer: NSTimer?
     
     init(viewModel: StopsViewModel, provider: SchedulesProvider, managedObjectContext: NSManagedObjectContext)
     {
-        self.stopsViewModel = viewModel
+        self.viewModel = viewModel
         self.managedObjectContext = managedObjectContext
         self.provider = provider
         self.schedulesRepostiories = [ : ]
         
         super.init()
         
-        self.stopsViewModel.delegate = self
-        
-        let fetchRequest = NSFetchRequest(entityName: Stop.entityName)
-        fetchRequest.predicate = NSPredicate(format:"uniqueIdentifier == %@", "2166")
-        viewModel.startUpdatingStopsWithFetchRequest(fetchRequest)
+        self.viewModel.delegate = self
         
         self.timer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: Selector("poll:"), userInfo: nil, repeats: true)
         self.timer?.fire()
@@ -51,6 +62,20 @@ class StopsViewControllerModel: NSObject, StopsViewModelDelegate, SchedulesRepos
         }
     }
     
+    var stopsCount: Int {
+    return self.viewModel.stopsCount
+    }
+    
+    func stopAtIndex(index: Int) -> StopViewModel
+    {
+        return self.viewModel.stopAtIndex(index)
+    }
+    
+    func didUpdateStops()
+    {
+        self.delegate?.stopsViewControllerModelDidUpdateStops(self)
+    }
+    
     // StopsViewModelDelegate
     func stopsViewModelDidAddStops(stopsViewModel: StopsViewModel, stops: StopViewModel[])
     {
@@ -60,11 +85,12 @@ class StopsViewControllerModel: NSObject, StopsViewModelDelegate, SchedulesRepos
             schedulesRepository.delegate = self
             schedulesRepostiories[stop.identifier] = schedulesRepository
         }
+        didUpdateStops()
     }
     
     func stopsViewModelDidUpdateStops(stopsViewModel: StopsViewModel, stops: StopViewModel[])
     {
-        
+        didUpdateStops()
     }
     
     func stopsViewModelDidRemoveStops(stopsViewModel: StopsViewModel, stops: StopViewModel[])
@@ -77,6 +103,7 @@ class StopsViewControllerModel: NSObject, StopsViewModelDelegate, SchedulesRepos
                 schedulesRepostiories.removeValueForKey(stop.identifier)
             }
         }
+        didUpdateStops()
     }
         
     // SchedulesRepositoryDelegate
@@ -88,7 +115,5 @@ class StopsViewControllerModel: NSObject, StopsViewModelDelegate, SchedulesRepos
     func schedulesRepositoryDidFinsishLoading(repository: SchedulesRepository, error: NSError?) -> Void
     {
         println("schedules finished updating")
-        
-        self.delegate?.stopsViewControllerModelDidFinishLoading(self, stopIdentifier: repository.stopIdentifier)
     }
 }

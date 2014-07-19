@@ -40,19 +40,24 @@ class RoutesViewControllerModel: NSObject, RoutesViewModelDelegate
         return self.viewModel.routeAtIndex(index)
     }
     
+    func didUpdateRoutes()
+    {
+        self.delegate?.routesViewControllerModelDidUpdateRoutes(self)
+    }
+    
     // RoutesViewModelDelegate
     func routesViewModelDidAddRoutes(routesViewModel: RoutesViewModel, routes: RouteViewModel[])
     {
-        self.delegate?.routesViewControllerModelDidUpdateRoutes(self)
+        didUpdateRoutes()
     }
     
     func routesViewModelDidRemoveRoutes(routesViewModel: RoutesViewModel, routes: RouteViewModel[])
     {
-        self.delegate?.routesViewControllerModelDidUpdateRoutes(self)
+        didUpdateRoutes()
     }
     
     func routesViewModelDidUpdateRoutes(routesViewModel: RoutesViewModel, routes: RouteViewModel[])
     {
-        self.delegate?.routesViewControllerModelDidUpdateRoutes(self)
+        didUpdateRoutes()
     }
 }

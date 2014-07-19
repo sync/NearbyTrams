@@ -40,6 +40,7 @@
 		5FC9ACA11974C84900E59BB8 /* ColorUtilitySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC9ACA01974C84900E59BB8 /* ColorUtilitySpec.swift */; };
 		5FCC190E1966B10600B0B80B /* SNRFetchedResultsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCC190A1966B10600B0B80B /* SNRFetchedResultsController.m */; settings = {COMPILER_FLAGS = "-Wno-explicit-ownership-type -Wno-direct-ivar-access -Wno-unused-parameter -Wno-sign-compare"; }; };
 		5FCC19AA1966B90500B0B80B /* SNRFetchedResultsController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FCC19091966B10600B0B80B /* SNRFetchedResultsController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5FD1D4D6197A540D00E8A666 /* RoutesViewControllerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD1D4D5197A540D00E8A666 /* RoutesViewControllerModel.swift */; };
 		5FF468601962224600C5BEE9 /* SchedulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF4685F1962224600C5BEE9 /* SchedulesProvider.swift */; };
 		5FF4686A1962226200C5BEE9 /* SchedulesProviderSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF468691962226200C5BEE9 /* SchedulesProviderSpec.swift */; };
 /* End PBXBuildFile section */
@@ -217,6 +218,7 @@
 		5FC9ACA01974C84900E59BB8 /* ColorUtilitySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorUtilitySpec.swift; sourceTree = "<group>"; };
 		5FCC19091966B10600B0B80B /* SNRFetchedResultsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNRFetchedResultsController.h; sourceTree = "<group>"; };
 		5FCC190A1966B10600B0B80B /* SNRFetchedResultsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNRFetchedResultsController.m; sourceTree = "<group>"; };
+		5FD1D4D5197A540D00E8A666 /* RoutesViewControllerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesViewControllerModel.swift; sourceTree = "<group>"; };
 		5FF4685F1962224600C5BEE9 /* SchedulesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchedulesProvider.swift; sourceTree = "<group>"; };
 		5FF468691962226200C5BEE9 /* SchedulesProviderSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchedulesProviderSpec.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -281,6 +283,7 @@
 		5F1F42B1196E187700ED4C2B /* ViewControllerModels */ = {
 			isa = PBXGroup;
 			children = (
+				5FD1D4D5197A540D00E8A666 /* RoutesViewControllerModel.swift */,
 				5F1F42B2196E18C300ED4C2B /* StopsViewControllerModel.swift */,
 			);
 			name = ViewControllerModels;
@@ -774,6 +777,7 @@
 				5F1F42A9196DF64100ED4C2B /* StopViewModel.swift in Sources */,
 				5F2D5290196918AF002CECA0 /* RoutesViewModel.swift in Sources */,
 				5FF468601962224600C5BEE9 /* SchedulesProvider.swift in Sources */,
+				5FD1D4D6197A540D00E8A666 /* RoutesViewControllerModel.swift in Sources */,
 				5F2D52A21969659A002CECA0 /* FetchedResultsControllerChangeSet.swift in Sources */,
 				5FA8DB97195D8B2A0080EEAE /* BrowseRoutesViewControllerModel.swift in Sources */,
 				5F2D5275196910F4002CECA0 /* SchedulesRepository.swift in Sources */,

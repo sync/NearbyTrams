@@ -59,7 +59,12 @@ class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
     }
     
     var routesCount: Int {
-    return routes.count
+    return self.routes.count
+    }
+    
+    func routeAtIndex(index: Int) -> RouteViewModel
+    {
+        return self.routes[index]
     }
     
     func startUpdatingRoutesWithFetchRequest(fetchRequest: NSFetchRequest)

@@ -15,8 +15,12 @@
 		5F3984B9196CD8C000D9D908 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F3984AD196CD8AE00D9D908 /* Images.xcassets */; };
 		5F3984BE196CD8D200D9D908 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3984B0196CD8AE00D9D908 /* AppDelegate.swift */; };
 		5F3984BF196CD8D200D9D908 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3984B1196CD8AE00D9D908 /* main.swift */; };
-		5F3984C0196CD8D200D9D908 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3984B2196CD8AE00D9D908 /* ViewController.swift */; };
+		5F3984C0196CD8D200D9D908 /* StopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3984B2196CD8AE00D9D908 /* StopsViewController.swift */; };
 		5F3ECB34196CDE4400BD988D /* FakeAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3984CA196CD9FE00D9D908 /* FakeAppTests.swift */; };
+		5FD1D4CE197A30F200E8A666 /* WindowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD1D4CD197A30F200E8A666 /* WindowViewController.swift */; };
+		5FD1D4D2197A36A000E8A666 /* RoutesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD1D4D1197A36A000E8A666 /* RoutesViewController.swift */; };
+		5FD81DF8197B97B500095CC9 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD81DF7197B97B500095CC9 /* SplitViewController.swift */; };
+		5FD81DFC197B9CF100095CC9 /* RouteSelectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD81DFB197B9CF100095CC9 /* RouteSelectionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,10 +167,14 @@
 		5F3984AE196CD8AE00D9D908 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F3984B0196CD8AE00D9D908 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F3984B1196CD8AE00D9D908 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		5F3984B2196CD8AE00D9D908 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5F3984B2196CD8AE00D9D908 /* StopsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopsViewController.swift; sourceTree = "<group>"; };
 		5F3984C8196CD9FE00D9D908 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F3984CA196CD9FE00D9D908 /* FakeAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAppTests.swift; sourceTree = "<group>"; };
 		5F3ECB33196CDD5F00BD988D /* NearbyTramsApp-Tests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "NearbyTramsApp-Tests.xcconfig"; sourceTree = "<group>"; };
+		5FD1D4CD197A30F200E8A666 /* WindowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowViewController.swift; sourceTree = "<group>"; };
+		5FD1D4D1197A36A000E8A666 /* RoutesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesViewController.swift; sourceTree = "<group>"; };
+		5FD81DF7197B97B500095CC9 /* SplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
+		5FD81DFB197B9CF100095CC9 /* RouteSelectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSelectionManager.swift; sourceTree = "<group>"; };
 		5FFCA3A3196D08AD00DCDBAF /* NearbyTramsKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = NearbyTramsKit.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -202,10 +210,10 @@
 		5F398458196CD64E00D9D908 = {
 			isa = PBXGroup;
 			children = (
-				5FFCA3A2196D089A00DCDBAF /* External */,
 				5F3984A4196CD8AE00D9D908 /* Configurations */,
 				5F3984AF196CD8AE00D9D908 /* Source */,
 				5F3984AA196CD8AE00D9D908 /* Resources */,
+				5FFCA3A2196D089A00DCDBAF /* External */,
 				5F3984C6196CD9FE00D9D908 /* NearbyTramsApp-Tests */,
 				5F398462196CD64E00D9D908 /* Products */,
 			);
@@ -250,7 +258,11 @@
 			children = (
 				5F3984B1196CD8AE00D9D908 /* main.swift */,
 				5F3984B0196CD8AE00D9D908 /* AppDelegate.swift */,
-				5F3984B2196CD8AE00D9D908 /* ViewController.swift */,
+				5FD1D4CD197A30F200E8A666 /* WindowViewController.swift */,
+				5FD81DF7197B97B500095CC9 /* SplitViewController.swift */,
+				5FD81DFB197B9CF100095CC9 /* RouteSelectionManager.swift */,
+				5FD1D4D3197A525800E8A666 /* Routes */,
+				5FD1D4D4197A526000E8A666 /* Stops */,
 			);
 			name = Source;
 			path = NearbyTramsApp/Source;
@@ -279,6 +291,22 @@
 				5F3984CA196CD9FE00D9D908 /* FakeAppTests.swift */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		5FD1D4D3197A525800E8A666 /* Routes */ = {
+			isa = PBXGroup;
+			children = (
+				5FD1D4D1197A36A000E8A666 /* RoutesViewController.swift */,
+			);
+			name = Routes;
+			sourceTree = "<group>";
+		};
+		5FD1D4D4197A526000E8A666 /* Stops */ = {
+			isa = PBXGroup;
+			children = (
+				5F3984B2196CD8AE00D9D908 /* StopsViewController.swift */,
+			);
+			name = Stops;
 			sourceTree = "<group>";
 		};
 		5FFCA3A2196D089A00DCDBAF /* External */ = {
@@ -451,9 +479,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F3984C0196CD8D200D9D908 /* ViewController.swift in Sources */,
+				5FD1D4CE197A30F200E8A666 /* WindowViewController.swift in Sources */,
+				5F3984C0196CD8D200D9D908 /* StopsViewController.swift in Sources */,
 				5F3984BF196CD8D200D9D908 /* main.swift in Sources */,
 				5F3984BE196CD8D200D9D908 /* AppDelegate.swift in Sources */,
+				5FD1D4D2197A36A000E8A666 /* RoutesViewController.swift in Sources */,
+				5FD81DF8197B97B500095CC9 /* SplitViewController.swift in Sources */,
+				5FD81DFC197B9CF100095CC9 /* RouteSelectionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

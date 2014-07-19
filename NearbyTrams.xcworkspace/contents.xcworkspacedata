@@ -68,6 +68,9 @@
       </FileRef>
    </Group>
    <FileRef
+      location = "group:NearbyTramsApp.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:NearbyTramsKit.xcodeproj">
    </FileRef>
    <FileRef
@@ -78,8 +81,5 @@
    </FileRef>
    <FileRef
       location = "group:TramsScraper.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:NearbyTramsApp.xcodeproj">
    </FileRef>
 </Workspace>

@@ -16,14 +16,14 @@ class RoutesViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
     }
     
     @IBOutlet var tableView: NSTableView
+    var routeSelectionManager: RouteSelectionManager?
+    let routesViewControllerModel: RoutesViewControllerModel
     
     let managedObjectContext: NSManagedObjectContext = {
         let moc = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
         moc.persistentStoreCoordinator = CoreDataStackManager.sharedInstance.persistentStoreCoordinator
         return moc
         }()
-    
-    let routesViewControllerModel: RoutesViewControllerModel
     
     init(coder: NSCoder!)
     {
@@ -50,6 +50,23 @@ class RoutesViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
         routeView.textField.stringValue = "\(routeModel.routeNo) - \(routeModel.routeDescription)"
         
         return routeView
+    }
+    
+    func tableViewSelectionDidChange(notification: NSNotification!)
+    {
+        // FIXME: route view controller model should return a route
+        var route: Route? = nil
+        let selectedRow = tableView.selectedRow
+        if selectedRow != -1
+        {
+            let routeModel = self.routesViewControllerModel.routeAtIndex(selectedRow)
+            let result: (route: Route?, error:NSError?) = Route.fetchOneForPrimaryKeyValue(routeModel.identifier, usingManagedObjectContext: self.managedObjectContext)
+            route = result.route
+        }
+        if let selectionManagager = self.routeSelectionManager
+        {
+            selectionManagager.selectedRoute = route
+        }
     }
     
     // RoutesViewControllerModelDelegate
