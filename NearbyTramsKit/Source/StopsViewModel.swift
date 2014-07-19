@@ -27,8 +27,30 @@ class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
         self.managedObjectContext = managedObjectContext
     }
     
+    var orderedStopIdentifiers: String[] {
+    let orderedIdentifiers = self.fetchedResultsController?.fetchedObjects.filter {
+        stop -> Bool in
+        
+        return stop.uniqueIdentifier != nil && self.stopsStorage.indexForKey(stop.uniqueIdentifier!) != nil
+        }.map {
+            stop -> String in
+            
+            return stop.uniqueIdentifier!
+        }
+        
+        return orderedIdentifiers ? orderedIdentifiers! : []
+    }
+    
     var stops: StopViewModel[] {
-    return Array(stopsStorage.values)
+    return self.orderedStopIdentifiers.filter {
+        identifier -> Bool in
+        
+        self.stopsStorage.indexForKey(identifier) != nil
+        }.map {
+            identifier -> StopViewModel in
+            
+            return  self.stopsStorage[identifier]!
+        }
     }
     
     var stopsCount: Int {
@@ -272,19 +294,19 @@ class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
     
     func updateModelWithChangeSet(changeSet: FetchedResultsControllerChangeSet)
     {
-        if let addedObjecst = changeSet.allAddedObjects as? Stop[]
+        if let addedObjects = changeSet.allAddedObjects as? Stop[]
         {
-            addStopsForObjects(addedObjecst)
+            addStopsForObjects(addedObjects)
         }
         
-        if let updatedObjecst = changeSet.allUpdatedObjects as? Stop[]
+        if let updatedObjects = changeSet.allUpdatedObjects as? Stop[]
         {
-            updateStopsForObjects(updatedObjecst)
+            updateStopsForObjects(updatedObjects)
         }
         
-        if let removedObjecst = changeSet.allRemovedObjects as? Stop[]
+        if let removedObjects = changeSet.allRemovedObjects as? Stop[]
         {
-            removeStopsForObjects(removedObjecst)
+            removeStopsForObjects(removedObjects)
         }
     }
 }

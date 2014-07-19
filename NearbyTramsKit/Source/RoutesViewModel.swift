@@ -27,8 +27,30 @@ class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
         self.managedObjectContext = managedObjectContext
     }
     
+    var orderedRouteIdentifiers: String[] {
+    let orderedIdentifiers = self.fetchedResultsController?.fetchedObjects.filter {
+        route -> Bool in
+        
+        return route.uniqueIdentifier != nil && self.routesStorage.indexForKey(route.uniqueIdentifier!) != nil
+        }.map {
+            route -> String in
+            
+            return route.uniqueIdentifier!
+        }
+        
+        return orderedIdentifiers ? orderedIdentifiers! : []
+    }
+    
     var routes: RouteViewModel[] {
-    return Array(routesStorage.values)
+    return self.orderedRouteIdentifiers.filter {
+        identifier -> Bool in
+        
+        self.routesStorage.indexForKey(identifier) != nil
+        }.map {
+            identifier -> RouteViewModel in
+            
+            return  self.routesStorage[identifier]!
+        }
     }
     
     var routesCount: Int {
@@ -270,19 +292,19 @@ class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
     
     func updateModelWithChangeSet(changeSet: FetchedResultsControllerChangeSet)
     {
-        if let addedObjecst = changeSet.allAddedObjects as? Route[]
+        if let addedObjects = changeSet.allAddedObjects as? Route[]
         {
-            addRoutesForObjects(addedObjecst)
+            addRoutesForObjects(addedObjects)
         }
         
-        if let updatedObjecst = changeSet.allUpdatedObjects as? Route[]
+        if let updatedObjects = changeSet.allUpdatedObjects as? Route[]
         {
-            updateRoutesForObjects(updatedObjecst)
+            updateRoutesForObjects(updatedObjects)
         }
         
-        if let removedObjecst = changeSet.allRemovedObjects as? Route[]
+        if let removedObjects = changeSet.allRemovedObjects as? Route[]
         {
-            removeRoutesForObjects(removedObjecst)
+            removeRoutesForObjects(removedObjects)
         }
     }
 }
