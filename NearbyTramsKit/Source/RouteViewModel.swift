@@ -4,7 +4,7 @@
 
 import Foundation
 
-class RouteViewModel
+class RouteViewModel: Equatable
 {
     let identifier: String
     var routeNo: String
@@ -27,4 +27,9 @@ class RouteViewModel
         self.isUpStop = isUpStop
         self.name = name
     }
+}
+
+@infix func ==(lhs: RouteViewModel, rhs: RouteViewModel) -> Bool
+{
+    return lhs.identifier == rhs.identifier
 }
