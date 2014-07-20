@@ -31,6 +31,7 @@
     </entity>
     <entity name="Stop" representedClassName="NearbyTramsStorageKit.Stop" syncable="YES">
         <attribute name="cityDirection" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isUpStop" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -45,6 +46,6 @@
     <elements>
         <element name="Route" positionX="-63" positionY="72" width="128" height="165"/>
         <element name="Schedule" positionX="-63" positionY="72" width="128" height="300"/>
-        <element name="Stop" positionX="-63" positionY="-18" width="128" height="208"/>
+        <element name="Stop" positionX="-63" positionY="-18" width="128" height="225"/>
     </elements>
 </model>

@@ -17,9 +17,9 @@ class StopsProvider
         self.managedObjectContext = managedObjectContext
     }
     
-    func getStopsWithRouteNo(routeNo: String, isUpStop: Bool, requestStopInfo: Bool = false, managedObjectContext: NSManagedObjectContext, completionHandler: ((NSManagedObjectID[]?, NSError?) -> Void)?) -> Void
+    func getStopsWithRouteNo(routeNo: Int, requestStopInfo: Bool = false, managedObjectContext: NSManagedObjectContext, completionHandler: ((NSManagedObjectID[]?, NSError?) -> Void)?) -> Void
     {
-        let task = networkService.getStopsByRouteAndDirectionWithRouteNo((routeNo as NSString).integerValue, isUpStop: isUpStop) {
+        let task = networkService.getStopsByRouteWithRouteNo(routeNo) {
             stops, error -> Void in
             
             if (error)

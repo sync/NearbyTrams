@@ -7,13 +7,13 @@ import CoreData
 class Stop: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObject
 {
     @NSManaged var uniqueIdentifier: NSString?
-    
     @NSManaged var stopDescription: String?
     @NSManaged var latitude: NSNumber? // Why when Double it crashes
     @NSManaged var longitude: NSNumber? // Why when Double it crashes
     @NSManaged var name: String?
     @NSManaged var stopNo: NSNumber? // Why when Int it crashes
     @NSManaged var suburb: String?
+    @NSManaged var isUpStop: Bool
     @NSManaged var cityDirection: String?
     @NSManaged var zones: String?
     @NSManaged var route : Route?
@@ -46,9 +46,14 @@ class Stop: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObject
         stopDescription = dictionary["Description"] as? String
         latitude = dictionary["Latitude"] as? Double
         longitude = dictionary["Longitude"] as? Double
-        name = dictionary["Name"] as? String
+        name = dictionary["StopName"] as? String
         stopNo = dictionary["StopNo"] as? Int
         suburb = dictionary["SuburbName"] as? String
+        
+        if let tmp =  dictionary["UpStop"] as? Bool
+        {
+            isUpStop = tmp
+        }
     }
     
     func configureWithPartialDictionaryFromRest(dictionary: NSDictionary) -> Void

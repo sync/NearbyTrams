@@ -107,9 +107,9 @@ class NetworkService
         return task
     }
     
-    func getStopsByRouteAndDirectionWithRouteNo(routeNo: Int, isUpStop: Bool, completionHandler: ((NSDictionary[]?, NSError?) -> Void)?) -> NSURLSessionDataTask
+    func getStopsByRouteWithRouteNo(routeNo: Int, completionHandler: ((NSDictionary[]?, NSError?) -> Void)?) -> NSURLSessionDataTask
     {
-        let url = tokenisedURLWithString("TramTracker/RestService/GetListOfStopsByRouteNoAndDirection/\(routeNo)/\(isUpStop)/")
+        let url = tokenisedURLWithString("TramTracker/RestService/GetRouteStopsByRoute/\(routeNo)/")
         
         let task = session.dataTaskWithURL(url, completionHandler:{
             data, response, error -> Void in

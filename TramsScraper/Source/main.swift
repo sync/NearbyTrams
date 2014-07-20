@@ -58,11 +58,10 @@ routesProvider.getAllRoutesWithManagedObjectContext(managedObjectContext) {
         {
             for (index, route) in enumerate(routes)
             {
-                if let routeNo = route.routeNo
+                if let routeNo = route.internalRouteNo as? Int
                 {
                     dispatch_group_enter(group)
-                    // FIXME: remove isUpStop
-                    stopsProvider.getStopsWithRouteNo(routeNo, isUpStop: false, requestStopInfo: shouldRequestStopInfo, managedObjectContext: managedObjectContext) {
+                    stopsProvider.getStopsWithRouteNo(routeNo, requestStopInfo: shouldRequestStopInfo, managedObjectContext: managedObjectContext) {
                         stopObjectIds, error -> Void in
                         
                         if (stopObjectIds)

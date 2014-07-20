@@ -48,6 +48,7 @@ class StopsRepositorySpec: QuickSpec {
             let route: Route = Stop.insertInManagedObjectContext(moc)
             route.uniqueIdentifier = "66-true"
             route.routeNo = "66"
+            route.internalRouteNo = 66
             moc.save(nil)
             
             let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
@@ -130,6 +131,7 @@ class StopsRepositorySpec: QuickSpec {
                 json1["DistanceToLocation"] = 14.00
                 json1["Latitude"] = -36.45
                 json1["Longitude"] = 145.68
+                json1["UpStop"] = false
                 
                 var json2: Dictionary<String, AnyObject> = [ : ]
                 json2["CityDirection"] = "a camberwell direction"
@@ -144,23 +146,17 @@ class StopsRepositorySpec: QuickSpec {
                 json2["DistanceToLocation"] = 11.00
                 json2["Latitude"] = -46.45
                 json2["Longitude"] = 135.68
+                json1["UpStop"] = true
                 
                 let responseGetStopBody = ["responseObject": [json1, json2]]
-                let responseGetStop = MockWebServiceResponse(body: responseGetStopBody, header: ["Content-Type": "application/json; charset=utf-8"], urlComponentToMatch:"GetListOfStopsByRouteNoAndDirection")
+                let responseGetStop = MockWebServiceResponse(body: responseGetStopBody, header: ["Content-Type": "application/json; charset=utf-8"], urlComponentToMatch:"GetRouteStopsByRoute")
                 
                 json1 = [ : ]
                 json1["CityDirection"] = "from city"
-                json1["Description"] = NSNull()
-                json1["Destination"] = NSNull()
-                json1["FlagStopNo"] = "66"
-                json1["RouteNo"] = 0
-                json1["StopID"] =  NSNull()
-                json1["StopName"] = "Rathmines Rd / Canterbury Rd"
-                json1["StopNo"] = 0
-                json1["Suburb"] = "Canterbury"
-                json1["DistanceToLocation"] = 0
-                json1["Latitude"] = 0
+                json1["StopName"] = 0
                 json1["Longitude"] = 0
+                json1["StopName"] = "Rathmines Rd / Canterbury Rd"
+                json1["Zones"] = "1"
                 
                 let responseGetStopInfoBody = ["responseObject": json1]
                 let responseGetStopInfo = MockWebServiceResponse(body: responseGetStopInfoBody, header: ["Content-Type": "application/json; charset=utf-8"], urlComponentToMatch:"GetStopInformation")

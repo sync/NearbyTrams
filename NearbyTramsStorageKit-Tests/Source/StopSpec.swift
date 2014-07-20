@@ -43,14 +43,14 @@ class StopSpec: QuickSpec {
                 
                 context("with valid values") {
                     beforeEach {
-                        var json: Dictionary<String, AnyObject> = [
-                            "Description": "a description",
-                            "Latitude": -36,
-                            "Longitude": 145,
-                            "Name": "Burke Rd / Canterbury Rd",
-                            "StopNo": 14,
-                            "SuburbName": "Canterbury"
-                        ]
+                        var json: Dictionary<String, AnyObject> = [ : ]
+                        json["Description"] = "a description"
+                        json["Latitude"] = -36.45
+                        json["Longitude"] = 145.68
+                        json["StopName"] = "Burke Rd / Canterbury Rd"
+                        json["StopNo"] = 14
+                        json["SuburbName"] = "Canterbury"
+                        json["UpStop"] = true
                         
                         stop.configureWithDictionaryFromRest(json)
                     }
@@ -60,11 +60,11 @@ class StopSpec: QuickSpec {
                     }
                     
                     it("should have a Latitude") {
-                        expect(stop.latitude).to.equal(-36)
+                        expect(stop.latitude).to.equal(-36.45)
                     }
                     
                     it("should be a Longitude") {
-                        expect(stop.longitude).to.equal(145)
+                        expect(stop.longitude).to.equal(145.68)
                     }
                     
                     it("should have a name") {
@@ -78,18 +78,22 @@ class StopSpec: QuickSpec {
                     it("should have a Suburb") {
                         expect(stop.suburb).to.equal("Canterbury")
                     }
+                    
+                    it("should be an up stop") {
+                        expect(stop.isUpStop).to.beTrue()
+                    }
                 }
                 
                 context("with invalid values") {
                     beforeEach {
-                        var json: Dictionary<String, AnyObject> = [
-                            "Description": NSNull(),
-                            "Latitude": NSNull(),
-                            "Longitude": 15,
-                            "Name": NSNull(),
-                            "StopNo": "14",
-                            "SuburbName": NSNull(),
-                        ]
+                        var json: Dictionary<String, AnyObject> = [ : ]
+                        json["Description"] = NSNull()
+                        json["Latitude"] = NSNull()
+                        json["Longitude"] = 15
+                        json["StopName"] = NSNull()
+                        json["StopNo"] = "14"
+                        json["SuburbName"] = NSNull()
+                        json["UpStop"] = NSNull()
                         
                         stop.configureWithDictionaryFromRest(json)
                     }
@@ -117,6 +121,10 @@ class StopSpec: QuickSpec {
                     it("should have a Suburb") {
                         expect(stop.suburb).to.beNil()
                     }
+                    
+                    it("should not be an up stop") {
+                        expect(stop.isUpStop).to.beFalse()
+                    }
                 }
             }
             
@@ -127,30 +135,23 @@ class StopSpec: QuickSpec {
                 
                 context("with valid values") {
                     beforeEach {
-                        var fullJson: Dictionary<String, AnyObject> = [
-                            "CityDirection": "a city direction",
-                            "Description": "a description",
-                            "Destination": "a destination",
-                            "FlagStopNo": "Stop 965a",
-                            "RouteNo": 5,
-                            "StopID": "567aab",
-                            "Name": "Burke Rd / Canterbury Rd",
-                            "StopNo": 14,
-                            "SuburbName": "Canterbury",
-                            "DistanceToLocation": 14,
-                            "Latitude": -36,
-                            "Longitude": 145
-                        ]
+                        var fullJson: Dictionary<String, AnyObject> = [ : ]
+                        fullJson["Description"] = "a description"
+                        fullJson["Latitude"] = -36.45
+                        fullJson["Longitude"] = 145.68
+                        fullJson["StopName"] = "Burke Rd / Canterbury Rd"
+                        fullJson["StopNo"] = 14
+                        fullJson["SuburbName"] = "Canterbury"
+                        fullJson["UpStop"] = true
                         
                         stop.configureWithDictionaryFromRest(fullJson)
                         
-                        var json: Dictionary<String, AnyObject> = [
-                            "CityDirection": "from city",
-                            "Latitude": 0,
-                            "Longitude": 0,
-                            "StopName": "Burke Rd / Canterbury Rd",
-                            "Zones": "1"
-                        ]
+                        var json: Dictionary<String, AnyObject> = [ : ]
+                        json["CityDirection"] = "from city"
+                        json["Latitude"] = 0
+                        json["Longitude"] = 0
+                        json["StopName"] = "Rathmines Rd / Canterbury Rd"
+                        json["Zones"] = "1"
                         
                         stop.configureWithPartialDictionaryFromRest(json)
                     }
@@ -168,11 +169,11 @@ class StopSpec: QuickSpec {
                     }
                     
                     it("should have a Latitude") {
-                        expect(stop.latitude).to.equal(-36)
+                        expect(stop.latitude).to.equal(-36.45)
                     }
                     
                     it("should be a Longitude") {
-                        expect(stop.longitude).to.equal(145)
+                        expect(stop.longitude).to.equal(145.68)
                     }
                     
                     it("should have a name") {
