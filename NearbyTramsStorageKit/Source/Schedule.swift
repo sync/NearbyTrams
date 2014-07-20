@@ -38,10 +38,15 @@ class Schedule: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObject
     
     class func primaryKeyValueFromRest(dictionary: NSDictionary) -> String?
     {
-        let tmpRouteNo =  dictionary["RouteNo"] as? Int
-        var tmpPredictedArrivalDateTime = dictionary["PredictedArrivalDateTime"] as String
+        let tmpRouteNo =  dictionary["RouteNo"] as? String
+        let tmpPredictedArrivalDateTime = dictionary["PredictedArrivalDateTime"] as? String
         
-        return "\(tmpRouteNo)-\(tmpPredictedArrivalDateTime)"
+        if tmpRouteNo && tmpPredictedArrivalDateTime
+        {
+            return "\(tmpRouteNo)-\(tmpPredictedArrivalDateTime)"
+        }
+        
+        return nil
     }
     
     func configureWithDictionaryFromRest(dictionary: NSDictionary) -> Void
