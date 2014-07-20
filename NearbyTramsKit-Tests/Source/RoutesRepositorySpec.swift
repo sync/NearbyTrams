@@ -112,17 +112,33 @@ class RoutesRepositorySpec: QuickSpec {
         
         describe("on success") {
             beforeEach {
-                let json1: NSDictionary = [
-                    "RouteNumber": 5,
-                    "Name": "Melbourne",
-                    "IsUpStop": true
-                ]
+                var json1: Dictionary<String, AnyObject> = [ : ]
+                json1["AlphaNumericRouteNo"] = NSNull()
+                json1["Description"] = "Melbourne Uni - Kew (Via St Kilda Beach)"
+                json1["DownDestination"] = "Melbourne University"
+                json1["HeadBoardRouteNo"] = 16
+                json1["InternalRouteNo"] = 16
+                json1["IsMainRoute"] = true
+                json1["LastModified"] = "/Date(1365516000000+1000)/"
+                json1["MainRouteNo"] = "16"
+                json1["RouteColour"] = "yellow"
+                json1["RouteNo"] = "16"
+                json1["UpDestination"] = "Kew"
+                json1["VariantDestination"] = NSNull()
                 
-                let json2: NSDictionary = [
-                    "RouteNumber": 10,
-                    "Name": "Pyrmont",
-                    "IsUpStop": false
-                ]
+                var json2: Dictionary<String, AnyObject> = [ : ]
+                json2["AlphaNumericRouteNo"] = "3a"
+                json2["Description"] = "Melbourne Uni - East Malvern via St Kilda"
+                json2["DownDestination"] = "Melbourne University via St Kilda"
+                json2["HeadBoardRouteNo"] = 4
+                json2["InternalRouteNo"] = 4
+                json2["IsMainRoute"] = true
+                json2["LastModified"] = "/Date(1247532405497+1000)/"
+                json2["MainRouteNo"] = "4"
+                json2["RouteColour"] = "cyan"
+                json2["RouteNo"] = "3a"
+                json2["UpDestination"] = "East Malvern via St Kilda"
+                json2["VariantDestination"] = "via St Kilda"
                 
                 let body = ["responseObject": [json1, json2]]
                 let response = MockWebServiceResponse(body: body, header: ["Content-Type": "application/json; charset=utf-8"])

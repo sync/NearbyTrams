@@ -31,7 +31,12 @@ class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
     let orderedIdentifiers = self.fetchedResultsController?.fetchedObjects.filter {
         stop -> Bool in
         
-        return stop.uniqueIdentifier != nil && self.stopsStorage.indexForKey(stop.uniqueIdentifier!) != nil
+        if let uniqueIdentifier = stop.uniqueIdentifier as? NSString
+        {
+            return self.stopsStorage.indexForKey(uniqueIdentifier) != nil
+        }
+        
+        return false
         }.map {
             stop -> String in
             
@@ -183,7 +188,7 @@ class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
                     
                     let identifier = stop.uniqueIdentifier!
                     let route = stop.route!
-                    let viewModel = StopViewModel(identifier: identifier, routeNo: stop.route!.routeNo!, routeName: stop.route!.name!, isUpStop: route.isUpStop, stopNo: Int(stop.stopNo!), stopName: stop.name!, schedules: stop.nextScheduledArrivalDates)
+                    let viewModel = StopViewModel(identifier: identifier, routeNo: stop.route!.routeNo!, routeDescription: stop.route!.routeDescription!, isUpStop: false, stopNo: Int(stop.stopNo!), stopName: stop.name!, schedules: stop.nextScheduledArrivalDates)
                     self.stopsStorage[identifier] = viewModel
                     return viewModel
             }
@@ -207,7 +212,7 @@ class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
                     if stop.isValidForViewModel
                     {
                         let route = stop.route!
-                        existingStopModel.updateWithRouteNo(stop.route!.routeNo!, routeName: stop.route!.name!, isUpStop: route.isUpStop, stopNo: Int(stop.stopNo!), stopName: stop.name!, schedules: stop.nextScheduledArrivalDates)
+                        existingStopModel.updateWithRouteNo(stop.route!.routeNo!, routeDescription: stop.route!.routeDescription!, isUpStop: false, stopNo: Int(stop.stopNo!), stopName: stop.name!, schedules: stop.nextScheduledArrivalDates)
                         updatedStops.append(existingStopModel)
                     }
                     else
@@ -314,6 +319,6 @@ class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
 extension Stop
     {
     var isValidForViewModel: Bool {
-    return (self.uniqueIdentifier && self.route?.routeNo && self.route?.name &&  self.route?.routeNo && self.name && self.route)
+    return (self.uniqueIdentifier && self.route?.routeNo && self.route?.routeDescription && self.route?.routeNo && self.name && self.route)
     }
 }

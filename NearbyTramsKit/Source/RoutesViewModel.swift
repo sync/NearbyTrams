@@ -31,7 +31,12 @@ class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
     let orderedIdentifiers = self.fetchedResultsController?.fetchedObjects.filter {
         route -> Bool in
         
-        return route.uniqueIdentifier != nil && self.routesStorage.indexForKey(route.uniqueIdentifier!) != nil
+        if let uniqueIdentifier = route.uniqueIdentifier as? NSString
+        {
+            return self.routesStorage.indexForKey(uniqueIdentifier) != nil
+        }
+        
+        return false
         }.map {
             route -> String in
             
@@ -182,7 +187,7 @@ class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
                     assert(!self.existingModelForRoute(route), "route should not already exist!")
                     
                     let identifier = route.uniqueIdentifier!
-                    let viewModel = RouteViewModel(identifier: identifier, routeNo: route.routeNo!, name: route.name!, isUpStop: route.isUpStop)
+                    let viewModel = RouteViewModel(identifier: identifier, routeNo: route.routeNo!, routeDescription: route.routeDescription!, downDestination: route.downDestination!, upDestination: route.upDestination!)
                     self.routesStorage[identifier] = viewModel
                     return viewModel
             }
@@ -205,7 +210,7 @@ class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
                 {
                     if route.isValidForViewModel
                     {
-                        existingRouteModel.updateWithRouteNo(route.routeNo!, name: route.name!, isUpStop: route.isUpStop)
+                        existingRouteModel.updateWithRouteNo(route.routeNo!, routeDescription: route.routeDescription!, downDestination: route.downDestination!, upDestination: route.upDestination!)
                         updatedRoutes.append(existingRouteModel)
                     }
                     else
@@ -312,6 +317,6 @@ class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
 extension Route
     {
     var isValidForViewModel: Bool {
-    return (self.uniqueIdentifier && self.routeNo && self.name)
+    return (self.uniqueIdentifier && self.routeNo && self.routeDescription && self.downDestination && self.upDestination)
     }
 }

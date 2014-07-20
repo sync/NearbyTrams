@@ -45,7 +45,8 @@ class StopsRepository
             if let routeNo = route.routeNo
             {
                 self.isLoading = true
-                stopsProvider.getStopsWithRouteNo(routeNo, isUpStop: route.isUpStop, requestStopInfo: true, managedObjectContext: managedObjectContext) {
+                // FIXME: remove isUpStop
+                stopsProvider.getStopsWithRouteNo(routeNo, isUpStop: false, requestStopInfo: true, managedObjectContext: managedObjectContext) {
                     stopObjectIds, error -> Void in
                     
                     if let objectIds = stopObjectIds

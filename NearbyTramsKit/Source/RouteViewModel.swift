@@ -8,24 +8,28 @@ class RouteViewModel: Equatable
 {
     let identifier: String
     var routeNo: String
-    var name: String
-    var isUpStop: Bool
+    var routeDescription: String
+    var downDestination: String
+    var upDestination: String
     let color: CGColorRef
     
-    init (identifier: String, routeNo: String, name: String, isUpStop: Bool, color: CGColorRef = ColorUtility.generateRandomColor())
+    init (identifier: String, routeNo: String, routeDescription: String, downDestination: String, upDestination: String, color: CGColorRef = ColorUtility.generateRandomColor())
     {
         self.identifier = identifier
         self.routeNo = routeNo
-        self.name = name
-        self.isUpStop = isUpStop
+        self.routeDescription = routeDescription
+        self.downDestination = downDestination
+        self.upDestination = upDestination
         self.color = color
     }
     
-    func updateWithRouteNo(routeNo: String, name: String, isUpStop: Bool)
+    func updateWithRouteNo(routeNo: String, routeDescription: String, downDestination: String, upDestination: String)
     {
         self.routeNo = routeNo
-        self.isUpStop = isUpStop
-        self.name = name
+        self.routeDescription = routeDescription
+        self.downDestination = downDestination
+        self.upDestination = upDestination
+        self.routeDescription = routeDescription
     }
 }
 

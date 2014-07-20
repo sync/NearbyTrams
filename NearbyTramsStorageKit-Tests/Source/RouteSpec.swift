@@ -44,35 +44,63 @@ class RouteSpec: QuickSpec {
                 
                 context("with valid values") {
                     beforeEach {
-                        let json: Dictionary<String, AnyObject> = [
-                            "RouteNumber": "5",
-                            "Name": "Melbourne",
-                            "IsUpStop": true
-                        ]
+                        var json: Dictionary<String, AnyObject> = [ : ]
+                        json["AlphaNumericRouteNo"] = NSNull()
+                        json["Description"] = "Melbourne Uni - Kew (Via St Kilda Beach)"
+                        json["DownDestination"] = "Melbourne University"
+                        json["HeadBoardRouteNo"] = 16
+                        json["InternalRouteNo"] = 16
+                        json["IsMainRoute"] = true
+                        json["LastModified"] = "/Date(1365516000000+1000)/"
+                        json["MainRouteNo"] = "16"
+                        json["RouteColour"] = "yellow"
+                        json["RouteNo"] = "16"
+                        json["UpDestination"] = "Kew"
+                        json["VariantDestination"] = NSNull()
                         
                         route.configureWithDictionaryFromRest(json)
                     }
                     
                     it("should have a routeNo") {
-                        expect(route.routeNo).to.equal("5")
+                        expect(route.routeNo).to.equal("16")
                     }
                     
-                    it("should have a name") {
-                        expect(route.name).to.equal("Melbourne")
+                    it("should have an internal routeNo") {
+                        expect(route.internalRouteNo).to.equal(16)
                     }
                     
-                    it("should be an up stop route") {
-                        expect(route.isUpStop).to.beTrue()
+                    it("should have a description") {
+                        expect(route.routeDescription).to.equal("Melbourne Uni - Kew (Via St Kilda Beach)")
+                    }
+                    
+                    it("should have a down destination") {
+                        expect(route.downDestination).to.equal("Melbourne University")
+                    }
+                    
+                    it("should have a up destination") {
+                        expect(route.upDestination).to.equal("Kew")
+                    }
+                    
+                    it("should have a color") {
+                        expect(route.color).to.equal("yellow")
                     }
                 }
                 
                 context("with invalid values") {
                     beforeEach {
-                        let json: Dictionary<String, AnyObject> = [
-                            "RouteNumber": 5,
-                            "Name": NSNull(),
-                            "IsUpStop": "test"
-                        ]
+                        var json: Dictionary<String, AnyObject> = [ : ]
+                        json["AlphaNumericRouteNo"] = NSNull()
+                        json["Description"] = NSNull()
+                        json["DownDestination"] = NSNull()
+                        json["HeadBoardRouteNo"] = NSNull()
+                        json["InternalRouteNo"] = "test"
+                        json["IsMainRoute"] = NSNull()
+                        json["LastModified"] = NSNull()
+                        json["MainRouteNo"] = NSNull()
+                        json["RouteColour"] = NSNull()
+                        json["RouteNo"] = NSNull()
+                        json["UpDestination"] = true
+                        json["VariantDestination"] = NSNull()
                         
                         route.configureWithDictionaryFromRest(json)
                     }
@@ -81,12 +109,24 @@ class RouteSpec: QuickSpec {
                         expect(route.routeNo).to.beNil()
                     }
                     
-                    it("should not have a name") {
-                        expect(route.name).to.beNil()
+                    it("should not have an internal routeNo") {
+                        expect(route.internalRouteNo).to.beNil()
                     }
                     
-                    it("should not be an up stop route") {
-                        expect(route.isUpStop).to.beFalse()
+                    it("should not have a description") {
+                        expect(route.routeDescription).to.beNil()
+                    }
+                    
+                    it("should not have a down destination") {
+                        expect(route.downDestination).to.beNil()
+                    }
+                    
+                    it("should not have a up destination") {
+                        expect(route.upDestination).to.beNil()
+                    }
+                    
+                    it("should not have a color") {
+                        expect(route.color).to.beNil()
                     }
                 }
             }
@@ -94,16 +134,23 @@ class RouteSpec: QuickSpec {
         
         describe("Rest") {
             describe ("insertOrUpdateRouteWithDictionaryFromRest") {
-                
                 var result: (route: Route?, error: NSError?)!
                 var storedRoutes: Route[]!
                 
                 beforeEach {
-                    let json: NSDictionary = [
-                        "RouteNumber": "5",
-                        "Name": "Melbourne",
-                        "IsUpStop": true
-                    ]
+                    var json: Dictionary<String, AnyObject> = [ : ]
+                    json["AlphaNumericRouteNo"] = NSNull()
+                    json["Description"] = "Melbourne Uni - Kew (Via St Kilda Beach)"
+                    json["DownDestination"] = "Melbourne University"
+                    json["HeadBoardRouteNo"] = 16
+                    json["InternalRouteNo"] = 16
+                    json["IsMainRoute"] = true
+                    json["LastModified"] = "/Date(1365516000000+1000)/"
+                    json["MainRouteNo"] = "16"
+                    json["RouteColour"] = "yellow"
+                    json["RouteNo"] = "16"
+                    json["UpDestination"] = "Kew"
+                    json["VariantDestination"] = NSNull()
                     
                     result = Route.insertOrUpdateWithDictionaryFromRest(json, inManagedObjectContext: moc) as (route: Route?, error: NSError?)
                     moc.save(nil)
@@ -122,7 +169,7 @@ class RouteSpec: QuickSpec {
                 }
                 
                 it("should have a routeNo") {
-                    expect(result.route?.routeNo).to.equal("5")
+                    expect(result.route?.routeNo).to.equal("16")
                 }
                 
                 it("should create and store one route") {
@@ -131,40 +178,63 @@ class RouteSpec: QuickSpec {
                 
                 it("should have set it's routeNo") {
                     let storedRoute = storedRoutes[0]
-                    expect(storedRoute.routeNo).to.equal("5")
+                    expect(storedRoute.routeNo).to.equal("16")
                 }
                 
                 it("should have set it's name") {
                     let storedRoute = storedRoutes[0]
-                    expect(storedRoute.name).to.equal("Melbourne")
+                    expect(storedRoute.routeDescription).to.equal("Melbourne Uni - Kew (Via St Kilda Beach)")
                 }
             }
             
             describe ("insertOrUpdateRoutesFromRestArray") {
-                
                 var results: (routes: Route?[], errors: NSError?[])!
                 var routes: Route?[]!
                 var errors: NSError?[]!
                 var storedRoutes: Route[]!
                 
                 beforeEach {
-                    let json1: NSDictionary = [
-                        "RouteNumber": "5",
-                        "Name": "Melbourne",
-                        "IsUpStop": true
-                    ]
+                    var json1: Dictionary<String, AnyObject> = [ : ]
+                    json1["AlphaNumericRouteNo"] = NSNull()
+                    json1["Description"] = "Melbourne Uni - Kew (Via St Kilda Beach)"
+                    json1["DownDestination"] = "Melbourne University"
+                    json1["HeadBoardRouteNo"] = 16
+                    json1["InternalRouteNo"] = 16
+                    json1["IsMainRoute"] = true
+                    json1["LastModified"] = "/Date(1365516000000+1000)/"
+                    json1["MainRouteNo"] = "16"
+                    json1["RouteColour"] = "yellow"
+                    json1["RouteNo"] = "16"
+                    json1["UpDestination"] = "Kew"
+                    json1["VariantDestination"] = NSNull()
                     
-                    let json2: NSDictionary = [
-                        "RouteNumber": "10",
-                        "Name": "Pyrmont",
-                        "IsUpStop": false
-                    ]
+                    var json2: Dictionary<String, AnyObject> = [ : ]
+                    json2["AlphaNumericRouteNo"] = "3a"
+                    json2["Description"] = "Melbourne Uni - East Malvern via St Kilda"
+                    json2["DownDestination"] = "Melbourne University via St Kilda"
+                    json2["HeadBoardRouteNo"] = 4
+                    json2["InternalRouteNo"] = 4
+                    json2["IsMainRoute"] = true
+                    json2["LastModified"] = "/Date(1247532405497+1000)/"
+                    json2["MainRouteNo"] = "4"
+                    json2["RouteColour"] = "cyan"
+                    json2["RouteNo"] = "3a"
+                    json2["UpDestination"] = "East Malvern via St Kilda"
+                    json2["VariantDestination"] = "via St Kilda"
                     
-                    let json3: NSDictionary = [
-                        "RouteNumber": "10",
-                        "Name": "Pyrmont",
-                        "IsUpStop": false
-                    ]
+                    var json3: Dictionary<String, AnyObject> = [ : ]
+                    json3["AlphaNumericRouteNo"] = "3a"
+                    json3["Description"] = "Melbourne Uni - East Malvern via St Kilda"
+                    json3["DownDestination"] = "Melbourne University via St Kilda"
+                    json3["HeadBoardRouteNo"] = 4
+                    json3["InternalRouteNo"] = 4
+                    json3["IsMainRoute"] = true
+                    json3["LastModified"] = "/Date(1247532405497+1000)/"
+                    json3["MainRouteNo"] = "4"
+                    json3["RouteColour"] = "cyan"
+                    json3["RouteNo"] = "3a"
+                    json3["UpDestination"] = "East Malvern via St Kilda"
+                    json3["VariantDestination"] = "via St Kilda"
                     
                     let array: NSDictionary[] = [json1, json2, json3]
                     results = Route.insertOrUpdateFromRestArray(array, inManagedObjectContext: moc) as (routes: Route?[], errors: NSError?[])
@@ -188,11 +258,11 @@ class RouteSpec: QuickSpec {
                 }
                 
                 it("should have a routeNo") {
-                    expect(routes[0]?.routeNo).to.equal("5")
+                    expect(routes[0]?.routeNo).to.equal("16")
                 }
                 
-                it("should have a route name") {
-                    expect(routes[2]?.name).to.equal("Pyrmont")
+                it("should have a route description") {
+                    expect(routes[2]?.routeDescription).to.equal("Melbourne Uni - East Malvern via St Kilda")
                 }
                 
                 it("should create and store 2 routes") {
@@ -201,19 +271,18 @@ class RouteSpec: QuickSpec {
                 
                 it("should have set it's routeNo") {
                     let storedRoute = storedRoutes[0]
-                    expect(storedRoute.routeNo).to.equal("10")
+                    expect(storedRoute.routeNo).to.equal("16")
                 }
                 
                 it("should have set it's name") {
                     let storedRoute = storedRoutes[1]
-                    expect(storedRoute.name).to.equal("Melbourne")
+                    expect(storedRoute.routeDescription).to.equal("Melbourne Uni - East Malvern via St Kilda")
                 }
             }
         }
         
         describe("Fetching route(s)") {
             describe("fetchOneRouteForPrimaryKey") {
-                
                 var result: (route: Route?, error:NSError?)!
                 
                 context("when empty") {
@@ -231,7 +300,6 @@ class RouteSpec: QuickSpec {
                 }
                 
                 context("when not empty") {
-                    
                     beforeEach() {
                         let route1: Route = Route.insertInManagedObjectContext(moc)
                         route1.uniqueIdentifier = "composed-6"
@@ -264,7 +332,6 @@ class RouteSpec: QuickSpec {
             }
             
             describe("fetchAllRoutesForManagedObjectIds") {
-                
                 var result: (routes: Route[]?, error:NSError?)!
                 
                 context("when empty") {

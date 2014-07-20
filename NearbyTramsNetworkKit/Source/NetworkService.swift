@@ -40,7 +40,7 @@ class NetworkService
 
     func getAllRoutesWithCompletionHandler(completionHandler: ((NSDictionary[]?, NSError?) -> Void)?) -> NSURLSessionDataTask
     {
-        let url = tokenisedURLWithString("TramTracker/RestService/GetDestinationsForAllRoutes/")
+        let url = tokenisedURLWithString("TramTracker/RestService/GetRouteSummaries/")
         
         let task = session.dataTaskWithURL(url, completionHandler:{
             data, response, error -> Void in

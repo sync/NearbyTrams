@@ -5,11 +5,14 @@
 import CoreData
 
 class Route: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObject
-{
+{    
     @NSManaged var uniqueIdentifier: NSString?
     @NSManaged var routeNo: String?
-    @NSManaged var name: String?
-    @NSManaged var isUpStop: Bool
+    @NSManaged var internalRouteNo: NSNumber? // Why when Int it crashes
+    @NSManaged var routeDescription: String?
+    @NSManaged var downDestination: String?
+    @NSManaged var upDestination: String?
+    @NSManaged var color: String?
     @NSManaged var stops : NSMutableSet
     
     class var entityName: String {
@@ -26,24 +29,21 @@ class Route: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObject
     
     class func primaryKeyValueFromRest(dictionary: NSDictionary) -> String?
     {
-        let tmpRouteNo =  dictionary["RouteNumber"] as? String
-        var tmpIsUpStop = false
-        if let tmp =  dictionary["IsUpStop"] as? Bool
+        if let tmpRouteNo =  dictionary["RouteNo"] as? String
         {
-            tmpIsUpStop = tmp
+           return tmpRouteNo
         }
         
-        return "\(tmpRouteNo)-\(tmpIsUpStop)"
+        return nil
     }
     
     func configureWithDictionaryFromRest(dictionary: NSDictionary) -> Void
     {
-        routeNo =  dictionary["RouteNumber"] as? String
-        name = dictionary["Name"] as? String
-        
-        if let tmp =  dictionary["IsUpStop"] as? Bool
-        {
-            isUpStop = tmp
-        }
+        routeNo =  dictionary["RouteNo"] as? String
+        internalRouteNo =  dictionary["InternalRouteNo"] as? Int
+        routeDescription =  dictionary["Description"] as? String
+        downDestination =  dictionary["DownDestination"] as? String
+        upDestination =  dictionary["UpDestination"] as? String
+        color =  dictionary["RouteColour"] as? String
     }
 }
