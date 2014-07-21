@@ -26,5 +26,27 @@ class RouteViewModelSpec: QuickSpec {
                 }
             }
         }
+        
+        describe("equatable") {
+            beforeEach {
+                viewModel = RouteViewModel(identifier: "an identifier", routeNo: "76", routeDescription: "a descption",  downDestination: "a down destination", upDestination: "an up destination")
+            }
+            
+            context ("with the same identifiers") {
+                it ("should be equal") {
+                    var viewModelEqual = RouteViewModel(identifier: "an identifier", routeNo: "76", routeDescription: "a descption",  downDestination: "a down destination", upDestination: "another up destination")
+                    
+                    expect(viewModel == viewModelEqual).to.beTrue()
+                }
+            }
+            
+            context ("without same identifiers") {
+                it ("should be equal") {
+                    var viewModelNotEqual = RouteViewModel(identifier: "another identifier", routeNo: "76", routeDescription: "a descption",  downDestination: "a down destination", upDestination: "an up destination")
+                    
+                    expect(viewModel == viewModelNotEqual).to.beFalse()
+                }
+            }
+        }
     }
 }

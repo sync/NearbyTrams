@@ -25,5 +25,27 @@ class StopViewModelSpec: QuickSpec {
                 }
             }
         }
+        
+        describe("equatable") {
+            beforeEach {
+                viewModel = StopViewModel(identifier: "an identifier", routeNo: "76", routeDescription: "a description",  isUpStop: true, stopNo: 45, stopName: "a stop name", schedules: nil)
+            }
+            
+            context ("with the same identifiers") {
+                it ("should be equal") {
+                    var viewModelEqual = StopViewModel(identifier: "an identifier", routeNo: "76", routeDescription: "a description",  isUpStop: true, stopNo: 45, stopName: "another stop name", schedules: nil)
+                    
+                    expect(viewModel == viewModelEqual).to.beTrue()
+                }
+            }
+            
+            context ("without same identifiers") {
+                it ("should be equal") {
+                    var viewModelNotEqual = StopViewModel(identifier: "another identifier", routeNo: "76", routeDescription: "a description",  isUpStop: true, stopNo: 45, stopName: "a stop name", schedules: nil)
+                    
+                    expect(viewModel == viewModelNotEqual).to.beFalse()
+                }
+            }
+        }
     }
 }
