@@ -32,7 +32,7 @@ public class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
     {
         if let fetchedObjects: [Route] = fetchedResultsController.fetchedObjects as? [Route]
         {
-            let orderedIdentifiers = fetchedObjects.filter {
+            return fetchedObjects.filter {
                 route -> Bool in
                 
                 if let uniqueIdentifier = route.uniqueIdentifier
@@ -47,8 +47,6 @@ public class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
                     return route.uniqueIdentifier!
             }
         }
-        
-        
         }
         
         return []
