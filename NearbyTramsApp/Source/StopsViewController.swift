@@ -35,13 +35,13 @@ class StopsViewController: NSViewController , NSTableViewDelegate, NSTableViewDa
         self.stopsViewControllerModel.delegate = self
     }
     
-    // NSTableViewDataSource
+    // MARK: NSTableViewDataSource
     func numberOfRowsInTableView(tableView: NSTableView!) -> Int
     {
         return self.stopsViewControllerModel.stopsCount
     }
     
-    // NSTableViewDelegate
+    // MARK: NSTableViewDelegate
     func tableView(tableView: NSTableView, viewForTableColumn: NSTableColumn, row: Int) -> NSView
     {
         let stopModel = self.stopsViewControllerModel.stopAtIndex(row)
@@ -52,13 +52,13 @@ class StopsViewController: NSViewController , NSTableViewDelegate, NSTableViewDa
         return stopView
     }
     
-    // StopsViewControllerModelDelegate
+    // MARK: StopsViewControllerModelDelegate
     func stopsViewControllerModelDidUpdateStops(model: StopsViewControllerModel)
     {
         self.tableView?.reloadData()
     }
     
-    // RouteSelectionManagerDelegate
+    // MARK: RouteSelectionManagerDelegate
     func routeSelectionManagerDidChangeSelectedRoute(selectionManager: RouteSelectionManager, route: Route?)
     {
         self.stopsViewControllerModel.route = route

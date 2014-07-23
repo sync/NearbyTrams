@@ -35,13 +35,13 @@ class RoutesViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
         self.routesViewControllerModel.delegate = self
     }
     
-    // NSTableViewDataSource
+    // MARK: NSTableViewDataSource
     func numberOfRowsInTableView(tableView: NSTableView!) -> Int
     {
         return self.routesViewControllerModel.routesCount
     }
     
-    // NSTableViewDelegate
+    // MARK: NSTableViewDelegate
     func tableView(tableView: NSTableView, viewForTableColumn: NSTableColumn, row: Int) -> NSView
     {
         let routeModel = self.routesViewControllerModel.routeAtIndex(row)
@@ -71,7 +71,7 @@ class RoutesViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
         }
     }
     
-    // RoutesViewControllerModelDelegate
+    // MARK: RoutesViewControllerModelDelegate
     func routesViewControllerModelDidUpdateRoutes(model: RoutesViewControllerModel)
     {
         self.tableView?.reloadData()

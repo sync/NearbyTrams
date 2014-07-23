@@ -76,7 +76,7 @@ public class StopsViewControllerModel: NSObject, StopsViewModelDelegate, Schedul
         self.delegate?.stopsViewControllerModelDidUpdateStops(self)
     }
     
-    // StopsViewModelDelegate
+    // MARK: StopsViewModelDelegate
     public func stopsViewModelDidAddStops(stopsViewModel: StopsViewModel, stops: [StopViewModel])
     {
         for stop in stops
@@ -106,7 +106,7 @@ public class StopsViewControllerModel: NSObject, StopsViewModelDelegate, Schedul
         didUpdateStops()
     }
         
-    // SchedulesRepositoryDelegate
+    // MARK: SchedulesRepositoryDelegate
     func schedulesRepositoryLoadingStateDidChange(repository: SchedulesRepository, isLoading loading: Bool) -> Void
     {
         println("schedules are loading: \(loading)")
