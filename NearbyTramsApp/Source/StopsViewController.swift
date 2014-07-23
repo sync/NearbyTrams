@@ -15,7 +15,7 @@ class StopsViewController: NSViewController , NSTableViewDelegate, NSTableViewDa
         }
     }
     
-    @IBOutlet var tableView: NSTableView
+    @IBOutlet weak var tableView: NSTableView?
     let stopsViewControllerModel: StopsViewControllerModel
     
     let managedObjectContext: NSManagedObjectContext = {
@@ -55,7 +55,7 @@ class StopsViewController: NSViewController , NSTableViewDelegate, NSTableViewDa
     // StopsViewControllerModelDelegate
     func stopsViewControllerModelDidUpdateStops(model: StopsViewControllerModel)
     {
-        self.tableView.reloadData()
+        self.tableView?.reloadData()
     }
     
     // RouteSelectionManagerDelegate

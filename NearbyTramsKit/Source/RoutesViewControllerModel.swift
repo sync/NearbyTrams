@@ -5,18 +5,18 @@
 import Foundation
 import NearbyTramsStorageKit
 
-protocol RoutesViewControllerModelDelegate
+public protocol RoutesViewControllerModelDelegate
 {
     func routesViewControllerModelDidUpdateRoutes(model: RoutesViewControllerModel)
 }
 
-class RoutesViewControllerModel: NSObject, RoutesViewModelDelegate
+public class RoutesViewControllerModel: NSObject, RoutesViewModelDelegate
 {
     let viewModel: RoutesViewModel
     
-    var delegate: RoutesViewControllerModelDelegate?
+    public var delegate: RoutesViewControllerModelDelegate?
     
-    init(viewModel: RoutesViewModel)
+    public init(viewModel: RoutesViewModel)
     {
         self.viewModel = viewModel
         
@@ -31,11 +31,11 @@ class RoutesViewControllerModel: NSObject, RoutesViewModelDelegate
         viewModel.startUpdatingRoutesWithFetchRequest(fetchRequest)
     }
     
-    var routesCount: Int {
+    public var routesCount: Int {
     return self.viewModel.routesCount
     }
     
-    func routeAtIndex(index: Int) -> RouteViewModel
+    public func routeAtIndex(index: Int) -> RouteViewModel
     {
         return self.viewModel.routeAtIndex(index)
     }
@@ -46,17 +46,17 @@ class RoutesViewControllerModel: NSObject, RoutesViewModelDelegate
     }
     
     // RoutesViewModelDelegate
-    func routesViewModelDidAddRoutes(routesViewModel: RoutesViewModel, routes: [RouteViewModel])
+    public func routesViewModelDidAddRoutes(routesViewModel: RoutesViewModel, routes: [RouteViewModel])
     {
         didUpdateRoutes()
     }
     
-    func routesViewModelDidRemoveRoutes(routesViewModel: RoutesViewModel, routes: [RouteViewModel])
+    public func routesViewModelDidRemoveRoutes(routesViewModel: RoutesViewModel, routes: [RouteViewModel])
     {
         didUpdateRoutes()
     }
     
-    func routesViewModelDidUpdateRoutes(routesViewModel: RoutesViewModel, routes: [RouteViewModel])
+    public func routesViewModelDidUpdateRoutes(routesViewModel: RoutesViewModel, routes: [RouteViewModel])
     {
         didUpdateRoutes()
     }

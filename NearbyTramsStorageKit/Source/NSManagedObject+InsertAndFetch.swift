@@ -4,7 +4,7 @@
 
 import CoreData
 
-protocol InsertAndFetchManagedObject {
+public protocol InsertAndFetchManagedObject {
     class var entityName: String { get }
     class var primaryKey: String { get }
     class func insertInManagedObjectContext<T where T: NSManagedObject, T: InsertAndFetchManagedObject>(managedObjectContext: NSManagedObjectContext) -> T
@@ -12,14 +12,14 @@ protocol InsertAndFetchManagedObject {
     class func fetchAllForManagedObjectIds<T where T: NSManagedObject, T: InsertAndFetchManagedObject>(managedObjectIds: [NSManagedObjectID], usingManagedObjectContext managedObjectContext: NSManagedObjectContext) -> ([T]?, NSError?)
 }
 
-extension NSManagedObject
+public extension NSManagedObject
     {
-    class func insertInManagedObjectContext<T where T: NSManagedObject, T: InsertAndFetchManagedObject>(managedObjectContext: NSManagedObjectContext) -> T
+    public class func insertInManagedObjectContext<T where T: NSManagedObject, T: InsertAndFetchManagedObject>(managedObjectContext: NSManagedObjectContext) -> T
     {
         return NSEntityDescription.insertNewObjectForEntityForName(T.entityName, inManagedObjectContext: managedObjectContext) as T
     }
     
-    class func fetchOneForPrimaryKeyValue<T where T: NSManagedObject, T: InsertAndFetchManagedObject>(primaryKeyValue: AnyObject, usingManagedObjectContext managedObjectContext: NSManagedObjectContext) -> (T?, NSError?)
+    public class func fetchOneForPrimaryKeyValue<T where T: NSManagedObject, T: InsertAndFetchManagedObject>(primaryKeyValue: AnyObject, usingManagedObjectContext managedObjectContext: NSManagedObjectContext) -> (T?, NSError?)
     {
         let predicate = NSPredicate(format:"%K == %@", argumentArray: [T.primaryKey, primaryKeyValue])        
         let request = NSFetchRequest(entityName: T.entityName)
@@ -39,7 +39,7 @@ extension NSManagedObject
         return (managedObject, error)
     }
     
-    class func fetchAllForManagedObjectIds<T where T: NSManagedObject, T: InsertAndFetchManagedObject>(managedObjectIds: [NSManagedObjectID], usingManagedObjectContext managedObjectContext: NSManagedObjectContext) -> ([T]?, NSError?)
+    public class func fetchAllForManagedObjectIds<T where T: NSManagedObject, T: InsertAndFetchManagedObject>(managedObjectIds: [NSManagedObjectID], usingManagedObjectContext managedObjectContext: NSManagedObjectContext) -> ([T]?, NSError?)
     {
         let predicate = NSPredicate(format:"self IN %@", managedObjectIds)
         let request = NSFetchRequest(entityName: T.entityName)

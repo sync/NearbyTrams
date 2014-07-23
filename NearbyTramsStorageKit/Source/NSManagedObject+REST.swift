@@ -4,16 +4,16 @@
 
 import CoreData
 
-protocol RESTManagedObject: InsertAndFetchManagedObject {
+public protocol RESTManagedObject: InsertAndFetchManagedObject {
     class func primaryKeyValueFromRest(dictionary: NSDictionary) -> String?
     class func insertOrUpdateWithDictionaryFromRest<T where T: NSManagedObject, T: RESTManagedObject>(dictionary: NSDictionary, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> (T?, NSError?)
     class func insertOrUpdateFromRestArray<T where T: NSManagedObject, T: RESTManagedObject>(array: [NSDictionary], inManagedObjectContext managedObjectContext: NSManagedObjectContext)  -> ([T?], [NSError?])
     mutating func configureWithDictionaryFromRest(dictionary: NSDictionary) -> Void
 }
 
-extension NSManagedObject
+public extension NSManagedObject
     {
-    class func insertOrUpdateWithDictionaryFromRest<T where T: NSManagedObject, T: RESTManagedObject>(dictionary: NSDictionary, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> (T?, NSError?)
+    public class func insertOrUpdateWithDictionaryFromRest<T where T: NSManagedObject, T: RESTManagedObject>(dictionary: NSDictionary, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> (T?, NSError?)
     {
         var foundManagedObject: T?
         
@@ -47,7 +47,7 @@ extension NSManagedObject
         return (managedObject, nil)
     }
     
-    class func insertOrUpdateFromRestArray<T where T: NSManagedObject, T: RESTManagedObject>(array: [NSDictionary], inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> ([T?], [NSError?])
+    public class func insertOrUpdateFromRestArray<T where T: NSManagedObject, T: RESTManagedObject>(array: [NSDictionary], inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> ([T?], [NSError?])
     {
         var managedObjects: [T?] = []
         var errors: [NSError?] = []

@@ -4,17 +4,17 @@
 
 import Foundation
 
-class StopViewModel: Equatable
+public class StopViewModel: Equatable
 {
-    let identifier: String
-    var routeNo: String
-    var routeDescription: String
-    var isUpStop: Bool
-    var stopNo: Int
-    var stopName: String
-    var schedules: [NSDate]?
+    public let identifier: String
+    public var routeNo: String
+    public var routeDescription: String
+    public var isUpStop: Bool
+    public var stopNo: Int
+    public var stopName: String
+    public var schedules: [NSDate]?
     
-    init (identifier: String, routeNo: String, routeDescription: String, isUpStop: Bool, stopNo: Int, stopName: String, schedules: [NSDate]?)
+    public init (identifier: String, routeNo: String, routeDescription: String, isUpStop: Bool, stopNo: Int, stopName: String, schedules: [NSDate]?)
     {
         self.identifier = identifier
         self.routeNo = routeNo
@@ -25,7 +25,7 @@ class StopViewModel: Equatable
         self.schedules = schedules
     }
     
-    func updateWithRouteNo(routeNo: String, routeDescription: String, isUpStop: Bool, stopNo: Int, stopName: String, schedules: [NSDate]?)
+    public func updateWithRouteNo(routeNo: String, routeDescription: String, isUpStop: Bool, stopNo: Int, stopName: String, schedules: [NSDate]?)
     {
         self.routeNo = routeNo
         self.routeDescription = routeDescription
@@ -36,7 +36,7 @@ class StopViewModel: Equatable
     }
 }
 
-@infix func ==(lhs: StopViewModel, rhs: StopViewModel) -> Bool
+@infix public func ==(lhs: StopViewModel, rhs: StopViewModel) -> Bool
 {
     return lhs.identifier == rhs.identifier
 }

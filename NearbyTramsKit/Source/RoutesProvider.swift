@@ -6,18 +6,18 @@ import Foundation
 import NearbyTramsStorageKit
 import NearbyTramsNetworkKit
 
-class RoutesProvider
+public class RoutesProvider
 {
     let networkService: NetworkService
     let managedObjectContext: NSManagedObjectContext
     
-    init (networkService: NetworkService =  NetworkService(), managedObjectContext: NSManagedObjectContext)
+    public init (networkService: NetworkService =  NetworkService(), managedObjectContext: NSManagedObjectContext)
     {
         self.networkService = networkService
         self.managedObjectContext = managedObjectContext
     }
     
-    func getAllRoutesWithManagedObjectContext(managedObjectContext: NSManagedObjectContext, completionHandler: (([NSManagedObjectID]?, NSError?) -> Void)?) -> Void
+    public func getAllRoutesWithManagedObjectContext(managedObjectContext: NSManagedObjectContext, completionHandler: (([NSManagedObjectID]?, NSError?) -> Void)?) -> Void
     {
         let task = networkService.getAllRoutesWithCompletionHandler {
             routes, error -> Void in

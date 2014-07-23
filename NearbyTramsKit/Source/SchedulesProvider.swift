@@ -6,18 +6,18 @@ import Foundation
 import NearbyTramsStorageKit
 import NearbyTramsNetworkKit
 
-class SchedulesProvider
+public class SchedulesProvider
 {
     let networkService: NetworkService
     let managedObjectContext: NSManagedObjectContext
     
-    init (networkService: NetworkService =  NetworkService(), managedObjectContext: NSManagedObjectContext)
+    public init (networkService: NetworkService =  NetworkService(), managedObjectContext: NSManagedObjectContext)
     {
         self.networkService = networkService
         self.managedObjectContext = managedObjectContext
     }
     
-    func getNextPredictionsWithStopNo(stopNo: Int, routeNo: String = "0", managedObjectContext: NSManagedObjectContext, completionHandler: (([NSManagedObjectID]?, NSError?) -> Void)?) -> Void
+    public func getNextPredictionsWithStopNo(stopNo: Int, routeNo: String = "0", managedObjectContext: NSManagedObjectContext, completionHandler: (([NSManagedObjectID]?, NSError?) -> Void)?) -> Void
     {
         let task = networkService.getNextPredictionsWithStopNo(stopNo, routeNo: routeNo) {
             schedules, error -> Void in

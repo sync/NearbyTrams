@@ -5,17 +5,17 @@
 import Foundation
 import NearbyTramsStorageKit
 
-protocol StopsViewControllerModelDelegate
+public protocol StopsViewControllerModelDelegate
 {
     func stopsViewControllerModelDidUpdateStops(model: StopsViewControllerModel)
 }
 
-class StopsViewControllerModel: NSObject, StopsViewModelDelegate, SchedulesRepositoryDelegate
+public class StopsViewControllerModel: NSObject, StopsViewModelDelegate, SchedulesRepositoryDelegate
 {
-    var delegate: StopsViewControllerModelDelegate?
+    public var delegate: StopsViewControllerModelDelegate?
     var schedulesRepostiories: Dictionary<String, SchedulesRepository>
     
-    var route: Route? {
+    public var route: Route? {
     didSet {
         if route
         {
@@ -35,7 +35,7 @@ class StopsViewControllerModel: NSObject, StopsViewModelDelegate, SchedulesRepos
     let provider: SchedulesProvider
     let timer: NSTimer?
     
-    init(viewModel: StopsViewModel, provider: SchedulesProvider, managedObjectContext: NSManagedObjectContext)
+    public init(viewModel: StopsViewModel, provider: SchedulesProvider, managedObjectContext: NSManagedObjectContext)
     {
         self.viewModel = viewModel
         self.managedObjectContext = managedObjectContext
@@ -62,11 +62,11 @@ class StopsViewControllerModel: NSObject, StopsViewModelDelegate, SchedulesRepos
         }
     }
     
-    var stopsCount: Int {
+    public var stopsCount: Int {
     return self.viewModel.stopsCount
     }
     
-    func stopAtIndex(index: Int) -> StopViewModel
+    public func stopAtIndex(index: Int) -> StopViewModel
     {
         return self.viewModel.stopAtIndex(index)
     }
@@ -77,7 +77,7 @@ class StopsViewControllerModel: NSObject, StopsViewModelDelegate, SchedulesRepos
     }
     
     // StopsViewModelDelegate
-    func stopsViewModelDidAddStops(stopsViewModel: StopsViewModel, stops: [StopViewModel])
+    public func stopsViewModelDidAddStops(stopsViewModel: StopsViewModel, stops: [StopViewModel])
     {
         for stop in stops
         {
@@ -88,12 +88,12 @@ class StopsViewControllerModel: NSObject, StopsViewModelDelegate, SchedulesRepos
         didUpdateStops()
     }
     
-    func stopsViewModelDidUpdateStops(stopsViewModel: StopsViewModel, stops: [StopViewModel])
+    public func stopsViewModelDidUpdateStops(stopsViewModel: StopsViewModel, stops: [StopViewModel])
     {
         didUpdateStops()
     }
     
-    func stopsViewModelDidRemoveStops(stopsViewModel: StopsViewModel, stops: [StopViewModel])
+    public func stopsViewModelDidRemoveStops(stopsViewModel: StopsViewModel, stops: [StopViewModel])
     {
         for stop in stops
         {

@@ -16,10 +16,10 @@ import CoreData
 
 var _sharedInstance: CoreDataStackManager?
 
-class CoreDataStackManager {
+public class CoreDataStackManager {
     
     
-    class var sharedInstance: CoreDataStackManager {
+    public class var sharedInstance: CoreDataStackManager {
         
     if _sharedInstance {
         return _sharedInstance!
@@ -32,7 +32,7 @@ class CoreDataStackManager {
     /**
     Returns the managed object model for the application.
     */
-    lazy var managedObjectModel: NSManagedObjectModel = {
+    public lazy var managedObjectModel: NSManagedObjectModel = {
         let bundle = NSBundle(forClass: CoreDataStackManager.self)
         let modelPath = bundle.pathForResource("NearbyTrams", ofType: "momd")
         let modelURL = NSURL(fileURLWithPath: modelPath)
@@ -43,7 +43,7 @@ class CoreDataStackManager {
     /**
     Returns the persistent store coordinator for the application. This implementation creates and return a coordinator, having added the store for the application to it. (The directory for the store is created, if necessary.)
     */
-    var persistentStoreCoordinator: NSPersistentStoreCoordinator! {
+    public var persistentStoreCoordinator: NSPersistentStoreCoordinator! {
     
     if _persistentStoreCoordinator {
         return _persistentStoreCoordinator

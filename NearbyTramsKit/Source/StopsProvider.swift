@@ -6,18 +6,18 @@ import Foundation
 import NearbyTramsStorageKit
 import NearbyTramsNetworkKit
 
-class StopsProvider
+public class StopsProvider
 {
     let networkService: NetworkService
     let managedObjectContext: NSManagedObjectContext
     
-    init (networkService: NetworkService =  NetworkService(), managedObjectContext: NSManagedObjectContext)
+    public init (networkService: NetworkService =  NetworkService(), managedObjectContext: NSManagedObjectContext)
     {
         self.networkService = networkService
         self.managedObjectContext = managedObjectContext
     }
     
-    func getStopsWithRouteNo(routeNo: Int, requestStopInfo: Bool = false, managedObjectContext: NSManagedObjectContext, completionHandler: (([NSManagedObjectID]?, NSError?) -> Void)?) -> Void
+    public func getStopsWithRouteNo(routeNo: Int, requestStopInfo: Bool = false, managedObjectContext: NSManagedObjectContext, completionHandler: (([NSManagedObjectID]?, NSError?) -> Void)?) -> Void
     {
         let task = networkService.getStopsByRouteWithRouteNo(routeNo) {
             stops, error -> Void in
@@ -88,7 +88,7 @@ class StopsProvider
         }
     }
     
-    func getStopInformationWithStopNo(stopNo: Int, managedObjectContext: NSManagedObjectContext, completionHandler: ((NSManagedObjectID?, NSError?) -> Void)?) -> Void
+    public func getStopInformationWithStopNo(stopNo: Int, managedObjectContext: NSManagedObjectContext, completionHandler: ((NSManagedObjectID?, NSError?) -> Void)?) -> Void
     {
         let task = networkService.getStopInformationWithStopNo(stopNo) {
             dictionary, error -> Void in

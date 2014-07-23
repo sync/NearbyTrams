@@ -4,9 +4,9 @@
 
 import Foundation
 
-extension NSDate
+public extension NSDate
 {
-    class func fromDonet(string: NSString) -> NSDate!
+    public class func fromDonet(string: NSString) -> NSDate!
     {
         let startPositionRange = string.rangeOfString("(")
         let endPositionRange = string.rangeOfString("+")
@@ -21,7 +21,7 @@ extension NSDate
         return nil
     }
     
-    func dotNetFormattedString() -> NSString
+    public func dotNetFormattedString() -> NSString
     {
         let timeSince1970 = self.timeIntervalSince1970
         let offset = Int(NSTimeInterval(NSTimeZone.defaultTimeZone().secondsFromGMT) / 3600)

@@ -15,7 +15,7 @@ class RoutesViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
         }
     }
     
-    @IBOutlet var tableView: NSTableView
+    @IBOutlet weak var tableView: NSTableView?
     var routeSelectionManager: RouteSelectionManager?
     let routesViewControllerModel: RoutesViewControllerModel
     
@@ -56,12 +56,14 @@ class RoutesViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
     {
         // FIXME: route view controller model should return a route
         var route: Route? = nil
-        let selectedRow = tableView.selectedRow
-        if selectedRow != -1
+        if let selectedRow = tableView?.selectedRow
         {
-            let routeModel = self.routesViewControllerModel.routeAtIndex(selectedRow)
-            let result: (route: Route?, error:NSError?) = Route.fetchOneForPrimaryKeyValue(routeModel.identifier, usingManagedObjectContext: self.managedObjectContext)
-            route = result.route
+            if selectedRow != -1
+            {
+                let routeModel = self.routesViewControllerModel.routeAtIndex(selectedRow)
+                let result: (route: Route?, error:NSError?) = Route.fetchOneForPrimaryKeyValue(routeModel.identifier, usingManagedObjectContext: self.managedObjectContext)
+                route = result.route
+            }
         }
         if let selectionManagager = self.routeSelectionManager
         {
@@ -72,6 +74,6 @@ class RoutesViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
     // RoutesViewControllerModelDelegate
     func routesViewControllerModelDidUpdateRoutes(model: RoutesViewControllerModel)
     {
-        self.tableView.reloadData()
+        self.tableView?.reloadData()
     }
 }

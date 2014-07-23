@@ -5,16 +5,16 @@
 import Foundation
 import NearbyTramsStorageKit
 
-protocol RoutesViewModelDelegate
+public protocol RoutesViewModelDelegate
 {
     func routesViewModelDidAddRoutes(routesViewModel: RoutesViewModel, routes: [RouteViewModel])
     func routesViewModelDidRemoveRoutes(routesViewModel: RoutesViewModel, routes: [RouteViewModel])
     func routesViewModelDidUpdateRoutes(routesViewModel: RoutesViewModel, routes: [RouteViewModel])
 }
 
-class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
+public class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
 {
-    var delegate: RoutesViewModelDelegate?
+    public var delegate: RoutesViewModelDelegate?
     
     let managedObjectContext: NSManagedObjectContext
     
@@ -22,28 +22,36 @@ class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
     var routesStorage: Dictionary<String, RouteViewModel> = [ : ]
     var currentChangeSet: FetchedResultsControllerChangeSet?
     
-    init (managedObjectContext: NSManagedObjectContext)
+    public init (managedObjectContext: NSManagedObjectContext)
     {
         self.managedObjectContext = managedObjectContext
     }
     
     var orderedRouteIdentifiers: [String] {
-    let orderedIdentifiers = self.fetchedResultsController?.fetchedObjects.filter {
-        route -> Bool in
-        
-        if let uniqueIdentifier = route.uniqueIdentifier as? NSString
+    if let fetchedResultsController = self.fetchedResultsController
+    {
+        if let fetchedObjects: [Route] = fetchedResultsController.fetchedObjects as? [Route]
         {
-            return self.routesStorage.indexForKey(uniqueIdentifier) != nil
+            let orderedIdentifiers = fetchedObjects.filter {
+                route -> Bool in
+                
+                if let uniqueIdentifier = route.uniqueIdentifier
+                {
+                    return self.routesStorage.indexForKey(uniqueIdentifier) != nil
+                }
+                
+                return false
+                }.map {
+                    route -> String in
+                    
+                    return route.uniqueIdentifier!
+            }
         }
         
-        return false
-        }.map {
-            route -> String in
-            
-            return route.uniqueIdentifier!
+        
         }
         
-        return orderedIdentifiers ? orderedIdentifiers! : []
+        return []
     }
     
     var routes: [RouteViewModel] {
@@ -58,16 +66,16 @@ class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
         }
     }
     
-    var routesCount: Int {
+    public var routesCount: Int {
     return self.routes.count
     }
     
-    func routeAtIndex(index: Int) -> RouteViewModel
+    public func routeAtIndex(index: Int) -> RouteViewModel
     {
         return self.routes[index]
     }
     
-    func startUpdatingRoutesWithFetchRequest(fetchRequest: NSFetchRequest)
+    public func startUpdatingRoutesWithFetchRequest(fetchRequest: NSFetchRequest)
     {
         let currentFetchedResultsController = SNRFetchedResultsController(managedObjectContext: managedObjectContext, fetchRequest: fetchRequest)
         currentFetchedResultsController.delegate = self
@@ -88,7 +96,7 @@ class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
         self.fetchedResultsController = currentFetchedResultsController
     }
     
-    func stopUpdatingRoutes()
+    public func stopUpdatingRoutes()
     {
         if let currentFetchedResultsController = fetchedResultsController
         {
@@ -272,7 +280,7 @@ class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
         self.delegate?.routesViewModelDidUpdateRoutes(self, routes: routes)
     }
     
-    func controllerWillChangeContent(controller: SNRFetchedResultsController!)
+    public func controllerWillChangeContent(controller: SNRFetchedResultsController!)
     {
         if let changeSet = currentChangeSet
         {
@@ -290,7 +298,7 @@ class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
         }
     }
     
-    func controllerDidChangeContent(controller: SNRFetchedResultsController!)
+    public func controllerDidChangeContent(controller: SNRFetchedResultsController!)
     {
         if let changeSet = currentChangeSet
         {

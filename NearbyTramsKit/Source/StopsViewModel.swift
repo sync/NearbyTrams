@@ -5,14 +5,14 @@
 import Foundation
 import NearbyTramsStorageKit
 
-protocol StopsViewModelDelegate
+public protocol StopsViewModelDelegate
 {
     func stopsViewModelDidAddStops(stopsViewModel: StopsViewModel, stops: [StopViewModel])
     func stopsViewModelDidRemoveStops(stopsViewModel: StopsViewModel, stops: [StopViewModel])
     func stopsViewModelDidUpdateStops(stopsViewModel: StopsViewModel, stops: [StopViewModel])
 }
 
-class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
+public class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
 {
     var delegate: StopsViewModelDelegate?
     
@@ -23,22 +23,22 @@ class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
     var currentChangeSet: FetchedResultsControllerChangeSet?
     var stops: [StopViewModel]
     
-    init (managedObjectContext: NSManagedObjectContext)
+    public init (managedObjectContext: NSManagedObjectContext)
     {
         self.managedObjectContext = managedObjectContext
         self.stops = []
     }
     
-    var stopsCount: Int {
+    public var stopsCount: Int {
     return stops.count
     }
     
-    func stopAtIndex(index: Int) -> StopViewModel
+    public func stopAtIndex(index: Int) -> StopViewModel
     {
         return self.stops[index]
     }
     
-    func startUpdatingStopsWithFetchRequest(fetchRequest: NSFetchRequest)
+    public func startUpdatingStopsWithFetchRequest(fetchRequest: NSFetchRequest)
     {
         self.fetchedResultsController = SNRFetchedResultsController(managedObjectContext: managedObjectContext, fetchRequest: fetchRequest)
         if let currentFetchedResultsController = self.fetchedResultsController
@@ -60,7 +60,7 @@ class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
         }
     }
     
-    func stopUpdatingStops()
+    public func stopUpdatingStops()
     {
         if let currentFetchedResultsController = fetchedResultsController
         {
@@ -262,7 +262,7 @@ class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
         self.delegate?.stopsViewModelDidUpdateStops(self, stops: stops)
     }
     
-    func controllerWillChangeContent(controller: SNRFetchedResultsController!)
+    public func controllerWillChangeContent(controller: SNRFetchedResultsController!)
     {
         if let changeSet = currentChangeSet
         {
@@ -280,7 +280,7 @@ class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
         }
     }
     
-    func controllerDidChangeContent(controller: SNRFetchedResultsController!)
+    public func controllerDidChangeContent(controller: SNRFetchedResultsController!)
     {
         if let changeSet = currentChangeSet
         {

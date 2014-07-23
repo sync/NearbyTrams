@@ -4,10 +4,10 @@
 
 import Foundation
 
-struct ColorUtility
+enum ColorUtility
 {
     static func generateRandomColor() -> CGColorRef
     {
-        return CGColorCreateGenericRGB(CGFloat(arc4random_uniform(255)) / 255.0, CGFloat(arc4random_uniform(255)) / 255.0, CGFloat(arc4random_uniform(255)) / 255.0, 1.0)
+        return CGColorCreateGenericRGB(0.0, 0.0, 0.0, 1.0)
     }
 }

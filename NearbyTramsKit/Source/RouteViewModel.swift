@@ -4,16 +4,16 @@
 
 import Foundation
 
-class RouteViewModel: Equatable
+public class RouteViewModel: Equatable
 {
-    let identifier: String
-    var routeNo: String
-    var routeDescription: String
-    var downDestination: String
-    var upDestination: String
-    let color: CGColorRef
+    public let identifier: String
+    public var routeNo: String
+    public var routeDescription: String
+    public var downDestination: String
+    public var upDestination: String
+    public let color: CGColorRef
     
-    init (identifier: String, routeNo: String, routeDescription: String, downDestination: String, upDestination: String, color: CGColorRef = ColorUtility.generateRandomColor())
+    public init (identifier: String, routeNo: String, routeDescription: String, downDestination: String, upDestination: String, color: CGColorRef = ColorUtility.generateRandomColor())
     {
         self.identifier = identifier
         self.routeNo = routeNo
@@ -23,7 +23,7 @@ class RouteViewModel: Equatable
         self.color = color
     }
     
-    func updateWithRouteNo(routeNo: String, routeDescription: String, downDestination: String, upDestination: String)
+    public func updateWithRouteNo(routeNo: String, routeDescription: String, downDestination: String, upDestination: String)
     {
         self.routeNo = routeNo
         self.routeDescription = routeDescription
@@ -33,7 +33,7 @@ class RouteViewModel: Equatable
     }
 }
 
-@infix func ==(lhs: RouteViewModel, rhs: RouteViewModel) -> Bool
+@infix public func ==(lhs: RouteViewModel, rhs: RouteViewModel) -> Bool
 {
     return lhs.identifier == rhs.identifier
 }

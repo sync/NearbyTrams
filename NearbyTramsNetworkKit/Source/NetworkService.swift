@@ -4,7 +4,7 @@
 
 import Foundation
 
-class NetworkService
+public class NetworkService
 {
     struct Error {
         struct Domain {
@@ -23,7 +23,7 @@ class NetworkService
     let session: NSURLSession
     
     // FIXME: token need to be generated on the fly, per user
-    init(baseURL: NSURL = NSURL(string: "http://ws3.tramtracker.com.au"), aid: NSString = "TTIOSJSON", token: NSString = "b79c738a-281c-4d81-9111-36591a5237bf", configuration: NSURLSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration())
+    public init(baseURL: NSURL = NSURL(string: "http://ws3.tramtracker.com.au"), aid: NSString = "TTIOSJSON", token: NSString = "b79c738a-281c-4d81-9111-36591a5237bf", configuration: NSURLSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration())
     {
         self.baseURL = baseURL
         self.aid = aid
@@ -38,7 +38,7 @@ class NetworkService
         return NSURL(string: tokenisedString, relativeToURL:self.baseURL)
     }
 
-    func getAllRoutesWithCompletionHandler(completionHandler: (([NSDictionary]?, NSError?) -> Void)?) -> NSURLSessionDataTask
+    public func getAllRoutesWithCompletionHandler(completionHandler: (([NSDictionary]?, NSError?) -> Void)?) -> NSURLSessionDataTask
     {
         let url = tokenisedURLWithString("TramTracker/RestService/GetRouteSummaries/")
         
@@ -107,7 +107,7 @@ class NetworkService
         return task
     }
     
-    func getStopsByRouteWithRouteNo(routeNo: Int, completionHandler: (([NSDictionary]?, NSError?) -> Void)?) -> NSURLSessionDataTask
+    public func getStopsByRouteWithRouteNo(routeNo: Int, completionHandler: (([NSDictionary]?, NSError?) -> Void)?) -> NSURLSessionDataTask
     {
         let url = tokenisedURLWithString("TramTracker/RestService/GetRouteStopsByRoute/\(routeNo)/")
         
@@ -176,7 +176,7 @@ class NetworkService
         return task
     }
     
-    func getStopInformationWithStopNo(stopNo: Int, completionHandler: ((NSDictionary?, NSError?) -> Void)?) -> NSURLSessionDataTask
+    public func getStopInformationWithStopNo(stopNo: Int, completionHandler: ((NSDictionary?, NSError?) -> Void)?) -> NSURLSessionDataTask
     {
         let url = tokenisedURLWithString("TramTracker/RestService/GetStopInformation/\(stopNo)/")
         
@@ -245,7 +245,7 @@ class NetworkService
         return task
     }
     
-    func getNextPredictionsWithStopNo(stopNo: Int, routeNo: String = "0", completionHandler: (([NSDictionary]?, NSError?) -> Void)?) -> NSURLSessionDataTask
+    public func getNextPredictionsWithStopNo(stopNo: Int, routeNo: String = "0", completionHandler: (([NSDictionary]?, NSError?) -> Void)?) -> NSURLSessionDataTask
     {
         let url = tokenisedURLWithString("TramTracker/RestService/GetNextPredictedRoutesCollection/\(stopNo)/\(routeNo)/false/", appendCid: true)
         

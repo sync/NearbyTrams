@@ -4,39 +4,39 @@
 
 import CoreData
 
-class Schedule: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObject
+public class Schedule: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObject
 {
-    @NSManaged var uniqueIdentifier: NSString?
-    @NSManaged var airConditioned: Bool
-    @NSManaged var destination: String?
-    @NSManaged var displayAC: Bool
-    @NSManaged var disruptionMessage: Dictionary<String, AnyObject>?
-    @NSManaged var hasDisruption: Bool
-    @NSManaged var hasSpecialEvent: Bool
-    @NSManaged var headBoardRouteNo: String?
-    @NSManaged var internalRouteNo: NSNumber? // Why when Int it crashes
-    @NSManaged var isLowFloorTram: Bool
-    @NSManaged var isTTAvailable: Bool
-    @NSManaged var predictedArrivalDateTime: NSDate?
-    @NSManaged var routeNo: String?
-    @NSManaged var specialEventMessage: String?
-    @NSManaged var tripID: NSNumber? // Why when Int it crashes
-    @NSManaged var vehicleNo: NSNumber? // Why when Int it crashes
-    @NSManaged var stop : Stop?
+    @NSManaged public var uniqueIdentifier: String?
+    @NSManaged public var airConditioned: Bool
+    @NSManaged public var destination: String?
+    @NSManaged public var displayAC: Bool
+    @NSManaged public var disruptionMessage: Dictionary<String, AnyObject>?
+    @NSManaged public var hasDisruption: Bool
+    @NSManaged public var hasSpecialEvent: Bool
+    @NSManaged public var headBoardRouteNo: String?
+    @NSManaged public var internalRouteNo: NSNumber? // Why when Int it crashes
+    @NSManaged public var isLowFloorTram: Bool
+    @NSManaged public var isTTAvailable: Bool
+    @NSManaged public var predictedArrivalDateTime: NSDate?
+    @NSManaged public var routeNo: String?
+    @NSManaged public var specialEventMessage: String?
+    @NSManaged public var tripID: NSNumber? // Why when Int it crashes
+    @NSManaged public var vehicleNo: NSNumber? // Why when Int it crashes
+    @NSManaged public var stop : Stop?
     
-    class var entityName: String {
+    public class var entityName: String {
         get {
             return "Schedule"
     }
     }
     
-    class var primaryKey: String {
+    public class var primaryKey: String {
         get {
             return "uniqueIdentifier"
     }
     }
     
-    class func primaryKeyValueFromRest(dictionary: NSDictionary) -> String?
+    public class func primaryKeyValueFromRest(dictionary: NSDictionary) -> String?
     {
         let tmpRouteNo =  dictionary["RouteNo"] as? String
         let tmpPredictedArrivalDateTime = dictionary["PredictedArrivalDateTime"] as? String
@@ -49,7 +49,7 @@ class Schedule: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObject
         return nil
     }
     
-    func configureWithDictionaryFromRest(dictionary: NSDictionary) -> Void
+    public func configureWithDictionaryFromRest(dictionary: NSDictionary) -> Void
     {
         destination = dictionary["Destination"] as? String
         disruptionMessage = dictionary["DisruptionMessage"] as? Dictionary<String, AnyObject>

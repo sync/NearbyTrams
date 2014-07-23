@@ -4,34 +4,34 @@
 
 import CoreData
 
-class Stop: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObject
+public class Stop: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObject
 {
-    @NSManaged var uniqueIdentifier: NSString?
-    @NSManaged var stopDescription: String?
-    @NSManaged var latitude: NSNumber? // Why when Double it crashes
-    @NSManaged var longitude: NSNumber? // Why when Double it crashes
-    @NSManaged var name: String?
-    @NSManaged var stopNo: NSNumber? // Why when Int it crashes
-    @NSManaged var suburb: String?
-    @NSManaged var isUpStop: Bool
-    @NSManaged var cityDirection: String?
-    @NSManaged var zones: String?
-    @NSManaged var route : Route?
-    @NSManaged var schedules : NSMutableSet
+    @NSManaged public var uniqueIdentifier: String?
+    @NSManaged public var stopDescription: String?
+    @NSManaged public var latitude: NSNumber? // Why when Double it crashes
+    @NSManaged public var longitude: NSNumber? // Why when Double it crashes
+    @NSManaged public var name: String?
+    @NSManaged public var stopNo: NSNumber? // Why when Int it crashes
+    @NSManaged public var suburb: String?
+    @NSManaged public var isUpStop: Bool
+    @NSManaged public var cityDirection: String?
+    @NSManaged public var zones: String?
+    @NSManaged public var route : Route?
+    @NSManaged public var schedules : NSMutableSet
     
-    class var entityName: String {
+    public class var entityName: String {
         get {
             return "Stop"
     }
     }
     
-    class var primaryKey: String {
+    public class var primaryKey: String {
         get {
             return "uniqueIdentifier"
     }
     }
     
-    class func primaryKeyValueFromRest(dictionary: NSDictionary) -> String?
+    public class func primaryKeyValueFromRest(dictionary: NSDictionary) -> String?
     {
         if let intValue = dictionary["StopNo"] as? Int
         {
@@ -41,7 +41,7 @@ class Stop: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObject
         return nil
     }
     
-    func configureWithDictionaryFromRest(dictionary: NSDictionary) -> Void
+    public func configureWithDictionaryFromRest(dictionary: NSDictionary) -> Void
     {
         stopDescription = dictionary["Description"] as? String
         latitude = dictionary["Latitude"] as? Double
@@ -56,16 +56,16 @@ class Stop: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObject
         }
     }
     
-    func configureWithPartialDictionaryFromRest(dictionary: NSDictionary) -> Void
+    public func configureWithPartialDictionaryFromRest(dictionary: NSDictionary) -> Void
     {
         cityDirection = dictionary["CityDirection"] as? String
         zones = dictionary["Zones"] as? String
     }
 }
 
-extension Stop
+public extension Stop
     {
-    var nextScheduledArrivalDates: [NSDate]? {
+    public var nextScheduledArrivalDates: [NSDate]? {
     if let identifier = self.uniqueIdentifier
     {
         let fetchRequest = NSFetchRequest(entityName: Schedule.entityName)
