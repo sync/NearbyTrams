@@ -59,6 +59,10 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
+            argument = "-stopInfo"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "-h"
             isEnabled = "NO">
          </CommandLineArgument>
