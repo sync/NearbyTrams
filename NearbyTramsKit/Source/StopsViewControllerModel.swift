@@ -20,7 +20,7 @@ public class StopsViewControllerModel: NSObject, StopsViewModelDelegate, Schedul
         if route
         {
             let fetchRequest = NSFetchRequest(entityName: Stop.entityName)
-            fetchRequest.predicate = NSPredicate(format:"routes CONTAINS %@", route!)
+            fetchRequest.predicate = NSPredicate(format:"routes CONTAINS %@ AND uniqueIdentifier != nil AND ANY routes.routeNo != nil AND stopDescription != nil AND stopNo != nil AND name != nil", route!)
             viewModel.startUpdatingStopsWithFetchRequest(fetchRequest)
         }
         else

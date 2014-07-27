@@ -52,7 +52,7 @@ class SchedulesRepositorySpec: QuickSpec {
             let stop: Stop = Stop.insertInManagedObjectContext(moc)
             stop.uniqueIdentifier = "2166"
             stop.stopNo = 2166
-            stop.route = route
+            stop.routes = NSMutableSet(array: [route])
             moc.save(nil)
             
             let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
@@ -61,7 +61,7 @@ class SchedulesRepositorySpec: QuickSpec {
             networkService = NetworkService(baseURL: NSURL(string: "mock://www.apple.com"), configuration: configuration)
             provider = SchedulesProvider(networkService: networkService, managedObjectContext: moc)
             
-            repository = SchedulesRepository(stopIdentifier: "2166", schedulesProvider: provider, managedObjectContext: moc)
+            repository = SchedulesRepository(routeIdentifier: "16-false", stopIdentifier: "2166", schedulesProvider: provider, managedObjectContext: moc)
             fakeDelegate = SchedulesRepositoryFakeDelegate()
             repository.delegate = fakeDelegate
         }

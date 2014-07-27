@@ -50,6 +50,7 @@ class StopsViewModelSpec: QuickSpec {
             viewModel.delegate = fakeDelegate
             
             fetchRequest = NSFetchRequest(entityName: Stop.entityName)
+            fetchRequest.predicate = NSPredicate(format:"uniqueIdentifier != nil AND ANY routes.routeNo != nil AND stopDescription != nil AND stopNo != nil AND name != nil")
             viewModel.startUpdatingStopsWithFetchRequest(fetchRequest)
         }
         
@@ -79,7 +80,8 @@ class StopsViewModelSpec: QuickSpec {
                     stop.uniqueIdentifier = "2166"
                     stop.stopNo = 2166
                     stop.name = "a stop name"
-                    stop.route = route
+                    stop.stopDescription = "a stop description"
+                    stop.routes = NSMutableSet(array: [route])
                     
                     moc.save(nil)
                 }
@@ -123,7 +125,8 @@ class StopsViewModelSpec: QuickSpec {
                     stop1.uniqueIdentifier = "2166"
                     stop1.stopNo = 2166
                     stop1.name = "a stop name"
-                    stop1.route = route1
+                    stop1.stopDescription = "a stop description"
+                    stop1.routes = NSMutableSet(array: [route1])
                     
                     let route2: Route = Route.insertInManagedObjectContext(moc) as Route
                     route2.routeNo = "456"
@@ -134,7 +137,8 @@ class StopsViewModelSpec: QuickSpec {
                     stop2.uniqueIdentifier = "3126"
                     stop2.stopNo = 2166
                     stop2.name = "another stop name"
-                    stop2.route = route2
+                    stop2.stopDescription = "another stop description"
+                    stop2.routes = NSMutableSet(array: [route2])
                     
                     moc.save(nil)
                 }
@@ -169,7 +173,8 @@ class StopsViewModelSpec: QuickSpec {
                 stop1.uniqueIdentifier = "2166"
                 stop1.stopNo = 2166
                 stop1.name = "a stop name"
-                stop1.route = route1
+                stop1.stopDescription = "a stop description"
+                stop1.routes = NSMutableSet(array: [route1])
                 
                 let route2: Route = Route.insertInManagedObjectContext(moc) as Route
                 route2.routeNo = "456"
@@ -180,7 +185,8 @@ class StopsViewModelSpec: QuickSpec {
                 stop2.uniqueIdentifier = "3126"
                 stop2.stopNo = 2166
                 stop2.name = "another stop name"
-                stop2.route = route2
+                stop2.stopDescription = "another stop description"
+                stop2.routes = NSMutableSet(array: [route2])
                 
                 moc.save(nil)
             }
@@ -241,7 +247,8 @@ class StopsViewModelSpec: QuickSpec {
                 stop1.uniqueIdentifier = "2166"
                 stop1.stopNo = 2166
                 stop1.name = "a stop name"
-                stop1.route = route1
+                stop1.stopDescription = "a stop description"
+                stop1.routes = NSMutableSet(array: [route1])
                 
                 let route2: Route = Route.insertInManagedObjectContext(moc) as Route
                 route2.routeNo = "456"
@@ -252,7 +259,8 @@ class StopsViewModelSpec: QuickSpec {
                 stop2.uniqueIdentifier = "3126"
                 stop2.stopNo = 2166
                 stop2.name = "another stop name"
-                stop2.route = route2
+                stop2.stopDescription = "another stop description"
+                stop2.routes = NSMutableSet(array: [route2])
                 
                 moc.save(nil)
             }
@@ -329,7 +337,8 @@ class StopsViewModelSpec: QuickSpec {
                     stop1.uniqueIdentifier = "2166"
                     stop1.stopNo = 2166
                     stop1.name = "a stop name"
-                    stop1.route = route1
+                    stop1.stopDescription = "a stop description"
+                    stop1.routes = NSMutableSet(array: [route1])
                     
                     let route2: Route = Route.insertInManagedObjectContext(moc) as Route
                     route2.routeNo = "456"
@@ -340,12 +349,13 @@ class StopsViewModelSpec: QuickSpec {
                     stop2.uniqueIdentifier = "3126"
                     stop2.stopNo = 2166
                     stop2.name = "another stop name"
-                    stop2.route = route2
+                    stop2.stopDescription = "another stop description"
+                    stop2.routes = NSMutableSet(array: [route2])
                     
                     moc.save(nil)
                     
                     fetchRequest = NSFetchRequest(entityName: Stop.entityName)
-                    fetchRequest.predicate = NSPredicate(format:"uniqueIdentifier == %@", "2166")
+                    fetchRequest.predicate = NSPredicate(format:"uniqueIdentifier == %@ AND ANY routes.routeNo != nil AND stopDescription != nil AND stopNo != nil AND name != nil", "2166")
                     viewModel.startUpdatingStopsWithFetchRequest(fetchRequest)
                     
                     let route3: Route = Route.insertInManagedObjectContext(moc)
@@ -357,12 +367,13 @@ class StopsViewModelSpec: QuickSpec {
                     stop3.uniqueIdentifier = "4589"
                     stop3.stopNo = 2166
                     stop3.name = "a third stop name"
-                    stop3.route = route3
+                    stop3.stopDescription = "a third stop description"
+                    stop3.routes = NSMutableSet(array: [route3])
                     
                     moc.save(nil)
                 }
                 
-                it("should have one stops") {
+                it("should have one stop") {
                     expect(viewModel.stops.count).to(equal(1))
                 }
                 
@@ -371,17 +382,18 @@ class StopsViewModelSpec: QuickSpec {
                 }
                 
                 it("should tell delegate about the added stops") {
-                    let identifiers = [fakeDelegate.addedStops![0].identifier, fakeDelegate.addedStops![1].identifier]
+                    let identifiers = [fakeDelegate.addedStops![0].identifier]
                     expect(identifiers).to(contain("2166"))
-                    expect(identifiers).to(contain("3126"))
                 }
                 
                 it("should tell delegate about the updated stop") {
-                    expect(fakeDelegate.updatedStops?[0].identifier).to(equal("2166"))
+                    expect(fakeDelegate.updatedStops).to(beNil())
                 }
                 
                 it("should tell delegate about the removed stop") {
-                    expect(fakeDelegate.removedStops?[0].identifier).to(equal("3126"))
+                    let identifiers = [fakeDelegate.removedStops![0].identifier, fakeDelegate.removedStops![1].identifier]
+                    expect(identifiers).to(contain("2166"))
+                    expect(identifiers).to(contain("3126"))
                 }
             }
         }

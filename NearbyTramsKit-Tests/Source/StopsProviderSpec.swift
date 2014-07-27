@@ -162,7 +162,7 @@ class StopsProviderSpec: QuickSpec {
                     json1["StopName"] = "Rathmines Rd / Canterbury Rd"
                     json1["Zones"] = "1"                    
                     
-                    let body = ["responseObject": json1]
+                    let body = ["responseObject": [json1]]
                     let response = MockWebServiceResponse(body: body, header: ["Content-Type": "application/json; charset=utf-8"])
                     MockWebServiceURLProtocol.cannedResponse(response)
                 }
@@ -186,7 +186,7 @@ class StopsProviderSpec: QuickSpec {
             
             context("when no stops are available") {
                 beforeEach {
-                    let body = ["responseObject": [ : ]]
+                    let body = ["responseObject": [[ : ]]]
                     let response = MockWebServiceResponse(body: body, header: ["Content-Type": "application/json; charset=utf-8"])
                     MockWebServiceURLProtocol.cannedResponse(response)
                 }

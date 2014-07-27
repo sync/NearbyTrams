@@ -17,7 +17,7 @@ class StopViewModelSpec: QuickSpec {
                 
                 beforeEach {
                     stopName = "a stop name"
-                    viewModel = StopViewModel(identifier: "an identifier", routeNo: "76", routeDescription: "a description",  isUpStop: true, stopNo: 45, stopName: stopName, schedules: nil)
+                    viewModel = StopViewModel(identifier: "an identifier", routesNo: ["76"], stopDescription: "a description",  isUpStop: true, stopNo: 45, stopName: stopName, schedules: nil)
                 }
                 
                 it ("should remember it") {
@@ -28,12 +28,12 @@ class StopViewModelSpec: QuickSpec {
         
         describe("equatable") {
             beforeEach {
-                viewModel = StopViewModel(identifier: "an identifier", routeNo: "76", routeDescription: "a description",  isUpStop: true, stopNo: 45, stopName: "a stop name", schedules: nil)
+                viewModel = StopViewModel(identifier: "an identifier", routesNo: ["76"], stopDescription: "a description",  isUpStop: true, stopNo: 45, stopName: "a stop name", schedules: nil)
             }
             
             context ("with the same identifiers") {
                 it ("should be equal") {
-                    var viewModelEqual = StopViewModel(identifier: "an identifier", routeNo: "76", routeDescription: "a description",  isUpStop: true, stopNo: 45, stopName: "another stop name", schedules: nil)
+                    var viewModelEqual = StopViewModel(identifier: "an identifier", routesNo: ["76"], stopDescription: "a description",  isUpStop: true, stopNo: 45, stopName: "another stop name", schedules: nil)
                     
                     expect(viewModel == viewModelEqual).to(beTruthy())
                 }
@@ -41,7 +41,7 @@ class StopViewModelSpec: QuickSpec {
             
             context ("without same identifiers") {
                 it ("should be equal") {
-                    var viewModelNotEqual = StopViewModel(identifier: "another identifier", routeNo: "76", routeDescription: "a description",  isUpStop: true, stopNo: 45, stopName: "a stop name", schedules: nil)
+                    var viewModelNotEqual = StopViewModel(identifier: "another identifier", routesNo: ["76"], stopDescription: "a description",  isUpStop: true, stopNo: 45, stopName: "a stop name", schedules: nil)
                     
                     expect(viewModel == viewModelNotEqual).to(beFalsy())
                 }

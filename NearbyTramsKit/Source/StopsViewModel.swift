@@ -40,9 +40,15 @@ public class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
     
     public func startUpdatingStopsWithFetchRequest(fetchRequest: NSFetchRequest)
     {
+        var currentFetchedObjects = self.fetchedResultsController?.fetchedObjects
+        if let currentStops = currentFetchedObjects as? [Stop]
+        {
+            removeStopsForObjects(currentStops)
+        }
+        
         self.fetchedResultsController = SNRFetchedResultsController(managedObjectContext: managedObjectContext, fetchRequest: fetchRequest)
         if let currentFetchedResultsController = self.fetchedResultsController
-            {
+        {
             currentFetchedResultsController.delegate = self
             
             var error: NSError?
@@ -50,7 +56,7 @@ public class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
             {
                 if let fetchedStops = currentFetchedResultsController.fetchedObjects as? [Stop]
                 {
-                    synchronizeStopsWithObjectsFromArray(fetchedStops)
+                   addStopsForObjects(fetchedStops)
                 }
             }
             else
@@ -80,94 +86,22 @@ public class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
         return nil
     }
     
-    func synchronizeStopsWithObjectsFromArray(array: [Stop])
-    {
-        var stopsByIdentifier: Dictionary<String, Stop> = [ : ]
-        for stop in array
-        {
-            if let identifier = stop.uniqueIdentifier
-            {
-                stopsByIdentifier[identifier] = stop
-            }
-        }
-        
-        var currentIdentifiers = NSSet(array: Array(stopsStorage.keys))
-        var newIdentifiers =  NSSet(array: Array(stopsByIdentifier.keys))
-        
-        let identifiersToAdd = NSMutableSet(set: newIdentifiers)
-        identifiersToAdd.minusSet(currentIdentifiers)
-        
-        let identifiersToRemove = NSMutableSet(set: currentIdentifiers)
-        identifiersToRemove.minusSet(newIdentifiers)
-        
-        let identifiersToUpdate = NSMutableSet(set: currentIdentifiers)
-        identifiersToUpdate.intersectSet(newIdentifiers)
-        
-        if identifiersToAdd.allObjects
-        {
-            var addedObjects: [Stop] = []
-            for identifier : AnyObject in identifiersToAdd.allObjects
-            {
-                let stop = stopsByIdentifier[identifier as String]
-                if stop
-                {
-                    addedObjects.append(stop!)
-                }
-            }
-            addStopsForObjects(addedObjects)
-        }
-        
-        if identifiersToRemove.allObjects
-        {
-            var removedStopModels: [StopViewModel] = []
-            for identifier : AnyObject in identifiersToRemove.allObjects
-            {
-                if let stopViewModel = stopsStorage[identifier as String]
-                {
-                    removedStopModels.append(stopViewModel)
-                }
-            }
-            removeStopModels(removedStopModels)
-        }
-        
-        if identifiersToUpdate.allObjects
-        {
-            var updatedObjects: [Stop] = []
-            for identifier : AnyObject in identifiersToUpdate.allObjects
-            {
-                if let stop = stopsByIdentifier[identifier as String]
-                {
-                    updatedObjects.append(stop)
-                }
-            }
-            updateStopsForObjects(updatedObjects)
-        }
-    }
-    
     func addStopsForObjects(array: [Stop])
     {
-        if !array.isEmpty
-        {
-            let stopsViewModel = array.filter {
-                stop -> Bool in
-                
-                return stop.isValidForViewModel
-                }.map {
-                    stop -> StopViewModel in
-                    
-                    assert(!self.existingModelForIdentifier(stop.uniqueIdentifier), "stop should not already exist!")
-                    
-                    let identifier = stop.uniqueIdentifier!
-                    let route = stop.route!
-                    let viewModel = StopViewModel(identifier: identifier, routeNo: stop.route!.routeNo!, routeDescription: stop.route!.routeDescription!, isUpStop: stop.isUpStop, stopNo: Int(stop.stopNo!), stopName: stop.name!, schedules: stop.nextScheduledArrivalDates)
-                    self.stopsStorage[identifier] = viewModel
-                    return viewModel
-            }
+        let stopsViewModel = array.map {
+            stop -> StopViewModel in
             
-            if !stopsViewModel.isEmpty
-            {
-                didAddStops(stopsViewModel)
-            }
+            assert(!self.existingModelForIdentifier(stop.uniqueIdentifier), "stop should not already exist!")
+            
+            let identifier = stop.uniqueIdentifier!
+            let viewModel = StopViewModel(identifier: identifier, routesNo: stop.routesNo, stopDescription: stop.stopDescription!, isUpStop: stop.isUpStop, stopNo: Int(stop.stopNo!), stopName: stop.name!, schedules: stop.nextScheduledArrivalDates)
+            self.stopsStorage[identifier] = viewModel
+            return viewModel
+        }
+        
+        if !stopsViewModel.isEmpty
+        {
+            didAddStops(stopsViewModel)
         }
     }
     
@@ -180,22 +114,9 @@ public class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
             for stop in array {
                 if let existingStopModel = existingModelForIdentifier(stop.uniqueIdentifier)
                 {
-                    if stop.isValidForViewModel
-                    {
-                        let route = stop.route!
-                        existingStopModel.updateWithRouteNo(stop.route!.routeNo!, routeDescription: stop.route!.routeDescription!, isUpStop: stop.isUpStop, stopNo: Int(stop.stopNo!), stopName: stop.name!, schedules: stop.nextScheduledArrivalDates)
-                        updatedStops.append(existingStopModel)
-                    }
-                    else
-                    {
-                        deletedStopModels.append(existingStopModel)
-                    }
+                    existingStopModel.updateWithRoutesNo(stop.routesNo, stopDescription: stop.stopDescription!, isUpStop: stop.isUpStop, stopNo: Int(stop.stopNo!), stopName: stop.name!, schedules: stop.nextScheduledArrivalDates)
+                    updatedStops.append(existingStopModel)
                 }
-            }
-            
-            if !deletedStopModels.isEmpty
-            {
-                removeStopModels(deletedStopModels)
             }
             
             if !updatedStops.isEmpty
@@ -205,39 +126,20 @@ public class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
         }
     }
     
-    func removeStopModels(array: [StopViewModel])
-    {
-        if !array.isEmpty
-        {
-            var removedStops: [StopViewModel] = []
-            for stop in array {
-                if let existingStopModel = existingModelForIdentifier(stop.identifier)
-                {
-                    removedStops.append(existingStopModel)
-                    stopsStorage.removeValueForKey(existingStopModel.identifier)
-                }
-            }
-            
-            if !removedStops.isEmpty
-            {
-                didRemoveStops(removedStops)
-            }
-        }
-    }
-    
     func removeStopsForObjects(array: [Stop])
     {
-        if !array.isEmpty
-        {
-            var removedStopModels: [StopViewModel] = []
-            for stop in array {
-                if let existingStopModel = existingModelForIdentifier(stop.uniqueIdentifier)
-                {
-                    removedStopModels.append(existingStopModel)
-                }
+        var removedStops: [StopViewModel] = []
+        for stop in array {
+            if let existingStopModel = existingModelForIdentifier(stop.uniqueIdentifier)
+            {
+                removedStops.append(existingStopModel)
+                stopsStorage.removeValueForKey(existingStopModel.identifier)
             }
-            
-            removeStopModels(removedStopModels)
+        }
+        
+        if !removedStops.isEmpty
+        {
+            didRemoveStops(removedStops)
         }
     }
     
@@ -306,12 +208,5 @@ public class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
         {
             removeStopsForObjects(removedObjects)
         }
-    }
-}
-
-extension Stop
-    {
-    var isValidForViewModel: Bool {
-    return (self.uniqueIdentifier && self.route?.routeNo && self.route?.routeDescription && self.route?.routeNo && self.name && self.route)
     }
 }
