@@ -19,7 +19,7 @@ class ColorUtilitySpec: QuickSpec {
             
             it("must be unique") {
                 let colorsAreEqual = CGColorEqualToColor(color1, color2)
-                expect(colorsAreEqual).notTo.beTrue()
+                expect(colorsAreEqual).notTo(beTruthy())
             }
         }
     }

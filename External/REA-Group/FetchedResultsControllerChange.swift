@@ -4,14 +4,14 @@
 
 import Foundation
 
-class FetchedResultsControllerChange
+public class FetchedResultsControllerChange
 {
-    let changedObject: AnyObject
-    let indexPath: NSIndexPath
-    let changeType: SNRFetchedResultsChangeType
-    let movedToIndexPath: NSIndexPath
+    public let changedObject: AnyObject
+    public let indexPath: NSIndexPath
+    public let changeType: SNRFetchedResultsChangeType
+    public let movedToIndexPath: NSIndexPath
     
-    init (changedObject: AnyObject, atIndexPath indexPath: NSIndexPath, forChangeType changeType: SNRFetchedResultsChangeType, newIndexPath movedToIndexPath: NSIndexPath)
+    public init (changedObject: AnyObject, atIndexPath indexPath: NSIndexPath, forChangeType changeType: SNRFetchedResultsChangeType, newIndexPath movedToIndexPath: NSIndexPath)
     {
         self.changedObject = changedObject
         self.indexPath = indexPath

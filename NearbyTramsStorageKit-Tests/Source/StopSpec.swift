@@ -28,11 +28,11 @@ class StopSpec: QuickSpec {
                 }
                 
                 it("should be non nil") {
-                    expect(stop).notTo.beNil()
+                    expect(stop).notTo(beNil())
                 }
                 
                 it("should be a member of the Route class") {
-                    expect(stop.isMemberOfClass(Stop)).to.beTrue()
+                    expect(stop.isMemberOfClass(Stop)).to(beTruthy())
                 }
             }
             
@@ -56,31 +56,31 @@ class StopSpec: QuickSpec {
                     }
                     
                     it("should have a Description") {
-                        expect(stop.stopDescription).to.equal("a description")
+                        expect(stop.stopDescription).to(equal("a description"))
                     }
                     
                     it("should have a Latitude") {
-                        expect(stop.latitude).to.equal(-36.45)
+                        expect(stop.latitude).to(equal(-36.45))
                     }
                     
                     it("should be a Longitude") {
-                        expect(stop.longitude).to.equal(145.68)
+                        expect(stop.longitude).to(equal(145.68))
                     }
                     
                     it("should have a name") {
-                        expect(stop.name).to.equal("Burke Rd / Canterbury Rd")
+                        expect(stop.name).to(equal("Burke Rd / Canterbury Rd"))
                     }
                     
                     it("should have a StopNo") {
-                        expect(stop.stopNo).to.equal(14)
+                        expect(stop.stopNo).to(equal(14))
                     }
                     
                     it("should have a Suburb") {
-                        expect(stop.suburb).to.equal("Canterbury")
+                        expect(stop.suburb).to(equal("Canterbury"))
                     }
                     
                     it("should be an up stop") {
-                        expect(stop.isUpStop).to.beTrue()
+                        expect(stop.isUpStop).to(beTruthy())
                     }
                 }
                 
@@ -99,31 +99,31 @@ class StopSpec: QuickSpec {
                     }
                     
                     it("should have a Description") {
-                        expect(stop.stopDescription).to.beNil()
+                        expect(stop.stopDescription).to(beNil())
                     }
                     
                     it("should have a Latitude") {
-                        expect(stop.latitude).to.beNil()
+                        expect(stop.latitude).to(beNil())
                     }
                     
                     it("should be a Longitude") {
-                        expect(stop.longitude).to.equal(15.00)
+                        expect(stop.longitude).to(equal(15.00))
                     }
                     
                     it("should have a name") {
-                        expect(stop.name).to.beNil()
+                        expect(stop.name).to(beNil())
                     }
                     
                     it("should have a StopNo") {
-                        expect(stop.stopNo).to.beNil()
+                        expect(stop.stopNo).to(beNil())
                     }
                     
                     it("should have a Suburb") {
-                        expect(stop.suburb).to.beNil()
+                        expect(stop.suburb).to(beNil())
                     }
                     
                     it("should not be an up stop") {
-                        expect(stop.isUpStop).to.beFalse()
+                        expect(stop.isUpStop).to(beFalsy())
                     }
                 }
             }
@@ -157,35 +157,35 @@ class StopSpec: QuickSpec {
                     }
                     
                     it("should have a CityDirection") {
-                        expect(stop.cityDirection).to.equal("from city")
+                        expect(stop.cityDirection).to(equal("from city"))
                     }
                     
                     it("should have a Zones") {
-                        expect(stop.zones).to.equal("1")
+                        expect(stop.zones).to(equal("1"))
                     }
                     
                     it("should have a Description") {
-                        expect(stop.stopDescription).to.equal("a description")
+                        expect(stop.stopDescription).to(equal("a description"))
                     }
                     
                     it("should have a Latitude") {
-                        expect(stop.latitude).to.equal(-36.45)
+                        expect(stop.latitude).to(equal(-36.45))
                     }
                     
                     it("should be a Longitude") {
-                        expect(stop.longitude).to.equal(145.68)
+                        expect(stop.longitude).to(equal(145.68))
                     }
                     
                     it("should have a name") {
-                        expect(stop.name).to.equal("Burke Rd / Canterbury Rd")
+                        expect(stop.name).to(equal("Burke Rd / Canterbury Rd"))
                     }
                     
                     it("should have a StopNo") {
-                        expect(stop.stopNo).to.equal(14)
+                        expect(stop.stopNo).to(equal(14))
                     }
                     
                     it("should have a Suburb") {
-                        expect(stop.suburb).to.equal("Canterbury")
+                        expect(stop.suburb).to(equal("Canterbury"))
                     }
                 }
             }
@@ -200,7 +200,7 @@ class StopSpec: QuickSpec {
                 
                 context("with no schedule") {
                     it ("should have no arrival dates") {
-                        expect(stop.nextScheduledArrivalDates).to.beEmpty()
+                        expect(stop.nextScheduledArrivalDates).to(beEmpty())
                     }
                 }
                 
@@ -216,7 +216,7 @@ class StopSpec: QuickSpec {
                     }
                     
                     it ("should have no arrival dates") {
-                        expect(stop.nextScheduledArrivalDates).to.beEmpty()
+                        expect(stop.nextScheduledArrivalDates).to(beEmpty())
                     }
                 }
                 
@@ -256,12 +256,12 @@ class StopSpec: QuickSpec {
                     }
                     
                     it ("should have 3 arrival dates") {
-                        expect(stop.nextScheduledArrivalDates?.count).to.equal(3)
+                        expect(stop.nextScheduledArrivalDates?.count).to(equal(3))
                     }
                     
                     it ("should be ordered") {
-                        expect(stop.nextScheduledArrivalDates![0]).to.equal(firstDate)
-                        expect(stop.nextScheduledArrivalDates![2]).to.equal(lastDate)
+                        expect(stop.nextScheduledArrivalDates![0]).to(equal(firstDate))
+                        expect(stop.nextScheduledArrivalDates![2]).to(equal(lastDate))
                     }
                 }
             }

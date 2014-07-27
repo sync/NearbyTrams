@@ -59,11 +59,11 @@ class StopsViewModelSpec: QuickSpec {
         
         context("when empty") {
             it("should have no stops") {
-                expect(viewModel.stops).to.beEmpty()
+                expect(viewModel.stops).to(beEmpty())
             }
             
             it("should have per stops count zero") {
-                expect(viewModel.stopsCount).to.equal(0)
+                expect(viewModel.stopsCount).to(equal(0))
             }
         }
         
@@ -85,15 +85,15 @@ class StopsViewModelSpec: QuickSpec {
                 }
                 
                 it("should have one stops") {
-                    expect(viewModel.stops.count).to.equal(1)
+                    expect(viewModel.stops.count).to(equal(1))
                 }
                 
                 it("should have per stops count one") {
-                    expect(viewModel.stopsCount).to.equal(1)
+                    expect(viewModel.stopsCount).to(equal(1))
                 }
                 
                 it("should tell delegate about the added stop") {
-                    expect(fakeDelegate.addedStops?[0].identifier).to.equal("2166")
+                    expect(fakeDelegate.addedStops?[0].identifier).to(equal("2166"))
                 }
             }
             
@@ -104,11 +104,11 @@ class StopsViewModelSpec: QuickSpec {
                 }
                 
                 it("should have no stops") {
-                    expect(viewModel.stops).to.beEmpty()
+                    expect(viewModel.stops).to(beEmpty())
                 }
                 
                 it("should have per stops count zero") {
-                    expect(viewModel.stopsCount).to.equal(0)
+                    expect(viewModel.stopsCount).to(equal(0))
                 }
             }
             
@@ -140,17 +140,17 @@ class StopsViewModelSpec: QuickSpec {
                 }
                 
                 it("should have one stops") {
-                    expect(viewModel.stops.count).to.equal(2)
+                    expect(viewModel.stops.count).to(equal(2))
                 }
                 
                 it("should have per stops count one") {
-                    expect(viewModel.stopsCount).to.equal(2)
+                    expect(viewModel.stopsCount).to(equal(2))
                 }
                 
                 it("should tell delegate about the two added stop") {
                     let identifiers = [fakeDelegate.addedStops![0].identifier, fakeDelegate.addedStops![1].identifier]
-                    expect(identifiers).to.contain("2166")
-                    expect(identifiers).to.contain("3126")
+                    expect(identifiers).to(contain("2166"))
+                    expect(identifiers).to(contain("3126"))
                 }
             }
         }
@@ -192,15 +192,15 @@ class StopsViewModelSpec: QuickSpec {
                 }
                 
                 it("should have one stops") {
-                    expect(viewModel.stops[0].identifier).to.equal("3126")
+                    expect(viewModel.stops[0].identifier).to(equal("3126"))
                 }
                 
                 it("should have per stops count one") {
-                    expect(viewModel.stopsCount).to.equal(1)
+                    expect(viewModel.stopsCount).to(equal(1))
                 }
                 
                 it("should tell delegate about the removed stop") {
-                    expect(fakeDelegate.removedStops?[0].identifier).to.equal("2166")
+                    expect(fakeDelegate.removedStops?[0].identifier).to(equal("2166"))
                 }
             }
             
@@ -212,17 +212,17 @@ class StopsViewModelSpec: QuickSpec {
                 }
                 
                 it("should have one stops") {
-                    expect(viewModel.stops.count).to.equal(0)
+                    expect(viewModel.stops.count).to(equal(0))
                 }
                 
                 it("should have per stops count one") {
-                    expect(viewModel.stopsCount).to.equal(0)
+                    expect(viewModel.stopsCount).to(equal(0))
                 }
                 
                 it("should tell delegate about the two removed stop") {
                     let identifiers = [fakeDelegate.removedStops![0].identifier, fakeDelegate.removedStops![1].identifier]
-                    expect(identifiers).to.contain("2166")
-                    expect(identifiers).to.contain("3126")
+                    expect(identifiers).to(contain("2166"))
+                    expect(identifiers).to(contain("3126"))
                 }
             }
         }
@@ -265,7 +265,7 @@ class StopsViewModelSpec: QuickSpec {
                 }
                 
                 it("should tell delegate about the updated stop") {
-                    expect(fakeDelegate.updatedStops?[0].stopName).to.equal("new stop name")
+                    expect(fakeDelegate.updatedStops?[0].stopName).to(equal("new stop name"))
                 }
             }
             
@@ -279,8 +279,8 @@ class StopsViewModelSpec: QuickSpec {
                 
                 it("should tell delegate about the two updated stop") {
                     let stopNames = [fakeDelegate.updatedStops![0].stopName, fakeDelegate.updatedStops![1].stopName]
-                    expect(stopNames).to.contain("new stop name")
-                    expect(stopNames).to.contain("another new stop name")
+                    expect(stopNames).to(contain("new stop name"))
+                    expect(stopNames).to(contain("another new stop name"))
                 }
             }
             
@@ -292,11 +292,11 @@ class StopsViewModelSpec: QuickSpec {
                 }
                 
                 it("should have per routes count one") {
-                    expect(viewModel.stopsCount).to.equal(1)
+                    expect(viewModel.stopsCount).to(equal(1))
                 }
                 
                 it("should tell delegate about the removed route") {
-                    expect(fakeDelegate.removedStops?[0].identifier).to.equal("2166")
+                    expect(fakeDelegate.removedStops?[0].identifier).to(equal("2166"))
                 }
             }
         }
@@ -313,7 +313,7 @@ class StopsViewModelSpec: QuickSpec {
             }
             
             it("should not tell delegate about the two added stop") {
-                expect(fakeDelegate.addedStops?.count).to.beNil()
+                expect(fakeDelegate.addedStops?.count).to(beNil())
             }
         }
         
@@ -363,25 +363,25 @@ class StopsViewModelSpec: QuickSpec {
                 }
                 
                 it("should have one stops") {
-                    expect(viewModel.stops.count).to.equal(1)
+                    expect(viewModel.stops.count).to(equal(1))
                 }
                 
                 it("should have per stops count one") {
-                    expect(viewModel.stopsCount).to.equal(1)
+                    expect(viewModel.stopsCount).to(equal(1))
                 }
                 
                 it("should tell delegate about the added stops") {
                     let identifiers = [fakeDelegate.addedStops![0].identifier, fakeDelegate.addedStops![1].identifier]
-                    expect(identifiers).to.contain("2166")
-                    expect(identifiers).to.contain("3126")
+                    expect(identifiers).to(contain("2166"))
+                    expect(identifiers).to(contain("3126"))
                 }
                 
                 it("should tell delegate about the updated stop") {
-                    expect(fakeDelegate.updatedStops?[0].identifier).to.equal("2166")
+                    expect(fakeDelegate.updatedStops?[0].identifier).to(equal("2166"))
                 }
                 
                 it("should tell delegate about the removed stop") {
-                    expect(fakeDelegate.removedStops?[0].identifier).to.equal("3126")
+                    expect(fakeDelegate.removedStops?[0].identifier).to(equal("3126"))
                 }
             }
         }

@@ -5,26 +5,26 @@
 import Foundation
 import NearbyTramsStorageKit
 
-protocol StopsRepositoryDelegate
+public protocol StopsRepositoryDelegate
 {
     func stopsRepositoryLoadingStateDidChange(repository: StopsRepository, isLoading loading: Bool) -> Void
     func stopsRepositoryDidFinsishLoading(repository: StopsRepository, error: NSError?) -> Void
 }
 
-class StopsRepository
+public class StopsRepository
 {
-    var delegate: StopsRepositoryDelegate?
+    public var delegate: StopsRepositoryDelegate?
     
     let routeIdentifier: String
     let stopsProvider: StopsProvider
     let managedObjectContext: NSManagedObjectContext
-    var isLoading: Bool {
+    public var isLoading: Bool {
     willSet {
         self.delegate?.stopsRepositoryLoadingStateDidChange(self, isLoading: newValue)
     }
     }
     
-    init (routeIdentifier: String, stopsProvider: StopsProvider, managedObjectContext: NSManagedObjectContext)
+    public init (routeIdentifier: String, stopsProvider: StopsProvider, managedObjectContext: NSManagedObjectContext)
     {
         self.routeIdentifier = routeIdentifier
         self.stopsProvider = stopsProvider
@@ -38,7 +38,7 @@ class StopsRepository
         return result.managedObject
     }
     
-    func update() -> Void
+    public func update() -> Void
     {
         if let route = fetchRoute()
         {

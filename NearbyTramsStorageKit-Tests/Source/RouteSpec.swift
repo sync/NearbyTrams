@@ -29,11 +29,11 @@ class RouteSpec: QuickSpec {
                 }
                 
                 it("should be non nil") {
-                    expect(route).notTo.beNil()
+                    expect(route).notTo(beNil())
                 }
                 
                 it("should be a member of the Route class") {
-                    expect(route.isMemberOfClass(Route)).to.beTrue()
+                    expect(route.isMemberOfClass(Route)).to(beTruthy())
                 }
             }
             
@@ -62,27 +62,27 @@ class RouteSpec: QuickSpec {
                     }
                     
                     it("should have a routeNo") {
-                        expect(route.routeNo).to.equal("16")
+                        expect(route.routeNo).to(equal("16"))
                     }
                     
                     it("should have an internal routeNo") {
-                        expect(route.internalRouteNo).to.equal(16)
+                        expect(route.internalRouteNo).to(equal(16))
                     }
                     
                     it("should have a description") {
-                        expect(route.routeDescription).to.equal("Melbourne Uni - Kew (Via St Kilda Beach)")
+                        expect(route.routeDescription).to(equal("Melbourne Uni - Kew (Via St Kilda Beach)"))
                     }
                     
                     it("should have a down destination") {
-                        expect(route.downDestination).to.equal("Melbourne University")
+                        expect(route.downDestination).to(equal("Melbourne University"))
                     }
                     
                     it("should have a up destination") {
-                        expect(route.upDestination).to.equal("Kew")
+                        expect(route.upDestination).to(equal("Kew"))
                     }
                     
                     it("should have a color") {
-                        expect(route.color).to.equal("yellow")
+                        expect(route.color).to(equal("yellow"))
                     }
                 }
                 
@@ -106,27 +106,27 @@ class RouteSpec: QuickSpec {
                     }
                     
                     it("should not have a routeNo") {
-                        expect(route.routeNo).to.beNil()
+                        expect(route.routeNo).to(beNil())
                     }
                     
                     it("should not have an internal routeNo") {
-                        expect(route.internalRouteNo).to.beNil()
+                        expect(route.internalRouteNo).to(beNil())
                     }
                     
                     it("should not have a description") {
-                        expect(route.routeDescription).to.beNil()
+                        expect(route.routeDescription).to(beNil())
                     }
                     
                     it("should not have a down destination") {
-                        expect(route.downDestination).to.beNil()
+                        expect(route.downDestination).to(beNil())
                     }
                     
                     it("should not have a up destination") {
-                        expect(route.upDestination).to.beNil()
+                        expect(route.upDestination).to(beNil())
                     }
                     
                     it("should not have a color") {
-                        expect(route.color).to.beNil()
+                        expect(route.color).to(beNil())
                     }
                 }
             }
@@ -135,7 +135,7 @@ class RouteSpec: QuickSpec {
         describe("Rest") {
             describe ("insertOrUpdateRouteWithDictionaryFromRest") {
                 var result: (route: Route?, error: NSError?)!
-                var storedRoutes: Route[]!
+                var storedRoutes: [Route]!
                 
                 beforeEach {
                     var json: Dictionary<String, AnyObject> = [ : ]
@@ -157,41 +157,41 @@ class RouteSpec: QuickSpec {
                     
                     let request = NSFetchRequest(entityName: "Route")
                     request.sortDescriptors = [NSSortDescriptor(key: "routeNo", ascending:true)]
-                    storedRoutes = moc.executeFetchRequest(request, error: nil) as? Route[]
+                    storedRoutes = moc.executeFetchRequest(request, error: nil) as? [Route]
                 }
                 
                 it("should have a route") {
-                    expect(result.route).notTo.beNil()
+                    expect(result.route).notTo(beNil())
                 }
                 
                 it("should have a no error") {
-                    expect(result.error).to.beNil()
+                    expect(result.error).to(beNil())
                 }
                 
                 it("should have a routeNo") {
-                    expect(result.route?.routeNo).to.equal("16")
+                    expect(result.route?.routeNo).to(equal("16"))
                 }
                 
                 it("should create and store one route") {
-                    expect(storedRoutes.count).to.equal(1)
+                    expect(storedRoutes.count).to(equal(1))
                 }
                 
                 it("should have set it's routeNo") {
                     let storedRoute = storedRoutes[0]
-                    expect(storedRoute.routeNo).to.equal("16")
+                    expect(storedRoute.routeNo).to(equal("16"))
                 }
                 
                 it("should have set it's name") {
                     let storedRoute = storedRoutes[0]
-                    expect(storedRoute.routeDescription).to.equal("Melbourne Uni - Kew (Via St Kilda Beach)")
+                    expect(storedRoute.routeDescription).to(equal("Melbourne Uni - Kew (Via St Kilda Beach)"))
                 }
             }
             
             describe ("insertOrUpdateRoutesFromRestArray") {
-                var results: (routes: Route?[], errors: NSError?[])!
-                var routes: Route?[]!
-                var errors: NSError?[]!
-                var storedRoutes: Route[]!
+                var results: (routes: [Route?], errors: [NSError?])!
+                var routes: [Route?]!
+                var errors: [NSError?]!
+                var storedRoutes: [Route]!
                 
                 beforeEach {
                     var json1: Dictionary<String, AnyObject> = [ : ]
@@ -236,8 +236,8 @@ class RouteSpec: QuickSpec {
                     json3["UpDestination"] = "East Malvern via St Kilda"
                     json3["VariantDestination"] = "via St Kilda"
                     
-                    let array: NSDictionary[] = [json1, json2, json3]
-                    results = Route.insertOrUpdateFromRestArray(array, inManagedObjectContext: moc) as (routes: Route?[], errors: NSError?[])
+                    let array: [NSDictionary] = [json1, json2, json3]
+                    results = Route.insertOrUpdateFromRestArray(array, inManagedObjectContext: moc) as (routes: [Route?], errors: [NSError?])
                     moc.save(nil)
                     
                     routes = results.routes
@@ -246,37 +246,37 @@ class RouteSpec: QuickSpec {
                     let request = NSFetchRequest(entityName: "Route")
                     // for string 10 is before than 5 --> ascending order
                     request.sortDescriptors = [NSSortDescriptor(key: "routeNo", ascending:true)]
-                    storedRoutes = moc.executeFetchRequest(request, error: nil) as? Route[]
+                    storedRoutes = moc.executeFetchRequest(request, error: nil) as? [Route]
                 }
                 
                 it("should have 2 routes") {
-                    expect(routes.count).to.equal(3)
+                    expect(routes.count).to(equal(3))
                 }
                 
                 it("should have 2 errors") {
-                    expect(errors.count).to.equal(3)
+                    expect(errors.count).to(equal(3))
                 }
                 
                 it("should have a routeNo") {
-                    expect(routes[0]?.routeNo).to.equal("16")
+                    expect(routes[0]?.routeNo).to(equal("16"))
                 }
                 
                 it("should have a route description") {
-                    expect(routes[2]?.routeDescription).to.equal("Melbourne Uni - East Malvern via St Kilda")
+                    expect(routes[2]?.routeDescription).to(equal("Melbourne Uni - East Malvern via St Kilda"))
                 }
                 
                 it("should create and store 2 routes") {
-                    expect(storedRoutes.count).to.equal(2)
+                    expect(storedRoutes.count).to(equal(2))
                 }
                 
                 it("should have set it's routeNo") {
                     let storedRoute = storedRoutes[0]
-                    expect(storedRoute.routeNo).to.equal("16")
+                    expect(storedRoute.routeNo).to(equal("16"))
                 }
                 
                 it("should have set it's name") {
                     let storedRoute = storedRoutes[1]
-                    expect(storedRoute.routeDescription).to.equal("Melbourne Uni - East Malvern via St Kilda")
+                    expect(storedRoute.routeDescription).to(equal("Melbourne Uni - East Malvern via St Kilda"))
                 }
             }
         }
@@ -291,11 +291,11 @@ class RouteSpec: QuickSpec {
                     }
                     
                     it("should return no route") {
-                        expect(result.route?).to.beNil()
+                        expect(result.route?).to(beNil())
                     }
                     
                     it("should return no error") {
-                        expect(result.error).to.beNil()
+                        expect(result.error).to(beNil())
                     }
                 }
                 
@@ -316,11 +316,11 @@ class RouteSpec: QuickSpec {
                     }
                     
                     it("should return one route") {
-                        expect(result?.route?.uniqueIdentifier).to.equal("composed-10")
+                        expect(result?.route?.uniqueIdentifier).to(equal("composed-10"))
                     }
                     
                     it("should return no error") {
-                        expect(result?.error).to.beNil()
+                        expect(result?.error).to(beNil())
                     }
                 }
                 
@@ -332,7 +332,7 @@ class RouteSpec: QuickSpec {
             }
             
             describe("fetchAllRoutesForManagedObjectIds") {
-                var result: (routes: Route[]?, error:NSError?)!
+                var result: (routes: [Route]?, error:NSError?)!
                 
                 context("when empty") {
                     beforeEach() {
@@ -340,11 +340,11 @@ class RouteSpec: QuickSpec {
                     }
                     
                     it("should return an empty array of routes") {
-                        expect(result.routes?.count).to.equal(0)
+                        expect(result.routes?.count).to(equal(0))
                     }
                     
                     it("should return no error") {
-                        expect(result.error).to.beNil()
+                        expect(result.error).to(beNil())
                     }
                 }
                 
@@ -366,15 +366,15 @@ class RouteSpec: QuickSpec {
                     }
                     
                     it("should return one route") {
-                        expect(result?.routes?.count).to.equal(1)
+                        expect(result?.routes?.count).to(equal(1))
                     }
                     
                     it("should have the property routeNo") {
-                        expect(result?.routes?[0].routeNo).to.equal("10")
+                        expect(result?.routes?[0].routeNo).to(equal("10"))
                     }
                     
                     it("should return no error") {
-                        expect(result?.error).to.beNil()
+                        expect(result?.error).to(beNil())
                     }
                 }
                 

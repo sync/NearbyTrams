@@ -27,19 +27,19 @@ class FetchedResultsControllerChangeSpec: QuickSpec {
             
             it ("should have a changed object") {
                 var expectedChangedObject = change.changedObject as NSObject
-                expect(expectedChangedObject).to.equal(changedObject)
+                expect(expectedChangedObject).to(equal(changedObject))
             }
             
             it ("should have an index path") {
-                expect(change.indexPath).to.equal(indexPath)
+                expect(change.indexPath).to(equal(indexPath))
             }
             
             it ("should have achange type") {
-                expect(change.changeType).to.equal(changeType)
+                expect(change.changeType).to(equal(changeType))
             }
             
             it ("should have a moved index path") {
-                expect(change.movedToIndexPath).to.equal(movedToIndexPath)
+                expect(change.movedToIndexPath).to(equal(movedToIndexPath))
             }
         }
     }

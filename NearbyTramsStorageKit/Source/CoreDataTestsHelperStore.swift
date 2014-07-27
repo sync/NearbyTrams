@@ -6,8 +6,9 @@ import CoreData
 
 public class CoreDataTestsHelperStore
 {
+    public init() {}
+    
     public lazy var managedObjectContext: NSManagedObjectContext = {
-        
         let managedObjectModel = CoreDataStackManager.sharedInstance.managedObjectModel
         
         var error: NSError? = nil

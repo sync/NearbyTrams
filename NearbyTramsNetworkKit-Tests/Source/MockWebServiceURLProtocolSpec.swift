@@ -19,19 +19,19 @@ class MockWebServiceURLProtocolSpec: QuickSpec {
                 }
                 
                 it("should have a body") {
-                    expect(response.body as NSDictionary).to.equal(["test": "blah"])
+                    expect(response.body as? NSDictionary).to(equal(["test": "blah"]))
                 }
                 
                 it("should have an header") {
-                    expect(response.header).to.equal(["Content-Type": "application/json; charset=utf-8"])
+                    expect(response.header).to(equal(["Content-Type": "application/json; charset=utf-8"]))
                 }
                 
                 it("should have a statusCode") {
-                    expect(response.statusCode).to.equal(404)
+                    expect(response.statusCode).to(equal(404))
                 }
                 
                 it("should have an error") {
-                    expect(response.error).to.equal(error)
+                    expect(response.error).to(equal(error))
                 }
             }
         }
@@ -52,14 +52,14 @@ class MockWebServiceURLProtocolSpec: QuickSpec {
                     context("when using mock scheme") {
                         it("should be able to init a request") {
                             let request = NSURLRequest(URL: NSURL(string: "mock://www.apple.com"))
-                            expect(MockWebServiceURLProtocol.canInitWithRequest(request)).to.beTrue()
+                            expect(MockWebServiceURLProtocol.canInitWithRequest(request)).to(beTruthy())
                         }
                     }
                     
                     context("when using http scheme") {
                         it("should not be able to init a request") {
                             let request = NSURLRequest(URL: NSURL(string: "http://www.apple.com"))
-                            expect(MockWebServiceURLProtocol.canInitWithRequest(request)).to.beFalse()
+                            expect(MockWebServiceURLProtocol.canInitWithRequest(request)).to(beFalsy())
                         }
                     }
                 }
@@ -73,7 +73,7 @@ class MockWebServiceURLProtocolSpec: QuickSpec {
                     
                     it("should be able to init a request") {
                         let request = NSURLRequest(URL: NSURL(string: "mock://www.apple.com/Controllers/GetStopsByRouteAndDirection.ashx?r=123&u=true"))
-                        expect(MockWebServiceURLProtocol.canInitWithRequest(request)).to.beTrue()
+                        expect(MockWebServiceURLProtocol.canInitWithRequest(request)).to(beTruthy())
                     }
                 }
             }
@@ -81,7 +81,7 @@ class MockWebServiceURLProtocolSpec: QuickSpec {
             describe("canonicalRequestForRequest") {
                 it("should return the same request") {
                     let request = NSURLRequest(URL: NSURL(string: "mock://www.apple.com"))
-                    expect(MockWebServiceURLProtocol.canonicalRequestForRequest(request)).to.equal(request)
+                    expect(MockWebServiceURLProtocol.canonicalRequestForRequest(request)).to(equal(request))
                 }
             }
             
@@ -90,7 +90,7 @@ class MockWebServiceURLProtocolSpec: QuickSpec {
                     it("should be equivalent with the same request is given twice") {
                         let requestA = NSURLRequest(URL: NSURL(string: "mock://www.apple.com"))
                         let requestB = NSURLRequest(URL: NSURL(string: "mock://www.apple.com"))
-                        expect(MockWebServiceURLProtocol.requestIsCacheEquivalent(requestA, toRequest: requestB )).to.beTrue()
+                        expect(MockWebServiceURLProtocol.requestIsCacheEquivalent(requestA, toRequest: requestB )).to(beTruthy())
                     }
                 }
                 
@@ -98,7 +98,7 @@ class MockWebServiceURLProtocolSpec: QuickSpec {
                     it("should be equivalent with the same request is given twice") {
                         let requestA = NSURLRequest(URL: NSURL(string: "mock://www.apple.com"))
                         let requestB = NSURLRequest(URL: NSURL(string: "http://www.apple.com"))
-                        expect(MockWebServiceURLProtocol.requestIsCacheEquivalent(requestA, toRequest: requestB )).to.beFalse()
+                        expect(MockWebServiceURLProtocol.requestIsCacheEquivalent(requestA, toRequest: requestB )).to(beFalsy())
                     }
                 }
             }

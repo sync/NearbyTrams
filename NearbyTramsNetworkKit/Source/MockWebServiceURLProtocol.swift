@@ -4,15 +4,15 @@
 
 import Foundation
 
-struct MockWebServiceResponse
+public struct MockWebServiceResponse
 {
-    let body: AnyObject
-    let header: Dictionary<String, AnyObject>
-    let urlComponent: String?
-    let statusCode: Int
-    let error: NSError?
+    public let body: AnyObject
+    public let header: NSDictionary
+    public let urlComponent: String?
+    public let statusCode: Int
+    public let error: NSError?
     
-    init (body: AnyObject, header: Dictionary<String, AnyObject>, urlComponentToMatch urlComponent: String? = nil, statusCode: Int = 200, error: NSError? = nil)
+    public init (body: AnyObject, header: NSDictionary, urlComponentToMatch urlComponent: String? = nil, statusCode: Int = 200, error: NSError? = nil)
     {
         self.body = body
         self.header = header
@@ -23,14 +23,14 @@ struct MockWebServiceResponse
 }
 
 var storage: [MockWebServiceResponse]?
-class MockWebServiceURLProtocol: NSURLProtocol
+public class MockWebServiceURLProtocol: NSURLProtocol
 {
-    class func cannedResponses(responses: [MockWebServiceResponse]?)
+    public class func cannedResponses(responses: [MockWebServiceResponse]?)
     {
         storage = responses
     }
     
-    class func cannedResponse(response: MockWebServiceResponse?)
+    public class func cannedResponse(response: MockWebServiceResponse?)
     {
         if let aResponse = response
         {
@@ -42,7 +42,7 @@ class MockWebServiceURLProtocol: NSURLProtocol
         }
     }
 
-    class func responsesForURL(URL: NSURL) -> [MockWebServiceResponse]?
+    public class func responsesForURL(URL: NSURL) -> [MockWebServiceResponse]?
     {
         if let tmpResponses = storage
         {
@@ -64,7 +64,7 @@ class MockWebServiceURLProtocol: NSURLProtocol
         return nil
     }
     
-    override class func canInitWithRequest(request: NSURLRequest!) -> Bool
+    override public class func canInitWithRequest(request: NSURLRequest!) -> Bool
     {
         let schemeIsMock = request.URL.scheme == "mock"
         var urlMatched = responsesForURL(request.URL)?.count > 0
@@ -72,17 +72,17 @@ class MockWebServiceURLProtocol: NSURLProtocol
         return (schemeIsMock && urlMatched)
     }
     
-    override class func canonicalRequestForRequest(request: NSURLRequest!) -> NSURLRequest!
+    override public class func canonicalRequestForRequest(request: NSURLRequest!) -> NSURLRequest!
     {
         return request
     }
     
-    override class func requestIsCacheEquivalent(a: NSURLRequest!, toRequest b: NSURLRequest!) -> Bool
+    override public class func requestIsCacheEquivalent(a: NSURLRequest!, toRequest b: NSURLRequest!) -> Bool
     {
         return a.URL == b.URL
     }
     
-    override func startLoading()
+    override public func startLoading()
     {
         let request = self.request
         let client: NSURLProtocolClient = self.client
@@ -109,7 +109,7 @@ class MockWebServiceURLProtocol: NSURLProtocol
 
     }
     
-    override func stopLoading()
+    override public func stopLoading()
     {
         
     }

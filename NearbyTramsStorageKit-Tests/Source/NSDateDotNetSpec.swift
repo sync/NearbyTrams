@@ -17,7 +17,7 @@ class NSDateDotNetSpec: QuickSpec {
                 }
                 
                 it("should not return a date") {
-                    expect(date).to.beNil()
+                    expect(date).to(beNil())
                 }
             }
             
@@ -40,7 +40,7 @@ class NSDateDotNetSpec: QuickSpec {
                 }
                 
                 it("should return a valid date") {
-                    expect(date).to.equal(expectedDate)
+                    expect(date).to(equal(expectedDate))
                 }
             }
         }
@@ -64,7 +64,7 @@ class NSDateDotNetSpec: QuickSpec {
             }
             
             it("should return a valid string") {
-                expect(string).to.equal("/Date(1388977800000+1000)/")
+                expect(string).to(equal("/Date(1388977800000+1000)/"))
             }
         }
     }

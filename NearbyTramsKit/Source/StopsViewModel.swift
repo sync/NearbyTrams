@@ -14,14 +14,14 @@ public protocol StopsViewModelDelegate
 
 public class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
 {
-    var delegate: StopsViewModelDelegate?
+    public var delegate: StopsViewModelDelegate?
     
     let managedObjectContext: NSManagedObjectContext
     
     var fetchedResultsController: SNRFetchedResultsController?
     var stopsStorage: Dictionary<String, StopViewModel> = [ : ]
     var currentChangeSet: FetchedResultsControllerChangeSet?
-    var stops: [StopViewModel]
+    public var stops: [StopViewModel]
     
     public init (managedObjectContext: NSManagedObjectContext)
     {

@@ -67,13 +67,13 @@ class RoutesRepositorySpec: QuickSpec {
             
             context("when provider is loading") {
                 it ("should be true") {
-                    expect(repository.isLoading).to.beTrue()
+                    expect(repository.isLoading).to(beTruthy())
                 }
             }
             
             context("when provider isn't loading") {
                 it ("should be false") {
-                    expect{repository.isLoading}.will.beFalse()
+                    expect{repository.isLoading}.toEventually(beFalsy())
                 }
             }
         }
@@ -86,13 +86,13 @@ class RoutesRepositorySpec: QuickSpec {
             describe("routesRepositoryLoadingStateDidChange") {
                 context("when loading") {
                     it ("should be true") {
-                        expect(fakeDelegate.loading).to.beTrue()
+                        expect(fakeDelegate.loading).to(beTruthy())
                     }
                 }
                 
                 context("when isn't loading") {
                     it ("should be false") {
-                        expect{fakeDelegate.loading}.will.beFalse()
+                        expect{fakeDelegate.loading}.toEventually(beFalsy())
                     }
                 }
             }
@@ -104,7 +104,7 @@ class RoutesRepositorySpec: QuickSpec {
                 
                 context("when finish loading with an error") {
                     it ("should have an error") {
-                        expect{fakeDelegate.error}.willNot.beNil()
+                        expect{fakeDelegate.error}.toEventuallyNot(beNil())
                     }
                 }
             }
@@ -153,7 +153,7 @@ class RoutesRepositorySpec: QuickSpec {
             
             it("should add routes") {
                 let fetchRequest = NSFetchRequest(entityName: Route.entityName)
-                expect{moc.executeFetchRequest(fetchRequest, error: nil).count}.will.equal(2)
+                expect{moc.executeFetchRequest(fetchRequest, error: nil).count}.toEventually(equal(2))
             }
         }
     }

@@ -17,7 +17,7 @@ class NetworkServiceSpec: QuickSpec {
                 }
                 
                 it("should have a baseURL") {
-                    expect(service.baseURL.absoluteString).to.equal("http://www.apple.com")
+                    expect(service.baseURL.absoluteString).to(equal("http://www.apple.com"))
                 }
             }
             
@@ -31,7 +31,7 @@ class NetworkServiceSpec: QuickSpec {
                 }
                 
                 it("should have a configuration") {
-                    expect(service.configuration).to.equal(configuration)
+                    expect(service.configuration).to(equal(configuration))
                 }
             }
         }
@@ -48,7 +48,7 @@ class NetworkServiceSpec: QuickSpec {
             it("should return a session data task") {
                 let task = service.getAllRoutesWithCompletionHandler(nil)
                 
-                expect(task).notTo.beNil()
+                expect(task).notTo(beNil())
             }
             
             context("when an error occur") {
@@ -77,8 +77,8 @@ class NetworkServiceSpec: QuickSpec {
                         completionError = error
                     }
                     
-                    expect{array}.will.beNil()
-                    expect{completionError}.will.equal(error)
+                    expect{array}.toEventually(beNil())
+                    expect{completionError}.toEventually(equal(error))
                 }
             }
             
@@ -108,8 +108,8 @@ class NetworkServiceSpec: QuickSpec {
                         completionError = error
                         }
                     
-                    expect{array}.will.equal(responseObject)
-                    expect{completionError}.will.beNil()
+                    expect{array}.toEventually(equal(responseObject))
+                    expect{completionError}.toEventually(beNil())
                 }
             }
         }
@@ -126,14 +126,14 @@ class NetworkServiceSpec: QuickSpec {
             it("should return a session data task") {
                 let task = service.getStopsByRouteWithRouteNo(123, completionHandler: nil)
                 
-                expect(task).notTo.beNil()
+                expect(task).notTo(beNil())
             }
             
             it("should have added to the query url the stop no") {
                 //originalRequest
                 let task = service.getStopsByRouteWithRouteNo(123, completionHandler: nil)
                 
-                expect(task.originalRequest.URL.absoluteString).to.contain("123")
+                expect(task.originalRequest.URL.absoluteString).to(contain("123"))
             }
             
             context("when an error occur") {
@@ -162,8 +162,8 @@ class NetworkServiceSpec: QuickSpec {
                         completionError = error
                         })
                     
-                    expect{array}.will.beNil()
-                    expect{completionError}.will.equal(error)
+                    expect{array}.toEventually(beNil())
+                    expect{completionError}.toEventually(equal(error))
                 }
             }
             
@@ -193,8 +193,8 @@ class NetworkServiceSpec: QuickSpec {
                         completionError = error
                         })
                     
-                    expect{array}.will.equal(responseObject)
-                    expect{completionError}.will.beNil()
+                    expect{array}.toEventually(equal(responseObject))
+                    expect{completionError}.toEventually(beNil())
                 }
             }
         }
@@ -211,14 +211,14 @@ class NetworkServiceSpec: QuickSpec {
             it("should return a session data task") {
                 let task = service.getStopInformationWithStopNo(123, completionHandler: nil)
                 
-                expect(task).notTo.beNil()
+                expect(task).notTo(beNil())
             }
             
             it("should have added to the query url the stop no") {
                 //originalRequest
                 let task = service.getStopInformationWithStopNo(123, completionHandler: nil)
                 
-                expect(task.originalRequest.URL.absoluteString).to.contain("123")
+                expect(task.originalRequest.URL.absoluteString).to(contain("123"))
             }
             
             context("when an error occur") {
@@ -247,8 +247,8 @@ class NetworkServiceSpec: QuickSpec {
                         completionError = error
                         })
                     
-                    expect{dictionary}.will.beNil()
-                    expect{completionError}.will.equal(error)
+                    expect{dictionary}.toEventually(beNil())
+                    expect{completionError}.toEventually(equal(error))
                 }
             }
             
@@ -278,8 +278,8 @@ class NetworkServiceSpec: QuickSpec {
                         completionError = error
                         })
                     
-                    expect{dictionary}.will.equal(responseObject)
-                    expect{completionError}.will.beNil()
+                    expect{dictionary}.toEventually(equal(responseObject))
+                    expect{completionError}.toEventually(beNil())
                 }
             }
         }
@@ -296,23 +296,23 @@ class NetworkServiceSpec: QuickSpec {
             it("should return a session data task") {
                 let task = service.getNextPredictionsWithStopNo(123, completionHandler: nil)
                 
-                expect(task).notTo.beNil()
+                expect(task).notTo(beNil())
             }
             
             it("should have added to the query url the stop no and a zero route no") {
                 //originalRequest
                 let task = service.getNextPredictionsWithStopNo(123, completionHandler: nil)
                 
-                expect(task.originalRequest.URL.absoluteString).to.contain("/123/")
-                expect(task.originalRequest.URL.absoluteString).to.contain("/0/")
+                expect(task.originalRequest.URL.absoluteString).to(contain("/123/"))
+                expect(task.originalRequest.URL.absoluteString).to(contain("/0/"))
             }
             
             it("should have added to the query url the stop no and the route no") {
                 //originalRequest
                 let task = service.getNextPredictionsWithStopNo(456, routeNo: "16", completionHandler: nil)
                 
-                expect(task.originalRequest.URL.absoluteString).to.contain("/456/")
-                expect(task.originalRequest.URL.absoluteString).to.contain("/16/")
+                expect(task.originalRequest.URL.absoluteString).to(contain("/456/"))
+                expect(task.originalRequest.URL.absoluteString).to(contain("/16/"))
             }
             
             context("when an error occur") {
@@ -341,8 +341,8 @@ class NetworkServiceSpec: QuickSpec {
                         completionError = error
                         })
                     
-                    expect{array}.will.beNil()
-                    expect{completionError}.will.equal(error)
+                    expect{array}.toEventually(beNil())
+                    expect{completionError}.toEventually(equal(error))
                 }
             }
             
@@ -372,8 +372,8 @@ class NetworkServiceSpec: QuickSpec {
                         completionError = error
                         })
                     
-                    expect{array}.will.equal(responseObject)
-                    expect{completionError}.will.beNil()
+                    expect{array}.toEventually(equal(responseObject))
+                    expect{completionError}.toEventually(beNil())
                 }
             }
         }

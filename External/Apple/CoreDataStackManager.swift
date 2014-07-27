@@ -18,6 +18,7 @@ var _sharedInstance: CoreDataStackManager?
 
 public class CoreDataStackManager {
     
+    public init() {}
     
     public class var sharedInstance: CoreDataStackManager {
         

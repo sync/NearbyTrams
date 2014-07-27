@@ -54,10 +54,10 @@
          location = "group:LIFXKit/LIFXKit/LIFXKit.xcodeproj">
       </FileRef>
       <FileRef
-         location = "group:Quick/Nimble/Nimble.xcodeproj">
+         location = "group:Quick/Quick/Quick.xcodeproj">
       </FileRef>
       <FileRef
-         location = "group:Quick/Quick/Quick.xcodeproj">
+         location = "group:Nimble/Nimble.xcodeproj">
       </FileRef>
    </Group>
    <Group

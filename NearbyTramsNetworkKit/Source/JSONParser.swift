@@ -4,9 +4,9 @@
 
 import Foundation
 
-class JSONParser
+public class JSONParser
 {
-    class func parseJSON(inputData: NSData) -> (object: AnyObject?, error:NSError?)
+    public class func parseJSON(inputData: NSData) -> (object: AnyObject?, error:NSError?)
     {
         var error: NSError?
         var object : AnyObject? = NSJSONSerialization.JSONObjectWithData(inputData, options: NSJSONReadingOptions.MutableContainers, error: &error)

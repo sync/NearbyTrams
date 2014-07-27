@@ -6,21 +6,21 @@ import Foundation
 
 public class NetworkService
 {
-    struct Error {
-        struct Domain {
+    public struct Error {
+        public struct Domain {
             static let name = "au.com.dlbechoc.network"
         }
         
-        enum Code: Int {
+        public enum Code: Int {
             case Unknown = 0, API
         }
     }
     
-    let baseURL: NSURL
-    let aid: NSString
-    let token: NSString
-    let configuration: NSURLSessionConfiguration
-    let session: NSURLSession
+    public let baseURL: NSURL
+    public let aid: NSString
+    public let token: NSString
+    public let configuration: NSURLSessionConfiguration
+    public let session: NSURLSession
     
     // FIXME: token need to be generated on the fly, per user
     public init(baseURL: NSURL = NSURL(string: "http://ws3.tramtracker.com.au"), aid: NSString = "TTIOSJSON", token: NSString = "b79c738a-281c-4d81-9111-36591a5237bf", configuration: NSURLSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration())

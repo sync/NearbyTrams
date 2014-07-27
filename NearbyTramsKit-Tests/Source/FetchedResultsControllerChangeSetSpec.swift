@@ -24,11 +24,11 @@ class FetchedResultsControllerChangeSetSpec: QuickSpec {
                 }
                 
                 it ("should have one inserted object") {
-                    expect(changeSet.allAddedObjects.count).to.equal(1)
+                    expect(changeSet.allAddedObjects.count).to(equal(1))
                 }
                 
                 it ("should return the right inserted object") {
-                    expect(changeSet.allAddedObjects).to.contain(changedObject)
+                    expect(changeSet.allAddedObjects).to(contain(changedObject))
                 }
             }
             
@@ -45,8 +45,8 @@ class FetchedResultsControllerChangeSetSpec: QuickSpec {
                 }
                 
                 it ("should have two inserted objects") {
-                    expect(changeSet.allAddedObjects).to.contain(changedObjectOne)
-                    expect(changeSet.allAddedObjects).to.contain(changedObjectTwo)
+                    expect(changeSet.allAddedObjects).to(contain(changedObjectOne))
+                    expect(changeSet.allAddedObjects).to(contain(changedObjectTwo))
                 }
             }
             
@@ -59,11 +59,11 @@ class FetchedResultsControllerChangeSetSpec: QuickSpec {
                 }
                 
                 it ("should have one changed object") {
-                    expect(changeSet.allUpdatedObjects.count).to.equal(1)
+                    expect(changeSet.allUpdatedObjects.count).to(equal(1))
                 }
                 
                 it ("should return the right changed object") {
-                    expect(changeSet.allUpdatedObjects).to.contain(changedObject)
+                    expect(changeSet.allUpdatedObjects).to(contain(changedObject))
                 }
             }
             
@@ -80,8 +80,8 @@ class FetchedResultsControllerChangeSetSpec: QuickSpec {
                 }
                 
                 it ("should have two upated objects") {
-                    expect(changeSet.allUpdatedObjects).to.contain(changedObjectOne)
-                    expect(changeSet.allUpdatedObjects).to.contain(changedObjectTwo)
+                    expect(changeSet.allUpdatedObjects).to(contain(changedObjectOne))
+                    expect(changeSet.allUpdatedObjects).to(contain(changedObjectTwo))
                 }
             }
             
@@ -94,11 +94,11 @@ class FetchedResultsControllerChangeSetSpec: QuickSpec {
                 }
                 
                 it ("should have one deleted object") {
-                    expect(changeSet.allRemovedObjects.count).to.equal(1)
+                    expect(changeSet.allRemovedObjects.count).to(equal(1))
                 }
                 
                 it ("should return the right deletedd object") {
-                    expect(changeSet.allRemovedObjects).to.contain(changedObject)
+                    expect(changeSet.allRemovedObjects).to(contain(changedObject))
                 }
             }
             
@@ -115,8 +115,8 @@ class FetchedResultsControllerChangeSetSpec: QuickSpec {
                 }
                 
                 it ("should have two deleted objects") {
-                    expect(changeSet.allRemovedObjects).to.contain(changedObjectOne)
-                    expect(changeSet.allRemovedObjects).to.contain(changedObjectTwo)
+                    expect(changeSet.allRemovedObjects).to(contain(changedObjectOne))
+                    expect(changeSet.allRemovedObjects).to(contain(changedObjectTwo))
                 }
             }
             
@@ -137,25 +137,25 @@ class FetchedResultsControllerChangeSetSpec: QuickSpec {
                 }
                 
                 it ("should have one inserted object") {
-                    expect(changeSet.allAddedObjects.count).to.equal(1)
+                    expect(changeSet.allAddedObjects.count).to(equal(1))
                 }
                 
                 it ("should return the right inserted object") {
-                    expect(changeSet.allAddedObjects).to.contain(changedObjectOne)
+                    expect(changeSet.allAddedObjects).to(contain(changedObjectOne))
                 }
                 it ("should have one changed object") {
-                    expect(changeSet.allUpdatedObjects.count).to.equal(1)
+                    expect(changeSet.allUpdatedObjects.count).to(equal(1))
                 }
                 
                 it ("should return the right changed object") {
-                    expect(changeSet.allUpdatedObjects).to.contain(changedObjectTwo)
+                    expect(changeSet.allUpdatedObjects).to(contain(changedObjectTwo))
                 }
                 it ("should have one deleted object") {
-                    expect(changeSet.allRemovedObjects.count).to.equal(1)
+                    expect(changeSet.allRemovedObjects.count).to(equal(1))
                 }
                 
                 it ("should return the right deletedd object") {
-                    expect(changeSet.allRemovedObjects).to.contain(changedObjectThree)
+                    expect(changeSet.allRemovedObjects).to(contain(changedObjectThree))
                 }
             }
         }

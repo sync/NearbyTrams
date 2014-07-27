@@ -18,7 +18,7 @@ class ClassUtilitySpec: QuickSpec {
                 it("should return a objective-c meta class") {
                     let clazz: AnyObject = ClassUtility.classFromType(TestClassUtility.self)
                     
-                    expect(clazz is NSObject).to.beTrue()
+                    expect(clazz is NSObject).to(beTruthy())
                 }
             }
         }

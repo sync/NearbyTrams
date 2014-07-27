@@ -28,11 +28,11 @@ class ScheduleSpec: QuickSpec {
                 }
                 
                 it("should be non nil") {
-                    expect(prediction).notTo.beNil()
+                    expect(prediction).notTo(beNil())
                 }
                 
                 it("should be a member of the Route class") {
-                    expect(prediction.isMemberOfClass(Schedule)).to.beTrue()
+                    expect(prediction.isMemberOfClass(Schedule)).to(beTruthy())
                 }
             }
             
@@ -83,15 +83,15 @@ class ScheduleSpec: QuickSpec {
                     }
                     
                     it("should be AirConditioned") {
-                        expect(prediction.airConditioned).to.beTrue()
+                        expect(prediction.airConditioned).to(beTruthy())
                     }
                     
                     it("should have a Destination") {
-                        expect(prediction.destination).to.equal("Sth Melb Beach")
+                        expect(prediction.destination).to(equal("Sth Melb Beach"))
                     }
                     
                     it("should have a DisplayAC") {
-                        expect(prediction.displayAC).to.beTrue()
+                        expect(prediction.displayAC).to(beTruthy())
                     }
                     
                     it("should have a DisruptionMessage") {
@@ -100,51 +100,51 @@ class ScheduleSpec: QuickSpec {
                             "MessageCount": 2,
                             "Messages": ["Message 1", "Message 2"]
                         ]
-                        expect(prediction.disruptionMessage).to.equal(disruptionMessage)
+                        expect(prediction.disruptionMessage).to(equal(disruptionMessage))
                     }
                     
                     it("should be of kind HasDisruption") {
-                        expect(prediction.hasDisruption).to.beTrue()
+                        expect(prediction.hasDisruption).to(beTruthy())
                     }
                     
                     it("should be of kind HasSpecialEvent") {
-                        expect(prediction.hasSpecialEvent).to.beTrue()
+                        expect(prediction.hasSpecialEvent).to(beTruthy())
                     }
                     
                     it("should have a HeadBoardRouteNo") {
-                        expect(prediction.headBoardRouteNo).to.equal("1")
+                        expect(prediction.headBoardRouteNo).to(equal("1"))
                     }
                     
                     it("should have a InternalRouteNo") {
-                        expect(prediction.internalRouteNo).to.equal(1)
+                        expect(prediction.internalRouteNo).to(equal(1))
                     }
                     
                     it("should be a IsLowFloorTram") {
-                        expect(prediction.isLowFloorTram).to.beTrue()
+                        expect(prediction.isLowFloorTram).to(beTruthy())
                     }
                     
                     it("should have a IsTTAvailable") {
-                        expect(prediction.isTTAvailable).to.beTrue()
+                        expect(prediction.isTTAvailable).to(beTruthy())
                     }
                     
                     it("should have a PredictedArrivalDateTime") {
-                        expect(prediction.predictedArrivalDateTime).to.equal(date)
+                        expect(prediction.predictedArrivalDateTime).to(equal(date))
                     }
                     
                     it("should have a RouteNo") {
-                        expect(prediction.routeNo).to.equal("1")
+                        expect(prediction.routeNo).to(equal("1"))
                     }
                     
                     it("should have a SpecialEventMessage") {
-                        expect(prediction.specialEventMessage).to.equal("a special message")
+                        expect(prediction.specialEventMessage).to(equal("a special message"))
                     }
                     
                     it("should have a TripID") {
-                        expect(prediction.tripID).to.equal(10)
+                        expect(prediction.tripID).to(equal(10))
                     }
                     
                     it("should have a VehicleNo") {
-                        expect(prediction.vehicleNo).to.equal(2101)
+                        expect(prediction.vehicleNo).to(equal(2101))
                     }
                 }
                 

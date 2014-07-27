@@ -22,7 +22,7 @@ class RouteViewModelSpec: QuickSpec {
                 
                 it ("should remember it") {
                     let colorsAreEqual = CGColorEqualToColor(color, viewModel.color)
-                    expect(colorsAreEqual).to.beTrue()
+                    expect(colorsAreEqual).to(beTruthy())
                 }
             }
         }
@@ -36,7 +36,7 @@ class RouteViewModelSpec: QuickSpec {
                 it ("should be equal") {
                     var viewModelEqual = RouteViewModel(identifier: "an identifier", routeNo: "76", routeDescription: "a descption",  downDestination: "a down destination", upDestination: "another up destination")
                     
-                    expect(viewModel == viewModelEqual).to.beTrue()
+                    expect(viewModel == viewModelEqual).to(beTruthy())
                 }
             }
             
@@ -44,7 +44,7 @@ class RouteViewModelSpec: QuickSpec {
                 it ("should be equal") {
                     var viewModelNotEqual = RouteViewModel(identifier: "another identifier", routeNo: "76", routeDescription: "a descption",  downDestination: "a down destination", upDestination: "an up destination")
                     
-                    expect(viewModel == viewModelNotEqual).to.beFalse()
+                    expect(viewModel == viewModelNotEqual).to(beFalsy())
                 }
             }
         }

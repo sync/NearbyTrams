@@ -21,7 +21,7 @@ class StopViewModelSpec: QuickSpec {
                 }
                 
                 it ("should remember it") {
-                    expect(viewModel.stopName).to.equal(stopName)
+                    expect(viewModel.stopName).to(equal(stopName))
                 }
             }
         }
@@ -35,7 +35,7 @@ class StopViewModelSpec: QuickSpec {
                 it ("should be equal") {
                     var viewModelEqual = StopViewModel(identifier: "an identifier", routeNo: "76", routeDescription: "a description",  isUpStop: true, stopNo: 45, stopName: "another stop name", schedules: nil)
                     
-                    expect(viewModel == viewModelEqual).to.beTrue()
+                    expect(viewModel == viewModelEqual).to(beTruthy())
                 }
             }
             
@@ -43,7 +43,7 @@ class StopViewModelSpec: QuickSpec {
                 it ("should be equal") {
                     var viewModelNotEqual = StopViewModel(identifier: "another identifier", routeNo: "76", routeDescription: "a description",  isUpStop: true, stopNo: 45, stopName: "a stop name", schedules: nil)
                     
-                    expect(viewModel == viewModelNotEqual).to.beFalse()
+                    expect(viewModel == viewModelNotEqual).to(beFalsy())
                 }
             }
         }

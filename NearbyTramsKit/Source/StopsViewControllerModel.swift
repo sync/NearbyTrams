@@ -111,12 +111,12 @@ public class StopsViewControllerModel: NSObject, StopsViewModelDelegate, Schedul
     }
         
     // MARK: SchedulesRepositoryDelegate
-    func schedulesRepositoryLoadingStateDidChange(repository: SchedulesRepository, isLoading loading: Bool) -> Void
+    public func schedulesRepositoryLoadingStateDidChange(repository: SchedulesRepository, isLoading loading: Bool) -> Void
     {
         println("schedules are loading: \(loading)")
     }
     
-    func schedulesRepositoryDidFinsishLoading(repository: SchedulesRepository, error: NSError?) -> Void
+    public func schedulesRepositoryDidFinsishLoading(repository: SchedulesRepository, error: NSError?) -> Void
     {
         println("schedules finished updating")
     }

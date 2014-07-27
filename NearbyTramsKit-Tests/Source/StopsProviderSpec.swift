@@ -84,8 +84,8 @@ class StopsProviderSpec: QuickSpec {
                         completionError = error
                         })
                     
-                    expect{completionStops}.willNot.beEmpty()
-                    expect{completionError}.will.beNil()
+                    expect{completionStops}.toEventuallyNot(beEmpty())
+                    expect{completionError}.toEventually(beNil())
                 }
             }
             
@@ -108,8 +108,8 @@ class StopsProviderSpec: QuickSpec {
                         completionError = error
                         })
                     
-                    expect{completionStops}.will.beEmpty()
-                    expect{completionError}.will.beNil()
+                    expect{completionStops}.toEventually(beEmpty())
+                    expect{completionError}.toEventually(beNil())
                 }
             }
             
@@ -135,8 +135,8 @@ class StopsProviderSpec: QuickSpec {
                         completionError = error
                         })
                     
-                    expect{completionStops}.will.beNil()
-                    expect{completionError}.will.equal(error)
+                    expect{completionStops}.toEventually(beNil())
+                    expect{completionError}.toEventually(equal(error))
                 }
             }
         }
@@ -179,8 +179,8 @@ class StopsProviderSpec: QuickSpec {
                         completionError = error
                         })
                     
-                    expect{completionStop}.willNot.beNil()
-                    expect{completionError}.will.beNil()
+                    expect{completionStop}.toEventuallyNot(beNil())
+                    expect{completionError}.toEventually(beNil())
                 }
             }
             
@@ -203,8 +203,8 @@ class StopsProviderSpec: QuickSpec {
                         completionError = error
                         })
                     
-                    expect{completionStop}.willNot.beNil()
-                    expect{completionError}.will.beNil()
+                    expect{completionStop}.toEventuallyNot(beNil())
+                    expect{completionError}.toEventually(beNil())
                 }
             }
             
@@ -230,8 +230,8 @@ class StopsProviderSpec: QuickSpec {
                         completionError = error
                         })
                     
-                    expect{completionStop}.will.beNil()
-                    expect{completionError}.will.equal(error)
+                    expect{completionStop}.toEventually(beNil())
+                    expect{completionError}.toEventually(equal(error))
                 }
             }
         }

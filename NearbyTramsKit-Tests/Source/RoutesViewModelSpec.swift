@@ -59,11 +59,11 @@ class RoutesViewModelSpec: QuickSpec {
         
         context("when empty") {
             it("should have no routes") {
-                expect(viewModel.routes).to.beEmpty()
+                expect(viewModel.routes).to(beEmpty())
             }
             
             it("should have per routes count zero") {
-                expect(viewModel.routesCount).to.equal(0)
+                expect(viewModel.routesCount).to(equal(0))
             }
         }
         
@@ -80,15 +80,15 @@ class RoutesViewModelSpec: QuickSpec {
                 }
                 
                 it("should have one routes") {
-                    expect(viewModel.routes.count).to.equal(1)
+                    expect(viewModel.routes.count).to(equal(1))
                 }
                 
                 it("should have per routes count one") {
-                    expect(viewModel.routesCount).to.equal(1)
+                    expect(viewModel.routesCount).to(equal(1))
                 }
                 
                 it("should tell delegate about the added route") {
-                    expect(fakeDelegate.addedRoutes?[0].identifier).to.equal("123-true")
+                    expect(fakeDelegate.addedRoutes?[0].identifier).to(equal("123-true"))
                 }
             }
             
@@ -99,11 +99,11 @@ class RoutesViewModelSpec: QuickSpec {
                 }
                 
                 it("should have no routes") {
-                    expect(viewModel.routes).to.beEmpty()
+                    expect(viewModel.routes).to(beEmpty())
                 }
                 
                 it("should have per routes count zero") {
-                    expect(viewModel.routesCount).to.equal(0)
+                    expect(viewModel.routesCount).to(equal(0))
                 }
             }
             
@@ -127,17 +127,17 @@ class RoutesViewModelSpec: QuickSpec {
                 }
                 
                 it("should have one routes") {
-                    expect(viewModel.routes.count).to.equal(2)
+                    expect(viewModel.routes.count).to(equal(2))
                 }
                 
                 it("should have per routes count one") {
-                    expect(viewModel.routesCount).to.equal(2)
+                    expect(viewModel.routesCount).to(equal(2))
                 }
                 
                 it("should tell delegate about the two added route") {
                     let identifiers = [fakeDelegate.addedRoutes![0].identifier, fakeDelegate.addedRoutes![1].identifier]
-                    expect(identifiers).to.contain("123-true")
-                    expect(identifiers).to.contain("456-false")
+                    expect(identifiers).to(contain("123-true"))
+                    expect(identifiers).to(contain("456-false"))
                 }
             }
         }
@@ -171,15 +171,15 @@ class RoutesViewModelSpec: QuickSpec {
                 }
                 
                 it("should have one routes") {
-                    expect(viewModel.routes[0].identifier).to.equal("456-false")
+                    expect(viewModel.routes[0].identifier).to(equal("456-false"))
                 }
                 
                 it("should have per routes count one") {
-                    expect(viewModel.routesCount).to.equal(1)
+                    expect(viewModel.routesCount).to(equal(1))
                 }
                 
                 it("should tell delegate about the removed route") {
-                     expect(fakeDelegate.removedRoutes?[0].identifier).to.equal("123-true")
+                     expect(fakeDelegate.removedRoutes?[0].identifier).to(equal("123-true"))
                 }
             }
             
@@ -191,17 +191,17 @@ class RoutesViewModelSpec: QuickSpec {
                 }
                 
                 it("should have one routes") {
-                    expect(viewModel.routes.count).to.equal(0)
+                    expect(viewModel.routes.count).to(equal(0))
                 }
                 
                 it("should have per routes count one") {
-                    expect(viewModel.routesCount).to.equal(0)
+                    expect(viewModel.routesCount).to(equal(0))
                 }
                 
                 it("should tell delegate about the two removed route") {
                     let identifiers = [fakeDelegate.removedRoutes![0].identifier, fakeDelegate.removedRoutes![1].identifier]
-                    expect(identifiers).to.contain("123-true")
-                    expect(identifiers).to.contain("456-false")
+                    expect(identifiers).to(contain("123-true"))
+                    expect(identifiers).to(contain("456-false"))
                 }
             }
         }
@@ -236,7 +236,7 @@ class RoutesViewModelSpec: QuickSpec {
                 }
                 
                 it("should tell delegate about the updated route") {
-                     expect(fakeDelegate.updatedRoutes?[0].routeDescription).to.equal("new name")
+                     expect(fakeDelegate.updatedRoutes?[0].routeDescription).to(equal("new name"))
                 }
             }
             
@@ -250,8 +250,8 @@ class RoutesViewModelSpec: QuickSpec {
                 
                 it("should tell delegate about the two updated route") {
                     let names = [fakeDelegate.updatedRoutes![0].routeDescription, fakeDelegate.updatedRoutes![1].routeDescription]
-                    expect(names).to.contain("new name")
-                    expect(names).to.contain("another new name")
+                    expect(names).to(contain("new name"))
+                    expect(names).to(contain("another new name"))
                 }
             }
             
@@ -263,11 +263,11 @@ class RoutesViewModelSpec: QuickSpec {
                 }
                 
                 it("should have per routes count one") {
-                    expect(viewModel.routesCount).to.equal(1)
+                    expect(viewModel.routesCount).to(equal(1))
                 }
                 
                 it("should tell delegate about the removed route") {
-                    expect(fakeDelegate.removedRoutes?[0].identifier).to.equal("123-true")
+                    expect(fakeDelegate.removedRoutes?[0].identifier).to(equal("123-true"))
                 }
             }
         }
@@ -285,7 +285,7 @@ class RoutesViewModelSpec: QuickSpec {
             }
             
             it("should not tell delegate about the two added route") {
-                expect(fakeDelegate.addedRoutes?.count).to.beNil()
+                expect(fakeDelegate.addedRoutes?.count).to(beNil())
             }
         }
         
@@ -321,25 +321,25 @@ class RoutesViewModelSpec: QuickSpec {
                 }
                 
                 it("should have one routes") {
-                    expect(viewModel.routes.count).to.equal(1)
+                    expect(viewModel.routes.count).to(equal(1))
                 }
                 
                 it("should have per routes count one") {
-                    expect(viewModel.routesCount).to.equal(1)
+                    expect(viewModel.routesCount).to(equal(1))
                 }
                 
                 it("should tell delegate about the added routes") {
                     let identifiers = [fakeDelegate.addedRoutes![0].identifier, fakeDelegate.addedRoutes![1].identifier]
-                    expect(identifiers).to.contain("123-true")
-                    expect(identifiers).to.contain("456-false")
+                    expect(identifiers).to(contain("123-true"))
+                    expect(identifiers).to(contain("456-false"))
                 }
                 
                 it("should tell delegate about the updated route") {
-                     expect(fakeDelegate.updatedRoutes?[0].identifier).to.equal("123-true")
+                     expect(fakeDelegate.updatedRoutes?[0].identifier).to(equal("123-true"))
                 }
                 
                 it("should tell delegate about the removed route") {
-                    expect(fakeDelegate.removedRoutes?[0].identifier).to.equal("456-false")
+                    expect(fakeDelegate.removedRoutes?[0].identifier).to(equal("456-false"))
                 }
             }
         }

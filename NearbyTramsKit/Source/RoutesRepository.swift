@@ -4,32 +4,32 @@
 
 import Foundation
 
-protocol RoutesRepositoryDelegate
+public protocol RoutesRepositoryDelegate
 {
     func routesRepositoryLoadingStateDidChange(repository: RoutesRepository, isLoading loading: Bool) -> Void
     func routesRepositoryDidFinsishLoading(repository: RoutesRepository, error: NSError?) -> Void
 }
 
-class RoutesRepository
+public class RoutesRepository
 {
-    var delegate: RoutesRepositoryDelegate?
+    public var delegate: RoutesRepositoryDelegate?
     
     let routesProvider: RoutesProvider
     let managedObjectContext: NSManagedObjectContext
-    var isLoading: Bool {
+    public var isLoading: Bool {
     willSet {
         self.delegate?.routesRepositoryLoadingStateDidChange(self, isLoading: newValue)
     }
     }
     
-    init (routesProvider: RoutesProvider, managedObjectContext: NSManagedObjectContext)
+    public init (routesProvider: RoutesProvider, managedObjectContext: NSManagedObjectContext)
     {
         self.routesProvider = routesProvider
         self.managedObjectContext = managedObjectContext
         self.isLoading = false
     }
     
-    func update() -> Void
+    public func update() -> Void
     {
         self.isLoading = true
         routesProvider.getAllRoutesWithManagedObjectContext(managedObjectContext) {

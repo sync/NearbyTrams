@@ -14,7 +14,7 @@ class JSONParserSpec: QuickSpec {
                     let data = NSData()
                     let (object : AnyObject?, error) = JSONParser.parseJSON(data)
                     
-                    expect(error).notTo.beNil()
+                    expect(error).notTo(beNil())
                 }
             }
             
@@ -33,7 +33,7 @@ class JSONParserSpec: QuickSpec {
                     let (object : AnyObject?, error) = JSONParser.parseJSON(data)
                     let keyValueDict = object as? NSDictionary
                     
-                    expect(keyValueDict).to.equal(dictionary)
+                    expect(keyValueDict).to(equal(dictionary))
                 }
             }
         }

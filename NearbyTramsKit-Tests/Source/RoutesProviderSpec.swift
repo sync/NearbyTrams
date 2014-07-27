@@ -83,8 +83,8 @@ class RoutesProviderSpec: QuickSpec {
                         completionError = error
                         })
                     
-                    expect{completionRoutes}.willNot.beEmpty()
-                    expect{completionError}.will.beNil()
+                    expect{completionRoutes}.toEventuallyNot(beEmpty())
+                    expect{completionError}.toEventually(beNil())
                 }
             }
             
@@ -107,8 +107,8 @@ class RoutesProviderSpec: QuickSpec {
                         completionError = error
                         })
                     
-                    expect{completionRoutes}.will.beEmpty()
-                    expect{completionError}.will.beNil()
+                    expect{completionRoutes}.toEventually(beEmpty())
+                    expect{completionError}.toEventually(beNil())
                 }
             }
             
@@ -134,8 +134,8 @@ class RoutesProviderSpec: QuickSpec {
                         completionError = error
                         })
                     
-                    expect{completionRoutes}.will.beNil()
-                    expect{completionError}.will.equal(error)
+                    expect{completionRoutes}.toEventually(beNil())
+                    expect{completionError}.toEventually(equal(error))
                 }
             }
         }

@@ -22,7 +22,7 @@ class CoreDataStackManagerSpec: QuickSpec {
             }
             
             it("should be non nil") {
-                expect(psc).notTo.beNil()
+                expect(psc).notTo(beNil())
             }
         }
         
@@ -35,11 +35,11 @@ class CoreDataStackManagerSpec: QuickSpec {
             }
             
             it("should be non nil") {
-                expect(moc).notTo.beNil()
+                expect(moc).notTo(beNil())
             }
             
             it("should have a persistent coordinator") {
-                expect(moc.persistentStoreCoordinator).notTo.beNil()
+                expect(moc.persistentStoreCoordinator).notTo(beNil())
             }
         }
     }

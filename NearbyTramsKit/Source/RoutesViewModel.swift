@@ -52,7 +52,7 @@ public class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
         return []
     }
     
-    var routes: [RouteViewModel] {
+    public var routes: [RouteViewModel] {
     return self.orderedRouteIdentifiers.filter {
         identifier -> Bool in
         

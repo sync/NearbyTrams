@@ -78,8 +78,8 @@ class SchedulesProviderSpec: QuickSpec {
                             completionError = error
                             })
                         
-                        expect{completionSchedules}.willNot.beEmpty()
-                        expect{completionError}.will.beNil()
+                        expect{completionSchedules}.toEventuallyNot(beEmpty())
+                        expect{completionError}.toEventually(beNil())
                     }
                 }
                 
@@ -92,8 +92,8 @@ class SchedulesProviderSpec: QuickSpec {
                             completionError = error
                             })
                         
-                        expect{completionSchedules}.willNot.beEmpty()
-                        expect{completionError}.will.beNil()
+                        expect{completionSchedules}.toEventuallyNot(beEmpty())
+                        expect{completionError}.toEventually(beNil())
                     }
                 }
             }
@@ -117,8 +117,8 @@ class SchedulesProviderSpec: QuickSpec {
                         completionError = error
                         })
                     
-                    expect{completionSchedules}.will.beEmpty()
-                    expect{completionError}.will.beNil()
+                    expect{completionSchedules}.toEventually(beEmpty())
+                    expect{completionError}.toEventually(beNil())
                 }
             }
             
@@ -144,8 +144,8 @@ class SchedulesProviderSpec: QuickSpec {
                         completionError = error
                         })
                     
-                    expect{completionSchedules}.will.beNil()
-                    expect{completionError}.will.equal(error)
+                    expect{completionSchedules}.toEventually(beNil())
+                    expect{completionError}.toEventually(equal(error))
                 }
             }
         }

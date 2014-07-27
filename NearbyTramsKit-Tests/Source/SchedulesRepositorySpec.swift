@@ -77,13 +77,13 @@ class SchedulesRepositorySpec: QuickSpec {
             
             context("when provider is loading") {
                 it ("should be true") {
-                    expect(repository.isLoading).to.beTrue()
+                    expect(repository.isLoading).to(beTruthy())
                 }
             }
             
             context("when provider isn't loading") {
                 it ("should be false") {
-                    expect{repository.isLoading}.will.beFalse()
+                    expect{repository.isLoading}.toEventually(beFalsy())
                 }
             }
         }
@@ -96,13 +96,13 @@ class SchedulesRepositorySpec: QuickSpec {
             describe("schedulesRepositoryLoadingStateDidChange") {
                 context("when loading") {
                     it ("should be true") {
-                        expect(fakeDelegate.loading).to.beTrue()
+                        expect(fakeDelegate.loading).to(beTruthy())
                     }
                 }
                 
                 context("when isn't loading") {
                     it ("should be false") {
-                        expect{fakeDelegate.loading}.will.beFalse()
+                        expect{fakeDelegate.loading}.toEventually(beFalsy())
                     }
                 }
             }
@@ -114,7 +114,7 @@ class SchedulesRepositorySpec: QuickSpec {
                 
                 context("when finish loading with an error") {
                     it ("should have an error") {
-                        expect{fakeDelegate.error}.willNot.beNil()
+                        expect{fakeDelegate.error}.toEventuallyNot(beNil())
                     }
                 }
             }
@@ -162,7 +162,7 @@ class SchedulesRepositorySpec: QuickSpec {
             }
             
             it("should add schedules and assign the to it's corresponding stop") {
-                expect{fetchStop()?.schedules.count}.will.equal(1)
+                expect{fetchStop()?.schedules.count}.toEventually(equal(1))
             }
         }
     }

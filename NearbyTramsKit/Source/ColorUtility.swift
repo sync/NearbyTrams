@@ -4,9 +4,9 @@
 
 import Foundation
 
-enum ColorUtility
+public enum ColorUtility
 {
-    static func generateRandomColor() -> CGColorRef
+    public static func generateRandomColor() -> CGColorRef
     {
         return CGColorCreateGenericRGB(0.0, 0.0, 0.0, 1.0)
     }

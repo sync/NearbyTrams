@@ -4,27 +4,27 @@
 
 import Foundation
 
-class FetchedResultsControllerChangeSet
+public class FetchedResultsControllerChangeSet
 {
-    var changes: [FetchedResultsControllerChange]
+    public var changes: [FetchedResultsControllerChange]
     
-    init()
+    public init()
     {
         changes = []
     }
     
-    var changesCount: Int {
+    public var changesCount: Int {
     get {
         return changes.count
     }
     }
     
-    func addChange(change: FetchedResultsControllerChange)
+    public func addChange(change: FetchedResultsControllerChange)
     {
         changes.append(change)
     }
     
-    func changedObjectsForChangeType(changeType: SNRFetchedResultsChangeType) -> [AnyObject]
+    public func changedObjectsForChangeType(changeType: SNRFetchedResultsChangeType) -> [AnyObject]
     {
         let matchedChanges = changes.filter{
             change -> Bool in
@@ -39,19 +39,19 @@ class FetchedResultsControllerChangeSet
         return matchedChanges
     }
     
-    var allUpdatedObjects: [AnyObject] {
+    public var allUpdatedObjects: [AnyObject] {
     get {
         return changedObjectsForChangeType(SNRFetchedResultsChangeUpdate)
     }
     }
     
-    var allAddedObjects: [AnyObject] {
+    public var allAddedObjects: [AnyObject] {
     get {
         return changedObjectsForChangeType(SNRFetchedResultsChangeInsert)
     }
     }
     
-    var allRemovedObjects: [AnyObject] {
+    public var allRemovedObjects: [AnyObject] {
     get {
         return changedObjectsForChangeType(SNRFetchedResultsChangeDelete)
     }
