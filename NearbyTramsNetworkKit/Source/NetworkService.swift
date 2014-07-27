@@ -225,7 +225,15 @@ public class NetworkService
                 {
                     if let handler = completionHandler
                     {
-                        handler(dictionary["responseObject"] as? NSDictionary, nil)
+                        var response: NSDictionary?
+                        if let results = dictionary["responseObject"] as? [NSDictionary]
+                        {
+                            if !results.isEmpty
+                            {
+                                response = results[0]
+                            }
+                        }
+                        handler(response, nil)
                     }
                 }
             }

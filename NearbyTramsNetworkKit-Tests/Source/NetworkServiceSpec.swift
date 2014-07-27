@@ -258,7 +258,7 @@ class NetworkServiceSpec: QuickSpec {
                 
                 beforeEach {
                     responseObject = ["test": "blah"]
-                    let response = MockWebServiceResponse(body: ["responseObject": responseObject], header: ["Content-Type": "application/json; charset=utf-8"])
+                    let response = MockWebServiceResponse(body: ["responseObject": [responseObject]], header: ["Content-Type": "application/json; charset=utf-8"])
                     MockWebServiceURLProtocol.cannedResponse(response)
                 }
                 
