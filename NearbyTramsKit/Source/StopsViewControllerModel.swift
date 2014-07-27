@@ -20,7 +20,7 @@ public class StopsViewControllerModel: NSObject, StopsViewModelDelegate, Schedul
         if route
         {
             let fetchRequest = NSFetchRequest(entityName: Stop.entityName)
-            fetchRequest.predicate = NSPredicate(format:"route == %@", route!)
+            fetchRequest.predicate = NSPredicate(format:"routes CONTAINS %@", route!)
             viewModel.startUpdatingStopsWithFetchRequest(fetchRequest)
         }
         else
@@ -79,12 +79,16 @@ public class StopsViewControllerModel: NSObject, StopsViewModelDelegate, Schedul
     // MARK: StopsViewModelDelegate
     public func stopsViewModelDidAddStops(stopsViewModel: StopsViewModel, stops: [StopViewModel])
     {
-        for stop in stops
+        if let routeIdentifier = self.route?.uniqueIdentifier
         {
-            let schedulesRepository = SchedulesRepository(stopIdentifier: stop.identifier, schedulesProvider: provider, managedObjectContext: managedObjectContext)
-            schedulesRepository.delegate = self
-            schedulesRepostiories[stop.identifier] = schedulesRepository
+            for stop in stops
+            {
+                let schedulesRepository = SchedulesRepository(routeIdentifier:routeIdentifier, stopIdentifier: stop.identifier, schedulesProvider: provider, managedObjectContext: managedObjectContext)
+                schedulesRepository.delegate = self
+                schedulesRepostiories[stop.identifier] = schedulesRepository
+            }
         }
+        
         didUpdateStops()
     }
     

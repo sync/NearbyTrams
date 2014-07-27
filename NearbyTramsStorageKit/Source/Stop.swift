@@ -16,8 +16,8 @@ public class Stop: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObje
     @NSManaged public var isUpStop: Bool
     @NSManaged public var cityDirection: String?
     @NSManaged public var zones: String?
-    @NSManaged public var route : Route?
-    @NSManaged public var schedules : NSMutableSet
+    @NSManaged public var routes: NSMutableSet
+    @NSManaged public var schedules: NSMutableSet
     
     public class var entityName: String {
         get {
@@ -60,6 +60,22 @@ public class Stop: NSManagedObject, InsertAndFetchManagedObject, RESTManagedObje
     {
         cityDirection = dictionary["CityDirection"] as? String
         zones = dictionary["Zones"] as? String
+    }
+}
+
+public extension Stop
+    {
+    public var routesNo: [String] {
+    if let currentRoutes = routes.allObjects as? [Route]
+    {
+        return currentRoutes.map {
+            route -> String in
+            
+            return route.routeNo!
+        }
+        }
+        
+        return []
     }
 }
 

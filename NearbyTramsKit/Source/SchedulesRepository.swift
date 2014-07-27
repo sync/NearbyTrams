@@ -15,6 +15,7 @@ class SchedulesRepository
 {
     var delegate: SchedulesRepositoryDelegate?
     
+    let routeIdentifier: String
     let stopIdentifier: String
     let schedulesProvider: SchedulesProvider
     let managedObjectContext: NSManagedObjectContext
@@ -24,12 +25,19 @@ class SchedulesRepository
     }
     }
     
-    init (stopIdentifier: String, schedulesProvider: SchedulesProvider, managedObjectContext: NSManagedObjectContext)
+    init (routeIdentifier: String, stopIdentifier: String, schedulesProvider: SchedulesProvider, managedObjectContext: NSManagedObjectContext)
     {
+        self.routeIdentifier = routeIdentifier
         self.stopIdentifier = stopIdentifier
         self.schedulesProvider = schedulesProvider
         self.managedObjectContext = managedObjectContext
         self.isLoading = false
+    }
+    
+    func fetchRoute() -> Route?
+    {
+        let result: (managedObject: Route?, error: NSError?) = Route.fetchOneForPrimaryKeyValue(self.routeIdentifier, usingManagedObjectContext: self.managedObjectContext)
+        return result.managedObject
     }
     
     func fetchStop() -> Stop?
@@ -42,27 +50,29 @@ class SchedulesRepository
     {
         if let stop = fetchStop()
         {
-            if let routeNo = stop.route?.routeNo
+            let fetchedRouteNo = fetchRoute()?.routeNo
+            let fetchedStopNo = stop.stopNo as? Int
+            if fetchedRouteNo && fetchedStopNo
             {
-                if let stopNo = stop.stopNo as? Int
-                {
-                    self.isLoading = true
-                    schedulesProvider.getNextPredictionsWithStopNo(stopNo, routeNo: routeNo, managedObjectContext: managedObjectContext) {
-                        scheduleObjectIds, error -> Void in
-                        
-                        if let objectIds = scheduleObjectIds
+                let routeNo = fetchedRouteNo!
+                let stopNo = fetchedStopNo!
+                
+                self.isLoading = true
+                schedulesProvider.getNextPredictionsWithStopNo(stopNo, routeNo: routeNo, managedObjectContext: managedObjectContext) {
+                    scheduleObjectIds, error -> Void in
+                    
+                    if let objectIds = scheduleObjectIds
+                    {
+                        let result: (schedules: [Schedule]?, error:NSError?) = Schedule.fetchAllForManagedObjectIds(objectIds, usingManagedObjectContext: self.managedObjectContext)
+                        if let schedules = result.schedules
                         {
-                            let result: (schedules: [Schedule]?, error:NSError?) = Schedule.fetchAllForManagedObjectIds(objectIds, usingManagedObjectContext: self.managedObjectContext)
-                            if let schedules = result.schedules
-                            {
-                                stop.schedules = NSMutableSet(array: schedules)
-                                self.managedObjectContext.save(nil)
-                            }
+                            stop.schedules = NSMutableSet(array: schedules)
+                            self.managedObjectContext.save(nil)
                         }
-                        
-                        self.isLoading = false
-                        self.delegate?.schedulesRepositoryDidFinsishLoading(self, error: error)
                     }
+                    
+                    self.isLoading = false
+                    self.delegate?.schedulesRepositoryDidFinsishLoading(self, error: error)
                 }
             }
         }
