@@ -16,13 +16,13 @@ clean:
 	@echo "\n\033[04m+ clean\033[0m"
 	rm -rf ~/Library/Developer/Xcode/DerivedData/NearbyTrams*/Build
 	
-test: test-storage-kit test-network-kit test-trams-kit
+test: test-network-kit test-storage-kit test-trams-kit
 
 test-storage-kit: 
-	xcodebuild -scheme NearbyTramsStorageKit -project NearbyTramsStorageKit.xcodeproj test | xcpretty
+	xcodebuild -scheme NearbyTramsStorageKit -project NearbyTramsStorageKit.xcodeproj build test | xcpretty
 
 test-network-kit: 
-	xcodebuild -scheme NearbyTramsNetworkKit -project NearbyTramsNetworkKit.xcodeproj test | xcpretty
+	xcodebuild -scheme NearbyTramsNetworkKit -project NearbyTramsNetworkKit.xcodeproj build test | xcpretty
 
 test-trams-kit: 
-	xcodebuild -scheme NearbyTramsKit -project NearbyTramsKit.xcodeproj test | xcpretty
+	xcodebuild -scheme NearbyTramsKit -project NearbyTramsKit.xcodeproj build test | xcpretty
