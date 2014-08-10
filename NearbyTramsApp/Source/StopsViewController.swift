@@ -27,8 +27,7 @@ class StopsViewController: NSViewController , NSTableViewDelegate, NSTableViewDa
     required init(coder: NSCoder!)
     {
         let stopsViewModel = StopsViewModel(managedObjectContext: managedObjectContext)
-        let provider = SchedulesProvider(managedObjectContext: managedObjectContext)
-        self.stopsViewControllerModel = StopsViewControllerModel(viewModel: stopsViewModel, provider: provider, managedObjectContext: managedObjectContext)
+        self.stopsViewControllerModel = StopsViewControllerModel(viewModel: stopsViewModel, managedObjectContext: managedObjectContext)
 
         super.init(coder: coder)
         
