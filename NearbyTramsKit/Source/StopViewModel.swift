@@ -36,7 +36,7 @@ public class StopViewModel: Equatable
     }
 }
 
-@infix public func ==(lhs: StopViewModel, rhs: StopViewModel) -> Bool
+public func ==(lhs: StopViewModel, rhs: StopViewModel) -> Bool
 {
     return lhs.identifier == rhs.identifier
 }

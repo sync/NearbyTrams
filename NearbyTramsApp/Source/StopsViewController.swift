@@ -24,7 +24,7 @@ class StopsViewController: NSViewController , NSTableViewDelegate, NSTableViewDa
         return moc
         }()
     
-    init(coder: NSCoder!)
+    required init(coder: NSCoder!)
     {
         let stopsViewModel = StopsViewModel(managedObjectContext: managedObjectContext)
         let provider = SchedulesProvider(managedObjectContext: managedObjectContext)

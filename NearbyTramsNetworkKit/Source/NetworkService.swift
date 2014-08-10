@@ -68,7 +68,7 @@ public class NetworkService
             if let dictionary = object as? NSDictionary
             {
                 let hasAPIError = dictionary["hasError"] as? Bool
-                if hasAPIError && hasAPIError!
+                if hasAPIError.hasValue && hasAPIError!
                 {
                     if let handler = completionHandler
                     {
@@ -137,7 +137,7 @@ public class NetworkService
             if let dictionary = object as? NSDictionary
             {
                 let hasAPIError = dictionary["hasError"] as? Bool
-                if hasAPIError && hasAPIError!
+                if hasAPIError.hasValue && hasAPIError!
                 {
                     if let handler = completionHandler
                     {
@@ -206,7 +206,7 @@ public class NetworkService
             if let dictionary = object as? NSDictionary
             {
                 let hasAPIError = dictionary["hasError"] as? Bool
-                if hasAPIError && hasAPIError!
+                if hasAPIError.hasValue && hasAPIError!
                 {
                     if let handler = completionHandler
                     {
@@ -283,7 +283,7 @@ public class NetworkService
             if let dictionary = object as? NSDictionary
             {
                 let hasAPIError = dictionary["hasError"] as? Bool
-                if hasAPIError && hasAPIError!
+                if hasAPIError.hasValue && hasAPIError!
                 {
                     if let handler = completionHandler
                     {

@@ -91,7 +91,7 @@ public class StopsViewModel: NSObject, SNRFetchedResultsControllerDelegate
         let stopsViewModel = array.map {
             stop -> StopViewModel in
             
-            assert(!self.existingModelForIdentifier(stop.uniqueIdentifier), "stop should not already exist!")
+            assert(!self.existingModelForIdentifier(stop.uniqueIdentifier).hasValue, "stop should not already exist!")
             
             let identifier = stop.uniqueIdentifier!
             let viewModel = StopViewModel(identifier: identifier, routesNo: stop.routesNo, stopDescription: stop.stopDescription!, isUpStop: stop.isUpStop, stopNo: Int(stop.stopNo!), stopName: stop.name!, schedules: stop.nextScheduledArrivalDates)

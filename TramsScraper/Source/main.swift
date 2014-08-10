@@ -49,7 +49,7 @@ dispatch_group_enter(group)
 routesProvider.getAllRoutesWithManagedObjectContext(managedObjectContext) {
     routeObjectIds, error -> Void in
     
-    if (routeObjectIds)
+    if routeObjectIds.hasValue
     {
         println("found routes: \(routeObjectIds!.count)")
         
@@ -64,7 +64,7 @@ routesProvider.getAllRoutesWithManagedObjectContext(managedObjectContext) {
                     stopsProvider.getStopsWithRouteNo(routeNo, requestStopInfo: shouldRequestStopInfo, managedObjectContext: managedObjectContext) {
                         stopObjectIds, error -> Void in
                         
-                        if (stopObjectIds)
+                        if stopObjectIds.hasValue
                         {
                             println("found stops:\(stopObjectIds!.count) for route: \(routeNo)")
                             

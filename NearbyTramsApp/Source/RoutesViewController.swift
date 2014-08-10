@@ -25,7 +25,7 @@ class RoutesViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
         return moc
         }()
     
-    init(coder: NSCoder!)
+    required init(coder: NSCoder!)
     {
         let routesViewModel = RoutesViewModel(managedObjectContext: managedObjectContext)
         self.routesViewControllerModel = RoutesViewControllerModel(viewModel: routesViewModel)

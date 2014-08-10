@@ -41,7 +41,7 @@ public class Schedule: NSManagedObject, InsertAndFetchManagedObject, RESTManaged
         let tmpRouteNo =  dictionary["RouteNo"] as? String
         let tmpPredictedArrivalDateTime = dictionary["PredictedArrivalDateTime"] as? String
         
-        if tmpRouteNo && tmpPredictedArrivalDateTime
+        if tmpRouteNo.hasValue && tmpPredictedArrivalDateTime.hasValue
         {
             return "\(tmpRouteNo)-\(tmpPredictedArrivalDateTime)"
         }

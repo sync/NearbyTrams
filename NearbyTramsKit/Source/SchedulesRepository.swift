@@ -52,7 +52,7 @@ public class SchedulesRepository
         {
             let fetchedRouteNo = fetchRoute()?.routeNo
             let fetchedStopNo = stop.stopNo as? Int
-            if fetchedRouteNo && fetchedStopNo
+            if fetchedRouteNo.hasValue && fetchedStopNo.hasValue
             {
                 let routeNo = fetchedRouteNo!
                 let stopNo = fetchedStopNo!

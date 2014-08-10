@@ -22,7 +22,7 @@ public class SchedulesProvider
         let task = networkService.getNextPredictionsWithStopNo(stopNo, routeNo: routeNo) {
             schedules, error -> Void in
             
-            if (error)
+            if error.hasValue
             {
                 if let handler = completionHandler
                 {
@@ -31,7 +31,7 @@ public class SchedulesProvider
                     }
                 }
             }
-            else if (schedules)
+            else if schedules.hasValue
             {
                 let localContext = NSManagedObjectContext(concurrencyType: .ConfinementConcurrencyType)
                 localContext.parentContext = managedObjectContext

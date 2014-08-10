@@ -6,7 +6,7 @@ import Cocoa
 
 class WindowViewController: NSWindowController {
 
-    init(coder: NSCoder!)
+    required init(coder: NSCoder!)
     {
         super.init(coder: coder)
     }

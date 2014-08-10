@@ -33,7 +33,7 @@ public class RouteViewModel: Equatable
     }
 }
 
-@infix public func ==(lhs: RouteViewModel, rhs: RouteViewModel) -> Bool
+public func ==(lhs: RouteViewModel, rhs: RouteViewModel) -> Bool
 {
     return lhs.identifier == rhs.identifier
 }

@@ -22,7 +22,7 @@ public class CoreDataStackManager {
     
     public class var sharedInstance: CoreDataStackManager {
         
-    if _sharedInstance {
+    if _sharedInstance.hasValue {
         return _sharedInstance!
         }
         _sharedInstance = CoreDataStackManager()
@@ -46,7 +46,7 @@ public class CoreDataStackManager {
     */
     public var persistentStoreCoordinator: NSPersistentStoreCoordinator! {
     
-    if _persistentStoreCoordinator {
+    if _persistentStoreCoordinator.hasValue {
         return _persistentStoreCoordinator
         }
         
@@ -77,7 +77,7 @@ public class CoreDataStackManager {
     */
     var storeURL: NSURL! {
     
-    if _storeURL {
+    if _storeURL.hasValue {
         return _storeURL!
         }
         

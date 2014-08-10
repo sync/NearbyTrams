@@ -49,7 +49,7 @@ public class MockWebServiceURLProtocol: NSURLProtocol
             var responses = (tmpResponses as [MockWebServiceResponse]).filter{
                 cannedResponse -> Bool in
                 
-                return (cannedResponse.urlComponent) ? contains(URL.pathComponents as [String], cannedResponse.urlComponent!) : true
+                return (cannedResponse.urlComponent.hasValue) ? contains(URL.pathComponents as [String], cannedResponse.urlComponent!) : true
             }
             
             // give priority to responses that have a urlComponent

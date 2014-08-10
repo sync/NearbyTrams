@@ -17,7 +17,7 @@ public class StopsViewControllerModel: NSObject, StopsViewModelDelegate, Schedul
     
     public var route: Route? {
     didSet {
-        if route
+        if route.hasValue
         {
             let fetchRequest = NSFetchRequest(entityName: Stop.entityName)
             fetchRequest.predicate = NSPredicate(format:"routes CONTAINS %@ AND uniqueIdentifier != nil AND ANY routes.routeNo != nil AND stopDescription != nil AND stopNo != nil AND name != nil", route!)

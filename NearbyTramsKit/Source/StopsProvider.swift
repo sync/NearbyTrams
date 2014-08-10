@@ -22,7 +22,7 @@ public class StopsProvider
         let task = networkService.getStopsByRouteWithRouteNo(routeNo) {
             stops, error -> Void in
             
-            if (error)
+            if error.hasValue
             {
                 if let handler = completionHandler
                 {
@@ -31,7 +31,7 @@ public class StopsProvider
                     }
                 }
             }
-            else if (stops)
+            else if stops.hasValue
             {
                 let localContext = NSManagedObjectContext(concurrencyType: .ConfinementConcurrencyType)
                 localContext.parentContext = managedObjectContext
@@ -93,7 +93,7 @@ public class StopsProvider
         let task = networkService.getStopInformationWithStopNo(stopNo) {
             dictionary, error -> Void in
             
-            if (error)
+            if error.hasValue
             {
                 if let handler = completionHandler
                 {
@@ -102,7 +102,7 @@ public class StopsProvider
                     }
                 }
             }
-            else if (dictionary)
+            else if dictionary.hasValue
             {
                 let localContext = NSManagedObjectContext(concurrencyType: .ConfinementConcurrencyType)
                 localContext.parentContext = managedObjectContext

@@ -18,7 +18,7 @@ public extension NSManagedObject
         var foundManagedObject: T?
         
         let primaryKeyValue : String? = T.primaryKeyValueFromRest(dictionary)
-        if primaryKeyValue
+        if primaryKeyValue.hasValue
         {
             let result: (managedObject: T?, error: NSError?) = fetchOneForPrimaryKeyValue(primaryKeyValue!, usingManagedObjectContext: managedObjectContext)
             foundManagedObject = result.managedObject
@@ -31,7 +31,7 @@ public extension NSManagedObject
         }
         
         var managedObject: T
-        if foundManagedObject
+        if foundManagedObject.hasValue
         {
             managedObject = foundManagedObject!
         }

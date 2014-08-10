@@ -143,7 +143,7 @@ public class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
             for identifier : AnyObject in identifiersToAdd.allObjects
             {
                 let route = routesByIdentifier[identifier as String]
-                if route
+                if route.hasValue
                 {
                     addedObjects.append(route!)
                 }
@@ -157,7 +157,7 @@ public class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
             for identifier : AnyObject in identifiersToRemove.allObjects
             {
                 let routeViewModel = routesStorage[identifier as String]
-                if routeViewModel
+                if routeViewModel.hasValue
                 {
                     var result: (route: Route?, error:NSError?) = Route.fetchOneForPrimaryKeyValue(routeViewModel!.identifier, usingManagedObjectContext: managedObjectContext)
                     if let route = result.route
@@ -175,7 +175,7 @@ public class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
             for identifier : AnyObject in identifiersToUpdate.allObjects
             {
                 let route = routesByIdentifier[identifier as String]
-                if route
+                if route.hasValue
                 {
                     updatedObjects.append(route!)
                 }
@@ -195,7 +195,7 @@ public class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
                 }.map {
                     route -> RouteViewModel in
                     
-                    assert(!self.existingModelForRoute(route), "route should not already exist!")
+                    assert(!self.existingModelForRoute(route).hasValue, "route should not already exist!")
                     
                     let identifier = route.uniqueIdentifier!
                     let viewModel = RouteViewModel(identifier: identifier, routeNo: route.routeNo!, routeDescription: route.routeDescription!, downDestination: route.downDestination!, upDestination: route.upDestination!)
@@ -328,6 +328,6 @@ public class RoutesViewModel: NSObject, SNRFetchedResultsControllerDelegate
 extension Route
     {
     var isValidForViewModel: Bool {
-    return (self.uniqueIdentifier && self.routeNo && self.routeDescription && self.downDestination && self.upDestination)
+    return (self.uniqueIdentifier.hasValue && self.routeNo.hasValue && self.routeDescription.hasValue && self.downDestination.hasValue && self.upDestination.hasValue)
     }
 }

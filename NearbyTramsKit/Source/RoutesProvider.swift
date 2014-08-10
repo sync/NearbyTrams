@@ -22,7 +22,7 @@ public class RoutesProvider
         let task = networkService.getAllRoutesWithCompletionHandler {
             routes, error -> Void in
             
-            if (error)
+            if error.hasValue
             {
                 if let handler = completionHandler
                 {
@@ -31,7 +31,7 @@ public class RoutesProvider
                     }
                 }
             }
-            else if (routes)
+            else if routes.hasValue
             {
                 let localContext = NSManagedObjectContext(concurrencyType: .ConfinementConcurrencyType)
                 localContext.parentContext = managedObjectContext

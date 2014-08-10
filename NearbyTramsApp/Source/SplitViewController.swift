@@ -8,7 +8,7 @@ class SplitViewController: NSSplitViewController
 {
     let routeSelectionManager: RouteSelectionManager
     
-    init(coder: NSCoder!)
+    required init(coder: NSCoder!)
     {
         routeSelectionManager = RouteSelectionManager()
         
